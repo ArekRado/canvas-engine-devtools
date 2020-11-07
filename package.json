@@ -1,55 +1,66 @@
 {
-  "name": "reshape-devtools",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start1": "NODE_ENV=development bsb -make-world -w",
-    "start2": "NODE_ENV=development node_modules/.bin/webpack-dev-server --mode development",
-    "test:watch1": "NODE_ENV=test bsb -make-world -w",
-    "test:watch2": "NODE_ENV=test nodemon ./src/test.bs.js --delay 1",
-    "test": "NODE_ENV=test node ./src/test.bs.js",
-    "build": "webpack --mode production"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ArekRado/reshape-devtools.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ArekRado/reshape-devtools/issues"
-  },
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "engines": {
-    "node": "10.22.1"
+    "node": ">=10"
   },
-  "homepage": "https://github.com/ArekRado/reshape-devtools#readme",
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "arek",
+  "author": "Arek Rado",
+  "module": "dist/arek.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/arek.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/arek.esm.js",
+      "limit": "10 KB"
+    }
+  ],
   "dependencies": {
-    "@babel/core": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
-    "babel-loader": "^8.1.0",
-    "bs-platform": "^8.2.0",
-    "bs-webapi": "^0.17.1",
-    "bsb-js": "^1.1.7",
-    "css-loader": "^3.6.0",
-    "file-loader": "^6.0.0",
-    "html-loader": "^1.1.0",
-    "html-webpack-plugin": "^4.3.0",
-    "nodemon": "^2.0.4",
-    "pixi.js": "^5.2.4",
-    "postcss-flexbugs-fixes": "^4.2.1",
-    "postcss-import": "^12.0.1",
-    "postcss-loader": "^3.0.0",
-    "postcss-preset-env": "^6.7.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "reason-react": "^0.9.1",
-    "style-loader": "^1.2.1",
+    "@size-limit/preset-small-lib": "^4.7.0",
+    "@types/react": "^16.9.56",
+    "@types/react-dom": "^16.9.9",
+    "husky": "^4.3.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "size-limit": "^4.7.0",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.0.3",
+    "typescript": "^4.0.5",
+    "@arekrado/canvas-engine": "./canvas-engine-0.0.0.tgz",
     "tailwindcss": "^1.9.0",
-    "uuid": "^3.3.3",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
-    "reshape": "../reshape"
+    "postcss-loader": "^3.0.0",
+    "postcss-flexbugs-fixes": "^4.2.1",
+    "postcss-import": "^12.0.1"
   }
 }

@@ -8,32 +8,32 @@ body {
   display: flex;
 }
 
-#engine-debug {
+#canvas-engine-devtools {
   font-size: 10px;
   max-width: 400px;
   width: 100%;
 }
 
-#engine-debug .overflow-auto {
+#canvas-engine-devtools .overflow-auto {
   scrollbar-width: thin;
 }
-#engine-debug .overflow-scroll {
+#canvas-engine-devtools .overflow-scroll {
   scrollbar-width: thin;
 }
-#engine-debug .overflow-x-auto {
+#canvas-engine-devtools .overflow-x-auto {
   scrollbar-width: thin;
 }
-#engine-debug .overflow-y-auto {
+#canvas-engine-devtools .overflow-y-auto {
   scrollbar-width: thin;
 }
-#engine-debug .overflow-x-scroll {
+#canvas-engine-devtools .overflow-x-scroll {
   scrollbar-width: thin;
 }
-#engine-debug .overflow-y-scroll {
+#canvas-engine-devtools .overflow-y-scroll {
   scrollbar-width: thin;
 }
 
-#engine-game {
+#canvas-engine {
   flex: 1;
 }
 
