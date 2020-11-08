@@ -1,12 +1,15 @@
-import { createContext, Dispatch, Reducer } from 'react';
+import { Dictionary } from '@arekrado/canvas-engine';
+import { Component } from '@arekrado/canvas-engine/dist/component';
+import { createContext, Dispatch, ReactElement, Reducer } from 'react';
 
 type EditorState = {
   selectedEntity: string;
   isPlaying: boolean;
+  components: Dictionary<(component: Component<any>) => ReactElement>;
   dispatch: Dispatch<Action<any>>;
 };
 
-type EditorActions = 'SetEntity' | 'SetIsPlaying';
+type EditorActions = 'SetEntity' | 'SetIsPlaying' | 'RegisterComponent';
 
 type Action<Payload> = {
   payload: Payload;
@@ -16,6 +19,7 @@ type Action<Payload> = {
 export const initialState: EditorState = {
   selectedEntity: '',
   isPlaying: false,
+  components: {},
   dispatch: () => {},
 };
 
@@ -33,6 +37,20 @@ export const reducer: Reducer<EditorState, Action<any>> = (state, action) => {
         ...state,
         isPlaying: action.payload,
       };
+    case 'RegisterComponent':
+      const componentName = action.payload.name;
+
+      if (!state.components[componentName]) {
+        return {
+          ...state,
+          components: {
+            ...state.components,
+            [componentName]: action.payload.render,
+          },
+        };
+      }
+
+      return state;
     default:
       return state;
   }

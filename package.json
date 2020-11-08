@@ -57,7 +57,7 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.0.3",
     "typescript": "^4.0.5",
-    "@arekrado/canvas-engine": "./canvas-engine-0.0.0.tgz",
+    "@arekrado/canvas-engine": "./canvas-engine-0.0.1.tgz",
     "tailwindcss": "^1.9.0",
     "postcss-loader": "^3.0.0",
     "postcss-flexbugs-fixes": "^4.2.1",

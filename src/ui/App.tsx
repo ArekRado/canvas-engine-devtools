@@ -19,6 +19,9 @@ import { get as getSyncState, getStateFromLocalStorage } from '../../src/debug';
 import { Fps } from './Fps';
 import { StartStop } from './StartStop';
 import { EntityList } from './EntityList';
+import { CreateEntity } from './CreateEntity';
+import { CreateComponent } from './CreateComponent';
+import { ComponentList } from './ComponentList';
 
 export const App: React.FC = () => {
   const [appState, appDispatch] = useReducer(appReducer, appInitialState);
@@ -75,24 +78,25 @@ export const App: React.FC = () => {
                 Save
               </Button>
               <StartStop />
-              {/* <CreateEntity /> */}
+              <CreateEntity />
               <div className="flex flex-col flex-1 overflow-y-scroll mt-2">
                 <EntityList />
               </div>
               <Fps />
             </div>
-            {/* <div className="flex flex-col flex-1 overflow-y-scroll overflow-x-hidden py-2 pr-2 pl-1">
-          {editorContext.selectedEntity !== '' ? (
-            <div className="w-full">
-              <CreateComponent />
-              <div className="mt-2" />
-              <ComponentList />
+            <div className="flex flex-col flex-1 overflow-y-scroll overflow-x-hidden py-2 pr-2 pl-1">
+              {editorState.selectedEntity !== '' ? (
+                <div className="w-full">
+                  <CreateComponent />
+                  <div className="mt-2" />
+                  <ComponentList />
+                </div>
+              ) : (
+                'Entity not selected'
+              )}
             </div>
-          ) : (
-            React.string('Entity not selected')
-          )}
-        </div>
-        <ModalContainer /> */}
+
+            <div id="modal-container" />
           </div>
         </AppContext.Provider>
       </EditorContext.Provider>
