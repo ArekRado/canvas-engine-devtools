@@ -1,11 +1,13 @@
 import { Dictionary } from '@arekrado/canvas-engine';
 import { Component } from '@arekrado/canvas-engine/dist/component';
-import { createContext, Dispatch, ReactElement, Reducer } from 'react';
+import { createContext, Dispatch, Reducer } from 'react';
+
+type ComponentPreview = React.ElementType<{ component: Component<any> }>;
 
 type EditorState = {
   selectedEntity: string;
   isPlaying: boolean;
-  components: Dictionary<(component: Component<any>) => ReactElement>;
+  components: Dictionary<ComponentPreview>;
   dispatch: Dispatch<Action<any>>;
 };
 

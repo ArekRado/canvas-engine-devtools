@@ -6,7 +6,9 @@ import {
   State,
   initialState,
   initialize,
+  addSprite,
 } from '@arekrado/canvas-engine'
+import exampleImage from './example.png'
 
 const App = () => <CanvasEngineDevtools />
 
@@ -19,4 +21,6 @@ const gameLogic = (state: State) => {
 }
 
 initialize()
-gameLogic(initialState)
+gameLogic(
+  addSprite({ state: initialState, src: exampleImage, name: 'example' }),
+)

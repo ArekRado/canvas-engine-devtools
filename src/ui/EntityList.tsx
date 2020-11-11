@@ -1,9 +1,10 @@
-// import { humanFriendlyEntity } from '@arekrado/canvas-engine/util/uuid';
 import React, { useContext } from 'react';
 import { AppContext } from '../context/app';
 import { EditorContext } from '../context/editor';
 import { ModalContext } from '../context/modal';
 import { Button } from './common/Button';
+import { X } from 'react-feather';
+import { uuid } from '@arekrado/canvas-engine';
 
 export const EntityList: React.FC = () => {
   const editorState = useContext(EditorContext);
@@ -16,31 +17,33 @@ export const EntityList: React.FC = () => {
       {appState.entity.map((key) => (
         <div key={key} className="flex justify-between" title={key}>
           <Button
+            focused={editorState.selectedEntity === key}
             onClick={() =>
               editorState.dispatch({
                 type: 'SetEntity',
                 payload: key,
               })
             }
-            className={`${
-              editorState.selectedEntity === key ? 'border-dashed border-2' : ''
-            } flex-1 text-left`}
+            className="flex-1 text-left"
           >
-            {key}
-            {/* {humanFriendlyEntity(key)} */}
+            {uuid.humanFriendlyEntity(key)}
           </Button>
           <Button
+            title="Remove entity"
             onClick={() => {
               modalState.dispatch({
-                type: 'Open',
+                type: 'SetModal',
                 payload: {
                   name: 'removeEntity',
-                  entity: key,
+                  isOpen: true,
+                  data: {
+                    entity: key,
+                  },
                 },
               });
             }}
           >
-            x
+            <X size={12} />
           </Button>
         </div>
       ))}

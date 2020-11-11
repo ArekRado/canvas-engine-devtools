@@ -41,3 +41,7 @@ body {
   top: 50%; /* why it doesnt work tailwind config? */
   left: 50%;
 }
+
+.disable-outline * {
+  outline: none !important;
+}

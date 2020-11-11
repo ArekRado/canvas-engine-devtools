@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef } from 'react';
+import React, { useEffect, useReducer, useRef, useState } from 'react';
 import {
   AppContext,
   initialState as appInitialState,
@@ -22,6 +22,10 @@ import { EntityList } from './EntityList';
 import { CreateEntity } from './CreateEntity';
 import { CreateComponent } from './CreateComponent';
 import { ComponentList } from './ComponentList';
+import { SaveModal } from './modal/SaveModal';
+import { modalContainerId } from './modal/Modal';
+import { useOutline } from '../util/useOutline';
+import { Save } from 'react-feather';
 
 export const App: React.FC = () => {
   const [appState, appDispatch] = useReducer(appReducer, appInitialState);
@@ -57,9 +61,23 @@ export const App: React.FC = () => {
   useEffect(() => {
     const state = getStateFromLocalStorage();
     if (state) {
-      appDispatch(state);
+      appDispatch({
+        type: 'SetState',
+        payload: state,
+      });
     }
   }, []);
+
+  useOutline();
+
+  const openSaveModal = () =>
+    modalDispatch({
+      type: 'SetModal',
+      payload: {
+        name: 'save',
+        isOpen: true,
+      },
+    });
 
   return (
     <ModalContext.Provider value={{ ...modalState, dispatch: modalDispatch }}>
@@ -69,14 +87,10 @@ export const App: React.FC = () => {
         <AppContext.Provider value={{ ...appState, dispatch: appDispatch }}>
           <div className="text-gray-500 bg-gray-900 w-full h-full flex">
             <div className="flex flex-col flex-1 justify-between py-2 pl-2 pr-1">
-              <Button
-                onClick={
-                  () => {}
-                  // setModalContext(Modal_Context.OpenModal('saveState', None))
-                }
-              >
-                Save
+              <Button onClick={openSaveModal} title="Save">
+                <Save size={24} strokeWidth={1} />
               </Button>
+              <SaveModal />
               <StartStop />
               <CreateEntity />
               <div className="flex flex-col flex-1 overflow-y-scroll mt-2">
@@ -96,7 +110,7 @@ export const App: React.FC = () => {
               )}
             </div>
 
-            <div id="modal-container" />
+            <div id={modalContainerId} />
           </div>
         </AppContext.Provider>
       </EditorContext.Provider>

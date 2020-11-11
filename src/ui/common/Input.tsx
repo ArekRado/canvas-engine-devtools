@@ -23,6 +23,8 @@ export const Input: React.FC<InputProps> = ({
   disabled = false,
   max = undefined,
   min = undefined,
+  placeholder,
+  title,
 }) => (
   <div className={containerClassName}>
     {label && (
@@ -31,7 +33,7 @@ export const Input: React.FC<InputProps> = ({
       </label>
     )}
     <input
-      className={`text-black w-full focus:outline-lightblue ${inputClassName}`}
+      className={`text-black h-full w-full focus:outline-lightblue ${inputClassName}`}
       type={type}
       value={value}
       onChange={onChange}
@@ -39,6 +41,8 @@ export const Input: React.FC<InputProps> = ({
       disabled={disabled}
       max={max}
       min={min}
+      placeholder={placeholder}
+      title={title}
     />
   </div>
 );

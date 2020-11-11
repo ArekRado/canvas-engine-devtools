@@ -19,24 +19,29 @@ const getButtonSize = (size?: ButtonSize) => {
 };
 
 type ButtonProps = {
+  focused?: boolean;
   size?: ButtonSize;
   className?: string;
 } & React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >;
-export const Button: React.FC<ButtonProps> = ({ children, size, ...props }) => {
-  return (
-    <button
-      type="button"
-      {...props}
-      className={`
+export const Button: React.FC<ButtonProps> = ({
+  children,
+  size,
+  focused,
+  ...props
+}) => (
+  <button
+    type="button"
+    {...props}
+    className={`
         ${getButtonSize(size)}
-         border border-gray-600 bg-gray-800 hover:bg-gray-700 focus:outline-lightblue 
+          hover:bg-gray-700 focus:outline-lightblue hover:text-white 
+        ${focused ? 'text-white' : 'text-gray-500'}
         ${props.className || ''}
       `}
-    >
-      {children}
-    </button>
-  );
-};
+  >
+    {children}
+  </button>
+);

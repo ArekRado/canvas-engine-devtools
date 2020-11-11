@@ -1,25 +1,27 @@
 import { createContext, Dispatch, Reducer } from 'react';
 
-type Modal<Data> = {
-  name: string;
+export type Modal<Data> = {
+  name: ModalName;
   isOpen: boolean;
-  data: Data;
+  data?: Data;
 };
 
-type ModalState = {
-  list: { [key in string]: Modal<any> };
-  dispatch: Dispatch<Action<any>>;
-};
+type ModalAction = 'SetModal';
 
-type ModalAction = 'Open' | 'Close';
+export type ModalName = 'save' | 'confirm';
 
 type Action<Payload> = {
-  payload: Payload;
+  payload: Modal<Payload>;
   type: ModalAction;
 };
 
+type ModalState = {
+  list: Modal<any>[];
+  dispatch: Dispatch<Action<any>>;
+};
+
 export const initialState: ModalState = {
-  list: {},
+  list: [],
   dispatch: () => {},
 };
 
@@ -27,29 +29,21 @@ export const ModalContext = createContext<ModalState>(initialState);
 
 export const reducer: Reducer<ModalState, Action<any>> = (state, action) => {
   switch (action.type) {
-    case 'Open':
-      return {
-        ...state,
-        list: {
-          ...state.list,
-          [action.payload.name]: {
-            ...action.payload,
-            isOpen: true,
-          },
-        },
-      };
-    case 'Close':
-      const modal = state.list[action.payload.name];
+    case 'SetModal':
+      const exist = state.list.find((x) => x.name === action.payload.name);
+
+      if (exist) {
+        return {
+          ...state,
+          list: state.list.map((x) =>
+            x.name === action.payload.name ? action.payload : x
+          ),
+        };
+      }
 
       return {
         ...state,
-        list: {
-          ...state.list,
-          [action.payload.name]: {
-            ...modal,
-            isOpen: false,
-          },
-        },
+        list: [...state.list, action.payload],
       };
     default:
       return state;

@@ -8,7 +8,12 @@ import { Component } from '@arekrado/canvas-engine/dist/component';
 import { createContext, Dispatch, Reducer } from 'react';
 import { set as syncState } from '../debug';
 
-type AppActions = 'SetState' | 'SetEntity' | 'CreateComponent';
+type AppActions =
+  | 'SetState'
+  | 'SetEntity'
+  | 'CreateComponent'
+  | 'SetSpriteComponent'
+  | 'SetTransformComponent';
 
 type AppState = State & {
   dispatch: Dispatch<Action<any>>;
@@ -40,6 +45,19 @@ export const reducer: Reducer<State, Action<any>> = (state, action) => {
         ...state,
         ...entity.set({ state, entity: action.payload }),
       };
+      break;
+    case 'SetTransformComponent':
+      newState = component.transform.set({
+        state,
+        data: action.payload,
+      });
+      break;
+    case 'SetSpriteComponent':
+      newState = component.sprite.set({
+        state,
+        data: action.payload,
+      });
+
       break;
     case 'CreateComponent':
       const componentName = action.payload
