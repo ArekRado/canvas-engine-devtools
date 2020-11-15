@@ -17,9 +17,9 @@ export const StartStop: React.FC = () => {
       }
     >
       {editorState.isPlaying ? (
-        <Pause size={24} strokeWidth={1} />
+        <Pause size={24} />
       ) : (
-        <Play size={24} strokeWidth={1} />
+        <Play size={24} />
       )}
     </Button>
   );

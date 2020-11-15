@@ -1,25 +1,36 @@
-import { Dictionary } from '@arekrado/canvas-engine';
+import { Dictionary, Entity } from '@arekrado/canvas-engine';
 import { Component } from '@arekrado/canvas-engine/dist/component';
 import { createContext, Dispatch, Reducer } from 'react';
+import { mutableState } from '../debug';
+import { Action } from '../type';
 
 type ComponentPreview = React.ElementType<{ component: Component<any> }>;
 
+export namespace EditorAction {
+  export type SetEntity = Action<'SetEntity', Entity>;
+  export type SetIsPlaying = Action<'SetIsPlaying', boolean>;
+  export type RegisterComponent = Action<
+    'RegisterComponent',
+    {
+      name: string;
+      render: ComponentPreview;
+    }
+  >;
+}
+
+type EditorActions =
+  | EditorAction.SetEntity
+  | EditorAction.SetIsPlaying
+  | EditorAction.RegisterComponent;
+
 type EditorState = {
-  selectedEntity: string;
+  selectedEntity?: Entity;
   isPlaying: boolean;
   components: Dictionary<ComponentPreview>;
-  dispatch: Dispatch<Action<any>>;
-};
-
-type EditorActions = 'SetEntity' | 'SetIsPlaying' | 'RegisterComponent';
-
-type Action<Payload> = {
-  payload: Payload;
-  type: EditorActions;
+  dispatch: Dispatch<EditorActions>;
 };
 
 export const initialState: EditorState = {
-  selectedEntity: '',
   isPlaying: false,
   components: {},
   dispatch: () => {},
@@ -27,7 +38,7 @@ export const initialState: EditorState = {
 
 export const EditorContext = createContext<EditorState>(initialState);
 
-export const reducer: Reducer<EditorState, Action<any>> = (state, action) => {
+export const reducer: Reducer<EditorState, EditorActions> = (state, action) => {
   switch (action.type) {
     case 'SetEntity':
       return {
@@ -35,6 +46,7 @@ export const reducer: Reducer<EditorState, Action<any>> = (state, action) => {
         selectedEntity: action.payload,
       };
     case 'SetIsPlaying':
+      mutableState.isPlaying = action.payload;
       return {
         ...state,
         isPlaying: action.payload,

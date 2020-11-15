@@ -1,3 +1,4 @@
+import { entity } from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
 import { Plus } from 'react-feather';
 import { AppContext } from '../context/app';
@@ -10,22 +11,33 @@ export const CreateEntity: React.FC = () => {
   const editorState = useContext(EditorContext);
   const appState = useContext(AppContext);
 
-  const [entity, setEntity] = useState('');
+  const [entityName, setEntityName] = useState('');
 
   return (
     <Form
       className="flex justify-between"
       onSubmit={() => {
-        setEntity('');
-        appState.dispatch({ type: 'SetEntity', payload: entity });
-        editorState.dispatch({ type: 'SetEntity', payload: entity });
+        setEntityName('');
+        const newEntity = entity.generate(entityName);
+
+        appState.dispatch({
+          type: 'SetEntity',
+          payload: newEntity,
+        });
+        editorState.dispatch({
+          type: 'SetEntity',
+          payload: newEntity,
+        });
       }}
     >
       <Input
-        containerClassName="flex-1"
-        title="entity"
-        value={entity}
-        onChange={(event) => setEntity(event.target.value)}
+        labelClassName="mr-3"
+        label="Create"
+        id="createEntity"
+        containerClassName="flex flex-1"
+        value={entityName}
+        onChange={(event) => setEntityName(event.target.value)}
+        required={true}
       />
       <Button type="submit" title="Create entity">
         <Plus size={12} />

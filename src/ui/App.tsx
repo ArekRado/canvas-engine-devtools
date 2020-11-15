@@ -20,12 +20,12 @@ import { Fps } from './Fps';
 import { StartStop } from './StartStop';
 import { EntityList } from './EntityList';
 import { CreateEntity } from './CreateEntity';
-import { CreateComponent } from './CreateComponent';
-import { ComponentList } from './ComponentList';
 import { SaveModal } from './modal/SaveModal';
-import { modalContainerId } from './modal/Modal';
+import { modalContainerId } from './modal/ModalWrapper';
 import { useOutline } from '../util/useOutline';
 import { Save } from 'react-feather';
+import { EntityDetails } from './EntityDetails';
+import { ConfirmModal } from './modal/ConfirmModal';
 
 export const App: React.FC = () => {
   const [appState, appDispatch] = useReducer(appReducer, appInitialState);
@@ -60,10 +60,15 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     const state = getStateFromLocalStorage();
-    if (state) {
+    const editorState = getSyncState('Editor');
+
+    if (state && editorState) {
       appDispatch({
         type: 'SetState',
-        payload: state,
+        payload: {
+          ...state,
+          asset: editorState.asset || state.asset,
+        },
       });
     }
   }, []);
@@ -86,32 +91,31 @@ export const App: React.FC = () => {
       >
         <AppContext.Provider value={{ ...appState, dispatch: appDispatch }}>
           <div className="text-gray-500 bg-gray-900 w-full h-full flex">
-            <div className="flex flex-col flex-1 justify-between py-2 pl-2 pr-1">
-              <Button onClick={openSaveModal} title="Save">
-                <Save size={24} strokeWidth={1} />
-              </Button>
-              <SaveModal />
-              <StartStop />
-              <CreateEntity />
-              <div className="flex flex-col flex-1 overflow-y-scroll mt-2">
-                <EntityList />
+            <div className="flex flex-col flex-1">
+              <div className="bg-gray-800">
+                <Button onClick={openSaveModal} title="Save">
+                  <Save size={24} strokeWidth={1} />
+                </Button>
+                <StartStop />
               </div>
-              <Fps />
-            </div>
-            <div className="flex flex-col flex-1 overflow-y-scroll overflow-x-hidden py-2 pr-2 pl-1">
-              {editorState.selectedEntity !== '' ? (
-                <div className="w-full">
-                  <CreateComponent />
-                  <div className="mt-2" />
-                  <ComponentList />
+
+              <div className="py-2 pl-2 pr-1 flex flex-col flex-1">
+                <CreateEntity />
+                <div className="flex flex-col flex-1 overflow-y-scroll mt-2">
+                  <EntityList />
                 </div>
-              ) : (
-                'Entity not selected'
-              )}
+                <Fps />
+              </div>
+            </div>
+            <div className="flex flex-col flex-1 overflow-y-scroll overflow-x-hidden">
+              <EntityDetails />
             </div>
 
             <div id={modalContainerId} />
           </div>
+
+          <ConfirmModal />
+          <SaveModal />
         </AppContext.Provider>
       </EditorContext.Provider>
     </ModalContext.Provider>

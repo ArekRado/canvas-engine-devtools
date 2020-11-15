@@ -5,11 +5,13 @@ type SyncDirection = 'Game' | 'Editor';
 type MutableState = {
   stateForGame?: State;
   stateForEditor?: State;
+  isPlaying: boolean;
 };
 
-const mutableState: MutableState = {
+export const mutableState: MutableState = {
   stateForGame: initialState,
   stateForEditor: initialState,
+  isPlaying: false,
 };
 
 export const set = (state: State, direction: SyncDirection): void => {
@@ -30,10 +32,10 @@ export const get = (direction: SyncDirection): State | undefined => {
     return mutableState.stateForEditor;
   }
 
-  return undefined
+  return undefined;
 };
 
-export const getStateFromLocalStorage = () => {
+export const getStateFromLocalStorage = (): State | undefined => {
   const item = localStorage.getItem('state');
 
   if (item) {
@@ -56,7 +58,7 @@ export const update: Update = ({ state }) => {
       isDebugInitialized: true,
     };
   } else {
-    if (state.time.delta !== 0) {
+    if (mutableState.isPlaying) {
       set(state, 'Editor');
       return state;
     } else {

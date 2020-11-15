@@ -1,23 +1,22 @@
 import { createContext, Dispatch, Reducer } from 'react';
+import { Action } from '../type';
 
 export type Modal<Data> = {
   name: ModalName;
   isOpen: boolean;
   data?: Data;
 };
+export namespace ModalAction {
+  export type SetModal = Action<'SetModal', Modal<any>>;
+}
 
-type ModalAction = 'SetModal';
+type ModalActions = ModalAction.SetModal;
 
 export type ModalName = 'save' | 'confirm';
 
-type Action<Payload> = {
-  payload: Modal<Payload>;
-  type: ModalAction;
-};
-
 type ModalState = {
   list: Modal<any>[];
-  dispatch: Dispatch<Action<any>>;
+  dispatch: Dispatch<ModalActions>;
 };
 
 export const initialState: ModalState = {
@@ -27,7 +26,7 @@ export const initialState: ModalState = {
 
 export const ModalContext = createContext<ModalState>(initialState);
 
-export const reducer: Reducer<ModalState, Action<any>> = (state, action) => {
+export const reducer: Reducer<ModalState, ModalActions> = (state, action) => {
   switch (action.type) {
     case 'SetModal':
       const exist = state.list.find((x) => x.name === action.payload.name);

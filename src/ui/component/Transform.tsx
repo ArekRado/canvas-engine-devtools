@@ -1,13 +1,9 @@
-import { uuid } from '@arekrado/canvas-engine';
 import { Transform as TransformType } from '@arekrado/canvas-engine/dist/component';
 import React, { useContext } from 'react';
 import { AppContext } from '../../context/app';
 import { EditorContext } from '../../context/editor';
-import { ModalContext } from '../../context/modal';
 import { Input } from '../common/Input';
 import { Vector } from '../common/Vector';
-// import React, { useContext } from 'react';
-// import { AppContext } from '../../context/app';
 
 type TransformProps = {
   component: TransformType;
@@ -29,61 +25,70 @@ export const Transform: React.FC<TransformProps> = ({ component }) => {
     });
 
   return (
-    <div className="grid grid-cols-12 gap-1 mt-3">
-      <div className="col-span-4"> position </div>
-      <div className="col-span-8">
-        <Vector
-          value={component.data.position}
-          onChange={(value) => setTransformData({ position: value })}
-        />
-      </div>
-      <div className="col-span-4"> localPosition </div>
-      <div className="col-span-8">
-        <Vector
-          value={component.data.localPosition}
-          onChange={(value) => setTransformData({ localPosition: value })}
-        />
-      </div>
-      <div className="col-span-4"> rotation </div>
-      <div className="col-span-8">
-        <Input
-          type="number"
-          value={component.data.rotation}
-          onChange={(e) =>
-            setTransformData({ rotation: parseFloat(e.target.value) })
-          }
-        />
-      </div>
-      <div className="col-span-4"> localRotation </div>
-      <div className="col-span-8">
-        <Input
-          type="number"
-          value={component.data.localRotation}
-          onChange={(e) =>
-            setTransformData({ localRotation: parseFloat(e.target.value) })
-          }
-        />
-      </div>
-      <div className="col-span-4"> scale </div>
-      <div className="col-span-8">
-        <Vector
-          value={component.data.scale}
-          onChange={(value) => setTransformData({ scale: value })}
-          // onChange={value => appState.dispatch(SetTransformScale(entity, value))}
-        />
-      </div>
-      <div className="col-span-4"> localScale </div>
-      <div className="col-span-8">
-        <Vector
-          value={component.data.localScale}
-          onChange={(value) => setTransformData({ localScale: value })}
-        />
-      </div>
-      <div className="col-span-4"> parent</div>
-      <div className="col-span-8">
-        {component.data.parent
-          ? uuid.humanFriendlyEntity(component.data.parent)
-          : 'None'}
+    <div className="flex flex-col mt-3">
+      <Vector
+        label={component.data.parent ? 'localPosition' : 'position'}
+        containerClassName="grid grid-cols-12 my-1"
+        labelClassName="col-span-4"
+        inputClassName="col-span-4"
+        id="position"
+        name="position"
+        value={
+          component.data.parent
+            ? component.data.localPosition
+            : component.data.position
+        }
+        onChange={(value) =>
+          component.data.parent
+            ? setTransformData({ localPosition: value })
+            : setTransformData({ position: value })
+        }
+      />
+
+      <Input
+        label={component.data.parent ? 'localRotation' : 'rotation'}
+        name={component.data.parent ? 'localRotation' : 'rotation'}
+        containerClassName="grid grid-cols-12 my-1"
+        labelClassName="col-span-4"
+        inputClassName="col-span-8"
+        id="rotation"
+        type="number"
+        value={
+          component.data.parent
+            ? component.data.localRotation
+            : component.data.rotation
+        }
+        onChange={(e) =>
+          component.data.parent
+            ? setTransformData({ localRotation: parseFloat(e.target.value) })
+            : setTransformData({ rotation: parseFloat(e.target.value) })
+        }
+      />
+
+      <Vector
+        label={component.data.parent ? 'localScale' : 'scale'}
+        containerClassName="grid grid-cols-12 my-1"
+        labelClassName="col-span-4"
+        inputClassName="col-span-4"
+        id="scale"
+        name="scale"
+        value={
+          component.data.parent
+            ? component.data.localScale
+            : component.data.scale
+        }
+        onChange={(value) =>
+          component.data.parent
+            ? setTransformData({ localScale: value })
+            : setTransformData({ scale: value })
+        }
+      />
+
+      <div className="grid grid-cols-12 my-1">
+        <div className="col-span-4"> parent</div>
+        <div className="col-span-8">
+          {component.data.parent ? component.data.parent.name : 'Root'}
+        </div>
       </div>
     </div>
   );

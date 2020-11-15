@@ -32,16 +32,16 @@ export const ComponentWrapper: React.FC<ComponentWrapperProps> = ({
               payload: {
                 name: 'confirm',
                 isOpen: true,
+                data: {
+                  title: `Are you sure you want to remove ${componentName}?`,
+                  onAccept: () => {},
+                },
               },
             });
           }}
         >
           <X size={12} />
         </Button>
-        <ConfirmModal
-          title={`Are you sure you want to remove ${componentName}?`}
-          onAccept={() => {}}
-        />
       </div>
 
       {!isCollapsed && children}

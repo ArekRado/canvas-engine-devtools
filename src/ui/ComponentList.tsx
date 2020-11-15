@@ -1,6 +1,5 @@
-import { State } from '@arekrado/canvas-engine';
+import { Entity, State } from '@arekrado/canvas-engine';
 import { Component } from '@arekrado/canvas-engine/dist/component';
-import { Guid } from '@arekrado/canvas-engine/dist/util/uuid';
 import React, { useContext, useEffect } from 'react';
 import { AppContext } from '../context/app';
 import { EditorContext } from '../context/editor';
@@ -13,12 +12,12 @@ type EntityComponent = {
 
 const getEntityComponents = (
   appState: State,
-  selectedEntity: Guid
+  selectedEntity?: Entity
 ): EntityComponent[] =>
   Object.entries(appState.component).map(([componentName, components]) => ({
     name: componentName,
     list: Object.values(components).filter(
-      (component: Component<any>) => component.entity === selectedEntity
+      (component: Component<any>) => component.entity.id === selectedEntity?.id
     ),
   }));
 
@@ -28,7 +27,7 @@ export const ComponentList: React.FC = () => {
 
   const entityComponents = getEntityComponents(
     appState,
-    editorState.selectedEntity
+    editorState?.selectedEntity
   );
 
   // https://github.com/formium/tsdx/pull/367
@@ -63,10 +62,9 @@ export const ComponentList: React.FC = () => {
           <ComponentWrapper
             component={component}
             componentName={name}
-            key={`${component.entity}${component.name}`}
+            key={component.entity.id}
           >
             {RegisteredComponent ? (
-              // ? RegisteredComponent({ component: component })
               <RegisteredComponent component={component} />
             ) : (
               `Component "${name}" is not registered in devtools`

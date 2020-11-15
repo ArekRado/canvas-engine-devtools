@@ -16,7 +16,7 @@ type ModalProps = {
     modal: ModalType<any>;
   }) => ReactElement;
 };
-export const Modal: React.FC<ModalProps> = ({ name, children }) => {
+export const ModalWrapper: React.FC<ModalProps> = ({ name, children }) => {
   const modalState = useContext(ModalContext);
   const modal = modalState.list.find((x) => x.name === name);
 

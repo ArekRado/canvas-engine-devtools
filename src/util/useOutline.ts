@@ -1,11 +1,14 @@
 import { useEffect } from 'react';
 
 const enableOutline = () => {
-  document.body.classList.remove('disable-outline');
+  const container = document.getElementById('canvas-engine-devtools')
+  container?.classList.add('enable-outline');
 };
 
 const disableOutline = () => {
-  document.body.classList.add('disable-outline');
+  const container = document.getElementById('canvas-engine-devtools')
+  container?.classList.remove('enable-outline');
+  // document.body.classList.add('enable-outline');
 };
 
 export const useOutline = () => {

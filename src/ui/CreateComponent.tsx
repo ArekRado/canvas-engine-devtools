@@ -1,3 +1,4 @@
+import { State } from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
 import { AppContext } from '../context/app';
 import { EditorContext } from '../context/editor';
@@ -14,7 +15,7 @@ export const CreateComponent: React.FC = () => {
     })
   );
 
-  return (
+  return !editorState.selectedEntity ? (
     <Select
       label="Add component"
       options={options}
@@ -23,11 +24,11 @@ export const CreateComponent: React.FC = () => {
         appState.dispatch({
           type: 'CreateComponent',
           payload: {
-            component: value.target.value,
+            component: value.target.value as keyof State['component'],
             entity: editorState.selectedEntity,
           },
         })
       }
     />
-  );
+  ) : null;
 };

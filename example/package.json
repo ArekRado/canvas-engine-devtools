@@ -13,12 +13,13 @@
     "scheduler/tracing": "../node_modules/scheduler/tracing-profiling"
   },
   "devDependencies": {
-    "@arekrado/canvas-engine": "../canvas-engine-0.0.1.tgz",
+    "@arekrado/canvas-engine": "../canvas-engine-0.0.5.tgz",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.8.4",
     "eslint": "^7.13.0",
     "parcel": "^1.12.3",
     "prettier": "^2.1.2",
+    "sass": "^1.29.0",
     "typescript": "^3.4.5"
   },
   "dependencies": {

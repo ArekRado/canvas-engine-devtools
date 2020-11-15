@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 import { saveStateInLocalStorage } from '../../debug';
 import { Button } from '../common/Button';
 import { AppContext } from '../../context/app';
-import { Modal } from './Modal';
+import { ModalWrapper } from './ModalWrapper';
 
 export const SaveModal: React.FC = () => {
   const appState = useContext(AppContext);
 
   return (
-    <Modal name="save">
+    <ModalWrapper name="save">
       {({ close }) => (
         <div>
           <Button
@@ -21,6 +21,6 @@ export const SaveModal: React.FC = () => {
           </Button>
         </div>
       )}
-    </Modal>
+    </ModalWrapper>
   );
 };

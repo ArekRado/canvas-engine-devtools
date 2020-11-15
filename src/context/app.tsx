@@ -3,25 +3,43 @@ import {
   State,
   entity,
   component,
+  Entity,
 } from '@arekrado/canvas-engine';
-import { Component } from '@arekrado/canvas-engine/dist/component';
+import {
+  Component,
+  Sprite,
+  Transform,
+} from '@arekrado/canvas-engine/dist/component';
 import { createContext, Dispatch, Reducer } from 'react';
 import { set as syncState } from '../debug';
+import { Action } from '../type';
+
+export namespace AppAction {
+  export type SetState = Action<'SetState', State>;
+  export type SetEntity = Action<'SetEntity', Entity>;
+  export type CreateComponent = Action<
+    'CreateComponent',
+    {
+      component: keyof State['component'];
+      entity: Entity;
+    }
+  >;
+  export type SetSpriteComponent = Action<'SetSpriteComponent', Sprite>;
+  export type SetTransformComponent = Action<
+    'SetTransformComponent',
+    Transform
+  >;
+}
 
 type AppActions =
-  | 'SetState'
-  | 'SetEntity'
-  | 'CreateComponent'
-  | 'SetSpriteComponent'
-  | 'SetTransformComponent';
+  | AppAction.SetState
+  | AppAction.SetEntity
+  | AppAction.CreateComponent
+  | AppAction.SetSpriteComponent
+  | AppAction.SetTransformComponent;
 
 type AppState = State & {
-  dispatch: Dispatch<Action<any>>;
-};
-
-type Action<Payload> = {
-  payload: Payload;
-  type: AppActions;
+  dispatch: Dispatch<AppActions>;
 };
 
 export const initialState: AppState = {
@@ -31,8 +49,9 @@ export const initialState: AppState = {
 
 export const AppContext = createContext<AppState>(initialState);
 
-export const reducer: Reducer<State, Action<any>> = (state, action) => {
+export const reducer: Reducer<State, AppActions> = (state, action) => {
   let newState;
+
   switch (action.type) {
     case 'SetState':
       newState = {
@@ -67,7 +86,6 @@ export const reducer: Reducer<State, Action<any>> = (state, action) => {
 
       const defaultData: Component<any> = componentCreator.defaultData({
         entity: action.payload.entity,
-        name: entity.generate(componentName),
       });
 
       if (componentCreator) {
@@ -87,7 +105,7 @@ export const reducer: Reducer<State, Action<any>> = (state, action) => {
       break;
   }
 
-  syncState(newState, 'Game');
+  newState && syncState(newState, 'Game');
 
-  return newState;
+  return newState || initialState;
 };
