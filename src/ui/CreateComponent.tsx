@@ -15,7 +15,7 @@ export const CreateComponent: React.FC = () => {
     })
   );
 
-  return !editorState.selectedEntity ? (
+  return editorState.selectedEntity ? (
     <Select
       label="Add component"
       options={options}

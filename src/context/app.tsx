@@ -6,9 +6,12 @@ import {
   Entity,
 } from '@arekrado/canvas-engine';
 import {
+  CollideBox,
+  CollideCircle,
   Component,
   Sprite,
   Transform,
+  Animation,
 } from '@arekrado/canvas-engine/dist/component';
 import { createContext, Dispatch, Reducer } from 'react';
 import { set as syncState } from '../debug';
@@ -25,9 +28,22 @@ export namespace AppAction {
     }
   >;
   export type SetSpriteComponent = Action<'SetSpriteComponent', Sprite>;
+
   export type SetTransformComponent = Action<
     'SetTransformComponent',
     Transform
+  >;
+  export type SetCollideCircleComponent = Action<
+    'SetCollideCircleComponent',
+    CollideCircle
+  >;
+  export type SetCollideBoxComponent = Action<
+    'SetCollideBoxComponent',
+    CollideBox
+  >;
+  export type SetAnimationComponent = Action<
+    'SetAnimationComponent',
+    Animation
   >;
 }
 
@@ -36,7 +52,10 @@ type AppActions =
   | AppAction.SetEntity
   | AppAction.CreateComponent
   | AppAction.SetSpriteComponent
-  | AppAction.SetTransformComponent;
+  | AppAction.SetTransformComponent
+  | AppAction.SetCollideCircleComponent
+  | AppAction.SetCollideBoxComponent
+  | AppAction.SetAnimationComponent;
 
 type AppState = State & {
   dispatch: Dispatch<AppActions>;
@@ -76,7 +95,24 @@ export const reducer: Reducer<State, AppActions> = (state, action) => {
         state,
         data: action.payload,
       });
-
+      break;
+    case 'SetCollideCircleComponent':
+      newState = component.collideCircle.set({
+        state,
+        data: action.payload,
+      });
+      break;
+    case 'SetCollideBoxComponent':
+      newState = component.collideBox.set({
+        state,
+        data: action.payload,
+      });
+      break;
+    case 'SetAnimationComponent':
+      newState = component.animation.set({
+        state,
+        data: action.payload,
+      });
       break;
     case 'CreateComponent':
       const componentName = action.payload

@@ -26,6 +26,7 @@ import { useOutline } from '../util/useOutline';
 import { Save } from 'react-feather';
 import { EntityDetails } from './EntityDetails';
 import { ConfirmModal } from './modal/ConfirmModal';
+import { AnimationModal } from './modal/AnimationModal';
 
 export const App: React.FC = () => {
   const [appState, appDispatch] = useReducer(appReducer, appInitialState);
@@ -116,6 +117,7 @@ export const App: React.FC = () => {
 
           <ConfirmModal />
           <SaveModal />
+          <AnimationModal />
         </AppContext.Provider>
       </EditorContext.Provider>
     </ModalContext.Provider>

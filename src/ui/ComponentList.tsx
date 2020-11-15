@@ -50,6 +50,15 @@ export const ComponentList: React.FC = () => {
         },
       });
     });
+    import('./component/Animation').then((component) => {
+      editorState.dispatch({
+        type: 'RegisterComponent',
+        payload: {
+          name: 'animation',
+          render: component.Animation,
+        },
+      });
+    });
   }, []);
 
   return (
