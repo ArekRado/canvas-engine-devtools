@@ -3,7 +3,7 @@ import {
   Animation as AnimationType,
   Keyframe,
 } from '@arekrado/canvas-engine/dist/component';
-import { Vector2D } from '@arekrado/vector-2d';
+import { vector, Vector2D } from '@arekrado/vector-2d';
 import React, { useContext } from 'react';
 import { AppContext } from '../../context/app';
 import { ModalContext } from '../../context/modal';
@@ -12,6 +12,28 @@ import { Input } from '../common/Input';
 import { Select } from '../common/Select';
 import { Vector } from '../common/Vector';
 import { ModalWrapper } from './ModalWrapper';
+
+const emptyKeyframe: Keyframe = {
+  duration: 1000,
+  timingFunction: 'Linear',
+  valueRange: {
+    type: 'Number',
+    value: vector(0, 1),
+  },
+};
+
+const msToTime = (ms: number): string => {
+  let seconds = (ms / 1000.0) % 60.0;
+  let minutes = (ms / (1000.0 * 60.0)) % 60.0;
+
+  let formattedMinutes =
+    minutes < 10.0 ? '0' + Math.floor(minutes) : Math.floor(minutes);
+
+  let formattedSeconds =
+    seconds < 10.0 ? '0' + Math.floor(seconds) : Math.floor(seconds);
+
+  return formattedMinutes + ':' + formattedSeconds;
+};
 
 type AnimationProps = {
   entity: Entity;
@@ -51,6 +73,11 @@ const AnimationModalBody: React.FC<AnimationProps> = ({ entity }) => {
             }
           : keyframe
       ),
+    });
+
+  const addKeyframe = () =>
+    setAnimationData({
+      keyframes: [...component.data.keyframes, emptyKeyframe],
     });
 
   const animationLength = component.data.keyframes.reduce(
@@ -98,36 +125,15 @@ const AnimationModalBody: React.FC<AnimationProps> = ({ entity }) => {
             min="0"
           />
 
-          <div className="col-span-4"> {'component'} </div>
-          <div className="col-span-4">
-            {/* <Select
-              options={componentList}
-              value={mapComponentToText(component.data.component)}
-              onChange={(component) =>
-                setAnimationComponent({
-                  component: mapTextToComponent(component),
-                  componentEntity: '',
-                  animationName: name,
-                })
-              }
-            /> */}
-          </div>
-          <div className="col-span-4">
-            {/* <Select
-              options={componentEntitiesList(
-                appState,
-                component.data.component
-              )}
-              value={getComponentEntity(component.data.component)}
-              onChange={(componentEntity) =>
-                setAnimationComponent({
-                  component: component.data.component,
-                  componentEntity,
-                  animationName: name,
-                })
-              }
-            /> */}
-          </div>
+          <Select
+            containerClassName="col-span-12 grid grid-cols-12"
+            labelClassName="col-span-4"
+            inputClassName="col-span-8"
+            label='property'
+            options={[]}
+            value={''}
+            onChange={() => {}}
+          />
 
           <div className="col-span-4"> {'isFinished'} </div>
           <div className="col-span-8">
@@ -137,34 +143,46 @@ const AnimationModalBody: React.FC<AnimationProps> = ({ entity }) => {
           <div className="col-span-4"> {'wrapMode'} </div>
           <div className="col-span-8">{component.data.wrapMode}</div>
         </div>
-        <div className="col-span-6 grid grid-cols-12 gap-1 my-1">
+        <div className="col-span-6 my-1">
           <Button
             className="col-span-12"
             onClick={() => {
-              // addKeyframe();
+              addKeyframe();
             }}
           >
             Add keyframe
           </Button>
           {selectedKeyframe && (
             <>
-              <div className="col-span-4">duration</div>
-              <div className="col-span-8">
-                <Input
-                  id='duration'
-                  name='duration'
-                  value={selectedKeyframe.duration}
-                  onChange={(e) =>
-                    setKeyframe({ duration: parseFloat(e.target.value) })
-                  }
-                />
-              </div>
-              <div className="col-span-4">{'timingFunction'}</div>
-              <div className="col-span-8"> {'Linear'} </div>
-              <div className="col-span-4">{'valueRange'}</div>
-              <div className="col-span-8">
+              <Input
+                containerClassName="grid grid-cols-12 my-1"
+                labelClassName="col-span-4"
+                inputClassName="col-span-8"
+                id="duration"
+                name="duration"
+                label="duration"
+                value={selectedKeyframe.duration}
+                onChange={(e) =>
+                  setKeyframe({ duration: parseFloat(e.target.value) })
+                }
+              />
+              <Input
+                containerClassName="grid grid-cols-12 my-1"
+                labelClassName="col-span-4"
+                inputClassName="col-span-8"
+                id="timingFunction"
+                name="timingFunction"
+                label="timingFunction"
+                value="Linear"
+                disabled
+                onChange={() => {}}
+              />
+
+              <div className="grid grid-cols-12 my-1">
+                <div className="col-span-4">valueRange</div>
                 {selectedKeyframe.valueRange.type === 'Number' && (
                   <Vector
+                    containerClassName="col-span-8 flex"
                     id="valueRange"
                     name="valueRange"
                     value={selectedKeyframe.valueRange.value}
@@ -180,109 +198,111 @@ const AnimationModalBody: React.FC<AnimationProps> = ({ entity }) => {
                 )}
 
                 {selectedKeyframe.valueRange.type === 'Vector2D' && (
-                  <>
-                    <Vector
-                      id="valueRange[0]"
-                      name="valueRange[0]"
-                      value={selectedKeyframe.valueRange.value[0]}
-                      onChange={(value) =>
-                        setKeyframe({
-                          valueRange: {
-                            type: 'Vector2D',
-                            value: [
-                              value,
-                              selectedKeyframe.valueRange.value[1] as Vector2D,
-                            ],
-                          },
-                        })
-                      }
-                    />
+                  <Vector
+                    containerClassName="col-span-4"
+                    id="valueRange[0]"
+                    name="valueRange[0]"
+                    value={selectedKeyframe.valueRange.value[0]}
+                    onChange={(value) =>
+                      setKeyframe({
+                        valueRange: {
+                          type: 'Vector2D',
+                          value: [
+                            value,
+                            selectedKeyframe.valueRange.value[1] as Vector2D,
+                          ],
+                        },
+                      })
+                    }
+                  />
+                )}
 
-                    <Vector
-                      id="valueRange[1]"
-                      name="valueRange[1]"
-                      value={selectedKeyframe.valueRange.value[1]}
-                      onChange={(value) =>
-                        setKeyframe({
-                          valueRange: {
-                            type: 'Vector2D',
-                            value: [
-                              selectedKeyframe.valueRange.value[0] as Vector2D,
-                              value,
-                            ],
-                          },
-                        })
-                      }
-                    />
-                  </>
+                {selectedKeyframe.valueRange.type === 'Vector2D' && (
+                  <Vector
+                    containerClassName="col-span-4"
+                    id="valueRange[1]"
+                    name="valueRange[1]"
+                    value={selectedKeyframe.valueRange.value[1]}
+                    onChange={(value) =>
+                      setKeyframe({
+                        valueRange: {
+                          type: 'Vector2D',
+                          value: [
+                            selectedKeyframe.valueRange.value[0] as Vector2D,
+                            value,
+                          ],
+                        },
+                      })
+                    }
+                  />
                 )}
               </div>
             </>
           )}
         </div>
       </div>
-      {/* <div
-      className="flex h-20 bg-gray-700 bg-opacity-75 relative overflow-hidden">
-      {Belt.List.mapWithIndex(
-         component.data.keyframes, (index, keyframe: Type.keyframe) =>
-         <button
-           key={Belt.Int.toString(index)}
-           className={
-             (index === keyframeIndex ? "border-white" : "border-black") 
-             ++ " flex flex-wrap items-center justify-center border overflow-hidden"
+      <div className="flex h-20 bg-gray-700 bg-opacity-75 relative overflow-hidden">
+        {component.data.keyframes.map((keyframe, index) => (
+          <button
+            key={index}
+            className={
+              (index === keyframeIndex ? 'border-white' : 'border-black') +
+              ' flex flex-wrap items-center justify-center border overflow-hidden'
             }
-           style={ReactDOMRe.Style.make(
-             ~flex=
-               (
-                 keyframe.duration *. animationLength /. 100.0,
-               ),
-             (),
-           )}
-           onClick={() => {setKeyframeIndex(_ => index)}}
-          >
-           {switch (keyframe.valueRange) {
-            | Float((from, to_)) =>
-              <>
-                {(
-                   timingFunctionToString(keyframe.timingFunction),
-                 )}
-                <br />
-                {((from))}
-                {(" - ")}
-                {((to_))}
-              </>
-            | Vector((from, to_)) =>
-              <>
-                {(
-                   timingFunctionToString(keyframe.timingFunction),
-                 )}
-                <br />
-                <Vector value=from onChange={() => {}} />
-                {(" - ")}
-                <Vector value=to_ onChange={() => {}} />
-              </>
+            style={{
+              flex: (keyframe.duration * animationLength) / 100.0,
             }}
-         </button>
-       )}
-      <div
-        className="absolute w-full h-full flex flex-col justify-between pointer-events-none"
-        style={ReactDOMRe.Style.make(
-          ~transform=
-            "translate("
-            ++ (
-                 animation.currentTime *. 100.0 /. animationLength,
-               )
-            ++ "%)",
-          (),
-        )}>
-        <div className="ml-1 overflow-hidden w-10">
-          {(msToTime(animation.currentTime))}
+            onClick={() => {
+              setKeyframeIndex(index);
+            }}
+          >
+            {keyframe.valueRange.type === 'Number' && (
+              <>
+                {keyframe.timingFunction}
+                <br />
+                {keyframe.valueRange.value[0]}
+                {' - '}
+                {keyframe.valueRange.value[1]}
+              </>
+            )}
+            {keyframe.valueRange.type === 'Vector2D' && (
+              <>
+                {keyframe.timingFunction}
+                <br />
+                <Vector
+                  id="valueRange.value[0]"
+                  name="valueRange.value[0]"
+                  value={keyframe.valueRange.value[0]}
+                  onChange={() => {}}
+                />
+                {' - '}
+                <Vector
+                  id="valueRange.value[1]"
+                  name="valueRange.value[1]"
+                  value={keyframe.valueRange.value[1]}
+                  onChange={() => {}}
+                />
+              </>
+            )}
+          </button>
+        ))}
+        <div
+          className="absolute w-full h-full flex flex-col justify-between pointer-events-none"
+          style={{
+            transform: `translate(${
+              (component.data.currentTime * 100.0) / animationLength
+            }%)`,
+          }}
+        >
+          <div className="ml-1 overflow-hidden w-10">
+            {msToTime(component.data.currentTime)}
+          </div>
+          <div className="absolute border-l border-red-500 h-full" />
         </div>
-        <div className="absolute border-l border-red-500 h-full" />
       </div>
-    </div>
-    <div className="ml-1 overflow-hidden w-10">{(Js.Float.toFixedWithPrecision(animation.value, ~digits=2))}</div>
-  */}
+      {/* <div className="ml-1 overflow-hidden w-10">
+        value
+      </div> */}
     </>
   );
 };
@@ -407,8 +427,8 @@ export const AnimationModal: React.FC = () => {
 //   };
 
 // let msToTime = ms => {
-//   let seconds = mod_float(ms /. 1000.0, 60.0);
-//   let minutes = mod_float(ms /. (1000.0 *. 60.0), 60.0);
+//   let seconds = mod_float(ms / 1000.0, 60.0);
+//   let minutes = mod_float(ms / (1000.0 *. 60.0), 60.0);
 
 //   let formattedMinutes =
 //     minutes < 10.0
@@ -657,7 +677,7 @@ export const AnimationModal: React.FC = () => {
 //                style={ReactDOMRe.Style.make(
 //                  ~flex=
 //                    (
-//                      keyframe.duration *. animationLength /. 100.0,
+//                      keyframe.duration *. animationLength / 100.0,
 //                    ),
 //                  (),
 //                )}
@@ -695,7 +715,7 @@ export const AnimationModal: React.FC = () => {
 //               ~transform=
 //                 "translate("
 //                 ++ (
-//                      animation.currentTime *. 100.0 /. animationLength,
+//                      animation.currentTime *. 100.0 / animationLength,
 //                    )
 //                 ++ "%)",
 //               (),
