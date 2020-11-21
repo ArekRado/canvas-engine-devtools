@@ -1,5 +1,5 @@
 import { Dictionary, Entity } from '@arekrado/canvas-engine';
-import { Component } from '@arekrado/canvas-engine/dist/component';
+import { Component } from '@arekrado/canvas-engine';
 import { createContext, Dispatch, Reducer } from 'react';
 import { mutableState } from '../debug';
 import { Action } from '../type';

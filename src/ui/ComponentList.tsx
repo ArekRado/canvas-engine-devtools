@@ -1,5 +1,5 @@
 import { Entity, State } from '@arekrado/canvas-engine';
-import { Component } from '@arekrado/canvas-engine/dist/component';
+import { Component } from '@arekrado/canvas-engine';
 import React, { useContext, useEffect } from 'react';
 import { AppContext } from '../context/app';
 import { EditorContext } from '../context/editor';

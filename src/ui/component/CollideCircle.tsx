@@ -1,4 +1,4 @@
-import { CollideCircle as CollideCircleType } from '@arekrado/canvas-engine/dist/component';
+import { CollideCircle as CollideCircleType } from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
 import { AppContext } from '../../context/app';
 import { Input } from '../common/Input';

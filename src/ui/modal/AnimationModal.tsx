@@ -1,8 +1,9 @@
 import { Entity } from '@arekrado/canvas-engine';
 import {
+  Animation,
   Animation as AnimationType,
   Keyframe,
-} from '@arekrado/canvas-engine/dist/component';
+} from '@arekrado/canvas-engine';
 import { vector, Vector2D } from '@arekrado/vector-2d';
 import React, { useContext } from 'react';
 import { AppContext } from '../../context/app';
@@ -95,6 +96,77 @@ const ValueRange: React.FC<ValueRangeProps> = ({
         }
       />
     )}
+  </div>
+);
+
+type TimelineProps = {
+  component: Animation;
+  keyframeIndex: number;
+  animationLength: number;
+  setKeyframeIndex: (index: number) => void;
+};
+const Timeline: React.FC<TimelineProps> = ({
+  component,
+  keyframeIndex,
+  setKeyframeIndex,
+  animationLength,
+}) => (
+  <div className="flex h-20 bg-gray-700 bg-opacity-75 relative overflow-hidden">
+    {component.data.keyframes.map((keyframe, index) => (
+      <button
+        key={index}
+        className={
+          (index === keyframeIndex ? 'border-white' : 'border-black') +
+          ' flex flex-wrap items-center justify-center border overflow-hidden'
+        }
+        style={{
+          flex: (keyframe.duration * animationLength) / 100.0,
+        }}
+        onClick={() => {
+          setKeyframeIndex(index);
+        }}
+      >
+        {keyframe.valueRange.type === 'Number' && (
+          <>
+            {keyframe.timingFunction}
+            <br />
+            {keyframe.valueRange.value[0]}-{keyframe.valueRange.value[1]}
+          </>
+        )}
+        {keyframe.valueRange.type === 'Vector2D' && (
+          <>
+            {keyframe.timingFunction}
+            <br />
+            <Vector
+              id="valueRange.value[0]"
+              name="valueRange.value[0]"
+              value={keyframe.valueRange.value[0]}
+              onChange={() => {}}
+            />
+            -
+            <Vector
+              id="valueRange.value[1]"
+              name="valueRange.value[1]"
+              value={keyframe.valueRange.value[1]}
+              onChange={() => {}}
+            />
+          </>
+        )}
+      </button>
+    ))}
+    <div
+      className="absolute w-full h-full flex flex-col justify-between pointer-events-none"
+      style={{
+        transform: `translate(${
+          (component.data.currentTime * 100.0) / animationLength
+        }%)`,
+      }}
+    >
+      <div className="ml-1 overflow-hidden w-10">
+        {msToTime(component.data.currentTime)}
+      </div>
+      <div className="absolute border-l border-red-500 h-full" />
+    </div>
   </div>
 );
 
@@ -249,63 +321,12 @@ const AnimationModalBody: React.FC<AnimationProps> = ({ entity }) => {
           )}
         </div>
       </div>
-      <div className="flex h-20 bg-gray-700 bg-opacity-75 relative overflow-hidden">
-        {component.data.keyframes.map((keyframe, index) => (
-          <button
-            key={index}
-            className={
-              (index === keyframeIndex ? 'border-white' : 'border-black') +
-              ' flex flex-wrap items-center justify-center border overflow-hidden'
-            }
-            style={{
-              flex: (keyframe.duration * animationLength) / 100.0,
-            }}
-            onClick={() => {
-              setKeyframeIndex(index);
-            }}
-          >
-            {keyframe.valueRange.type === 'Number' && (
-              <>
-                {keyframe.timingFunction}
-                <br />
-                {keyframe.valueRange.value[0]}-{keyframe.valueRange.value[1]}
-              </>
-            )}
-            {keyframe.valueRange.type === 'Vector2D' && (
-              <>
-                {keyframe.timingFunction}
-                <br />
-                <Vector
-                  id="valueRange.value[0]"
-                  name="valueRange.value[0]"
-                  value={keyframe.valueRange.value[0]}
-                  onChange={() => {}}
-                />
-                -
-                <Vector
-                  id="valueRange.value[1]"
-                  name="valueRange.value[1]"
-                  value={keyframe.valueRange.value[1]}
-                  onChange={() => {}}
-                />
-              </>
-            )}
-          </button>
-        ))}
-        <div
-          className="absolute w-full h-full flex flex-col justify-between pointer-events-none"
-          style={{
-            transform: `translate(${
-              (component.data.currentTime * 100.0) / animationLength
-            }%)`,
-          }}
-        >
-          <div className="ml-1 overflow-hidden w-10">
-            {msToTime(component.data.currentTime)}
-          </div>
-          <div className="absolute border-l border-red-500 h-full" />
-        </div>
-      </div>
+      <Timeline
+        component={component}
+        keyframeIndex={keyframeIndex}
+        setKeyframeIndex={setKeyframeIndex}
+        animationLength={animationLength}
+      />
       {/* <div className="ml-1 overflow-hidden w-10">
         value
       </div> */}

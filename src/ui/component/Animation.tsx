@@ -1,4 +1,4 @@
-import { Animation as AnimationType } from '@arekrado/canvas-engine/dist/component';
+import { Animation as AnimationType } from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
 import { AppContext } from '../../context/app';
 import { ModalContext } from '../../context/modal';

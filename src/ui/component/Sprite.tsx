@@ -1,4 +1,4 @@
-import { Sprite as SpriteType } from '@arekrado/canvas-engine/dist/component';
+import { Sprite as SpriteType } from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
 import { AppContext } from '../../context/app';
 import { Select } from '../common/Select';

@@ -1,4 +1,4 @@
-import { Component } from '@arekrado/canvas-engine/dist/component';
+import { Component } from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../../context/app';
 import { EditorContext } from '../../context/editor';

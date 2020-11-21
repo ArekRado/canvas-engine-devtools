@@ -1,4 +1,4 @@
-import { Transform as TransformType } from '@arekrado/canvas-engine/dist/component';
+import { Transform as TransformType } from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
 import { AppContext } from '../../context/app';
 import { EditorContext } from '../../context/editor';

@@ -12,7 +12,7 @@ import {
   Sprite,
   Transform,
   Animation,
-} from '@arekrado/canvas-engine/dist/component';
+} from '@arekrado/canvas-engine';
 import { createContext, Dispatch, Reducer } from 'react';
 import { set as syncState } from '../debug';
 import { Action } from '../type';
@@ -115,16 +115,16 @@ export const reducer: Reducer<State, AppActions> = (state, action) => {
       });
       break;
     case 'CreateComponent':
-      const componentName = action.payload
-        .component as keyof State['component'];
-
+      const componentName = action.payload.component;
       const componentCreator = component[componentName];
 
-      const defaultData: Component<any> = componentCreator.defaultData({
-        entity: action.payload.entity,
-      });
+      if (componentCreator.defaultData) {
+        const defaultData: Component<any> = componentCreator.defaultData(
+          {
+            entity: action.payload.entity,
+          }
+        );
 
-      if (componentCreator) {
         const stateWithComponent = componentCreator.set({
           state,
           data: defaultData,
@@ -135,6 +135,7 @@ export const reducer: Reducer<State, AppActions> = (state, action) => {
           component: stateWithComponent.component,
         };
       }
+
       break;
     default:
       newState = state;
