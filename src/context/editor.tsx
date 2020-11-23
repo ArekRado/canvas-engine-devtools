@@ -4,17 +4,19 @@ import { createContext, Dispatch, Reducer } from 'react';
 import { mutableState } from '../debug';
 import { Action } from '../type';
 
-type ComponentPreview = React.ElementType<{ component: Component<any> }>;
+export type RegisterComponentPayload<Data> = {
+  name: string;
+  render: React.ElementType<{ component: Component<Data> }>;
+  defaultData: Data;
+  animatedProperties: { path: string; type: string }[];
+};
 
 export namespace EditorAction {
   export type SetEntity = Action<'SetEntity', Entity>;
   export type SetIsPlaying = Action<'SetIsPlaying', boolean>;
   export type RegisterComponent = Action<
     'RegisterComponent',
-    {
-      name: string;
-      render: ComponentPreview;
-    }
+    RegisterComponentPayload<any>
   >;
 }
 
@@ -26,7 +28,7 @@ type EditorActions =
 type EditorState = {
   selectedEntity?: Entity;
   isPlaying: boolean;
-  components: Dictionary<ComponentPreview>;
+  components: Dictionary<RegisterComponentPayload<any>>;
   dispatch: Dispatch<EditorActions>;
 };
 
@@ -59,7 +61,7 @@ export const reducer: Reducer<EditorState, EditorActions> = (state, action) => {
           ...state,
           components: {
             ...state.components,
-            [componentName]: action.payload.render,
+            [componentName]: action.payload,
           },
         };
       }

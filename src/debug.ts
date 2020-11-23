@@ -1,4 +1,9 @@
-import { initialState, State } from '@arekrado/canvas-engine';
+import {
+  initialState,
+  jsonToState,
+  State,
+  stateToJson,
+} from '@arekrado/canvas-engine';
 
 type SyncDirection = 'Game' | 'Editor';
 
@@ -39,15 +44,16 @@ export const getStateFromLocalStorage = (): State | undefined => {
   const item = localStorage.getItem('state');
 
   if (item) {
-    return JSON.parse(item);
+    return jsonToState(item, initialState);
   }
 
   return undefined;
 };
 
 export const saveStateInLocalStorage = (state: State) => {
-  localStorage.setItem('state', JSON.stringify(state));
+  localStorage.setItem('state', stateToJson(state));
 };
+
 
 type Update = (params: { state: State }) => State;
 export const update: Update = ({ state }) => {

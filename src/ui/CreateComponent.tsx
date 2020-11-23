@@ -8,7 +8,7 @@ export const CreateComponent: React.FC = () => {
   const editorState = useContext(EditorContext);
   const appState = useContext(AppContext);
 
-  const options: SelectOption[] = Object.keys(appState.component).map(
+  const options: SelectOption[] = Object.keys(editorState.components).map(
     (key) => ({
       value: key,
       label: key,
@@ -24,8 +24,9 @@ export const CreateComponent: React.FC = () => {
         appState.dispatch({
           type: 'CreateComponent',
           payload: {
-            component: value.target.value as keyof State['component'],
+            component: value.target.value,
             entity: editorState.selectedEntity,
+            defaultData: editorState.components[value.target.value]?.defaultData,
           },
         })
       }

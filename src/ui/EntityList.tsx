@@ -1,13 +1,10 @@
 import {
-  component,
   Entity,
-  Guid,
-  State,
+  getComponent,
   Transform,
 } from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
 import { ChevronDown, ChevronRight } from 'react-feather';
-import { transform } from 'typescript';
 import { AppContext } from '../context/app';
 import { EditorContext } from '../context/editor';
 import { Button } from './common/Button';
@@ -20,7 +17,7 @@ type Branch = {
 type GenerateTree = (transform: Transform[], entity?: Entity) => Branch[];
 export const generateTree: GenerateTree = (transform, entity) =>
   transform
-    .filter((t) => t.data.parent?.id === entity?.id)
+    .filter((t) => t.parent?.id === entity?.id)
     .map((t) => ({
       entity: t.entity,
       children: generateTree(transform, t.entity),
@@ -28,7 +25,6 @@ export const generateTree: GenerateTree = (transform, entity) =>
 
 type EntityButtonProps = {
   entity: Entity;
-  parent?: Entity;
   overEntity: Entity | null;
   handleDrop: (entity: Entity) => (e: React.DragEvent<HTMLDivElement>) => void;
   handleDragOver: (
@@ -46,7 +42,6 @@ const EntityButton: React.FC<EntityButtonProps> = ({
   handleDragOver,
   handleDragStart,
   childrens,
-  parent,
 }) => {
   const editorState = useContext(EditorContext);
   const [isOpened, setIsOpened] = useState(false);
@@ -57,45 +52,47 @@ const EntityButton: React.FC<EntityButtonProps> = ({
       onDrop={handleDrop(entity)}
       onDragOver={handleDragOver(entity)}
       onDragStart={handleDragStart(entity)}
-      className={`${
-        overEntity?.id === entity.id ? 'border border-blue-100' : ''
-      }
-        ${parent ? 'ml-3' : ''}
-        `}
+      className={`
+        ${overEntity?.id === entity.id ? 'border border-blue-100' : ''}
+        ${childrens.length === 0 ? 'ml-3' : ''}
+      `}
     >
-      {childrens.length > 0 && (
-        <Button className="px-0" onClick={() => setIsOpened(!isOpened)}>
-          {isOpened ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
+      <div className="flex">
+        {childrens.length > 0 && (
+          <Button className="px-0" onClick={() => setIsOpened(!isOpened)}>
+            {isOpened ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
+          </Button>
+        )}
+
+        <Button
+          title={entity.id}
+          focused={editorState?.selectedEntity?.id === entity.id}
+          onClick={() =>
+            editorState.dispatch({
+              type: 'SetEntity',
+              payload: entity,
+            })
+          }
+          className="text-left flex-1"
+        >
+          {entity.name}
         </Button>
-      )}
-
-      <Button
-        title={entity.id}
-        focused={editorState?.selectedEntity?.id === entity.id}
-        onClick={() =>
-          editorState.dispatch({
-            type: 'SetEntity',
-            payload: entity,
-          })
-        }
-        className="text-left"
-      >
-        {entity.name}
-      </Button>
-
-      {isOpened &&
-        childrens.map((branch) => (
-          <EntityButton
-            key={branch.entity.id}
-            entity={branch.entity}
-            overEntity={overEntity}
-            handleDrop={handleDrop}
-            handleDragOver={handleDragOver}
-            handleDragStart={handleDragStart}
-            childrens={branch.children}
-            parent={entity}
-          />
-        ))}
+      </div>
+      
+      <div className="ml-2 flex flex-col">
+        {isOpened &&
+          childrens.map((branch) => (
+            <EntityButton
+              key={branch.entity.id}
+              entity={branch.entity}
+              overEntity={overEntity}
+              handleDrop={handleDrop}
+              handleDragOver={handleDragOver}
+              handleDragStart={handleDragStart}
+              childrens={branch.children}
+            />
+          ))}
+      </div>
     </div>
   );
 };
@@ -123,10 +120,9 @@ export const EntityList: React.FC = () => {
 
     setOverEntity(null);
 
-    console.log({ dragedEntity: dragedEntity?.name, entity: entity.name });
-
     if (dragedEntity && dragedEntity.id !== entity.id) {
-      const transform = component.transform.get({
+      const transform = getComponent<Transform>({
+        name:'transform',
         state: appState,
         entity: dragedEntity,
       });
@@ -136,10 +132,7 @@ export const EntityList: React.FC = () => {
           type: 'SetTransformComponent',
           payload: {
             ...transform,
-            data: {
-              ...transform.data,
-              parent: entity,
-            },
+            parent: entity,
           },
         });
     }

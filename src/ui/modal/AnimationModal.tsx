@@ -112,7 +112,7 @@ const Timeline: React.FC<TimelineProps> = ({
   animationLength,
 }) => (
   <div className="flex h-20 bg-gray-700 bg-opacity-75 relative overflow-hidden">
-    {component.data.keyframes.map((keyframe, index) => (
+    {component.keyframes.map((keyframe, index) => (
       <button
         key={index}
         className={
@@ -158,12 +158,12 @@ const Timeline: React.FC<TimelineProps> = ({
       className="absolute w-full h-full flex flex-col justify-between pointer-events-none"
       style={{
         transform: `translate(${
-          (component.data.currentTime * 100.0) / animationLength
+          (component.currentTime * 100.0) / animationLength
         }%)`,
       }}
     >
       <div className="ml-1 overflow-hidden w-10">
-        {msToTime(component.data.currentTime)}
+        {msToTime(component.currentTime)}
       </div>
       <div className="absolute border-l border-red-500 h-full" />
     </div>
@@ -184,23 +184,20 @@ const AnimationModalBody: React.FC<AnimationProps> = ({ entity }) => {
     return <div>Animation doesn't exist</div>;
   }
 
-  const setAnimationData = (data: Partial<AnimationType['data']>): void =>
+  const setAnimationData = (data: Partial<AnimationType>): void =>
     appState.dispatch({
       type: 'SetAnimationComponent',
       payload: {
         ...component,
-        data: {
-          ...component.data,
-          ...data,
-        },
+        ...data,
       },
     });
 
-  const selectedKeyframe = component.data.keyframes[keyframeIndex];
+  const selectedKeyframe = component.keyframes[keyframeIndex];
 
   const setKeyframe = (data: Partial<Keyframe>): void =>
     setAnimationData({
-      keyframes: component.data.keyframes.map((keyframe, i) =>
+      keyframes: component.keyframes.map((keyframe, i) =>
         i === keyframeIndex
           ? {
               ...selectedKeyframe,
@@ -212,10 +209,10 @@ const AnimationModalBody: React.FC<AnimationProps> = ({ entity }) => {
 
   const addKeyframe = () =>
     setAnimationData({
-      keyframes: [...component.data.keyframes, emptyKeyframe],
+      keyframes: [...component.keyframes, emptyKeyframe],
     });
 
-  const animationLength = component.data.keyframes.reduce(
+  const animationLength = component.keyframes.reduce(
     (sum, keyframe) => keyframe.duration + sum,
     0
   );
@@ -240,9 +237,9 @@ const AnimationModalBody: React.FC<AnimationProps> = ({ entity }) => {
             inputClassName="col-span-8"
             type="checkbox"
             label="isPlaying"
-            checked={component.data.isPlaying}
+            checked={component.isPlaying}
             onChange={() => {
-              setAnimationData({ isPlaying: !component.data.isPlaying });
+              setAnimationData({ isPlaying: !component.isPlaying });
             }}
           />
 
@@ -252,7 +249,7 @@ const AnimationModalBody: React.FC<AnimationProps> = ({ entity }) => {
             inputClassName="col-span-8"
             label={'currentTime'}
             type="number"
-            value={component.data.currentTime}
+            value={component.currentTime}
             onChange={(e) => {
               setAnimationData({ currentTime: parseFloat(e.target.value) });
             }}
@@ -272,11 +269,11 @@ const AnimationModalBody: React.FC<AnimationProps> = ({ entity }) => {
 
           <div className="col-span-4"> {'isFinished'} </div>
           <div className="col-span-8">
-            {component.data.isFinished ? 'true' : 'false'}
+            {component.isFinished ? 'true' : 'false'}
           </div>
 
           <div className="col-span-4"> {'wrapMode'} </div>
-          <div className="col-span-8">{component.data.wrapMode}</div>
+          <div className="col-span-8">{component.wrapMode}</div>
         </div>
         <div className="col-span-6 my-1">
           <Button

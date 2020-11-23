@@ -9,15 +9,12 @@ type SpriteProps = {
 export const Sprite: React.FC<SpriteProps> = ({ component }) => {
   const appState = useContext(AppContext);
 
-  const setSpriteData = (data: Partial<SpriteType['data']>): void =>
+  const setSpriteData = (data: Partial<SpriteType>): void =>
     appState.dispatch({
       type: 'SetSpriteComponent',
       payload: {
         ...component,
-        data: {
-          ...component.data,
-          ...data,
-        },
+        ...data,
       },
     });
 
@@ -29,7 +26,7 @@ export const Sprite: React.FC<SpriteProps> = ({ component }) => {
           'Sprite assets are empty'
         ) : (
           <Select
-            value={component.data.src}
+            value={component.src}
             onChange={(e) => setSpriteData({ src: e.target.value })}
             options={appState.asset.sprite.map((sprite) => ({
               label: sprite.name,
@@ -40,7 +37,7 @@ export const Sprite: React.FC<SpriteProps> = ({ component }) => {
         )}
       </div>
       <div className="col-span-12">
-        <img src={component.data.src} />
+        <img src={component.src} />
       </div>
     </div>
   );

@@ -29,19 +29,19 @@ export const CollideCircle: React.FC<CollideCircleProps> = ({ component }) => {
       <div className="grid grid-cols-12 gap-1 mb-3">
         <div className="col-span-4"> radius </div>
         <div className="col-span-8">
-          <Input value={component.data.radius} onChange={() => {}} />
+          <Input value={component.radius} onChange={() => {}} />
         </div>
         <div className="col-span-4"> position </div>
         <div className="col-span-8">
           <Vector
             name="position"
             id="position"
-            value={component.data.position}
+            value={component.position}
             onChange={() => {}}
           />
         </div>
-        {component.data.collisions.length > 0 && <div> Collisions </div>}
-        {component.data.collisions.map((collisionType) => {
+        {component.collisions.length > 0 && <div> Collisions </div>}
+        {component.collisions.map((collisionType) => {
           if (collisionType.type === 'box') {
             return `Box - ${collisionType.entity.name}`;
           }

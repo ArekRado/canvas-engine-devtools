@@ -2,10 +2,8 @@ import {
   initialState as engineInitialState,
   State,
   entity,
-  component,
   Entity,
-} from '@arekrado/canvas-engine';
-import {
+  setComponent,
   CollideBox,
   CollideCircle,
   Component,
@@ -23,8 +21,9 @@ export namespace AppAction {
   export type CreateComponent = Action<
     'CreateComponent',
     {
-      component: keyof State['component'];
+      component: string;
       entity: Entity;
+      defaultData: any;
     }
   >;
   export type SetSpriteComponent = Action<'SetSpriteComponent', Sprite>;
@@ -69,7 +68,7 @@ export const initialState: AppState = {
 export const AppContext = createContext<AppState>(initialState);
 
 export const reducer: Reducer<State, AppActions> = (state, action) => {
-  let newState;
+  let newState: State | undefined;
 
   switch (action.type) {
     case 'SetState':
@@ -85,57 +84,51 @@ export const reducer: Reducer<State, AppActions> = (state, action) => {
       };
       break;
     case 'SetTransformComponent':
-      newState = component.transform.set({
+      newState = setComponent({
+        name: 'transform',
         state,
         data: action.payload,
       });
       break;
     case 'SetSpriteComponent':
-      newState = component.sprite.set({
+      newState = setComponent({
+        name: 'sprite',
         state,
         data: action.payload,
       });
       break;
     case 'SetCollideCircleComponent':
-      newState = component.collideCircle.set({
+      newState = setComponent({
+        name: 'collideCircle',
         state,
         data: action.payload,
       });
       break;
     case 'SetCollideBoxComponent':
-      newState = component.collideBox.set({
+      newState = setComponent({
+        name: 'collideBox',
         state,
         data: action.payload,
       });
       break;
     case 'SetAnimationComponent':
-      newState = component.animation.set({
+      newState = setComponent({
+        name: 'animation',
         state,
         data: action.payload,
       });
       break;
     case 'CreateComponent':
-      const componentName = action.payload.component;
-      const componentCreator = component[componentName];
+      const v1 = setComponent({
+        name: action.payload.component,
+        state,
+        data: {
+          ...action.payload.defaultData,
+          entity: action.payload.entity,
+        },
+      });
 
-      if (componentCreator.defaultData) {
-        const defaultData: Component<any> = componentCreator.defaultData(
-          {
-            entity: action.payload.entity,
-          }
-        );
-
-        const stateWithComponent = componentCreator.set({
-          state,
-          data: defaultData,
-        });
-
-        newState = {
-          ...state,
-          component: stateWithComponent.component,
-        };
-      }
-
+      newState = v1;
       break;
     default:
       newState = state;
