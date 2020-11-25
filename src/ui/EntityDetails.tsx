@@ -28,7 +28,7 @@ export const EntityDetails: React.FC = () => {
                 name: 'confirm',
                 isOpen: true,
                 data: {
-                  entity: key,
+                  entity: '',
                 },
               },
             });

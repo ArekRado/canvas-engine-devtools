@@ -1,4 +1,10 @@
-import React, { useEffect, useReducer, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from 'react';
 import {
   AppContext,
   initialState as appInitialState,
@@ -60,7 +66,7 @@ export const App: React.FC = () => {
   }, [editorState.isPlaying]);
 
   useEffect(() => {
-    const state = getStateFromLocalStorage();
+    const state = getStateFromLocalStorage(appState);
     const editorState = getSyncState('Editor');
 
     if (state && editorState) {

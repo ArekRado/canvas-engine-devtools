@@ -12,7 +12,7 @@ import {
   Animation,
 } from '@arekrado/canvas-engine';
 import { createContext, Dispatch, Reducer } from 'react';
-import { set as syncState } from '../debug';
+import { registerDebugSystem, mutableState, set as syncState } from '../debug';
 import { Action } from '../type';
 
 export namespace AppAction {
@@ -61,7 +61,7 @@ type AppState = State & {
 };
 
 export const initialState: AppState = {
-  ...engineInitialState,
+  ...registerDebugSystem(engineInitialState),
   dispatch: () => {},
 };
 
@@ -69,7 +69,6 @@ export const AppContext = createContext<AppState>(initialState);
 
 export const reducer: Reducer<State, AppActions> = (state, action) => {
   let newState: State | undefined;
-
   switch (action.type) {
     case 'SetState':
       newState = {

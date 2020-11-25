@@ -1,8 +1,4 @@
-import {
-  Entity,
-  getComponent,
-  Transform,
-} from '@arekrado/canvas-engine';
+import { Entity, getComponent, Transform } from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
 import { ChevronDown, ChevronRight } from 'react-feather';
 import { AppContext } from '../context/app';
@@ -14,7 +10,12 @@ type Branch = {
   children: Branch[];
 };
 
-type GenerateTree = (transform: Transform[], entity?: Entity) => Branch[];
+type TreeData = {
+  entity: Entity;
+  parent?: Entity;
+};
+
+type GenerateTree = (transform: TreeData[], entity?: Entity) => Branch[];
 export const generateTree: GenerateTree = (transform, entity) =>
   transform
     .filter((t) => t.parent?.id === entity?.id)
@@ -78,7 +79,7 @@ const EntityButton: React.FC<EntityButtonProps> = ({
           {entity.name}
         </Button>
       </div>
-      
+
       <div className="ml-2 flex flex-col">
         {isOpened &&
           childrens.map((branch) => (
@@ -122,7 +123,7 @@ export const EntityList: React.FC = () => {
 
     if (dragedEntity && dragedEntity.id !== entity.id) {
       const transform = getComponent<Transform>({
-        name:'transform',
+        name: 'transform',
         state: appState,
         entity: dragedEntity,
       });
@@ -148,7 +149,14 @@ export const EntityList: React.FC = () => {
 
   // console.log(JSON.stringify(Object.values(appState.component.transform)));
 
-  const tree = generateTree(Object.values(appState.component.transform));
+  const transformData = Object.values(appState.component.transform);
+
+  const tree = generateTree(
+    appState.entity.map(
+      (entity) =>
+        transformData.find((t) => t.entity.id === entity.id) || { entity }
+    )
+  );
 
   return (
     <>

@@ -1,4 +1,5 @@
 import {
+  createSystem,
   initialState,
   jsonToState,
   State,
@@ -40,11 +41,11 @@ export const get = (direction: SyncDirection): State | undefined => {
   return undefined;
 };
 
-export const getStateFromLocalStorage = (): State | undefined => {
+export const getStateFromLocalStorage = (state: State): State | undefined => {
   const item = localStorage.getItem('state');
 
   if (item) {
-    return jsonToState(item, initialState);
+    return jsonToState(item, state);
   }
 
   return undefined;
@@ -54,28 +55,31 @@ export const saveStateInLocalStorage = (state: State) => {
   localStorage.setItem('state', stateToJson(state));
 };
 
-
-type Update = (params: { state: State }) => State;
-export const update: Update = ({ state }) => {
-  if (!state.isDebugInitialized) {
-    set(state, 'Editor');
-    return {
-      ...state,
-      isDebugInitialized: true,
-    };
-  } else {
-    if (mutableState.isPlaying) {
-      set(state, 'Editor');
+export const registerDebugSystem = (state: State): State =>
+  createSystem({
+    name: 'debug',
+    state,
+    tick: ({ state }) => {
+      if (!state.isDebugInitialized) {
+        set(state, 'Editor');
+        return {
+          ...state,
+          isDebugInitialized: true,
+        };
+      } else {
+        if (mutableState.isPlaying) {
+          set(state, 'Editor');
+          return state;
+        } else {
+          const editorState = get('Game');
+          return editorState
+            ? {
+                ...editorState,
+                isDebugInitialized: true,
+              }
+            : state;
+        }
+      }
       return state;
-    } else {
-      const editorState = get('Game');
-      return editorState
-        ? {
-            ...editorState,
-            isDebugInitialized: true,
-          }
-        : state;
-    }
-  }
-  return state;
-};
+    },
+  });
