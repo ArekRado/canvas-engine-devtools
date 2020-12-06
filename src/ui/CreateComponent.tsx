@@ -15,21 +15,28 @@ export const CreateComponent: React.FC = () => {
     })
   );
 
-  return editorState.selectedEntity ? (
-    <Select
-      label="Add component"
-      options={options}
-      value=""
-      onChange={(value) =>
-        appState.dispatch({
-          type: 'CreateComponent',
-          payload: {
-            component: value.target.value,
-            entity: editorState.selectedEntity,
-            defaultData: editorState.components[value.target.value]?.defaultData,
-          },
-        })
-      }
-    />
-  ) : null;
+  if (!editorState.selectedEntity) {
+    return null;
+  } else {
+    return (
+      <Select
+        label="Add component"
+        options={options}
+        value=""
+        onChange={(value) => {
+          if (editorState.selectedEntity) {
+            appState.dispatch({
+              type: 'CreateComponent',
+              payload: {
+                component: value.target.value,
+                entity: editorState.selectedEntity,
+                defaultData:
+                  editorState.components[value.target.value]?.defaultData,
+              },
+            });
+          }
+        }}
+      />
+    );
+  }
 };

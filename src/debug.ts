@@ -5,6 +5,7 @@ import {
   State,
   stateToJson,
 } from '@arekrado/canvas-engine';
+import { eventBus } from './util/eventBus';
 
 type SyncDirection = 'Game' | 'Editor';
 
@@ -62,6 +63,7 @@ export const registerDebugSystem = (state: State): State =>
     tick: ({ state }) => {
       if (!state.isDebugInitialized) {
         set(state, 'Editor');
+        eventBus.dispatch('initialize', state)
         return {
           ...state,
           isDebugInitialized: true,

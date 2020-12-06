@@ -12,7 +12,7 @@ export const Transform: React.FC<TransformProps> = ({ component }) => {
   const appState = useContext(AppContext);
   const editorState = useContext(EditorContext);
 
-  const setTransformData = (data: Partial<TransformType['data']>): void =>
+  const setTransformData = (data: Partial<TransformType>): void =>
     appState.dispatch({
       type: 'SetTransformComponent',
       payload: {
@@ -24,7 +24,7 @@ export const Transform: React.FC<TransformProps> = ({ component }) => {
   return (
     <div className="flex flex-col mt-3">
       <Vector
-        label={component.parent ? 'localPosition' : 'position'}
+        label={component.parent ? 'fromParentPosition' : 'position'}
         containerClassName="grid grid-cols-12 my-1"
         labelClassName="col-span-4"
         inputClassName="col-span-4"
@@ -32,19 +32,19 @@ export const Transform: React.FC<TransformProps> = ({ component }) => {
         name="position"
         value={
           component.parent
-            ? component.localPosition
+            ? component.fromParentPosition
             : component.position
         }
         onChange={(value) =>
           component.parent
-            ? setTransformData({ localPosition: value })
+            ? setTransformData({ fromParentPosition: value })
             : setTransformData({ position: value })
         }
       />
 
       <Input
-        label={component.parent ? 'localRotation' : 'rotation'}
-        name={component.parent ? 'localRotation' : 'rotation'}
+        label={component.parent ? 'fromParentRotation' : 'rotation'}
+        name={component.parent ? 'fromParentRotation' : 'rotation'}
         containerClassName="grid grid-cols-12 my-1"
         labelClassName="col-span-4"
         inputClassName="col-span-8"
@@ -52,18 +52,18 @@ export const Transform: React.FC<TransformProps> = ({ component }) => {
         type="number"
         value={
           component.parent
-            ? component.localRotation
+            ? component.fromParentRotation
             : component.rotation
         }
         onChange={(e) =>
           component.parent
-            ? setTransformData({ localRotation: parseFloat(e.target.value) })
+            ? setTransformData({ fromParentRotation: parseFloat(e.target.value) })
             : setTransformData({ rotation: parseFloat(e.target.value) })
         }
       />
 
       <Vector
-        label={component.parent ? 'localScale' : 'scale'}
+        label={component.parent ? 'fromParentScale' : 'scale'}
         containerClassName="grid grid-cols-12 my-1"
         labelClassName="col-span-4"
         inputClassName="col-span-4"
@@ -71,12 +71,12 @@ export const Transform: React.FC<TransformProps> = ({ component }) => {
         name="scale"
         value={
           component.parent
-            ? component.localScale
+            ? component.fromParentScale
             : component.scale
         }
         onChange={(value) =>
           component.parent
-            ? setTransformData({ localScale: value })
+            ? setTransformData({ fromParentScale: value })
             : setTransformData({ scale: value })
         }
       />

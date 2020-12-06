@@ -1,5 +1,5 @@
 import { defaultData, Entity, State } from '@arekrado/canvas-engine';
-import { Component } from '@arekrado/canvas-engine';
+import { Component, entity } from '@arekrado/canvas-engine';
 import { transform } from '@babel/core';
 import React, { useContext, useEffect } from 'react';
 import { AppContext } from '../context/app';
@@ -39,14 +39,14 @@ export const ComponentList: React.FC = () => {
         payload: {
           name: 'transform',
           render: component.Transform,
-          defaultData: defaultData.transform({ entity: {} }),
+          defaultData: defaultData.transform({ entity: entity.generate('') }),
           animatedProperties: [
             { path: 'rotation', type: 'number' },
-            { path: 'localRotation', type: 'number' },
+            { path: 'fromParentRotation', type: 'number' },
             { path: 'scale', type: 'Vector2D' },
-            { path: 'localScale', type: 'Vector2D' },
+            { path: 'fromParentScale', type: 'Vector2D' },
             { path: 'position', type: 'Vector2D' },
-            { path: 'localPosition', type: 'Vector2D' },
+            { path: 'fromParentPosition', type: 'Vector2D' },
           ],
         },
       });
@@ -58,14 +58,14 @@ export const ComponentList: React.FC = () => {
         payload: {
           name: 'sprite',
           render: component.Sprite,
-          defaultData: defaultData.sprite({ entity: {} }),
+          defaultData: defaultData.sprite({ entity: entity.generate('') }),
           animatedProperties: [
             { path: 'rotation', type: 'number' },
-            { path: 'localRotation', type: 'number' },
+            { path: 'fromParentRotation', type: 'number' },
             { path: 'scale', type: 'Vector2D' },
-            { path: 'localScale', type: 'Vector2D' },
+            { path: 'fromParentScale', type: 'Vector2D' },
             { path: 'position', type: 'Vector2D' },
-            { path: 'localPosition', type: 'Vector2D' },
+            { path: 'fromParentPosition', type: 'Vector2D' },
           ],
         },
       });
@@ -77,14 +77,14 @@ export const ComponentList: React.FC = () => {
         payload: {
           name: 'animation',
           render: component.Animation,
-          defaultData: defaultData.animation({ entity: {} }),
+          defaultData: defaultData.animation({ entity: entity.generate('') }),
           animatedProperties: [
             { path: 'rotation', type: 'number' },
-            { path: 'localRotation', type: 'number' },
+            { path: 'fromParentRotation', type: 'number' },
             { path: 'scale', type: 'Vector2D' },
-            { path: 'localScale', type: 'Vector2D' },
+            { path: 'fromParentScale', type: 'Vector2D' },
             { path: 'position', type: 'Vector2D' },
-            { path: 'localPosition', type: 'Vector2D' },
+            { path: 'fromParentPosition', type: 'Vector2D' },
           ],
         },
       });
@@ -95,7 +95,7 @@ export const ComponentList: React.FC = () => {
       payload: {
         name: 'collideBox',
         render: () => <div />,
-        defaultData: defaultData.collideBox({ entity: {} }),
+        defaultData: defaultData.collideBox({ entity: entity.generate('') }),
         animatedProperties: [
           { path: 'size', type: 'Vector2D' },
           { path: 'position', type: 'Vector2D' },
@@ -108,7 +108,7 @@ export const ComponentList: React.FC = () => {
       payload: {
         name: 'collideCircle',
         render: () => <div />,
-        defaultData: defaultData.collideBox({ entity: {} }),
+        defaultData: defaultData.collideBox({ entity: entity.generate('') }),
         animatedProperties: [
           { path: 'radius', type: 'number' },
           { path: 'position', type: 'Vector2D' },

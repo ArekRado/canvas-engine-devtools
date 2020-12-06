@@ -33,6 +33,9 @@ import { Save } from 'react-feather';
 import { EntityDetails } from './EntityDetails';
 import { ConfirmModal } from './modal/ConfirmModal';
 import { AnimationModal } from './modal/AnimationModal';
+import { SystemList } from './SystemList';
+import { eventBus } from '../util/eventBus';
+import { State } from '@arekrado/canvas-engine';
 
 export const App: React.FC = () => {
   const [appState, appDispatch] = useReducer(appReducer, appInitialState);
@@ -65,19 +68,33 @@ export const App: React.FC = () => {
     };
   }, [editorState.isPlaying]);
 
-  useEffect(() => {
-    const state = getStateFromLocalStorage(appState);
-    const editorState = getSyncState('Editor');
+  // useEffect(() => {
+  //   const state = getStateFromLocalStorage(appState);
+  //   const editorState = getSyncState('Editor');
 
-    if (state && editorState) {
+  //   if (state && editorState) {
+  //     appDispatch({
+  //       type: 'SetState',
+  //       payload: {
+  //         ...state,
+  //         asset: editorState.asset || state.asset,
+  //       },
+  //     });
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    const callback = (state: State) => {
       appDispatch({
         type: 'SetState',
-        payload: {
-          ...state,
-          asset: editorState.asset || state.asset,
-        },
+        payload: state,
       });
-    }
+    };
+    eventBus.on('initialize', callback);
+
+    return () => {
+      eventBus.remove('initialize', callback);
+    };
   }, []);
 
   useOutline();
@@ -111,6 +128,8 @@ export const App: React.FC = () => {
                 <div className="flex flex-col flex-1 overflow-y-scroll mt-2">
                   <EntityList />
                 </div>
+
+                <SystemList />
                 <Fps />
               </div>
             </div>
