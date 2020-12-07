@@ -7,18 +7,19 @@ import {
 } from '@arekrado/canvas-engine'
 import { Vector2D } from '@arekrado/vector-2d'
 
-import areaImg from '../asset/area.png'
-import { defaultArea } from '../component/area'
+import porterImg from '../asset/porter.png'
+import { defaultPorter } from '../component/porter'
 
 const generate = entity.generate
 
-type AreaBlueprint = (params: {
+type PorterBlueprint = (params: {
   state: State
   entity?: Entity
+  target: Vector2D
   position: Vector2D
 }) => State
-export const areaBlueprint: AreaBlueprint = (params) => {
-  const entity = params.entity || generate('area')
+export const porterBlueprint: PorterBlueprint = (params) => {
+  const entity = params.entity || generate('porter')
 
   const v1 = setComponent({
     state: params.state,
@@ -31,7 +32,7 @@ export const areaBlueprint: AreaBlueprint = (params) => {
     name: 'sprite',
     data: defaultData.sprite({
       entity,
-      src: areaImg,
+      src: porterImg,
     }),
   })
 
@@ -47,9 +48,10 @@ export const areaBlueprint: AreaBlueprint = (params) => {
 
   const v4 = setComponent({
     state: v3,
-    name: 'area',
-    data: defaultArea({
+    name: 'porter',
+    data: defaultPorter({
       entity,
+      target: params.target,
     }),
   })
 

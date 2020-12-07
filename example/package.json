@@ -25,7 +25,7 @@
     "typescript": "^3.4.5"
   },
   "dependencies": {
-    "@arekrado/canvas-engine": "file:.yalc/@arekrado/canvas-engine",
+    "@arekrado/canvas-engine": "file:.yalc/@arekrado/canvas-engine@0.0.19",
     "pixi.js": "^5.3.3"
   }
 }

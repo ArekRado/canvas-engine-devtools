@@ -48,7 +48,7 @@
     }
   ],
   "dependencies": {
-    "@arekrado/canvas-engine": "file:.yalc/@arekrado/canvas-engine",
+    "@arekrado/canvas-engine": "file:.yalc/@arekrado/canvas-engine@0.0.19",
     "@arekrado/vector-2d": "0.0.2",
     "@size-limit/preset-small-lib": "^4.7.0",
     "@types/react": "^16.9.56",
