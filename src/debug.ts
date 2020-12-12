@@ -1,4 +1,5 @@
 import {
+  createGlobalSystem,
   createSystem,
   initialState,
   jsonToState,
@@ -7,39 +8,14 @@ import {
 } from '@arekrado/canvas-engine';
 import { eventBus } from './util/eventBus';
 
-type SyncDirection = 'Game' | 'Editor';
-
 type MutableState = {
-  stateForGame?: State;
-  stateForEditor?: State;
+  state: State;
   isPlaying: boolean;
 };
 
 export const mutableState: MutableState = {
-  stateForGame: initialState,
-  stateForEditor: initialState,
+  state: initialState,
   isPlaying: false,
-};
-
-export const set = (state: State, direction: SyncDirection): void => {
-  if (direction === 'Game') {
-    mutableState.stateForGame = state;
-  }
-
-  if (direction === 'Editor') {
-    mutableState.stateForEditor = state;
-  }
-};
-
-export const get = (direction: SyncDirection): State | undefined => {
-  if (direction === 'Game') {
-    return mutableState.stateForGame;
-  }
-  if (direction === 'Editor') {
-    return mutableState.stateForEditor;
-  }
-
-  return undefined;
 };
 
 export const getStateFromLocalStorage = (state: State): State | undefined => {
@@ -56,30 +32,34 @@ export const saveStateInLocalStorage = (state: State) => {
   localStorage.setItem('state', stateToJson(state));
 };
 
+eventBus.on('setGameState', (state: State) => {
+  mutableState.state = state;
+});
+
 export const registerDebugSystem = (state: State): State =>
-  createSystem({
+  createGlobalSystem({
     name: 'debug',
     state,
     tick: ({ state }) => {
       if (!state.isDebugInitialized) {
-        set(state, 'Editor');
-        eventBus.dispatch('initialize', state)
+        eventBus.dispatch('setEditorState', state);
         return {
           ...state,
           isDebugInitialized: true,
         };
       } else {
         if (mutableState.isPlaying) {
-          set(state, 'Editor');
+          eventBus.dispatch('setEditorState', state);
           return state;
         } else {
-          const editorState = get('Game');
-          return editorState
-            ? {
-                ...editorState,
-                isDebugInitialized: true,
-              }
-            : state;
+          return {
+            ...mutableState.state,
+            isDebugInitialized: true,
+            time: {
+              ...mutableState.state.time,
+              delta: 0,
+            },
+          };
         }
       }
       return state;

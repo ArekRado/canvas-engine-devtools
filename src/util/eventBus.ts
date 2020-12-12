@@ -1,4 +1,4 @@
-type Event = 'initialize';
+type Event = 'setEditorState' | 'setGameState';
 
 type EventBus = {
   on: (event: Event, callback: (data: any) => void) => void;

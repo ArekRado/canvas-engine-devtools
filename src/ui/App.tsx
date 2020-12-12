@@ -53,20 +53,20 @@ export const App: React.FC = () => {
   const isPlayingRef = useRef(false);
   isPlayingRef.current = editorState.isPlaying;
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      if (isPlayingRef.current) {
-        const state = getSyncState('Editor');
-        if (state) {
-          appDispatch({ type: 'SetState', payload: state });
-        }
-      }
-    }, 50);
+  // useEffect(() => {
+  //   const id = setInterval(() => {
+  //     if (isPlayingRef.current) {
+  //       const state = getSyncState('Editor');
+  //       if (state) {
+  //         appDispatch({ type: 'SetState', payload: state });
+  //       }
+  //     }
+  //   }, 50);
 
-    return () => {
-      clearInterval(id);
-    };
-  }, [editorState.isPlaying]);
+  //   return () => {
+  //     clearInterval(id);
+  //   };
+  // }, [editorState.isPlaying]);
 
   // useEffect(() => {
   //   const state = getStateFromLocalStorage(appState);
@@ -90,10 +90,10 @@ export const App: React.FC = () => {
         payload: state,
       });
     };
-    eventBus.on('initialize', callback);
+    eventBus.on('setEditorState', callback);
 
     return () => {
-      eventBus.remove('initialize', callback);
+      eventBus.remove('setEditorState', callback);
     };
   }, []);
 
