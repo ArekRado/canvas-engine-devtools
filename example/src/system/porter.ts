@@ -10,8 +10,7 @@ export const porterSystem = (state: State) =>
     state,
     tick: ({ state, component }) => {
       if (component.target) {
-        const transform = getComponent<Transform>({
-          name: componentName.transform,
+        const transform = getComponent<Transform>(componentName.transform, {
           entity: component.entity,
           state,
         })
@@ -19,8 +18,7 @@ export const porterSystem = (state: State) =>
         if (transform) {
           const direction = normalize(sub(component.target, transform.position))
 
-          return setComponent({
-            name: componentName.transform,
+          return setComponent(componentName.transform, {
             state,
             data: {
               ...transform,

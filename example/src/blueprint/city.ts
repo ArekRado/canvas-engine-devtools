@@ -25,24 +25,21 @@ export const cityBlueprint: CityBlueprint = (params) => {
 
   const v1 = entitySet({ state: params.state, entity })
 
-  const v2 = setComponent({
+  const v2 = setComponent(componentName.transform, {
     state: v1,
-    name: componentName.transform,
     data: defaultData.transform({ entity, position: params.position }),
   })
 
-  const v3 = setComponent({
+  const v3 = setComponent(componentName.sprite, {
     state: v2,
-    name: componentName.sprite,
     data: defaultData.sprite({
       entity,
       src: cityImg,
     }),
   })
 
-  const v4 = setComponent({
+  const v4 = setComponent(componentName.collideCircle, {
     state: v3,
-    name: componentName.collideCircle,
     data: defaultData.collideCircle({
       entity,
       radius: 50,
@@ -50,9 +47,8 @@ export const cityBlueprint: CityBlueprint = (params) => {
     }),
   })
 
-  const v5 = setComponent({
+  const v5 = setComponent('city', {
     state: v4,
-    name: 'city',
     data: defaultCity({
       entity,
     }),

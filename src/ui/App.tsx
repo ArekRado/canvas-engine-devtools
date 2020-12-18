@@ -1,9 +1,7 @@
 import React, {
-  useCallback,
   useEffect,
   useReducer,
   useRef,
-  useState,
 } from 'react';
 import {
   AppContext,
@@ -21,7 +19,6 @@ import {
   reducer as modalReducer,
 } from '../context/modal';
 import { Button } from './common/Button';
-import { get as getSyncState, getStateFromLocalStorage } from '../../src/debug';
 import { Fps } from './Fps';
 import { StartStop } from './StartStop';
 import { EntityList } from './EntityList';
@@ -123,7 +120,7 @@ export const App: React.FC = () => {
                 <StartStop />
               </div>
 
-              <div className="py-2 pl-2 pr-1 flex flex-col flex-1">
+              <div className="py-2 pl-2 pr-1 flex flex-col flex-1 overflow-y-hidden">
                 <CreateEntity />
                 <div className="flex flex-col flex-1 overflow-y-scroll mt-2">
                   <EntityList />

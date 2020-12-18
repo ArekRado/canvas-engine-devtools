@@ -10,9 +10,8 @@ export const citySystem = (state: State) =>
     name: 'city',
     state,
     tick: ({ state, component }) => {
-      const transform = getComponent<Transform>({
+      const transform = getComponent<Transform>(componentName.transform, {
         state,
-        name: componentName.transform,
         entity: component.entity,
       })
 
@@ -29,8 +28,7 @@ export const citySystem = (state: State) =>
             })
           : state
 
-        return setComponent({
-          name: 'city',
+        return setComponent('city', {
           state: v1,
           data: {
             ...component,

@@ -12,11 +12,13 @@ export const areaSystem = (state: State) =>
     name: 'area',
     state,
     tick: ({ state, component }) => {
-      const collideCircle = getComponent<CollideCircle>({
-        state,
-        name: componentName.collideCircle,
-        entity: component.entity,
-      })
+      const collideCircle = getComponent<CollideCircle>(
+        componentName.collideCircle,
+        {
+          state,
+          entity: component.entity,
+        },
+      )
 
       if (collideCircle) {
         if (
@@ -25,8 +27,7 @@ export const areaSystem = (state: State) =>
             mouse: state.mouse,
           })
         ) {
-          return setComponent({
-            name: componentName.sprite,
+          return setComponent(componentName.sprite, {
             state,
             data: {
               ...component,

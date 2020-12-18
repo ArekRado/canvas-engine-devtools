@@ -226,7 +226,7 @@ const AnimationModalBody: React.FC<AnimationProps> = ({ entity }) => {
             labelClassName="col-span-4"
             inputClassName="col-span-8"
             label={'name'}
-            value={name}
+            value={component.name} // todo
             onChange={() => {}}
             disabled={true}
           />

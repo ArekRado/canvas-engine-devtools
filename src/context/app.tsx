@@ -44,6 +44,10 @@ export namespace AppAction {
     'SetAnimationComponent',
     Animation
   >;
+  export type SetMouseInteractionComponent = Action<
+    'SetMouseInteractionComponent',
+    Animation
+  >;
 }
 
 type AppActions =
@@ -54,7 +58,8 @@ type AppActions =
   | AppAction.SetTransformComponent
   | AppAction.SetCollideCircleComponent
   | AppAction.SetCollideBoxComponent
-  | AppAction.SetAnimationComponent;
+  | AppAction.SetAnimationComponent
+  | AppAction.SetMouseInteractionComponent;
 
 type AppState = State & {
   dispatch: Dispatch<AppActions>;
@@ -83,43 +88,43 @@ export const reducer: Reducer<State, AppActions> = (state, action) => {
       };
       break;
     case 'SetTransformComponent':
-      newState = setComponent({
-        name: 'transform',
+      newState = setComponent('transform', {
         state,
         data: action.payload,
       });
       break;
     case 'SetSpriteComponent':
-      newState = setComponent({
-        name: 'sprite',
+      newState = setComponent('sprite', {
         state,
         data: action.payload,
       });
       break;
     case 'SetCollideCircleComponent':
-      newState = setComponent({
-        name: 'collideCircle',
+      newState = setComponent('collideCircle', {
         state,
         data: action.payload,
       });
       break;
     case 'SetCollideBoxComponent':
-      newState = setComponent({
-        name: 'collideBox',
+      newState = setComponent('collideBox', {
         state,
         data: action.payload,
       });
       break;
     case 'SetAnimationComponent':
-      newState = setComponent({
-        name: 'animation',
+      newState = setComponent('animation', {
+        state,
+        data: action.payload,
+      });
+      break;
+    case 'SetMouseInteractionComponent':
+      newState = setComponent('mouseInteraction', {
         state,
         data: action.payload,
       });
       break;
     case 'CreateComponent':
-      const v1 = setComponent({
-        name: action.payload.component,
+      const v1 = setComponent(action.payload.component, {
         state,
         data: {
           ...action.payload.defaultData,

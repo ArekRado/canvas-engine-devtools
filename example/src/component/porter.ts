@@ -1,9 +1,9 @@
 import { Component, Entity } from '@arekrado/canvas-engine'
 import { Vector2D } from '@arekrado/vector-2d'
 
-export type Porter = {
+export type Porter = Component<{
   target: null | Vector2D
-}
+}>
 
 export type GetDefaultComponent<X> = (
   params: Partial<Component<X>> & { entity: Entity },

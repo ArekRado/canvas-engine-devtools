@@ -122,8 +122,7 @@ export const EntityList: React.FC = () => {
     setOverEntity(null);
 
     if (dragedEntity && dragedEntity.id !== entity.id) {
-      const transform = getComponent<Transform>({
-        name: 'transform',
+      const transform = getComponent<Transform>('transform', {
         state: appState,
         entity: dragedEntity,
       });

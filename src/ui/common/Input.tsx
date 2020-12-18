@@ -1,16 +1,30 @@
 import React, { ReactElement } from 'react';
 
-export type InputProps = {
+type InputHTMLAttributes = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
+
+export type InputProps<Value = string> = {
   label?: ReactElement | string;
   // max?: string;
   // min?: string;
   containerClassName?: string;
   labelClassName?: string;
   inputClassName?: string;
-} & React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
->;
+  value?: Value;
+  id: InputHTMLAttributes['id'];
+  type: InputHTMLAttributes['type'];
+  onChange: InputHTMLAttributes['onChange'];
+  disabled?: InputHTMLAttributes['disabled'];
+  max?: InputHTMLAttributes['max'];
+  min?: InputHTMLAttributes['min'];
+  placeholder?: InputHTMLAttributes['placeholder'];
+  title?: InputHTMLAttributes['title'];
+  name: InputHTMLAttributes['name'];
+  checked?: InputHTMLAttributes['checked'];
+};
+
 export const Input: React.FC<InputProps> = ({
   label,
   containerClassName,
@@ -25,6 +39,8 @@ export const Input: React.FC<InputProps> = ({
   min = undefined,
   placeholder,
   title,
+  name,
+  checked,
 }) => (
   <div className={containerClassName}>
     {label && (
@@ -43,6 +59,8 @@ export const Input: React.FC<InputProps> = ({
       min={min}
       placeholder={placeholder}
       title={title}
+      name={name}
+      checked={checked ?? false}
     />
   </div>
 );

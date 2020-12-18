@@ -25,9 +25,8 @@ export const areaBlueprint: AreaBlueprint = (params) => {
 
   const v1 = entitySet({ state: params.state, entity })
 
-  const v2 = setComponent({
+  const v2 = setComponent(componentName.transform, {
     state: v1,
-    name: componentName.transform,
     data: defaultData.transform({
       entity,
       position: params.position,
@@ -35,18 +34,16 @@ export const areaBlueprint: AreaBlueprint = (params) => {
     }),
   })
 
-  const v3 = setComponent({
+  const v3 = setComponent(componentName.sprite, {
     state: v2,
-    name: componentName.sprite,
     data: defaultData.sprite({
       entity,
       src: areaImg,
     }),
   })
 
-  const v4 = setComponent({
+  const v4 = setComponent(componentName.collideCircle, {
     state: v3,
-    name: componentName.collideCircle,
     data: defaultData.collideCircle({
       entity,
       radius: 50,
@@ -54,13 +51,19 @@ export const areaBlueprint: AreaBlueprint = (params) => {
     }),
   })
 
-  const v5 = setComponent({
+  const v5 = setComponent(componentName.mouseInteraction, {
     state: v4,
-    name: 'area',
+    data: defaultData.mouseInteraction({
+      entity,
+    }),
+  })
+
+  const v6 = setComponent('area', {
+    state: v5,
     data: defaultArea({
       entity,
     }),
   })
 
-  return v5
+  return v6
 }

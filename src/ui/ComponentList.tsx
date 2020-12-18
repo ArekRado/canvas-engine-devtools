@@ -1,6 +1,5 @@
 import { defaultData, Entity, State } from '@arekrado/canvas-engine';
 import { Component, entity } from '@arekrado/canvas-engine';
-import { transform } from '@babel/core';
 import React, { useContext, useEffect } from 'react';
 import { AppContext } from '../context/app';
 import { EditorContext } from '../context/editor';
@@ -86,6 +85,20 @@ export const ComponentList: React.FC = () => {
             { path: 'position', type: 'Vector2D' },
             { path: 'fromParentPosition', type: 'Vector2D' },
           ],
+        },
+      });
+    });
+
+    import('./component/MouseInteraction').then((component) => {
+      editorState.dispatch({
+        type: 'RegisterComponent',
+        payload: {
+          name: 'mouseInteraction',
+          render: component.MouseInteraction,
+          defaultData: defaultData.mouseInteraction({
+            entity: entity.generate(''),
+          }),
+          animatedProperties: [],
         },
       });
     });

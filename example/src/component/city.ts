@@ -1,8 +1,8 @@
 import { Component, Entity } from '@arekrado/canvas-engine'
 
-export type City = {
+export type City = Component<{
   unitProductionTimer: number
-}
+}>
 
 export type GetDefaultComponent<X> = (
   params: Partial<Component<X>> & { entity: Entity },
