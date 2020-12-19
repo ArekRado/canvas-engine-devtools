@@ -5,7 +5,7 @@ type InputHTMLAttributes = React.DetailedHTMLProps<
   HTMLInputElement
 >;
 
-export type InputProps<Value = string> = {
+export type InputProps<Value = string | number> = {
   label?: ReactElement | string;
   // max?: string;
   // min?: string;

@@ -8,51 +8,55 @@ type CollideCircleProps = {
   component: CollideCircleType;
 };
 export const CollideCircle: React.FC<CollideCircleProps> = ({ component }) => {
-  // const appState = useContext(AppContext);
+  const appState = useContext(AppContext);
 
-  // const setCollideCircleData = (
-  //   data: Partial<CollideCircleType['data']>
-  // ): void =>
-  //   appState.dispatch({
-  //     type: 'SetCollideCircleComponent',
-  //     payload: {
-  //       ...component,
-  //       data: {
-  //         ...component.data,
-  //         ...data,
-  //       },
-  //     },
-  //   });
+  const setCollideCircleData = (data: Partial<CollideCircleType>): void =>
+    appState.dispatch({
+      type: 'SetCollideCircleComponent',
+      payload: {
+        ...component,
+        ...data,
+      },
+    });
 
   return (
-    <div>
-      <div className="grid grid-cols-12 gap-1 mb-3">
-        <div className="col-span-4"> radius </div>
-        <div className="col-span-8">
-          <Input value={component.radius} onChange={() => {}} />
-        </div>
-        <div className="col-span-4"> position </div>
-        <div className="col-span-8">
-          <Vector
-            name="position"
-            id="position"
-            value={component.position}
-            onChange={() => {}}
-          />
-        </div>
-        {component.collisions.length > 0 && <div> Collisions </div>}
-        {component.collisions.map((collisionType) => {
-          if (collisionType.type === 'box') {
-            return `Box - ${collisionType.entity.name}`;
-          }
+    <div className="flex flex-col mt-3">
+      <Input
+        label="radius"
+        name="radius"
+        containerClassName="grid grid-cols-12 my-1"
+        labelClassName="col-span-4"
+        inputClassName="col-span-8"
+        id="radius"
+        value={component.radius}
+        onChange={(e) =>
+          setCollideCircleData({ radius: parseFloat(e.target.value) })
+        }
+        type="number"
+      />
+      <Vector
+        label="position"
+        name="position"
+        containerClassName="grid grid-cols-12 my-1"
+        labelClassName="col-span-4"
+        inputClassName="col-span-4"
+        id="position"
+        value={component.position}
+        onChange={(e) => setCollideCircleData({ position: e })}
+      />
 
-          if (collisionType.type === 'circle') {
-            return `Circle - ${collisionType.entity.name}`;
-          }
+      {component.collisions.length > 0 && <div> Collisions </div>}
+      {component.collisions.map((collisionType) => {
+        if (collisionType.type === 'box') {
+          return `Box - ${collisionType.entity.name}`;
+        }
 
-          return '-';
-        })}
-      </div>
+        if (collisionType.type === 'circle') {
+          return `Circle - ${collisionType.entity.name}`;
+        }
+
+        return '-';
+      })}
     </div>
   );
 };

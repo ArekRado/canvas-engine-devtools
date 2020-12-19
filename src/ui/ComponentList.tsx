@@ -103,30 +103,38 @@ export const ComponentList: React.FC = () => {
       });
     });
 
-    editorState.dispatch({
-      type: 'RegisterComponent',
-      payload: {
-        name: 'collideBox',
-        render: () => <div />,
-        defaultData: defaultData.collideBox({ entity: entity.generate('') }),
-        animatedProperties: [
-          { path: 'size', type: 'Vector2D' },
-          { path: 'position', type: 'Vector2D' },
-        ],
-      },
+    import('./component/CollideBox').then((component) => {
+      editorState.dispatch({
+        type: 'RegisterComponent',
+        payload: {
+          name: 'collideBox',
+          render: component.CollideBox,
+          defaultData: defaultData.collideBox({
+            entity: entity.generate(''),
+          }),
+          animatedProperties: [
+            { path: 'size', type: 'Vector2D' },
+            { path: 'position', type: 'Vector2D' },
+          ],
+        },
+      });
     });
 
-    editorState.dispatch({
-      type: 'RegisterComponent',
-      payload: {
-        name: 'collideCircle',
-        render: () => <div />,
-        defaultData: defaultData.collideBox({ entity: entity.generate('') }),
-        animatedProperties: [
-          { path: 'radius', type: 'number' },
-          { path: 'position', type: 'Vector2D' },
-        ],
-      },
+    import('./component/CollideCircle').then((component) => {
+      editorState.dispatch({
+        type: 'RegisterComponent',
+        payload: {
+          name: 'collideCircle',
+          render: component.CollideCircle,
+          defaultData: defaultData.collideCircle({
+            entity: entity.generate(''),
+          }),
+          animatedProperties: [
+            { path: 'radius', type: 'number' },
+            { path: 'position', type: 'Vector2D' },
+          ],
+        },
+      });
     });
   }, []);
 
