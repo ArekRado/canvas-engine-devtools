@@ -2,6 +2,7 @@ import 'regenerator-runtime/runtime'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { CanvasEngineDevtools, registerDebugSystem } from '../src/index'
+import { App } from './src/ui/App'
 import {
   runOneFrame,
   State,
@@ -28,9 +29,11 @@ const throttleXD = (x: any): any => {
 
 const gameLogic = (state: State) => {
   const newState = runOneFrame({ state })
-  throttleXD(() => {
+
+  // console.log(newState.mouse.buttons)
+  // throttleXD(() => {
     requestAnimationFrame(() => gameLogic(newState))
-  })
+  // })
 }
 
 const initializeScene = (state: State): State => {
@@ -81,4 +84,9 @@ initializeEngine().then(() => {
 ReactDOM.render(
   <CanvasEngineDevtools />,
   document.getElementById('canvas-engine-devtools'),
+)
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('canvas-engine'),
 )

@@ -8,8 +8,6 @@ type MouseInteractionProps = {
 export const MouseInteraction: React.FC<MouseInteractionProps> = ({
   component,
 }) => {
-  console.log(component.isMouseOver);
-
   return (
     <div className="flex flex-col mt-3">
       <Checkbox

@@ -18,7 +18,12 @@ export const EntityDetails: React.FC = () => {
   return (
     <div className="w-full px-1 py-2">
       <div className="flex justify-between mb-2">
-        <Input value={editorState.selectedEntity.name} onChange={() => {}} />
+        <Input
+          name="selectedEntity"
+          id="selectedEntity"
+          value={editorState.selectedEntity.name}
+          onChange={() => {}}
+        />
         <Button
           title="Create blueprint"
           onClick={() => {

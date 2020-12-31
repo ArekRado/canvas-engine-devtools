@@ -18,7 +18,7 @@ export const citySystem = (state: State) =>
       if (transform) {
         const unitProductionTimer =
           component.unitProductionTimer + state.time.delta
-        const timerEnded = unitProductionTimer > 1000
+        const timerEnded = unitProductionTimer > 30000
 
         const v1 = timerEnded
           ? porterBlueprint({

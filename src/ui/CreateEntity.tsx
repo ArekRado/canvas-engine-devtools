@@ -34,6 +34,7 @@ export const CreateEntity: React.FC = () => {
         labelClassName="mr-3"
         label="Create"
         id="createEntity"
+        name="createEntity"
         containerClassName="flex flex-1"
         value={entityName}
         onChange={(event) => setEntityName(event.target.value)}

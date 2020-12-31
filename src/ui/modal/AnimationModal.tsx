@@ -225,7 +225,9 @@ const AnimationModalBody: React.FC<AnimationProps> = ({ entity }) => {
             containerClassName="col-span-12 grid grid-cols-12"
             labelClassName="col-span-4"
             inputClassName="col-span-8"
-            label={'name'}
+            label="name"
+            id="name"
+            name="name"
             value={component.name} // todo
             onChange={() => {}}
             disabled={true}
@@ -237,6 +239,8 @@ const AnimationModalBody: React.FC<AnimationProps> = ({ entity }) => {
             inputClassName="col-span-8"
             type="checkbox"
             label="isPlaying"
+            id="isPlaying"
+            name="isPlaying"
             checked={component.isPlaying}
             onChange={() => {
               setAnimationData({ isPlaying: !component.isPlaying });
@@ -247,7 +251,9 @@ const AnimationModalBody: React.FC<AnimationProps> = ({ entity }) => {
             containerClassName="col-span-12 grid grid-cols-12"
             labelClassName="col-span-4"
             inputClassName="col-span-8"
-            label={'currentTime'}
+            label="currentTime"
+            id="currentTime"
+            name="currentTime"
             type="number"
             value={component.currentTime}
             onChange={(e) => {
@@ -262,6 +268,8 @@ const AnimationModalBody: React.FC<AnimationProps> = ({ entity }) => {
             labelClassName="col-span-4"
             inputClassName="col-span-8"
             label="property"
+            id="property"
+            name="property"
             options={[]}
             value={''}
             onChange={() => {}}

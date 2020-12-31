@@ -1,6 +1,5 @@
 import {
   createGlobalSystem,
-  createSystem,
   initialState,
   jsonToState,
   State,

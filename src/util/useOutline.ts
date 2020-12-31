@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
 
-const enableOutline = () => {
-  const container = document.getElementById('canvas-engine-devtools')
-  container?.classList.add('enable-outline');
+const enableOutline = (e: KeyboardEvent) => {
+  if (e.key === 'Tab') {
+    const container = document.getElementById('canvas-engine-devtools');
+    container?.classList.add('enable-outline');
+  }
 };
 
 const disableOutline = () => {
-  const container = document.getElementById('canvas-engine-devtools')
+  const container = document.getElementById('canvas-engine-devtools');
   container?.classList.remove('enable-outline');
-  // document.body.classList.add('enable-outline');
 };
 
 export const useOutline = () => {
