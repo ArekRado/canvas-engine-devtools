@@ -141,7 +141,7 @@ export const EntityDetails: React.FC = () => {
         }
       />
 
-      <div className="grid grid-cols-12 my-1">
+      <div className="grid grid-cols-12 mb-4">
         <div className="col-span-4"> parent</div>
         <div className="col-span-8">
           {entityParent ? entityParent.name : 'Root'}

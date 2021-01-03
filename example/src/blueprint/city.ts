@@ -29,6 +29,11 @@ export const cityBlueprint: CityBlueprint = (params) => {
     position: params.position,
   }
 
+  const areaEntity = generateEntity('area', {
+    parentId: entity.id,
+    position: vector(-3, 16),
+  })
+
   const v1 = setEntity({ state: params.state, entity })
 
   const v3 = setComponent<Sprite>(componentName.sprite, {
@@ -52,13 +57,13 @@ export const cityBlueprint: CityBlueprint = (params) => {
     state: v4,
     data: defaultCity({
       entity,
+      areaId: areaEntity.id,
     }),
   })
 
   const v6 = areaBlueprint({
     state: v5,
-    parentId: entity.id,
-    position: vector(-3, 16),
+    entity: areaEntity,
   })
 
   return v6

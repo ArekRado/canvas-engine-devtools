@@ -9,6 +9,9 @@ import {
   initialState,
   initializeEngine,
   asset,
+  generateEntity,
+  setComponent,
+  setEntity,
 } from '@arekrado/canvas-engine'
 import { vector } from '@arekrado/vector-2d'
 
@@ -24,30 +27,45 @@ import porterImg from './src/asset/porter.png'
 import cityImg from './src/asset/city.png'
 import { eventBus } from './src/util/eventBus'
 import { unitSystem } from './src/system/unit'
+import { defaultUser } from './src/component/user'
+import { userId } from './src/util/variables'
+import { userSystem } from './src/system/user'
 
 const throttleXD = (x: any): any => {
-  setTimeout(() => x(), 200)
+  setTimeout(() => x(), 40)
 }
 
 const gameLogic = (state: State) => {
   const newState = runOneFrame({ state })
   eventBus.dispatch('syncUIWithGameState', newState)
-  
+
   throttleXD(() => {
     requestAnimationFrame(() => gameLogic(newState))
   })
 }
 
 const initializeScene = (state: State): State => {
-  const v1 = cityBlueprint({ state, position: vector(100, 100) })
-  const v2 = cityBlueprint({ state: v1, position: vector(300, 300) })
+  const userEntity = generateEntity('user')
+
+  // User
+  const v1 = setEntity({ state, entity: userEntity })
+  userId = userEntity.id
+  const v2 = setComponent('user', {
+    state: v1,
+    data: defaultUser({ entity: userEntity }),
+  })
+
+  // Areas
+  const v3 = cityBlueprint({ state: v2, position: vector(100, 100) })
+  const v4 = cityBlueprint({ state: v3, position: vector(300, 300) })
+
   // const v2 = porterBlueprint({
   //   state: v1,
   //   position: vectorZero(),
   //   target: vector(400, 4000),
   // })
 
-  return v2
+  return v4
 }
 
 const initializeAssets = (state: State): State =>
@@ -75,10 +93,11 @@ initializeEngine().then(() => {
   const v4 = areaSystem(v3)
   const v5 = porterSystem(v4)
   const v6 = citySystem(v5)
-  const v7 = unitSystem(v5)
-  const v8 = registerDebugSystem(v6)
+  const v7 = userSystem(v6)
+  const v8 = unitSystem(v7)
+  const v9 = registerDebugSystem(v8)
 
-  gameLogic(v8)
+  gameLogic(v9)
 })
 
 ReactDOM.render(

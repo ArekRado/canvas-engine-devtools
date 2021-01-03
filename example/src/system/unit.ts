@@ -1,6 +1,10 @@
-import { getComponent, setComponent, Transform } from '@arekrado/canvas-engine'
-import { componentName } from '@arekrado/canvas-engine'
-import { Component, createSystem, State } from '@arekrado/canvas-engine'
+import {
+  getEntity,
+  setEntity,
+  Component,
+  createSystem,
+  State,
+} from '@arekrado/canvas-engine'
 import { add, normalize, sub } from '@arekrado/vector-2d'
 import { Unit } from '../component/unit'
 
@@ -10,19 +14,19 @@ export const unitSystem = (state: State) =>
     state,
     tick: ({ state, component }) => {
       if (component.target) {
-        const transform = getComponent<Transform>(componentName.transform, {
-          entity: component.entity,
+        const entity = getEntity({
           state,
+          entityId: component.entity.id,
         })
 
-        if (transform) {
-          const direction = normalize(sub(component.target, transform.position))
+        if (entity) {
+          const direction = normalize(sub(component.target, entity.position))
 
-          return setComponent<Transform>(componentName.transform, {
+          return setEntity({
             state,
-            data: {
-              ...transform,
-              position: add(transform.position, direction),
+            entity: {
+              ...entity,
+              position: add(entity.position, direction),
             },
           })
         }

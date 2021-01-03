@@ -9,25 +9,15 @@ import {
   setComponent,
   State,
   defaultData,
-  Guid,
 } from '@arekrado/canvas-engine'
-import { Vector2D, vectorZero } from '@arekrado/vector-2d'
+import { vectorZero } from '@arekrado/vector-2d'
 
 import areaImg from '../asset/area.png'
 import { Area, defaultArea } from '../component/area'
 
-type AreaBlueprint = (params: {
-  state: State
-  entity?: Entity
-  position: Vector2D
-  parentId: Guid
-}) => State
+type AreaBlueprint = (params: { state: State; entity?: Entity }) => State
 export const areaBlueprint: AreaBlueprint = (params) => {
-  const entity = {
-    ...(params.entity || generateEntity('area')),
-    fromParentPosition: params.position,
-    parentId: params.parentId,
-  }
+  const entity = params.entity || generateEntity('area')
 
   const v1 = setEntity({ state: params.state, entity })
 

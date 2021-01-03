@@ -40,19 +40,19 @@ export const App: React.FC = () => {
     }
   }, [])
 
-  useEffect(() => {
-    const callback = (payload: AppAction.SetSelectedArea['payload']) => {
-      appDispatch({
-        type: 'SetSelectedArea',
-        payload,
-      })
-    }
-    eventBus.on('showAreaMenu', callback)
+  // useEffect(() => {
+  //   const callback = (payload: AppAction.SetSelectedArea['payload']) => {
+  //     appDispatch({
+  //       type: 'SetSelectedArea',
+  //       payload,
+  //     })
+  //   }
+  //   eventBus.on('showAreaMenu', callback)
 
-    return () => {
-      eventBus.remove('showAreaMenu', callback)
-    }
-  }, [])
+  //   return () => {
+  //     eventBus.remove('showAreaMenu', callback)
+  //   }
+  // }, [])
 
   useOutline()
 

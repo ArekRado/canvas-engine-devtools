@@ -1,8 +1,16 @@
-import { componentName, entity } from '@arekrado/canvas-engine'
-import { getComponent, setComponent, Transform } from '@arekrado/canvas-engine'
-import { Component, createSystem, State } from '@arekrado/canvas-engine'
+import {
+  Component,
+  createSystem,
+  State,
+  setComponent,
+  generateEntity,
+  getEntity,
+  getComponent,
+  Entity,
+} from '@arekrado/canvas-engine'
 import { vector } from '@arekrado/vector-2d'
 import { porterBlueprint } from '../blueprint/porter'
+import { Area } from '../component/area'
 import { City } from '../component/city'
 
 export const citySystem = (state: State) =>
@@ -10,30 +18,43 @@ export const citySystem = (state: State) =>
     name: 'city',
     state,
     tick: ({ state, component }) => {
-      const transform = getComponent<Transform>(componentName.transform, {
+      const entity = getEntity({
         state,
-        entity: component.entity,
+        entityId: component.entity.id,
       })
 
-      if (transform) {
+      const area = getComponent<Area>('area', {
+        state,
+        entity: { id: component.areaId } as Entity,
+      })
+
+      if (entity && area) {
         const unitProductionTimer =
           component.unitProductionTimer + state.time.delta
-        const timerEnded = unitProductionTimer > 30000
+        const timerEnded = unitProductionTimer > 3000
 
         let v1 = state
 
-        if(timerEnded) {
-          const porterEntity = entity.generate('porter');
-          
+        if (timerEnded) {
+          const porterEntity = generateEntity('porter')
+
           const v2 = porterBlueprint({
             state,
             entity: porterEntity,
-            position: transform.position,
+            position: entity.position,
             target: vector(Math.random() * 200, Math.random() * 500),
           })
 
-          v1 = v2; 
-        } 
+          const v3 = setComponent<Area>('area', {
+            state: v2,
+            data: {
+              ...area,
+              units: [...area.units, porterEntity.id],
+            },
+          })
+
+          v1 = v3
+        }
 
         return setComponent<City>('city', {
           state: v1,

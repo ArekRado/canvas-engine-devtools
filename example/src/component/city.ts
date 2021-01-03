@@ -1,7 +1,8 @@
-import { Component, GetDefaultComponent } from '@arekrado/canvas-engine'
+import { Component, GetDefaultComponent, Guid } from '@arekrado/canvas-engine'
 
 export type City = Component<{
   unitProductionTimer: number
+  areaId: Guid
 }>
 
 export const defaultCity: GetDefaultComponent<City> = ({
@@ -12,4 +13,5 @@ export const defaultCity: GetDefaultComponent<City> = ({
   name: 'city',
   unitProductionTimer: 0,
   ...data,
+  areaId: data.areaId || '-',
 })

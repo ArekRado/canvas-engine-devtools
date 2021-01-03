@@ -1,10 +1,10 @@
-import { Component, Entity, GetDefaultComponent } from '@arekrado/canvas-engine'
+import { Component, GetDefaultComponent, Guid } from '@arekrado/canvas-engine'
 
 export type Area = Component<{
   size: number
   isSelected: boolean
-  resources: Entity[]
-  units: Entity[]
+  resources: Guid[]
+  units: Guid[]
 }>
 
 export const defaultArea: GetDefaultComponent<Area> = ({
