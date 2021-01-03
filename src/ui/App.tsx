@@ -1,8 +1,4 @@
-import React, {
-  useEffect,
-  useReducer,
-  useRef,
-} from 'react';
+import React, { useEffect, useReducer, useRef } from 'react';
 import {
   AppContext,
   initialState as appInitialState,
@@ -30,9 +26,9 @@ import { Save } from 'react-feather';
 import { EntityDetails } from './EntityDetails';
 import { ConfirmModal } from './modal/ConfirmModal';
 import { AnimationModal } from './modal/AnimationModal';
-import { SystemList } from './SystemList';
 import { eventBus } from '../util/eventBus';
 import { State } from '@arekrado/canvas-engine';
+import { MoreStateDetailsModal } from './modal/MoreStateDetailsModal';
 
 export const App: React.FC = () => {
   const [appState, appDispatch] = useReducer(appReducer, appInitialState);
@@ -105,6 +101,15 @@ export const App: React.FC = () => {
       },
     });
 
+  const showMoreState = () =>
+    modalDispatch({
+      type: 'SetModal',
+      payload: {
+        name: 'moreStateDetails',
+        isOpen: true,
+      },
+    });
+
   return (
     <ModalContext.Provider value={{ ...modalState, dispatch: modalDispatch }}>
       <EditorContext.Provider
@@ -126,7 +131,9 @@ export const App: React.FC = () => {
                   <EntityList />
                 </div>
 
-                <SystemList />
+                <Button onClick={showMoreState} title="Other state properties">
+                  Show more state
+                </Button>
                 <Fps />
               </div>
             </div>
@@ -137,6 +144,7 @@ export const App: React.FC = () => {
             <div id={modalContainerId} />
           </div>
 
+          <MoreStateDetailsModal />
           <ConfirmModal />
           <SaveModal />
           <AnimationModal />

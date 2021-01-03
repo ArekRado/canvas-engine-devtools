@@ -32,7 +32,7 @@ export const saveStateInLocalStorage = (state: State) => {
 };
 
 eventBus.on('setGameState', (state: State) => {
-  mutableState.state = state;
+  mutableState.state = state
 });
 
 export const registerDebugSystem = (state: State): State =>

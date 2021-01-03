@@ -12,7 +12,7 @@ export namespace ModalAction {
 
 type ModalActions = ModalAction.SetModal;
 
-export type ModalName = 'save' | 'confirm' | 'animation' | 'createBlueprint';
+export type ModalName = 'save' | 'confirm' | 'animation' | 'createBlueprint' | 'moreStateDetails';
 
 type ModalState = {
   list: Modal<any>[];

@@ -1,13 +1,12 @@
 import {
   initialState as engineInitialState,
   State,
-  entity,
+  setEntity,
   Entity,
   setComponent,
   CollideBox,
   CollideCircle,
   Sprite,
-  Transform,
   Animation,
 } from '@arekrado/canvas-engine';
 import { createContext, Dispatch, Reducer } from 'react';
@@ -28,10 +27,6 @@ export namespace AppAction {
   >;
   export type SetSpriteComponent = Action<'SetSpriteComponent', Sprite>;
 
-  export type SetTransformComponent = Action<
-    'SetTransformComponent',
-    Transform
-  >;
   export type SetCollideCircleComponent = Action<
     'SetCollideCircleComponent',
     CollideCircle
@@ -55,7 +50,7 @@ type AppActions =
   | AppAction.SetEntity
   | AppAction.CreateComponent
   | AppAction.SetSpriteComponent
-  | AppAction.SetTransformComponent
+  | AppAction.SetEntity
   | AppAction.SetCollideCircleComponent
   | AppAction.SetCollideBoxComponent
   | AppAction.SetAnimationComponent
@@ -82,16 +77,7 @@ export const reducer: Reducer<State, AppActions> = (state, action) => {
       };
       break;
     case 'SetEntity':
-      newState = {
-        ...state,
-        ...entity.set({ state, entity: action.payload }),
-      };
-      break;
-    case 'SetTransformComponent':
-      newState = setComponent('transform', {
-        state,
-        data: action.payload,
-      });
+      newState = setEntity({ state, entity: action.payload });
       break;
     case 'SetSpriteComponent':
       newState = setComponent('sprite', {

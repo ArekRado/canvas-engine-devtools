@@ -1,4 +1,4 @@
-import { componentName } from '@arekrado/canvas-engine'
+import { componentName, entity } from '@arekrado/canvas-engine'
 import { getComponent, setComponent, Transform } from '@arekrado/canvas-engine'
 import { Component, createSystem, State } from '@arekrado/canvas-engine'
 import { vector } from '@arekrado/vector-2d'
@@ -20,15 +20,22 @@ export const citySystem = (state: State) =>
           component.unitProductionTimer + state.time.delta
         const timerEnded = unitProductionTimer > 30000
 
-        const v1 = timerEnded
-          ? porterBlueprint({
-              state,
-              position: transform.position,
-              target: vector(Math.random() * 200, Math.random() * 500),
-            })
-          : state
+        let v1 = state
 
-        return setComponent('city', {
+        if(timerEnded) {
+          const porterEntity = entity.generate('porter');
+          
+          const v2 = porterBlueprint({
+            state,
+            entity: porterEntity,
+            position: transform.position,
+            target: vector(Math.random() * 200, Math.random() * 500),
+          })
+
+          v1 = v2; 
+        } 
+
+        return setComponent<City>('city', {
           state: v1,
           data: {
             ...component,

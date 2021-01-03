@@ -1,64 +1,61 @@
-import { componentName } from '@arekrado/canvas-engine'
 import {
+  CollideCircle,
+  componentName,
+  MouseInteraction,
+  Sprite,
+  setEntity,
+  generateEntity,
   Entity,
   setComponent,
   State,
   defaultData,
-  entity,
+  Guid,
 } from '@arekrado/canvas-engine'
-import { Vector2D } from '@arekrado/vector-2d'
+import { Vector2D, vectorZero } from '@arekrado/vector-2d'
 
 import areaImg from '../asset/area.png'
-import { defaultArea } from '../component/area'
-
-const generate = entity.generate
-const entitySet = entity.set
+import { Area, defaultArea } from '../component/area'
 
 type AreaBlueprint = (params: {
   state: State
   entity?: Entity
   position: Vector2D
-  parent: Entity
+  parentId: Guid
 }) => State
 export const areaBlueprint: AreaBlueprint = (params) => {
-  const entity = params.entity || generate('area')
+  const entity = {
+    ...(params.entity || generateEntity('area')),
+    fromParentPosition: params.position,
+    parentId: params.parentId,
+  }
 
-  const v1 = entitySet({ state: params.state, entity })
+  const v1 = setEntity({ state: params.state, entity })
 
-  const v2 = setComponent(componentName.transform, {
+  const v3 = setComponent<Sprite>(componentName.sprite, {
     state: v1,
-    data: defaultData.transform({
-      entity,
-      position: params.position,
-      parent: params.parent,
-    }),
-  })
-
-  const v3 = setComponent(componentName.sprite, {
-    state: v2,
     data: defaultData.sprite({
       entity,
       src: areaImg,
     }),
   })
 
-  const v4 = setComponent(componentName.collideCircle, {
+  const v4 = setComponent<CollideCircle>(componentName.collideCircle, {
     state: v3,
     data: defaultData.collideCircle({
       entity,
       radius: 50,
-      position: params.position,
+      position: vectorZero(),
     }),
   })
 
-  const v5 = setComponent(componentName.mouseInteraction, {
+  const v5 = setComponent<MouseInteraction>(componentName.mouseInteraction, {
     state: v4,
     data: defaultData.mouseInteraction({
       entity,
     }),
   })
 
-  const v6 = setComponent('area', {
+  const v6 = setComponent<Area>('area', {
     state: v5,
     data: defaultArea({
       entity,

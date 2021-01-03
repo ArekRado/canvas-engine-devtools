@@ -1,18 +1,21 @@
-import { componentName } from '@arekrado/canvas-engine'
+import {
+  CollideCircle,
+  componentName,
+  Sprite,
+} from '@arekrado/canvas-engine'
 import {
   Entity,
   setComponent,
   State,
   defaultData,
-  entity,
+  setEntity,
+  generateEntity
 } from '@arekrado/canvas-engine'
 import { Vector2D } from '@arekrado/vector-2d'
 
 import porterImg from '../asset/porter.png'
-import { defaultPorter } from '../component/porter'
-
-const generate = entity.generate
-const entitySet = entity.set
+import { defaultPorter, Porter } from '../component/porter'
+import { Unit } from '../component/unit'
 
 type PorterBlueprint = (params: {
   state: State
@@ -21,24 +24,22 @@ type PorterBlueprint = (params: {
   position: Vector2D
 }) => State
 export const porterBlueprint: PorterBlueprint = (params) => {
-  const entity = params.entity || generate('porter')
+  const entity = {
+    ...(params.entity || generateEntity('porter')),
+    position: params.position,
+  }
 
-  const v1 = entitySet({ state: params.state, entity })
+  const v1 = setEntity({ state: params.state, entity })
 
-  const v2 = setComponent(componentName.transform, {
+  const v3 = setComponent<Sprite>(componentName.sprite, {
     state: v1,
-    data: defaultData.transform({ entity, position: params.position }),
-  })
-
-  const v3 = setComponent(componentName.sprite, {
-    state: v2,
     data: defaultData.sprite({
       entity,
       src: porterImg,
     }),
   })
 
-  const v4 = setComponent(componentName.collideCircle, {
+  const v4 = setComponent<CollideCircle>(componentName.collideCircle, {
     state: v3,
     data: defaultData.collideCircle({
       entity,
@@ -47,7 +48,7 @@ export const porterBlueprint: PorterBlueprint = (params) => {
     }),
   })
 
-  const v5 = setComponent('porter', {
+  const v5 = setComponent<Porter>('porter', {
     state: v4,
     data: defaultPorter({
       entity,
@@ -55,5 +56,13 @@ export const porterBlueprint: PorterBlueprint = (params) => {
     }),
   })
 
-  return v5
+  const v6 = setComponent<Unit>('unit', {
+    state: v5,
+    data: defaultPorter({
+      entity,
+      target: params.target,
+    }),
+  })
+
+  return v6
 }

@@ -1,4 +1,9 @@
-import { Entity, getComponent, Transform } from '@arekrado/canvas-engine';
+import {
+  getEntity,
+  Entity,
+  State,
+  generateEntity,
+} from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
 import { ChevronDown, ChevronRight } from 'react-feather';
 import { AppContext } from '../context/app';
@@ -10,19 +15,19 @@ type Branch = {
   children: Branch[];
 };
 
-type TreeData = {
-  entity: Entity;
-  parent?: Entity;
-};
-
-type GenerateTree = (transform: TreeData[], entity?: Entity) => Branch[];
-export const generateTree: GenerateTree = (transform, entity) =>
-  transform
-    .filter((t) => t.parent?.id === entity?.id)
-    .map((t) => ({
-      entity: t.entity,
-      children: generateTree(transform, t.entity),
-    }));
+type GenerateTree = (state: State, entity?: Entity) => Branch[];
+export const generateTree: GenerateTree = (state, entity) =>
+  state.entity
+    .filter((t) => t.parentId === entity?.id)
+    .map((t) => {
+      const tEntity =
+        getEntity({ state, entityId: t.id }) || generateEntity('-');
+        
+      return {
+        entity: tEntity,
+        children: generateTree(state, tEntity),
+      };
+    });
 
 type EntityButtonProps = {
   entity: Entity;
@@ -99,7 +104,6 @@ const EntityButton: React.FC<EntityButtonProps> = ({
 };
 
 export const EntityList: React.FC = () => {
-  const editorState = useContext(EditorContext);
   const appState = useContext(AppContext);
 
   const [dragedEntity, setDragedEntity] = useState<Entity | null>(null);
@@ -122,17 +126,17 @@ export const EntityList: React.FC = () => {
     setOverEntity(null);
 
     if (dragedEntity && dragedEntity.id !== entity.id) {
-      const transform = getComponent<Transform>('transform', {
+      const entityToEdit = getEntity({
         state: appState,
-        entity: dragedEntity,
+        entityId: entity.id,
       });
 
-      transform &&
+      entityToEdit &&
         appState.dispatch({
-          type: 'SetTransformComponent',
+          type: 'SetEntity',
           payload: {
-            ...transform,
-            parent: entity,
+            ...entityToEdit,
+            parentId: entity.id,
           },
         });
     }
@@ -146,16 +150,7 @@ export const EntityList: React.FC = () => {
     setDragedEntity(entity);
   };
 
-  // console.log(JSON.stringify(Object.values(appState.component.transform)));
-
-  const transformData = Object.values(appState.component.transform);
-
-  const tree = generateTree(
-    appState.entity.map(
-      (entity) =>
-        transformData.find((t) => t.entity.id === entity.id) || { entity }
-    )
-  );
+  const tree = generateTree(appState);
 
   return (
     <>

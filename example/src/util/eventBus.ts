@@ -1,4 +1,4 @@
-type Event = 'showAreaMenu';
+type Event = 'showAreaMenu' | 'syncUIWithGameState';
 
 type EventBus = {
   on: (event: Event, callback: (data: any) => void) => void;

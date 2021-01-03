@@ -9,4 +9,5 @@ module.exports = {
       babelConfig: true,
     }
   },
+  modulePathIgnorePatterns: ['example']
 }

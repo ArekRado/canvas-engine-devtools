@@ -29,10 +29,10 @@ export const ModalWrapper: React.FC<ModalProps> = ({ name, children }) => {
     ? createPortal(
         <>
           <div
-            className="absolute inset-0 bg-blue-500 bg-opacity-25 z-modal-backdrop"
+            className="z-1 absolute inset-0 bg-blue-500 bg-opacity-25 z-modal-backdrop"
             onClick={close}
           />
-          <div className="absolute m-auto modal-wrapper top-1/2 transform -translate-y-1/2 -translate-x-1/2 z-_Modal bg-gray-800 p-4">
+          <div className="z-1 absolute m-auto modal-wrapper top-1/2 transform -translate-y-1/2 -translate-x-1/2 z-modal bg-gray-800 p-4">
             {children({ close, modal, name })}
           </div>
         </>,

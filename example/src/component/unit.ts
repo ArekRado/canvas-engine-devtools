@@ -1,16 +1,20 @@
 import { Component, GetDefaultComponent } from '@arekrado/canvas-engine'
 import { Vector2D } from '@arekrado/vector-2d'
 
-export type Porter = Component<{
+export type Unit = Component<{
   target: null | Vector2D
+  health: number
+  maxHealth: number
 }>
 
-export const defaultPorter: GetDefaultComponent<Porter> = ({
+export const defaultUnit: GetDefaultComponent<Unit> = ({
   entity,
   ...data
 }) => ({
   entity,
-  name: 'porter',
+  name: 'unit',
   target: null,
+  health: 1,
+  maxHealth: 1,
   ...data,
 })

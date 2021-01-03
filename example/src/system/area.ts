@@ -1,6 +1,7 @@
 import {
   getComponent,
   MouseInteraction,
+  Sprite,
   Transform,
 } from '@arekrado/canvas-engine'
 import { setComponent } from '@arekrado/canvas-engine'
@@ -34,7 +35,7 @@ export const areaSystem = (state: State) =>
         let v1: State
 
         if (mouseInteraction.isMouseEnter) {
-          v1 = setComponent(componentName.sprite, {
+          v1 = setComponent<Sprite>(componentName.sprite, {
             state,
             data: {
               ...component,
@@ -42,7 +43,7 @@ export const areaSystem = (state: State) =>
             },
           })
         } else if (mouseInteraction.isMouseLeave) {
-          v1 = setComponent(componentName.sprite, {
+          v1 = setComponent<Sprite>(componentName.sprite, {
             state,
             data: {
               ...component,
@@ -54,10 +55,8 @@ export const areaSystem = (state: State) =>
         }
 
         if (mouseInteraction.isClicked) {
-          console.log('isClicked')
-
           eventBus.dispatch('showAreaMenu', {
-            entity: transform.parent,
+            entity: component.entity,
           })
         }
 

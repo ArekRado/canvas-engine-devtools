@@ -22,6 +22,8 @@ import areaImg from './src/asset/area.png'
 import areaActiveImg from './src/asset/area-active.png'
 import porterImg from './src/asset/porter.png'
 import cityImg from './src/asset/city.png'
+import { eventBus } from './src/util/eventBus'
+import { unitSystem } from './src/system/unit'
 
 const throttleXD = (x: any): any => {
   setTimeout(() => x(), 200)
@@ -29,11 +31,11 @@ const throttleXD = (x: any): any => {
 
 const gameLogic = (state: State) => {
   const newState = runOneFrame({ state })
-
-  // console.log(newState.mouse.buttons)
-  // throttleXD(() => {
+  eventBus.dispatch('syncUIWithGameState', newState)
+  
+  throttleXD(() => {
     requestAnimationFrame(() => gameLogic(newState))
-  // })
+  })
 }
 
 const initializeScene = (state: State): State => {
@@ -44,9 +46,6 @@ const initializeScene = (state: State): State => {
   //   position: vectorZero(),
   //   target: vector(400, 4000),
   // })
-
-  console.log(v2)
-
 
   return v2
 }
@@ -76,9 +75,10 @@ initializeEngine().then(() => {
   const v4 = areaSystem(v3)
   const v5 = porterSystem(v4)
   const v6 = citySystem(v5)
+  const v7 = unitSystem(v5)
+  const v8 = registerDebugSystem(v6)
 
-
-  gameLogic(registerDebugSystem(v6))
+  gameLogic(v8)
 })
 
 ReactDOM.render(
@@ -86,7 +86,4 @@ ReactDOM.render(
   document.getElementById('canvas-engine-devtools'),
 )
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('canvas-engine'),
-)
+ReactDOM.render(<App />, document.getElementById('canvas-engine'))

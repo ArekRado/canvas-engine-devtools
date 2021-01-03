@@ -1,8 +1,8 @@
 module.exports = {
   theme: {
     zIndex: {
-      'modal-backdrop': 0,
-      modal: 1,
+      'modal-backdrop': 1,
+      modal: 2,
     },
     top: {
       '1/2': '50%',

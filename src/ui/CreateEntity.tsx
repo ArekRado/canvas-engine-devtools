@@ -1,4 +1,4 @@
-import { entity } from '@arekrado/canvas-engine';
+import { generateEntity } from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
 import { Plus } from 'react-feather';
 import { AppContext } from '../context/app';
@@ -18,7 +18,7 @@ export const CreateEntity: React.FC = () => {
       className="flex justify-between"
       onSubmit={() => {
         setEntityName('');
-        const newEntity = entity.generate(entityName);
+        const newEntity = generateEntity(entityName);
 
         appState.dispatch({
           type: 'SetEntity',

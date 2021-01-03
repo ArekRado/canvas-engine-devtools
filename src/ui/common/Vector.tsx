@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
-import { Input } from './Input';
+import { Input, InputHTMLAttributes } from './Input';
 import { Vector2D, vector } from '@arekrado/vector-2d';
 
-type VectorProps = {
+export type VectorProps = {
   name: string;
   value: Vector2D;
   label?: ReactElement | string;
@@ -11,6 +11,7 @@ type VectorProps = {
   inputClassName?: string;
   id: string;
   onChange: (value: Vector2D) => void;
+  disabled?: InputHTMLAttributes['disabled'];
 };
 export const Vector: React.FC<VectorProps> = ({
   containerClassName,
@@ -19,6 +20,7 @@ export const Vector: React.FC<VectorProps> = ({
   label,
   value: [x, y],
   id,
+  disabled = false,
   onChange,
 }) => (
   <div className={containerClassName}>
@@ -28,6 +30,7 @@ export const Vector: React.FC<VectorProps> = ({
       </label>
     )}
     <Input
+      disabled={disabled}
       containerClassName={inputClassName}
       type="number"
       id={id}
@@ -36,6 +39,7 @@ export const Vector: React.FC<VectorProps> = ({
       onChange={(event) => onChange(vector(parseFloat(event.target.value), y))}
     />
     <Input
+      disabled={disabled}
       containerClassName={inputClassName}
       type="number"
       id={id}

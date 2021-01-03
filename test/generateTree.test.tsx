@@ -1,67 +1,76 @@
+import {
+  generateEntity,
+  initialState,
+  setEntity,
+} from '@arekrado/canvas-engine';
 import { generateTree } from '../src/ui/EntityList';
 
 describe('generateTree', () => {
   it('should return empty array when list is empty', () => {
-    expect(generateTree([])).toEqual([]);
+    expect(generateTree(initialState)).toEqual([]);
   });
 
   it('should return flat array when transforms dont have any parent', () => {
-    const data: any = [
-      {
-        entity: { id: '1' },
-        data: {},
-      },
-      {
-        entity: { id: '2' },
-        data: {},
-      },
-    ];
+    const e1 = generateEntity('e1');
+    const e2 = generateEntity('e2');
 
-    expect(generateTree(data)).toEqual([
+    const v1 = setEntity({ state: initialState, entity: e1 });
+    const v2 = setEntity({ state: v1, entity: e2 });
+
+    expect(generateTree(v2)).toEqual([
       {
-        entity: { id: '1' },
+        entity: e1,
         children: [],
       },
       {
-        entity: { id: '2' },
+        entity: e2,
         children: [],
       },
     ]);
   });
 
   it('should return tree when transforms have parent', () => {
-    const data: any = [
-      {
-        entity: { id: '1' },
-        data: {
-          parent: { id: '2' },
-        },
-      },
-      {
-        entity: { id: '2' },
-        data: {},
-      },
-    ];
+    const e2 = generateEntity('e2');
+    const e1 = generateEntity('e1', { parentId: e2.id });
 
-    expect(generateTree(data)).toEqual([
+    const v1 = setEntity({ state: initialState, entity: e1 });
+    const v2 = setEntity({ state: v1, entity: e2 });
+
+    expect(generateTree(v2)).toEqual([
       {
         children: [
           {
             children: [],
-            entity: {
-              id: '1',
-            },
+            entity: e1,
           },
         ],
-        entity: {
-          id: '2',
-        },
+        entity: e2,
       },
     ]);
   });
 
   it('should return tree when transforms have parent - deep example', () => {
-    const data: any = [
+    const e4 = generateEntity('e4');
+    const e3 = generateEntity('e3', { parentId: e4.id });
+    const e2 = generateEntity('e2', { parentId: e3.id });
+    const e1 = generateEntity('e1', { parentId: e2.id });
+    const e5 = generateEntity('e5', { parentId: e1.id });
+    const e6 = generateEntity('e6', { parentId: e1.id });
+    const e7 = generateEntity('e7', { parentId: e3.id });
+    const e9 = generateEntity('e9');
+    const e8 = generateEntity('e8', { parentId: e9.id });
+
+    const v1 = setEntity({ state: initialState, entity: e1 });
+    const v2 = setEntity({ state: v1, entity: e2 });
+    const v3 = setEntity({ state: v2, entity: e3 });
+    const v4 = setEntity({ state: v3, entity: e4 });
+    const v5 = setEntity({ state: v4, entity: e5 });
+    const v6 = setEntity({ state: v5, entity: e6 });
+    const v7 = setEntity({ state: v6, entity: e7 });
+    const v8 = setEntity({ state: v7, entity: e8 });
+    const v9 = setEntity({ state: v8, entity: e9 });
+
+    const data = [
       {
         entity: { id: '1' },
         data: { parent: { id: '2' } },
@@ -100,7 +109,7 @@ describe('generateTree', () => {
       },
     ];
 
-    expect(generateTree(data)).toEqual([
+    expect(generateTree(v9)).toEqual([
       {
         children: [
           {
@@ -111,54 +120,36 @@ describe('generateTree', () => {
                     children: [
                       {
                         children: [],
-                        entity: {
-                          id: '5',
-                        },
+                        entity: e5,
                       },
                       {
                         children: [],
-                        entity: {
-                          id: '6',
-                        },
+                        entity: e6,
                       },
                     ],
-                    entity: {
-                      id: '1',
-                    },
+                    entity: e1,
                   },
                 ],
-                entity: {
-                  id: '2',
-                },
+                entity: e2,
               },
               {
                 children: [],
-                entity: {
-                  id: '7',
-                },
+                entity: e7,
               },
             ],
-            entity: {
-              id: '3',
-            },
+            entity: e3,
           },
         ],
-        entity: {
-          id: '4',
-        },
+        entity: e4,
       },
       {
         children: [
           {
             children: [],
-            entity: {
-              id: '8',
-            },
+            entity: e8,
           },
         ],
-        entity: {
-          id: '9',
-        },
+        entity: e9,
       },
     ]);
   });

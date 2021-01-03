@@ -27,8 +27,21 @@ export const App: React.FC = () => {
   )
 
   useEffect(() => {
+    const callback = (payload: AppAction.SetGameState['payload']) => {
+      appDispatch({
+        type: 'SetGameState',
+        payload,
+      })
+    }
+    eventBus.on('syncUIWithGameState', callback)
+
+    return () => {
+      eventBus.remove('syncUIWithGameState', callback)
+    }
+  }, [])
+
+  useEffect(() => {
     const callback = (payload: AppAction.SetSelectedArea['payload']) => {
-      console.log('click')
       appDispatch({
         type: 'SetSelectedArea',
         payload,
