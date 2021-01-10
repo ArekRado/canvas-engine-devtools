@@ -2,42 +2,28 @@ import 'regenerator-runtime/runtime'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { CanvasEngineDevtools, registerDebugSystem } from '../src/index'
-import { App } from './src/ui/App'
 import {
   runOneFrame,
   State,
   initialState,
   initializeEngine,
   asset,
-  generateEntity,
-  setComponent,
-  setEntity,
 } from '@arekrado/canvas-engine'
 import { vector } from '@arekrado/vector-2d'
 
-import { areaSystem } from './src/system/area'
-import { porterSystem } from './src/system/porter'
-import { citySystem } from './src/system/city'
+import { playerSystem } from './src/system/player'
 
-import { cityBlueprint } from './src/blueprint/city'
-
-import areaImg from './src/asset/area.png'
-import areaActiveImg from './src/asset/area-active.png'
-import porterImg from './src/asset/porter.png'
-import cityImg from './src/asset/city.png'
-import { eventBus } from './src/util/eventBus'
-import { unitSystem } from './src/system/unit'
-import { defaultUser } from './src/component/user'
-import { userId } from './src/util/variables'
-import { userSystem } from './src/system/user'
+import shadowImg from './src/asset/shadow.png'
+import playerImg from './src/asset/player.png'
+import { playerBlueprint } from './src/blueprint/player'
+import { tileBlueprint } from './src/blueprint/tile'
 
 const throttleXD = (x: any): any => {
-  setTimeout(() => x(), 40)
+  setTimeout(() => x(), 0)
 }
 
 const gameLogic = (state: State) => {
   const newState = runOneFrame({ state })
-  eventBus.dispatch('syncUIWithGameState', newState)
 
   throttleXD(() => {
     requestAnimationFrame(() => gameLogic(newState))
@@ -45,39 +31,33 @@ const gameLogic = (state: State) => {
 }
 
 const initializeScene = (state: State): State => {
-  const userEntity = generateEntity('user')
+  const v1 = playerBlueprint({ state: state, position: vector(300, 300) })
 
-  // User
-  const v1 = setEntity({ state, entity: userEntity })
-  userId = userEntity.id
-  const v2 = setComponent('user', {
-    state: v1,
-    data: defaultUser({ entity: userEntity }),
-  })
+  const v2 = tileBlueprint({ state: v1, position: vector(300, 400) })
+  const v3 = tileBlueprint({ state: v2, position: vector(350, 400) })
+  const v4 = tileBlueprint({ state: v3, position: vector(400, 400) })
+  const v5 = tileBlueprint({ state: v4, position: vector(450, 400) })
+  const v6 = tileBlueprint({ state: v5, position: vector(450, 350) })
+  const v7 = tileBlueprint({ state: v6, position: vector(500, 350) })
+  const v8 = tileBlueprint({ state: v7, position: vector(550, 350) })
 
-  // Areas
-  const v3 = cityBlueprint({ state: v2, position: vector(100, 100) })
-  const v4 = cityBlueprint({ state: v3, position: vector(300, 300) })
-
-  // const v2 = porterBlueprint({
+  // const v2 = playerBlueprint({
   //   state: v1,
   //   position: vectorZero(),
   //   target: vector(400, 4000),
   // })
 
-  return v4
+  return v8
 }
 
 const initializeAssets = (state: State): State =>
   [
-    ['area', areaImg],
-    ['area-active', areaActiveImg],
-    ['porter', porterImg],
-    ['city', cityImg],
+    ['shadow', shadowImg],
+    ['player', playerImg],
   ].reduce(
-    (acc, [name, src]) =>
+    (stateAcc, [name, src]) =>
       asset.addSprite({
-        state: acc,
+        state: stateAcc,
         src,
         name,
       }),
@@ -90,19 +70,13 @@ initializeEngine().then(() => {
   const v2 = initializeScene(v1)
   const v3 = initializeAssets(v2)
 
-  const v4 = areaSystem(v3)
-  const v5 = porterSystem(v4)
-  const v6 = citySystem(v5)
-  const v7 = userSystem(v6)
-  const v8 = unitSystem(v7)
-  const v9 = registerDebugSystem(v8)
+  const v4 = playerSystem(v3)
+  const v5 = registerDebugSystem(v4)
 
-  gameLogic(v9)
+  gameLogic(v5)
 })
 
 ReactDOM.render(
   <CanvasEngineDevtools />,
   document.getElementById('canvas-engine-devtools'),
 )
-
-ReactDOM.render(<App />, document.getElementById('canvas-engine'))

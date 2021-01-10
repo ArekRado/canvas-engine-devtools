@@ -65,7 +65,7 @@ export const Animation: React.FC<AnimationProps> = ({ component }) => {
             payload: {
               name: 'animation',
               isOpen: true,
-              data: component.entity,
+              data: component.entityId,
             },
           })
         }

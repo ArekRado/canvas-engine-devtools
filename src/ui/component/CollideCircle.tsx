@@ -48,11 +48,11 @@ export const CollideCircle: React.FC<CollideCircleProps> = ({ component }) => {
       {component.collisions.length > 0 && <div> Collisions </div>}
       {component.collisions.map((collisionType) => {
         if (collisionType.type === 'box') {
-          return `Box - ${collisionType.entity.name}`;
+          return `Box - ${collisionType.entityId}`;
         }
 
         if (collisionType.type === 'circle') {
-          return `Circle - ${collisionType.entity.name}`;
+          return `Circle - ${collisionType.entityId}`;
         }
 
         return '-';

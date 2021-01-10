@@ -1,4 +1,10 @@
-import { defaultData, Entity, generateEntity, State } from '@arekrado/canvas-engine';
+import {
+  defaultData,
+  Dictionary,
+  Entity,
+  generateEntity,
+  State,
+} from '@arekrado/canvas-engine';
 import { Component } from '@arekrado/canvas-engine';
 import React, { useContext, useEffect } from 'react';
 import { AppContext } from '../context/app';
@@ -14,12 +20,14 @@ const getEntityComponents = (
   appState: State,
   selectedEntity?: Entity
 ): EntityComponent[] =>
-  Object.entries(appState.component).map(([componentName, components]) => ({
-    name: componentName,
-    list: Object.values(components).filter(
-      (component: Component<any>) => component.entity.id === selectedEntity?.id
-    ),
-  }));
+  Object.entries(appState.component).map(
+    ([componentName, components]) => ({
+      name: componentName,
+      list: Object.values<Component<Dictionary<any>>>(components).filter(
+        (component) => component.entityId === selectedEntity?.id
+      ),
+    })
+  );
 
 export const ComponentList: React.FC = () => {
   const editorState = useContext(EditorContext);
@@ -38,7 +46,7 @@ export const ComponentList: React.FC = () => {
     //     payload: {
     //       name: 'transform',
     //       render: component.Transform,
-    //       defaultData: defaultData.transform({ entity: generateEntity('') }),
+    //       defaultData: defaultData.transform({ entityId: generateEntity('').id }),
     //       animatedProperties: [
     //         { path: 'rotation', type: 'number' },
     //         { path: 'fromParentRotation', type: 'number' },
@@ -57,7 +65,7 @@ export const ComponentList: React.FC = () => {
         payload: {
           name: 'sprite',
           render: component.Sprite,
-          defaultData: defaultData.sprite({ entity: generateEntity('') }),
+          defaultData: defaultData.sprite({ entityId: generateEntity('').id }),
           animatedProperties: [
             { path: 'rotation', type: 'number' },
             { path: 'fromParentRotation', type: 'number' },
@@ -76,7 +84,9 @@ export const ComponentList: React.FC = () => {
         payload: {
           name: 'animation',
           render: component.Animation,
-          defaultData: defaultData.animation({ entity: generateEntity('') }),
+          defaultData: defaultData.animation({
+            entityId: generateEntity('').id,
+          }),
           animatedProperties: [
             { path: 'rotation', type: 'number' },
             { path: 'fromParentRotation', type: 'number' },
@@ -96,7 +106,7 @@ export const ComponentList: React.FC = () => {
           name: 'mouseInteraction',
           render: component.MouseInteraction,
           defaultData: defaultData.mouseInteraction({
-            entity: generateEntity(''),
+            entityId: generateEntity('').id,
           }),
           animatedProperties: [],
         },
@@ -110,7 +120,7 @@ export const ComponentList: React.FC = () => {
           name: 'collideBox',
           render: component.CollideBox,
           defaultData: defaultData.collideBox({
-            entity: generateEntity(''),
+            entityId: generateEntity('').id,
           }),
           animatedProperties: [
             { path: 'size', type: 'Vector2D' },
@@ -127,7 +137,7 @@ export const ComponentList: React.FC = () => {
           name: 'collideCircle',
           render: component.CollideCircle,
           defaultData: defaultData.collideCircle({
-            entity: generateEntity(''),
+            entityId: generateEntity('').id,
           }),
           animatedProperties: [
             { path: 'radius', type: 'number' },
@@ -148,7 +158,7 @@ export const ComponentList: React.FC = () => {
           <ComponentWrapper
             component={component}
             componentName={name}
-            key={component.entity.id}
+            key={component.entityId}
           >
             {RegisteredComponent ? (
               <RegisteredComponent.render component={component} />

@@ -1,3 +1,4 @@
+
 import { CollideBox as CollideBoxType } from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
 import { AppContext } from '../../context/app';
@@ -45,11 +46,11 @@ export const CollideBox: React.FC<CollideBoxProps> = ({ component }) => {
       {component.collisions.length > 0 && <div> Collisions </div>}
       {component.collisions.map((collisionType) => {
         if (collisionType.type === 'box') {
-          return `Box - ${collisionType.entity.name}`;
+          return `Box - ${collisionType.entityId}`;
         }
 
         if (collisionType.type === 'circle') {
-          return `Circle - ${collisionType.entity.name}`;
+          return `Circle - ${collisionType.entityId}`;
         }
 
         return '-';
