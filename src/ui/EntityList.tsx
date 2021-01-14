@@ -72,11 +72,11 @@ const EntityButton: React.FC<EntityButtonProps> = ({
 
         <Button
           title={entity.id}
-          focused={editorState?.selectedEntity?.id === entity.id}
+          focused={editorState?.selectedEntityId === entity.id}
           onClick={() =>
             editorState.dispatch({
-              type: 'SetEntity',
-              payload: entity,
+              type: 'SetEntityId',
+              payload: entity.id,
             })
           }
           className="text-left flex-1"

@@ -11,9 +11,18 @@ import { ComponentList } from './ComponentList';
 import { CreateComponent } from './CreateComponent';
 
 export const EntityDetails: React.FC = () => {
-  const { selectedEntity } = useContext(EditorContext);
+  const { selectedEntityId } = useContext(EditorContext);
   const modalState = useContext(ModalContext);
   const appState = useContext(AppContext);
+
+  if (!selectedEntityId) {
+    return <div>Entity not selected</div>;
+  }
+  
+  const selectedEntity = getEntity({
+    state: appState,
+    entityId: selectedEntityId,
+  });
 
   if (!selectedEntity) {
     return <div>Entity not selected</div>;

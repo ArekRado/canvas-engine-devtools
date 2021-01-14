@@ -77,6 +77,7 @@ export const reducer: Reducer<State, AppActions> = (state, action) => {
       };
       break;
     case 'SetEntity':
+      console.log('SetEntity', action.payload)
       newState = setEntity({ state, entity: action.payload });
       break;
     case 'SetSpriteComponent':

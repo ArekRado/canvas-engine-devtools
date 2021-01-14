@@ -1,4 +1,4 @@
-import { State } from '@arekrado/canvas-engine';
+import { getEntity, State } from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
 import { AppContext } from '../context/app';
 import { EditorContext } from '../context/editor';
@@ -15,28 +15,35 @@ export const CreateComponent: React.FC = () => {
     })
   );
 
-  if (!editorState.selectedEntity) {
+  if (!editorState.selectedEntityId) {
     return null;
   } else {
-    return (
-      <Select
-        label="Add component"
-        options={options}
-        value=""
-        onChange={(value) => {
-          if (editorState.selectedEntity) {
-            appState.dispatch({
-              type: 'CreateComponent',
-              payload: {
-                component: value.target.value,
-                entity: editorState.selectedEntity,
-                defaultData:
-                  editorState.components[value.target.value]?.defaultData,
-              },
-            });
-          }
-        }}
-      />
-    );
+    const entity = getEntity({
+      state: appState,
+      entityId: editorState.selectedEntityId,
+    });
+    if (entity) {
+      return (
+        <Select
+          label="Add component"
+          options={options}
+          value=""
+          onChange={(value) => {
+            if (editorState.selectedEntityId) {
+              appState.dispatch({
+                type: 'CreateComponent',
+                payload: {
+                  component: value.target.value,
+                  entity,
+                  defaultData:
+                    editorState.components[value.target.value]?.defaultData,
+                },
+              });
+            }
+          }}
+        />
+      );
+    }
+    return null;
   }
 };

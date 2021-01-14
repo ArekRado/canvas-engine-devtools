@@ -23,6 +23,7 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
   const entity = {
     ...(params.entity || generateEntity('player')),
     position: params.position,
+    scale: vector(3, 3),
   }
 
   const shadowEntity = {
@@ -53,8 +54,8 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
     state: v4,
     data: defaultData.collideBox({
       entityId: entity.id,
-      size: vector(10, 10),
-      position: vector(4, 16),
+      size: vector(24, 0),
+      position: vector(6, 71),
     }),
   })
 

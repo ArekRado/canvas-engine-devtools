@@ -3,6 +3,7 @@ import {
   Entity,
   getComponent,
   getEntity,
+  Guid,
   setComponent,
   setEntity,
 } from '@arekrado/canvas-engine'
@@ -19,9 +20,7 @@ import {
 } from '@arekrado/vector-2d'
 import { Player } from '../component/player'
 
-const jumpHeight = 200
 const gravity = vector(0, 10)
-let onGround = false
 
 type JumpGravity = (params: {
   state: State
@@ -29,16 +28,12 @@ type JumpGravity = (params: {
   player: Player
 }) => State
 const jumpGravity: JumpGravity = ({ state, entity, player }) => {
-  const playerPosition = add(
+  const playerPosition = sub(
     entity.position,
     scale(state.time.delta / 1000, player.jumpVelocity),
   )
 
-  let jumpVelocity = add(player.jumpVelocity, gravity)
-
-  if (magnitude(jumpVelocity) > jumpHeight) {
-    jumpVelocity = scale(-1, jumpVelocity)
-  }
+  const jumpVelocity = sub(player.jumpVelocity, gravity)
 
   const v1 = setEntity({
     state,
@@ -52,12 +47,14 @@ const jumpGravity: JumpGravity = ({ state, entity, player }) => {
     state: v1,
     data: {
       ...player,
+      isJumping: magnitude(jumpVelocity) > 0,
       jumpVelocity,
     },
   })
 
   return v2
 }
+
 type FallGravity = (params: {
   state: State
   entity: Entity
@@ -90,6 +87,48 @@ const fallGravity: FallGravity = ({ state, entity, player }) => {
   return v2
 }
 
+type Move = (params: { state: State; entityId: Guid; player: Player }) => State
+const move: Move = ({ state, entityId, player }) => {
+  const entity = getEntity({ state, entityId })
+  let v1 = state
+
+  if (entity) {
+    if (state.keyboard['w']?.isDown) {
+      v1 = setComponent<Player>('player', {
+        state: v1,
+        data: {
+          ...player,
+          isJumping: true,
+          fallVelocity: vectorZero(),
+          jumpVelocity: vector(0, 300),
+        },
+      })
+    }
+
+    if (state.keyboard['d']?.isPressed) {
+      v1 = setEntity({
+        state: v1,
+        entity: {
+          ...entity,
+          position: add(entity.position, vector(1, 0)),
+        },
+      })
+    }
+
+    if (state.keyboard['a']?.isPressed) {
+      v1 = setEntity({
+        state: v1,
+        entity: {
+          ...entity,
+          position: add(entity.position, vector(-1, 0)),
+        },
+      })
+    }
+  }
+
+  return v1
+}
+
 export const playerSystem = (state: State) =>
   createSystem<Component<Player>>({
     name: 'player',
@@ -111,18 +150,23 @@ export const playerSystem = (state: State) =>
         if (component.isJumping) {
           v1 = jumpGravity({
             entity,
-            state,
+            state: v1,
             player: component,
           })
-        } else if(collideBox.collisions.length === 0) {
+        } else if (collideBox.collisions.length === 0) {
           v1 = fallGravity({
             entity,
-            state,
+            state: v1,
             player: component,
           })
-        } else if (collideBox.collisions.length > 0) {
+        }
+
+        if (
+          component.jumpVelocity[1] <= 0 &&
+          collideBox.collisions.length > 0
+        ) {
           v1 = setComponent<Player>('player', {
-            state,
+            state: v1,
             data: {
               ...component,
               isJumping: false,
@@ -130,19 +174,13 @@ export const playerSystem = (state: State) =>
               jumpVelocity: vectorZero(),
             },
           })
-        } 
+        }
 
-        if (state.keyboard['w']?.isDown) {
-          v1 = setComponent<Player>('player', {
-            state,
-            data: {
-              ...component,
-              isJumping: true,
-              fallVelocity: vectorZero(),
-              jumpVelocity: vector(0, -20),
-            },
-          })
-        } 
+        v1 = move({
+          entityId: entity.id,
+          state: v1,
+          player: component,
+        })
 
         return v1
       }

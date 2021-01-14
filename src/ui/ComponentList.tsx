@@ -1,8 +1,8 @@
 import {
   defaultData,
   Dictionary,
-  Entity,
   generateEntity,
+  Guid,
   State,
 } from '@arekrado/canvas-engine';
 import { Component } from '@arekrado/canvas-engine';
@@ -18,13 +18,13 @@ type EntityComponent = {
 
 const getEntityComponents = (
   appState: State,
-  selectedEntity?: Entity
+  selectedEntityId?: Guid
 ): EntityComponent[] =>
   Object.entries(appState.component).map(
     ([componentName, components]) => ({
       name: componentName,
       list: Object.values<Component<Dictionary<any>>>(components).filter(
-        (component) => component.entityId === selectedEntity?.id
+        (component) => component.entityId === selectedEntityId
       ),
     })
   );
@@ -35,7 +35,7 @@ export const ComponentList: React.FC = () => {
 
   const entityComponents = getEntityComponents(
     appState,
-    editorState?.selectedEntity
+    editorState?.selectedEntityId
   );
 
   // https://github.com/formium/tsdx/pull/367

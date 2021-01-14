@@ -11,13 +11,16 @@ import {
 } from '@arekrado/canvas-engine'
 import { vector, Vector2D, vectorZero } from '@arekrado/vector-2d'
 
-import tileImg from '../asset/shadow.png'
-
-type TileBlueprint = (params: { state: State; position: Vector2D }) => State
+type TileBlueprint = (params: {
+  state: State
+  position: Vector2D
+  src: string
+}) => State
 export const tileBlueprint: TileBlueprint = (params) => {
   const entity = {
     ...generateEntity('tile'),
     position: params.position,
+    scale: vector(3, 3),
   }
   const v1 = setEntity({ state: params.state, entity })
 
@@ -25,7 +28,7 @@ export const tileBlueprint: TileBlueprint = (params) => {
     state: v1,
     data: defaultData.sprite({
       entityId: entity.id,
-      src: tileImg,
+      src: params.src,
     }),
   })
 
@@ -33,7 +36,7 @@ export const tileBlueprint: TileBlueprint = (params) => {
     state: v3,
     data: defaultData.collideBox({
       entityId: entity.id,
-      size: vector(50, 50),
+      size: vector(48, 48),
       position: vectorZero(),
     }),
   })
