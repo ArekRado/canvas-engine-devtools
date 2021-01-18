@@ -150,7 +150,6 @@ export const ComponentList: React.FC = () => {
 
   return (
     <>
-      <div className="text-white mb-3"> Components: </div>
       {entityComponents.map(({ name, list }) => {
         const RegisteredComponent = editorState.components[name];
 

@@ -20,7 +20,7 @@ import {
 } from '@arekrado/vector-2d'
 import { Player } from '../component/player'
 
-const gravity = vector(0, 10)
+const gravity = vector(0, 20)
 
 type JumpGravity = (params: {
   state: State
@@ -100,7 +100,7 @@ const move: Move = ({ state, entityId, player }) => {
           ...player,
           isJumping: true,
           fallVelocity: vectorZero(),
-          jumpVelocity: vector(0, 300),
+          jumpVelocity: vector(0, 500),
         },
       })
     }
@@ -110,7 +110,7 @@ const move: Move = ({ state, entityId, player }) => {
         state: v1,
         entity: {
           ...entity,
-          position: add(entity.position, vector(1, 0)),
+          position: add(entity.position, vector(3, 0)),
         },
       })
     }
@@ -120,7 +120,7 @@ const move: Move = ({ state, entityId, player }) => {
         state: v1,
         entity: {
           ...entity,
-          position: add(entity.position, vector(-1, 0)),
+          position: add(entity.position, vector(-3, 0)),
         },
       })
     }

@@ -18,7 +18,7 @@ const emptyKeyframe: Keyframe = {
   duration: 1000,
   timingFunction: 'Linear',
   valueRange: {
-    type: 'Number',
+    type: 'number',
     value: vector(0, 1),
   },
 };
@@ -46,7 +46,7 @@ const ValueRange: React.FC<ValueRangeProps> = ({
 }) => (
   <div className="grid grid-cols-12 my-1">
     <div className="col-span-4">valueRange</div>
-    {selectedKeyframe.valueRange.type === 'Number' && (
+    {selectedKeyframe.valueRange.type === 'number' && (
       <Vector
         containerClassName="col-span-8 flex"
         id="valueRange"
@@ -55,7 +55,7 @@ const ValueRange: React.FC<ValueRangeProps> = ({
         onChange={(value) =>
           setKeyframe({
             valueRange: {
-              type: 'Number',
+              type: 'number',
               value,
             },
           })
@@ -63,7 +63,7 @@ const ValueRange: React.FC<ValueRangeProps> = ({
       />
     )}
 
-    {selectedKeyframe.valueRange.type === 'Vector2D' && (
+    {selectedKeyframe.valueRange.type === 'vector2D' && (
       <Vector
         containerClassName="col-span-4"
         id="valueRange[0]"
@@ -72,7 +72,7 @@ const ValueRange: React.FC<ValueRangeProps> = ({
         onChange={(value) =>
           setKeyframe({
             valueRange: {
-              type: 'Vector2D',
+              type: 'vector2D',
               value: [value, selectedKeyframe.valueRange.value[1] as Vector2D],
             },
           })
@@ -80,7 +80,7 @@ const ValueRange: React.FC<ValueRangeProps> = ({
       />
     )}
 
-    {selectedKeyframe.valueRange.type === 'Vector2D' && (
+    {selectedKeyframe.valueRange.type === 'vector2D' && (
       <Vector
         containerClassName="col-span-4"
         id="valueRange[1]"
@@ -89,7 +89,7 @@ const ValueRange: React.FC<ValueRangeProps> = ({
         onChange={(value) =>
           setKeyframe({
             valueRange: {
-              type: 'Vector2D',
+              type: 'vector2D',
               value: [selectedKeyframe.valueRange.value[0] as Vector2D, value],
             },
           })
@@ -126,14 +126,14 @@ const Timeline: React.FC<TimelineProps> = ({
           setKeyframeIndex(index);
         }}
       >
-        {keyframe.valueRange.type === 'Number' && (
+        {keyframe.valueRange.type === 'number' && (
           <>
             {keyframe.timingFunction}
             <br />
             {keyframe.valueRange.value[0]}-{keyframe.valueRange.value[1]}
           </>
         )}
-        {keyframe.valueRange.type === 'Vector2D' && (
+        {keyframe.valueRange.type === 'vector2D' && (
           <>
             {keyframe.timingFunction}
             <br />

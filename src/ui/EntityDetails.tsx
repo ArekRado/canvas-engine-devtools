@@ -18,7 +18,7 @@ export const EntityDetails: React.FC = () => {
   if (!selectedEntityId) {
     return <div>Entity not selected</div>;
   }
-  
+
   const selectedEntity = getEntity({
     state: appState,
     entityId: selectedEntityId,
@@ -48,11 +48,14 @@ export const EntityDetails: React.FC = () => {
     <div className="w-full px-1 py-2">
       <div className="flex justify-between mb-2">
         <Input
-          name="selectedEntity"
-          id="selectedEntity"
+          name="name"
+          id="name"
           value={selectedEntity.name}
-          onChange={() => {}}
+          onChange={(e) =>
+            setEntityData({ name: e.target.value })
+          }
         />
+
         <Button
           title="Create blueprint"
           onClick={() => {

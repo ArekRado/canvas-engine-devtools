@@ -13,7 +13,6 @@ import { vector } from '@arekrado/vector-2d'
 
 import { playerSystem } from './src/system/player'
 
-import shadowImg from './src/asset/shadow.png'
 import playerImg from './src/asset/player.png'
 
 import tileCenter from './src/asset/tile-center.png'
@@ -94,7 +93,6 @@ const initializeAssets = (state: State): State =>
     ['tileBottom', tileBottom],
     ['tileBottomLeft', tileBottomLeft],
     ['tileBottomRight', tileBottomRight],
-    ['shadow', shadowImg],
     ['player', playerImg],
   ].reduce(
     (stateAcc, [name, src]) =>

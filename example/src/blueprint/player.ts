@@ -1,4 +1,9 @@
-import { CollideBox, componentName, Sprite } from '@arekrado/canvas-engine'
+import {
+  Animation,
+  CollideBox,
+  componentName,
+  Sprite,
+} from '@arekrado/canvas-engine'
 import {
   Entity,
   setComponent,
@@ -8,9 +13,9 @@ import {
   generateEntity,
 } from '@arekrado/canvas-engine'
 import { vector, Vector2D } from '@arekrado/vector-2d'
+import { walkAnimation } from '../animation/walk'
 
 import playerImg from '../asset/player.png'
-import shadowImg from '../asset/shadow.png'
 
 import { defaultPlayer, Player } from '../component/player'
 
@@ -26,36 +31,22 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
     scale: vector(3, 3),
   }
 
-  const shadowEntity = {
-    ...generateEntity('shadow'),
-    position: entity.position,
-  }
-
   const v1 = setEntity({ state: params.state, entity })
-  const v2 = setEntity({ state: v1, entity: shadowEntity })
 
-  const v3 = setComponent<Sprite>(componentName.sprite, {
-    state: v2,
+  const v2 = setComponent<Sprite>(componentName.sprite, {
+    state: v1,
     data: defaultData.sprite({
       entityId: entity.id,
       src: playerImg,
     }),
   })
 
-  const v4 = setComponent<Sprite>(componentName.sprite, {
-    state: v3,
-    data: defaultData.sprite({
-      entityId: shadowEntity.id,
-      src: shadowImg,
-    }),
-  })
-
   const v5 = setComponent<CollideBox>(componentName.collideBox, {
-    state: v4,
+    state: v2,
     data: defaultData.collideBox({
       entityId: entity.id,
       size: vector(24, 0),
-      position: vector(6, 71),
+      position: vector(36, 96),
     }),
   })
 
@@ -63,9 +54,13 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
     state: v5,
     data: defaultPlayer({
       entityId: entity.id,
-      shadowId: shadowEntity.id,
     }),
   })
 
-  return v6
+  const v7 = setComponent<Animation>(componentName.animation, {
+    state: v6,
+    data: walkAnimation(entity.id),
+  })
+
+  return v7
 }

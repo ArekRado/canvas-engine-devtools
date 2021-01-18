@@ -25,8 +25,8 @@ export const CreateEntity: React.FC = () => {
           payload: newEntity,
         });
         editorState.dispatch({
-          type: 'SetEntity',
-          payload: newEntity,
+          type: 'SetEntityId',
+          payload: newEntity.id,
         });
       }}
     >

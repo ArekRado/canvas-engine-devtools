@@ -1,9 +1,4 @@
-import {
-  getEntity,
-  Entity,
-  State,
-  generateEntity,
-} from '@arekrado/canvas-engine';
+import { getEntity, Entity, State } from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
 import { ChevronDown, ChevronRight } from 'react-feather';
 import { AppContext } from '../context/app';
@@ -17,12 +12,15 @@ type Branch = {
 
 type GenerateTree = (state: State, entity?: Entity) => Branch[];
 export const generateTree: GenerateTree = (state, entity) =>
-  state.entity
+  Object.values(state.entity)
     .filter((t) => t.parentId === entity?.id)
     .map((t) => {
-      const tEntity =
-        getEntity({ state, entityId: t.id }) || generateEntity('-');
-        
+      const tEntity = getEntity({ state, entityId: t.id });
+
+      if (!tEntity) {
+        throw new Error(`Entity ${t.id} doesn't exist`);
+      }
+
       return {
         entity: tEntity,
         children: generateTree(state, tEntity),
@@ -79,9 +77,10 @@ const EntityButton: React.FC<EntityButtonProps> = ({
               payload: entity.id,
             })
           }
-          className="text-left flex-1"
+          className="text-left flex-1 p-0"
         >
-          {entity.name}
+          {/* firefox doesn't support button drag */}
+          <div className='w-full h-full'>{entity.name}</div>
         </Button>
       </div>
 
@@ -126,19 +125,13 @@ export const EntityList: React.FC = () => {
     setOverEntity(null);
 
     if (dragedEntity && dragedEntity.id !== entity.id) {
-      const entityToEdit = getEntity({
-        state: appState,
-        entityId: entity.id,
+      appState.dispatch({
+        type: 'SetEntity',
+        payload: {
+          ...dragedEntity,
+          parentId: entity.id,
+        },
       });
-
-      entityToEdit &&
-        appState.dispatch({
-          type: 'SetEntity',
-          payload: {
-            ...entityToEdit,
-            parentId: entity.id,
-          },
-        });
     }
   };
 

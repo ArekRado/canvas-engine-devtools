@@ -33,7 +33,7 @@ export const Select: React.FC<SelectProps> = ({
       </label>
     )}
     <select
-      className={`text-black w-full focus:outline-lightblue ${inputClassName}`}
+      className={`w-full focus:outline-lightblue text-white bg-gray-700 px-1 ${inputClassName}`}
       onChange={onChange}
       value={value}
       id={id}
