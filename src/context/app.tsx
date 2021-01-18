@@ -12,7 +12,7 @@ import {
 import { createContext, Dispatch, Reducer } from 'react';
 import { mutableState, registerDebugSystem } from '../debug';
 import { Action } from '../type';
-import { eventBus } from '../util/eventBus';
+import { eventBusDispatch } from '../util/eventBus';
 
 export namespace AppAction {
   export type SetState = Action<'SetState', State>;
@@ -126,7 +126,7 @@ export const reducer: Reducer<State, AppActions> = (state, action) => {
 
   !mutableState.isPlaying &&
     newState &&
-    eventBus.dispatch('setGameState', newState);
+    eventBusDispatch('setGameState', newState);
 
   return newState || initialState;
 };

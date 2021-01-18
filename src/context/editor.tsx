@@ -3,12 +3,13 @@ import {
   Entity,
   Guid,
   initialState as canvasEngineInitialState,
+  State,
 } from '@arekrado/canvas-engine';
 import { Component } from '@arekrado/canvas-engine';
 import { createContext, Dispatch, Reducer } from 'react';
 import { mutableState } from '../debug';
 import { Action } from '../type';
-import { eventBus } from '../util/eventBus';
+import { eventBusDispatch } from '../util/eventBus';
 
 export type RegisterComponentPayload<Data> = {
   name: string;
@@ -17,9 +18,14 @@ export type RegisterComponentPayload<Data> = {
   animatedProperties: { path: string; type: string }[];
 };
 
+export type SetIsPlayingPayload = {
+  isPlaying: boolean;
+  state: State;
+};
+
 export namespace EditorAction {
   export type SetEntityId = Action<'SetEntityId', Guid>;
-  export type SetIsPlaying = Action<'SetIsPlaying', boolean>;
+  export type SetIsPlaying = Action<'SetIsPlaying', SetIsPlayingPayload>;
   export type RegisterComponent = Action<
     'RegisterComponent',
     RegisterComponentPayload<any>
@@ -54,16 +60,16 @@ export const reducer: Reducer<EditorState, EditorActions> = (state, action) => {
         selectedEntityId: action.payload,
       };
     case 'SetIsPlaying':
-      eventBus.dispatch('setGameState', {
-        ...state,
+      eventBusDispatch<State>('setGameState', {
+        ...action.payload.state,
         time: canvasEngineInitialState.time,
       });
 
-      mutableState.isPlaying = action.payload;
+      mutableState.isPlaying = action.payload.isPlaying;
 
       return {
         ...state,
-        isPlaying: action.payload,
+        isPlaying: action.payload.isPlaying,
       };
     case 'RegisterComponent':
       const componentName = action.payload.name;

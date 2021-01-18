@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { Pause, Play } from 'react-feather';
+import { AppContext } from '../context/app';
 import { EditorContext } from '../context/editor';
 import { Button } from './common/Button';
 
 export const StartStop: React.FC = () => {
+  const appState = useContext(AppContext);
   const editorState = useContext(EditorContext);
 
   return (
@@ -12,15 +14,14 @@ export const StartStop: React.FC = () => {
       onClick={() =>
         editorState.dispatch({
           type: 'SetIsPlaying',
-          payload: !editorState.isPlaying,
+          payload: {
+            state: appState,
+            isPlaying: !editorState.isPlaying,
+          },
         })
       }
     >
-      {editorState.isPlaying ? (
-        <Pause size={24} />
-      ) : (
-        <Play size={24} />
-      )}
+      {editorState.isPlaying ? <Pause size={24} /> : <Play size={24} />}
     </Button>
   );
 };

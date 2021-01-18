@@ -93,7 +93,11 @@ const move: Move = ({ state, entityId, player }) => {
   let v1 = state
 
   if (entity) {
-    if (state.keyboard['w']?.isDown) {
+    if (
+      state.keyboard['w']?.isDown &&
+      player.isJumping === false &&
+      magnitude(player.fallVelocity) === 0
+    ) {
       v1 = setComponent<Player>('player', {
         state: v1,
         data: {

@@ -26,7 +26,7 @@ import { Save } from 'react-feather';
 import { EntityDetails } from './EntityDetails';
 import { ConfirmModal } from './modal/ConfirmModal';
 import { AnimationModal } from './modal/AnimationModal';
-import { eventBus } from '../util/eventBus';
+import { eventBusOn, eventBusRemove } from '../util/eventBus';
 import { State } from '@arekrado/canvas-engine';
 import { MoreStateDetailsModal } from './modal/MoreStateDetailsModal';
 
@@ -77,16 +77,16 @@ export const App: React.FC = () => {
   // }, []);
 
   useEffect(() => {
-    const callback = (state: State) => {
-      appDispatch({
+    const callback = (state?: State) => {
+      state && appDispatch({
         type: 'SetState',
         payload: state,
       });
     };
-    eventBus.on('setEditorState', callback);
+    eventBusOn('setEditorState', callback);
 
     return () => {
-      eventBus.remove('setEditorState', callback);
+      eventBusRemove('setEditorState', callback);
     };
   }, []);
 

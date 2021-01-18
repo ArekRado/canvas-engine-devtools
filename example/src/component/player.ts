@@ -5,6 +5,10 @@ export type Player = Component<{
   jumpVelocity: Vector2D
   fallVelocity: Vector2D
   isJumping: boolean
+
+  leftCollideId: Guid
+  rightCollideId: Guid
+  topCollideId: Guid
 }>
 
 export const defaultPlayer: GetDefaultComponent<Player> = ({
@@ -16,5 +20,8 @@ export const defaultPlayer: GetDefaultComponent<Player> = ({
   jumpVelocity: vectorZero(),
   fallVelocity: vectorZero(),
   isJumping: false,
+  leftCollideId: '',
+  rightCollideId: '',
+  topCollideId: '',
   ...data,
 })
