@@ -8,6 +8,8 @@ import {
   CollideCircle,
   Sprite,
   Animation,
+  Camera,
+  MouseInteraction,
 } from '@arekrado/canvas-engine';
 import { createContext, Dispatch, Reducer } from 'react';
 import { mutableState, registerDebugSystem } from '../debug';
@@ -41,7 +43,11 @@ export namespace AppAction {
   >;
   export type SetMouseInteractionComponent = Action<
     'SetMouseInteractionComponent',
-    Animation
+    MouseInteraction
+  >;
+  export type SetCameraComponent = Action<
+    'SetCameraComponent',
+    Camera
   >;
 }
 
@@ -53,7 +59,8 @@ type AppActions =
   | AppAction.SetCollideCircleComponent
   | AppAction.SetCollideBoxComponent
   | AppAction.SetAnimationComponent
-  | AppAction.SetMouseInteractionComponent;
+  | AppAction.SetMouseInteractionComponent
+  | AppAction.SetCameraComponent;
 
 type AppState = State & {
   dispatch: Dispatch<AppActions>;
@@ -104,6 +111,12 @@ export const reducer: Reducer<State, AppActions> = (state, action) => {
       break;
     case 'SetMouseInteractionComponent':
       newState = setComponent('mouseInteraction', {
+        state,
+        data: action.payload,
+      });
+      break;
+    case 'SetCameraComponent':
+      newState = setComponent('camera', {
         state,
         data: action.payload,
       });

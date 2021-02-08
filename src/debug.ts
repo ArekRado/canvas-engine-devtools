@@ -4,6 +4,7 @@ import {
   jsonToState,
   State,
   stateToJson,
+  systemPriority,
 } from '@arekrado/canvas-engine';
 import { eventBusDispatch, eventBusOn } from './util/eventBus';
 
@@ -38,6 +39,7 @@ eventBusOn('setGameState', (state: State) => {
 export const registerDebugSystem = (state: State): State =>
   createGlobalSystem({
     name: 'debug',
+    priority: systemPriority.time + 1,
     state,
     tick: ({ state }) => {
       if (!state.isDebugInitialized) {

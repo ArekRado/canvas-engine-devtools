@@ -12,7 +12,6 @@ import { Component, createSystem, State } from '@arekrado/canvas-engine'
 import {
   add,
   magnitude,
-  normalize,
   scale,
   sub,
   vector,
@@ -28,7 +27,7 @@ type JumpGravity = (params: {
   player: Player
 }) => State
 const jumpGravity: JumpGravity = ({ state, entity, player }) => {
-  const playerPosition = sub(
+  const playerPosition = add(
     entity.position,
     scale(state.time.delta / 1000, player.jumpVelocity),
   )
@@ -61,7 +60,7 @@ type FallGravity = (params: {
   player: Player
 }) => State
 const fallGravity: FallGravity = ({ state, entity, player }) => {
-  const playerPosition = add(
+  const playerPosition = sub(
     entity.position,
     scale(state.time.delta / 1000, player.fallVelocity),
   )
@@ -87,13 +86,30 @@ const fallGravity: FallGravity = ({ state, entity, player }) => {
   return v2
 }
 
-type Move = (params: { state: State; entityId: Guid; player: Player }) => State
-const move: Move = ({ state, entityId, player }) => {
+type Move = (params: {
+  state: State
+  entityId: Guid
+  player: Player
+  leftCollide: CollideBox
+  rightCollide: CollideBox
+  topCollide: CollideBox
+}) => State
+const move: Move = ({
+  state,
+  entityId,
+  player,
+  leftCollide,
+  rightCollide,
+  topCollide,
+}) => {
   const entity = getEntity({ state, entityId })
+  const sprite = getComponent(componentName.sprite, { state, entityId })
   let v1 = state
 
-  if (entity) {
+  if (entity && sprite) {
+    // Jump
     if (
+      topCollide.collisions.length === 0 &&
       state.keyboard['w']?.isDown &&
       player.isJumping === false &&
       magnitude(player.fallVelocity) === 0
@@ -109,7 +125,11 @@ const move: Move = ({ state, entityId, player }) => {
       })
     }
 
-    if (state.keyboard['d']?.isPressed) {
+    // Move right
+    if (
+      rightCollide.collisions.length === 0 &&
+      state.keyboard['d']?.isPressed
+    ) {
       v1 = setEntity({
         state: v1,
         entity: {
@@ -117,14 +137,33 @@ const move: Move = ({ state, entityId, player }) => {
           position: add(entity.position, vector(3, 0)),
         },
       })
+
+      v1 = setComponent(componentName.sprite, {
+        state: v1,
+        data: {
+          ...sprite,
+          anchor: vector(0, 1),
+          scale: vector(3, 3),
+        },
+      })
     }
 
-    if (state.keyboard['a']?.isPressed) {
+    // Move left
+    if (leftCollide.collisions.length === 0 && state.keyboard['a']?.isPressed) {
       v1 = setEntity({
         state: v1,
         entity: {
           ...entity,
           position: add(entity.position, vector(-3, 0)),
+        },
+      })
+
+      v1 = setComponent(componentName.sprite, {
+        state: v1,
+        data: {
+          ...sprite,
+          anchor: vector(0.67, 1),
+          scale: vector(-3, 3),
         },
       })
     }
@@ -138,8 +177,23 @@ export const playerSystem = (state: State) =>
     name: 'player',
     state,
     tick: ({ state, component }) => {
-      const collideBox = getComponent<CollideBox>(componentName.collideBox, {
-        entityId: component.entityId,
+      const bottomCollide = getComponent<CollideBox>(componentName.collideBox, {
+        entityId: component.bottomCollideId,
+        state,
+      })
+
+      const leftCollide = getComponent<CollideBox>(componentName.collideBox, {
+        entityId: component.leftCollideId,
+        state,
+      })
+
+      const rightCollide = getComponent<CollideBox>(componentName.collideBox, {
+        entityId: component.rightCollideId,
+        state,
+      })
+
+      const topCollide = getComponent<CollideBox>(componentName.collideBox, {
+        entityId: component.topCollideId,
         state,
       })
 
@@ -148,7 +202,13 @@ export const playerSystem = (state: State) =>
         state,
       })
 
-      if (collideBox && entity) {
+      if (
+        bottomCollide &&
+        entity &&
+        leftCollide &&
+        rightCollide &&
+        topCollide
+      ) {
         let v1 = state
 
         if (component.isJumping) {
@@ -157,7 +217,7 @@ export const playerSystem = (state: State) =>
             state: v1,
             player: component,
           })
-        } else if (collideBox.collisions.length === 0) {
+        } else if (bottomCollide.collisions.length === 0) {
           v1 = fallGravity({
             entity,
             state: v1,
@@ -167,7 +227,7 @@ export const playerSystem = (state: State) =>
 
         if (
           component.jumpVelocity[1] <= 0 &&
-          collideBox.collisions.length > 0
+          bottomCollide.collisions.length > 0
         ) {
           v1 = setComponent<Player>('player', {
             state: v1,
@@ -184,6 +244,9 @@ export const playerSystem = (state: State) =>
           entityId: entity.id,
           state: v1,
           player: component,
+          leftCollide,
+          rightCollide,
+          topCollide,
         })
 
         return v1

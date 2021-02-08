@@ -28,7 +28,6 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
   const entity = {
     ...(params.entity || generateEntity('player')),
     position: params.position,
-    scale: vector(3, 3),
   }
 
   const leftCollideEntity = generateEntity('leftCollide', {
@@ -37,28 +36,26 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
   const rightCollideEntity = generateEntity('rightCollide', {
     parentId: entity.id,
   })
-  const topCollideEntity = generateEntity('topCollide', { parentId: entity.id })
+  const topCollideEntity = generateEntity('topCollide', {
+    parentId: entity.id,
+  })
+  const bottomCollideEntity = generateEntity('bottomCollide', {
+    parentId: entity.id,
+  })
 
   const v1 = setEntity({ state: params.state, entity })
 
   const v2 = setEntity({ state: v1, entity: leftCollideEntity })
   const v3 = setEntity({ state: v2, entity: rightCollideEntity })
   const v4 = setEntity({ state: v3, entity: topCollideEntity })
+  const v5 = setEntity({ state: v4, entity: bottomCollideEntity })
 
-  const v5 = setComponent<Sprite>(componentName.sprite, {
-    state: v4,
+  const v6 = setComponent<Sprite>(componentName.sprite, {
+    state: v5,
     data: defaultData.sprite({
       entityId: entity.id,
       src: playerImg,
-    }),
-  })
-
-  const v6 = setComponent<CollideBox>(componentName.collideBox, {
-    state: v5,
-    data: defaultData.collideBox({
-      entityId: entity.id,
-      size: vector(24, 0),
-      position: vector(36, 96),
+      scale: vector(3, 3),
     }),
   })
 
@@ -69,6 +66,7 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
       leftCollideId: leftCollideEntity.id,
       rightCollideId: rightCollideEntity.id,
       topCollideId: topCollideEntity.id,
+      bottomCollideId: bottomCollideEntity.id,
     }),
   })
 
@@ -80,29 +78,38 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
   const v9 = setComponent<CollideBox>(componentName.collideBox, {
     state: v8,
     data: defaultData.collideBox({
-      entityId: leftCollideEntity.id,
-      size: vector(24, 0),
-      position: vector(36, 96),
+      entityId: bottomCollideEntity.id,
+      size: vector(26, 0),
+      position: vector(34, -3),
     }),
   })
 
   const v10 = setComponent<CollideBox>(componentName.collideBox, {
     state: v9,
     data: defaultData.collideBox({
-      entityId: rightCollideEntity.id,
-      size: vector(24, 0),
-      position: vector(36, 96),
+      entityId: leftCollideEntity.id,
+      size: vector(0, 130),
+      position: vector(29, 10),
     }),
   })
 
   const v11 = setComponent<CollideBox>(componentName.collideBox, {
     state: v10,
     data: defaultData.collideBox({
-      entityId: topCollideEntity.id,
-      size: vector(24, 0),
-      position: vector(36, 96),
+      entityId: rightCollideEntity.id,
+      size: vector(0, 130),
+      position: vector(66, 10),
     }),
   })
 
-  return v11
+  const v12 = setComponent<CollideBox>(componentName.collideBox, {
+    state: v11,
+    data: defaultData.collideBox({
+      entityId: topCollideEntity.id,
+      size: vector(24, 0),
+      position: vector(34, 75),
+    }),
+  })
+
+  return v12
 }

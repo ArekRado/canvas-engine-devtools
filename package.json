@@ -18,7 +18,8 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "i:local":"yalc add @arekrado/canvas-engine@0.0.39"
   },
   "peerDependencies": {
     "react": ">=16"

@@ -94,6 +94,6 @@ export const walkAnimation = (entityId: Guid) =>
     property: {
       path: 'src',
       component: 'sprite',
-      entity: { id: entityId } as Entity,
+      entityId,
     },
   })

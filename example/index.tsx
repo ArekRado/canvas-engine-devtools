@@ -27,6 +27,7 @@ import tileBottomRight from './src/asset/tile-bottom-right.png'
 
 import { playerBlueprint } from './src/blueprint/player'
 import { tileBlueprint } from './src/blueprint/tile'
+import { gameConfigurationBlueprint } from './src/blueprint/gameConfiguration'
 
 const gameLogic = (state: State) => {
   const newState = runOneFrame({ state })
@@ -35,43 +36,57 @@ const gameLogic = (state: State) => {
 }
 
 const initializeScene = (state: State): State => {
-  const v1 = playerBlueprint({ state: state, position: vector(300, 300) })
+  const v1 = gameConfigurationBlueprint({
+    state,
+  })
+  const v2 = playerBlueprint({ state: v1, position: vector(300, 300) })
 
-  const v2 = tileBlueprint({
-    state: v1,
-    position: vector(300, 400),
-    src: tileTop,
-  })
-  const v3 = tileBlueprint({
-    state: v2,
-    position: vector(348, 400),
-    src: tileTop,
-  })
-  const v4 = tileBlueprint({
-    state: v3,
-    position: vector(396, 400),
-    src: tileTop,
-  })
-  const v5 = tileBlueprint({
-    state: v4,
-    position: vector(444, 400),
-    src: tileTop,
-  })
-  const v6 = tileBlueprint({
-    state: v5,
-    position: vector(444, 352),
-    src: tileTop,
-  })
-  const v7 = tileBlueprint({
-    state: v6,
-    position: vector(492, 352),
-    src: tileTop,
-  })
-  const v8 = tileBlueprint({
-    state: v7,
-    position: vector(540, 352),
-    src: tileTop,
-  })
+  const v3 = [
+    {
+      position: vector(300, 200),
+      src: tileTop,
+    },
+    {
+      position: vector(348, 200),
+      src: tileTop,
+    },
+    {
+      position: vector(396, 200),
+      src: tileTop,
+    },
+    {
+      position: vector(444, 200),
+      src: tileTop,
+    },
+    {
+      position: vector(444, 248),
+      src: tileTop,
+    },
+    {
+      position: vector(492, 248),
+      src: tileTop,
+    },
+    {
+      position: vector(540, 248),
+      src: tileTop,
+    },
+    {
+      position: vector(540, 296),
+      src: tileTop,
+    },
+    {
+      position: vector(540, 344),
+      src: tileTop,
+    },
+  ].reduce(
+    (acc, element) =>
+      tileBlueprint({
+        state: acc,
+        position: element.position,
+        src: element.src,
+      }),
+    v2,
+  )
 
   // const v2 = playerBlueprint({
   //   state: v1,
@@ -79,7 +94,7 @@ const initializeScene = (state: State): State => {
   //   target: vector(400, 4000),
   // })
 
-  return v8
+  return v3
 }
 
 const initializeAssets = (state: State): State =>

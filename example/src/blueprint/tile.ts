@@ -20,7 +20,6 @@ export const tileBlueprint: TileBlueprint = (params) => {
   const entity = {
     ...generateEntity('tile'),
     position: params.position,
-    scale: vector(3, 3),
   }
   const v1 = setEntity({ state: params.state, entity })
 
@@ -29,6 +28,7 @@ export const tileBlueprint: TileBlueprint = (params) => {
     data: defaultData.sprite({
       entityId: entity.id,
       src: params.src,
+      scale: vector(3, 3),
     }),
   })
 

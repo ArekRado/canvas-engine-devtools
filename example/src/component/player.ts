@@ -9,6 +9,7 @@ export type Player = Component<{
   leftCollideId: Guid
   rightCollideId: Guid
   topCollideId: Guid
+  bottomCollideId: Guid
 }>
 
 export const defaultPlayer: GetDefaultComponent<Player> = ({
@@ -23,5 +24,6 @@ export const defaultPlayer: GetDefaultComponent<Player> = ({
   leftCollideId: '',
   rightCollideId: '',
   topCollideId: '',
+  bottomCollideId: '',
   ...data,
 })

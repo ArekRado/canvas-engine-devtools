@@ -1,4 +1,5 @@
 import {
+  componentName,
   defaultData,
   Dictionary,
   generateEntity,
@@ -20,14 +21,12 @@ const getEntityComponents = (
   appState: State,
   selectedEntityId?: Guid
 ): EntityComponent[] =>
-  Object.entries(appState.component).map(
-    ([componentName, components]) => ({
-      name: componentName,
-      list: Object.values<Component<Dictionary<any>>>(components).filter(
-        (component) => component.entityId === selectedEntityId
-      ),
-    })
-  );
+  Object.entries(appState.component).map(([componentName, components]) => ({
+    name: componentName,
+    list: Object.values<Component<Dictionary<any>>>(components).filter(
+      (component) => component.entityId === selectedEntityId
+    ),
+  }));
 
 export const ComponentList: React.FC = () => {
   const editorState = useContext(EditorContext);
@@ -63,7 +62,7 @@ export const ComponentList: React.FC = () => {
       editorState.dispatch({
         type: 'RegisterComponent',
         payload: {
-          name: 'sprite',
+          name: componentName.sprite,
           render: component.Sprite,
           defaultData: defaultData.sprite({ entityId: generateEntity('').id }),
           animatedProperties: [
@@ -82,7 +81,7 @@ export const ComponentList: React.FC = () => {
       editorState.dispatch({
         type: 'RegisterComponent',
         payload: {
-          name: 'animation',
+          name: componentName.animation,
           render: component.Animation,
           defaultData: defaultData.animation({
             entityId: generateEntity('').id,
@@ -103,7 +102,7 @@ export const ComponentList: React.FC = () => {
       editorState.dispatch({
         type: 'RegisterComponent',
         payload: {
-          name: 'mouseInteraction',
+          name: componentName.mouseInteraction,
           render: component.MouseInteraction,
           defaultData: defaultData.mouseInteraction({
             entityId: generateEntity('').id,
@@ -117,7 +116,7 @@ export const ComponentList: React.FC = () => {
       editorState.dispatch({
         type: 'RegisterComponent',
         payload: {
-          name: 'collideBox',
+          name: componentName.collideBox,
           render: component.CollideBox,
           defaultData: defaultData.collideBox({
             entityId: generateEntity('').id,
@@ -134,7 +133,7 @@ export const ComponentList: React.FC = () => {
       editorState.dispatch({
         type: 'RegisterComponent',
         payload: {
-          name: 'collideCircle',
+          name: componentName.collideCircle,
           render: component.CollideCircle,
           defaultData: defaultData.collideCircle({
             entityId: generateEntity('').id,
@@ -142,6 +141,24 @@ export const ComponentList: React.FC = () => {
           animatedProperties: [
             { path: 'radius', type: 'number' },
             { path: 'position', type: 'Vector2D' },
+          ],
+        },
+      });
+    });
+
+    import('./component/Camera').then((component) => {
+      editorState.dispatch({
+        type: 'RegisterComponent',
+        payload: {
+          name: componentName.camera,
+          render: component.Camera,
+          defaultData: defaultData.collideCircle({
+            entityId: generateEntity('').id,
+          }),
+          animatedProperties: [
+            { path: 'position', type: 'Vector2D' },
+            { path: 'zoom', type: 'number' },
+            { path: 'pivot', type: 'Vector2D' },
           ],
         },
       });
