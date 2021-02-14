@@ -47,7 +47,11 @@ export const registerDebugSystem = (state: State): State =>
         return {
           ...state,
           isDebugInitialized: true,
-          time: initialState.time,
+          time: {
+            ...initialState.time,
+            timeNow: performance.now(),
+            previousTimeNow: performance.now(),
+          },
         };
       } else {
         if (mutableState.isPlaying) {
@@ -57,7 +61,11 @@ export const registerDebugSystem = (state: State): State =>
           return {
             ...mutableState.state,
             isDebugInitialized: true,
-            time: initialState.time,
+            time: {
+              ...initialState.time,
+              timeNow: performance.now(),
+              previousTimeNow: performance.now(),
+            },
           };
         }
       }
