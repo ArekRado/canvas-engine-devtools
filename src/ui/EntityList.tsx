@@ -77,10 +77,12 @@ const EntityButton: React.FC<EntityButtonProps> = ({
               payload: entity.id,
             })
           }
-          className="text-left flex-1 p-0"
+          className={`text-left flex-1 p-0 ${
+            editorState?.hoveredEntityId === entity.id ? 'border border-white' : ''
+          }`}
         >
           {/* firefox doesn't support button drag */}
-          <div className='w-full h-full'>{entity.name}</div>
+          <div className="w-full h-full">{entity.name}</div>
         </Button>
       </div>
 

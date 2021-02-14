@@ -42,57 +42,29 @@ const initializeScene = (state: State): State => {
   const v2 = playerBlueprint({ state: v1, position: vector(300, 300) })
 
   const v3 = [
-    {
-      position: vector(300, 200),
-      src: tileTop,
-    },
-    {
-      position: vector(348, 200),
-      src: tileTop,
-    },
-    {
-      position: vector(396, 200),
-      src: tileTop,
-    },
-    {
-      position: vector(444, 200),
-      src: tileTop,
-    },
-    {
-      position: vector(444, 248),
-      src: tileTop,
-    },
-    {
-      position: vector(492, 248),
-      src: tileTop,
-    },
-    {
-      position: vector(540, 248),
-      src: tileTop,
-    },
-    {
-      position: vector(540, 296),
-      src: tileTop,
-    },
-    {
-      position: vector(540, 344),
-      src: tileTop,
-    },
+    ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
+    ['1', '0', '0', '0', '0', '0', '0', '0', '0', '1'],
+    ['1', '0', '0', '0', '1', '1', '0', '0', '0', '1'],
+    ['1', '0', '0', '0', '0', '0', '0', '0', '0', '1'],
+    ['1', '0', '0', '0', '0', '0', '0', '0', '1', '1'],
+    ['1', '0', '0', '1', '1', '1', '1', '0', '1', '0'],
+    ['1', '1', '1', '1', '0', '0', '1', '1', '1', '0'],
   ].reduce(
-    (acc, element) =>
-      tileBlueprint({
-        state: acc,
-        position: element.position,
-        src: element.src,
-      }),
+    (acc1, row, i) =>
+      row.reduce((rowAcc, img, j) => {
+        return img === '1'
+          ? tileBlueprint({
+              state: rowAcc,
+              position: vector(j * 48, -i * 48 + row.length * 48),
+              src: tileTop,
+            })
+          : rowAcc
+      }, acc1),
     v2,
   )
-
-  // const v2 = playerBlueprint({
-  //   state: v1,
-  //   position: vectorZero(),
-  //   target: vector(400, 4000),
-  // })
 
   return v3
 }

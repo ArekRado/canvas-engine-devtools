@@ -1,6 +1,5 @@
 import {
   Dictionary,
-  Entity,
   Guid,
   initialState as canvasEngineInitialState,
   State,
@@ -24,8 +23,12 @@ export type SetIsPlayingPayload = {
 };
 
 export namespace EditorAction {
-  export type SetEntityId = Action<'SetEntityId', Guid>;
+  export type SetEntityId = Action<'SetEntityId', Guid | undefined>;
   export type SetIsPlaying = Action<'SetIsPlaying', SetIsPlayingPayload>;
+  export type SetHoveredEntityId = Action<
+    'SetHoveredEntityId',
+    Guid | undefined
+  >;
   export type RegisterComponent = Action<
     'RegisterComponent',
     RegisterComponentPayload<any>
@@ -35,10 +38,12 @@ export namespace EditorAction {
 type EditorActions =
   | EditorAction.SetEntityId
   | EditorAction.SetIsPlaying
+  | EditorAction.SetHoveredEntityId
   | EditorAction.RegisterComponent;
 
 type EditorState = {
   selectedEntityId?: Guid;
+  hoveredEntityId?: Guid;
   isPlaying: boolean;
   components: Dictionary<RegisterComponentPayload<any>>;
   dispatch: Dispatch<EditorActions>;
@@ -58,6 +63,11 @@ export const reducer: Reducer<EditorState, EditorActions> = (state, action) => {
       return {
         ...state,
         selectedEntityId: action.payload,
+      };
+    case 'SetHoveredEntityId':
+      return {
+        ...state,
+        hoveredEntityId: action.payload,
       };
     case 'SetIsPlaying':
       eventBusDispatch<State>('setGameState', {

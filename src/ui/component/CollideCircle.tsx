@@ -1,6 +1,10 @@
-import { CollideCircle as CollideCircleType } from '@arekrado/canvas-engine';
+import {
+  CollideCircle as CollideCircleType,
+  getEntity,
+} from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
 import { AppContext } from '../../context/app';
+import { EntityButton } from '../common/EntityButton';
 import { Input } from '../common/Input';
 import { Vector } from '../common/Vector';
 
@@ -45,18 +49,29 @@ export const CollideCircle: React.FC<CollideCircleProps> = ({ component }) => {
         onChange={(e) => setCollideCircleData({ position: e })}
       />
 
-      {component.collisions.length > 0 && <div> Collisions </div>}
-      {component.collisions.map((collisionType) => {
-        if (collisionType.type === 'box') {
-          return `Box - ${collisionType.entityId}`;
-        }
+      {component.collisions.length > 0 ? (
+        <>
+          <div> Collisions </div>
+          <ul>
+            {component.collisions.map((collisionType) => {
+              const entity = getEntity({
+                entityId: collisionType.entityId,
+                state: appState,
+              });
 
-        if (collisionType.type === 'circle') {
-          return `Circle - ${collisionType.entityId}`;
-        }
+              if (entity) {
+                return (
+                  <li key={entity.id}>
+                    <EntityButton entity={entity} />
+                  </li>
+                );
+              }
 
-        return '-';
-      })}
+              return null;
+            })}
+          </ul>
+        </>
+      ) : null}
     </div>
   );
 };

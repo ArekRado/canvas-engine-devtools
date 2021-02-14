@@ -1,7 +1,10 @@
-
-import { CollideBox as CollideBoxType } from '@arekrado/canvas-engine';
+import {
+  CollideBox as CollideBoxType,
+  getEntity,
+} from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
 import { AppContext } from '../../context/app';
+import { EntityButton } from '../common/EntityButton';
 import { Vector } from '../common/Vector';
 
 type CollideBoxProps = {
@@ -21,7 +24,7 @@ export const CollideBox: React.FC<CollideBoxProps> = ({ component }) => {
 
   return (
     <div className="flex flex-col mt-3">
-     <Vector
+      <Vector
         label="size"
         name="size"
         containerClassName="grid grid-cols-12 my-1"
@@ -43,18 +46,29 @@ export const CollideBox: React.FC<CollideBoxProps> = ({ component }) => {
         onChange={(e) => setCollideBoxData({ position: e })}
       />
 
-      {component.collisions.length > 0 && <div> Collisions </div>}
-      {component.collisions.map((collisionType) => {
-        if (collisionType.type === 'box') {
-          return `Box - ${collisionType.entityId}`;
-        }
+      {component.collisions.length > 0 ? (
+        <>
+          <div> Collisions </div>
+          <ul>
+            {component.collisions.map((collisionType) => {
+              const entity = getEntity({
+                entityId: collisionType.entityId,
+                state: appState,
+              });
 
-        if (collisionType.type === 'circle') {
-          return `Circle - ${collisionType.entityId}`;
-        }
+              if (entity) {
+                return (
+                  <li key={entity.id}>
+                    <EntityButton entity={entity} />
+                  </li>
+                );
+              }
 
-        return '-';
-      })}
+              return null;
+            })}
+          </ul>
+        </>
+      ) : null}
     </div>
   );
 };

@@ -18,7 +18,7 @@ const getButtonSize = (size?: ButtonSize) => {
   }
 };
 
-type ButtonProps = {
+export type ButtonProps = {
   focused?: boolean;
   size?: ButtonSize;
   className?: string;
