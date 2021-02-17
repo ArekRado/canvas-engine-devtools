@@ -25,33 +25,45 @@ type JumpGravity = (params: {
   state: State
   entity: Entity
   player: Player
+  topCollide: CollideBox
 }) => State
-const jumpGravity: JumpGravity = ({ state, entity, player }) => {
-  const playerPosition = add(
-    entity.position,
-    scale(state.time.delta / 1000, player.jumpVelocity),
-  )
+const jumpGravity: JumpGravity = ({ state, entity, player, topCollide }) => {
+  if (topCollide.collisions.length > 0) {
+    return setComponent<Player>('player', {
+      state,
+      data: {
+        ...player,
+        isJumping: false,
+        jumpVelocity: vectorZero(),
+      },
+    })
+  } else {
+    const playerPosition = add(
+      entity.position,
+      scale(state.time.delta / 1000, player.jumpVelocity),
+    )
 
-  const jumpVelocity = sub(player.jumpVelocity, gravity)
+    const jumpVelocity = sub(player.jumpVelocity, gravity)
 
-  const v1 = setEntity({
-    state,
-    entity: {
-      ...entity,
-      position: playerPosition,
-    },
-  })
+    const v1 = setEntity({
+      state,
+      entity: {
+        ...entity,
+        position: playerPosition,
+      },
+    })
 
-  const v2 = setComponent<Player>('player', {
-    state: v1,
-    data: {
-      ...player,
-      isJumping: magnitude(jumpVelocity) > 0,
-      jumpVelocity,
-    },
-  })
+    const v2 = setComponent<Player>('player', {
+      state: v1,
+      data: {
+        ...player,
+        isJumping: magnitude(jumpVelocity) > 0,
+        jumpVelocity,
+      },
+    })
 
-  return v2
+    return v2
+  }
 }
 
 type FallGravity = (params: {
@@ -216,6 +228,7 @@ export const playerSystem = (state: State) =>
             entity,
             state: v1,
             player: component,
+            topCollide,
           })
         } else if (bottomCollide.collisions.length === 0) {
           v1 = fallGravity({

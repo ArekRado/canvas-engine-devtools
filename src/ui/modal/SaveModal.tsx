@@ -12,7 +12,7 @@ export const SaveModal: React.FC = () => {
       {({ close }) => (
         <div>
           <Button
-            onClick={(_) => {
+            onClick={() => {
               saveStateInLocalStorage(appState);
               close();
             }}

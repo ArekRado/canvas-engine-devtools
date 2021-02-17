@@ -1,5 +1,5 @@
-import { Entity } from '@arekrado/canvas-engine';
 import {
+  Entity,
   Animation,
   Animation as AnimationType,
   Keyframe,

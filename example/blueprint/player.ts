@@ -79,7 +79,7 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
     state: v8,
     data: defaultData.collideBox({
       entityId: bottomCollideEntity.id,
-      size: vector(26, 0),
+      size: vector(26, 1),
       position: vector(34, -3),
     }),
   })
@@ -88,8 +88,8 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
     state: v9,
     data: defaultData.collideBox({
       entityId: leftCollideEntity.id,
-      size: vector(0, 130),
-      position: vector(29, 10),
+      size: vector(1, 50),
+      position: vector(29, 20),
     }),
   })
 
@@ -97,8 +97,8 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
     state: v10,
     data: defaultData.collideBox({
       entityId: rightCollideEntity.id,
-      size: vector(0, 130),
-      position: vector(66, 10),
+      size: vector(1, 50),
+      position: vector(66, 20),
     }),
   })
 
@@ -106,8 +106,8 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
     state: v11,
     data: defaultData.collideBox({
       entityId: topCollideEntity.id,
-      size: vector(24, 0),
-      position: vector(34, 75),
+      size: vector(40, 1),
+      position: vector(28, 75),
     }),
   })
 

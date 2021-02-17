@@ -1,7 +1,7 @@
 import React, { FC, useContext } from 'react';
+import { Asset, Mouse, State, Time } from '@arekrado/canvas-engine';
 import { ModalWrapper } from './ModalWrapper';
 import { AppContext } from '../../context/app';
-import { Asset, Mouse, State, Time } from '@arekrado/canvas-engine';
 import { InlineInput } from '../common/InlineInput';
 import { InlineVector } from '../common/InlineVector';
 import { InlineCheckbox } from '../common/InlineCheckbox';

@@ -1,7 +1,8 @@
-import 'regenerator-runtime/runtime'
+// import 'regenerator-runtime/runtime'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { CanvasEngineDevtools, registerDebugSystem } from '../src/index'
+import '../src/styles.css'
 import {
   runOneFrame,
   State,
@@ -11,23 +12,23 @@ import {
 } from '@arekrado/canvas-engine'
 import { vector } from '@arekrado/vector-2d'
 
-import { playerSystem } from './src/system/player'
+import { playerSystem } from './system/player'
 
-import playerImg from './src/asset/player.png'
+import playerImg from './asset/player.png'
 
-import tileCenter from './src/asset/tile-center.png'
-import tileLeft from './src/asset/tile-left.png'
-import tileRight from './src/asset/tile-right.png'
-import tileTop from './src/asset/tile-top.png'
-import tileTopLeft from './src/asset/tile-top-left.png'
-import tileTopRight from './src/asset/tile-top-right.png'
-import tileBottom from './src/asset/tile-bottom.png'
-import tileBottomLeft from './src/asset/tile-bottom-left.png'
-import tileBottomRight from './src/asset/tile-bottom-right.png'
+import tileCenter from './asset/tile-center.png'
+import tileLeft from './asset/tile-left.png'
+import tileRight from './asset/tile-right.png'
+import tileTop from './asset/tile-top.png'
+import tileTopLeft from './asset/tile-top-left.png'
+import tileTopRight from './asset/tile-top-right.png'
+import tileBottom from './asset/tile-bottom.png'
+import tileBottomLeft from './asset/tile-bottom-left.png'
+import tileBottomRight from './asset/tile-bottom-right.png'
 
-import { playerBlueprint } from './src/blueprint/player'
-import { tileBlueprint } from './src/blueprint/tile'
-import { gameConfigurationBlueprint } from './src/blueprint/gameConfiguration'
+import { playerBlueprint } from './blueprint/player'
+import { tileBlueprint } from './blueprint/tile'
+import { gameConfigurationBlueprint } from './blueprint/gameConfiguration'
 
 const gameLogic = (state: State) => {
   const newState = runOneFrame({ state })
@@ -45,9 +46,9 @@ const initializeScene = (state: State): State => {
     ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
     ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
     ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
-    ['1', '0', '0', '0', '0', '0', '0', '0', '0', '1'],
-    ['1', '0', '0', '0', '1', '1', '0', '0', '0', '1'],
+    ['1', '1', '1', '0', '0', '0', '0', '0', '0', '0'],
+    ['1', '1', '0', '0', '0', '0', '0', '0', '0', '1'],
+    ['1', '1', '0', '0', '1', '1', '0', '0', '0', '1'],
     ['1', '0', '0', '0', '0', '0', '0', '0', '0', '1'],
     ['1', '0', '0', '0', '0', '0', '0', '0', '1', '1'],
     ['1', '0', '0', '1', '1', '1', '1', '0', '1', '0'],
