@@ -32,17 +32,20 @@ import { gameConfigurationBlueprint } from './blueprint/gameConfiguration'
 
 const gameLogic = (state: State) => {
   const newState = runOneFrame({ state })
+  // requestAnimationFrame(() => gameLogic(newState))
 
-  requestAnimationFrame(() => gameLogic(newState))
+  setTimeout(() => {
+    requestAnimationFrame(() => gameLogic(newState))
+  }, 500);
 }
 
 const initializeScene = (state: State): State => {
-  const v1 = gameConfigurationBlueprint({
+  let newState = gameConfigurationBlueprint({
     state,
   })
-  const v2 = playerBlueprint({ state: v1, position: vector(300, 300) })
+  newState = playerBlueprint({ state: newState, position: vector(300, 300) })
 
-  const v3 = [
+  newState = [
     ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
     ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
     ['1', '0', '0', '0', '0', '0', '0', '0', '0', '0'],
@@ -64,10 +67,10 @@ const initializeScene = (state: State): State => {
             })
           : rowAcc
       }, acc1),
-    v2,
+      newState,
   )
 
-  return v3
+  return newState
 }
 
 const initializeAssets = (state: State): State =>
@@ -95,15 +98,15 @@ const initializeAssets = (state: State): State =>
 initializeEngine().then(() => {
   console.info('Graphics source: https://ipixl.itch.io/')
 
-  const v1 = initialState
+  let state = initialState
 
-  const v2 = initializeScene(v1)
-  const v3 = initializeAssets(v2)
+  state = initializeScene(state)
+  state = initializeAssets(state)
 
-  const v4 = playerSystem(v3)
-  const v5 = registerDebugSystem(v4)
+  state = playerSystem(state)
+  state = registerDebugSystem(state)
 
-  gameLogic(v5)
+  gameLogic(state)
 })
 
 ReactDOM.render(

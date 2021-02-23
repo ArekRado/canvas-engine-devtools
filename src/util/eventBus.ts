@@ -1,4 +1,4 @@
-type EventBus = 'setEditorState' | 'setGameState';
+type EventBus = 'setEditorState' | 'setGameState' | 'setIsUIInitialized';
 
 export const eventBusOn = <Data>(event: EventBus, callback: (data: Data) => void) => {
   document.addEventListener(event, (e: any) => callback(e.detail));

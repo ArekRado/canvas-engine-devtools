@@ -10,6 +10,7 @@ import {
   Animation,
   Camera,
   MouseInteraction,
+  Guid,
 } from '@arekrado/canvas-engine';
 import { createContext, Dispatch, Reducer } from 'react';
 import { mutableState, registerDebugSystem } from '../debug';
@@ -23,7 +24,7 @@ export namespace AppAction {
     'CreateComponent',
     {
       component: string;
-      entity: Entity;
+      entityId: Guid;
       defaultData: any;
     }
   >;
@@ -126,7 +127,7 @@ export const reducer: Reducer<State, AppActions> = (state, action) => {
         state,
         data: {
           ...action.payload.defaultData,
-          entity: action.payload.entity,
+          entityId: action.payload.entityId,
         },
       });
 

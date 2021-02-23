@@ -18,32 +18,26 @@ export const CreateComponent: React.FC = () => {
   if (!editorState.selectedEntityId) {
     return null;
   } else {
-    const entity = getEntity({
-      state: appState,
-      entityId: editorState.selectedEntityId,
-    });
-    if (entity) {
-      return (
-        <Select
-          label="Add component"
-          options={options}
-          value=""
-          onChange={(value) => {
-            if (editorState.selectedEntityId) {
-              appState.dispatch({
-                type: 'CreateComponent',
-                payload: {
-                  component: value.target.value,
-                  entity,
-                  defaultData:
-                    editorState.components[value.target.value]?.defaultData,
-                },
-              });
-            }
-          }}
-        />
-      );
-    }
+    return (
+      <Select
+        label="Add component"
+        options={options}
+        value=""
+        onChange={(value) => {
+          if (editorState.selectedEntityId) {
+            appState.dispatch({
+              type: 'CreateComponent',
+              payload: {
+                component: value.target.value,
+                entityId: editorState.selectedEntityId,
+                defaultData:
+                  editorState.components[value.target.value]?.defaultData,
+              },
+            });
+          }
+        }}
+      />
+    );
     return null;
   }
 };

@@ -26,7 +26,7 @@ import { Save } from 'react-feather';
 import { EntityDetails } from './EntityDetails';
 import { ConfirmModal } from './modal/ConfirmModal';
 import { AnimationModal } from './modal/AnimationModal';
-import { eventBusOn, eventBusRemove } from '../util/eventBus';
+import { eventBusDispatch, eventBusOn, eventBusRemove } from '../util/eventBus';
 import { State } from '@arekrado/canvas-engine';
 import { MoreStateDetailsModal } from './modal/MoreStateDetailsModal';
 
@@ -46,42 +46,15 @@ export const App: React.FC = () => {
   const isPlayingRef = useRef(false);
   isPlayingRef.current = editorState.isPlaying;
 
-  // useEffect(() => {
-  //   const id = setInterval(() => {
-  //     if (isPlayingRef.current) {
-  //       const state = getSyncState('Editor');
-  //       if (state) {
-  //         appDispatch({ type: 'SetState', payload: state });
-  //       }
-  //     }
-  //   }, 50);
-
-  //   return () => {
-  //     clearInterval(id);
-  //   };
-  // }, [editorState.isPlaying]);
-
-  // useEffect(() => {
-  //   const state = getStateFromLocalStorage(appState);
-  //   const editorState = getSyncState('Editor');
-
-  //   if (state && editorState) {
-  //     appDispatch({
-  //       type: 'SetState',
-  //       payload: {
-  //         ...state,
-  //         asset: editorState.asset || state.asset,
-  //       },
-  //     });
-  //   }
-  // }, []);
-
   useEffect(() => {
+    eventBusDispatch('setIsUIInitialized', true);
+
     const callback = (state?: State) => {
-      state && appDispatch({
-        type: 'SetState',
-        payload: state,
-      });
+      state &&
+        appDispatch({
+          type: 'SetState',
+          payload: state,
+        });
     };
     eventBusOn('setEditorState', callback);
 

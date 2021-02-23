@@ -112,8 +112,10 @@ const SystemDetails: FC<{ system: State['system'] }> = ({ system }) => (
   <>
     <div className="text-white mb-3">Systems:</div>
     <div className="mb-3">
-      {Object.keys(system).map((system) => (
-        <div key={system}>{system}</div>
+      {system.map((system, index) => (
+        <div key={`${system.name}${index}`}>
+          {system.priority} - {system.name}
+        </div>
       ))}
     </div>
   </>

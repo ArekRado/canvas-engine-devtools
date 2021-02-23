@@ -11,6 +11,7 @@ import React, { useContext, useEffect } from 'react';
 import { AppContext } from '../context/app';
 import { EditorContext } from '../context/editor';
 import { ComponentWrapper } from './component/ComponentWrapper';
+import tileCenter from '../../example/asset/tile-center.png'
 
 type EntityComponent = {
   name: string;
@@ -37,34 +38,17 @@ export const ComponentList: React.FC = () => {
     editorState?.selectedEntityId
   );
 
-  // https://github.com/formium/tsdx/pull/367
   useEffect(() => {
-    // import('./component/Transform').then((component) => {
-    //   editorState.dispatch({
-    //     type: 'RegisterComponent',
-    //     payload: {
-    //       name: 'transform',
-    //       render: component.Transform,
-    //       defaultData: defaultData.transform({ entityId: generateEntity('').id }),
-    //       animatedProperties: [
-    //         { path: 'rotation', type: 'number' },
-    //         { path: 'fromParentRotation', type: 'number' },
-    //         { path: 'scale', type: 'Vector2D' },
-    //         { path: 'fromParentScale', type: 'Vector2D' },
-    //         { path: 'position', type: 'Vector2D' },
-    //         { path: 'fromParentPosition', type: 'Vector2D' },
-    //       ],
-    //     },
-    //   });
-    // });
-
     import('./component/Sprite').then((component) => {
       editorState.dispatch({
         type: 'RegisterComponent',
         payload: {
           name: componentName.sprite,
           render: component.Sprite,
-          defaultData: defaultData.sprite({ entityId: generateEntity('').id }),
+          defaultData: defaultData.sprite({
+            entityId: generateEntity('').id,
+            src: tileCenter,
+          }),
           animatedProperties: [
             { path: 'rotation', type: 'number' },
             { path: 'fromParentRotation', type: 'number' },
