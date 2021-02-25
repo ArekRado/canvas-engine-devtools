@@ -12,7 +12,7 @@ type GameConfigurationBlueprint = (params: { state: State }) => State
 export const gameConfigurationBlueprint: GameConfigurationBlueprint = (
   params,
 ) => {
-  const cameraEntity = generateEntity('camera')
+  const cameraEntity = generateEntity(componentName.camera)
 
   const v1 = setEntity({ state: params.state, entity: cameraEntity })
 

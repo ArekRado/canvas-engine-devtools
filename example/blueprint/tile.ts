@@ -10,6 +10,7 @@ import {
   CollideBox,
 } from '@arekrado/canvas-engine'
 import { vector, Vector2D, vectorZero } from '@arekrado/vector-2d'
+import { gameComponentName } from '../util/gameComponentName'
 
 type TileBlueprint = (params: {
   state: State
@@ -18,7 +19,7 @@ type TileBlueprint = (params: {
 }) => State
 export const tileBlueprint: TileBlueprint = (params) => {
   const entity = {
-    ...generateEntity('tile'),
+    ...generateEntity(gameComponentName.tile),
     position: params.position,
   }
   const v1 = setEntity({ state: params.state, entity })

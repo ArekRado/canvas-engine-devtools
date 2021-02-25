@@ -18,6 +18,7 @@ import { walkAnimation } from '../animation/walk'
 import playerImg from '../asset/player.png'
 
 import { defaultPlayer, Player } from '../component/player'
+import { gameComponentName } from '../util/gameComponentName'
 
 type PlayerBlueprint = (params: {
   state: State
@@ -26,7 +27,7 @@ type PlayerBlueprint = (params: {
 }) => State
 export const playerBlueprint: PlayerBlueprint = (params) => {
   const entity = {
-    ...(params.entity || generateEntity('player')),
+    ...(params.entity || generateEntity(gameComponentName.player)),
     position: params.position,
   }
 
@@ -59,7 +60,7 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
     }),
   })
 
-  const v7 = setComponent<Player>('player', {
+  const v7 = setComponent<Player>(gameComponentName.player, {
     state: v6,
     data: defaultPlayer({
       entityId: entity.id,

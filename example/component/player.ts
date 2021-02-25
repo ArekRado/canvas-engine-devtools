@@ -1,5 +1,6 @@
 import { Component, GetDefaultComponent, Guid } from '@arekrado/canvas-engine'
 import { Vector2D, vectorZero } from '@arekrado/vector-2d'
+import { gameComponentName } from '../util/gameComponentName'
 
 export type Player = Component<{
   jumpVelocity: Vector2D
@@ -17,7 +18,7 @@ export const defaultPlayer: GetDefaultComponent<Player> = ({
   ...data
 }) => ({
   entityId,
-  name: 'player',
+  name: gameComponentName.player,
   jumpVelocity: vectorZero(),
   fallVelocity: vectorZero(),
   isJumping: false,
