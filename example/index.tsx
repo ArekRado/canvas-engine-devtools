@@ -17,21 +17,28 @@ import {
   getComponent,
   generateEntity,
   getEntity,
+  Rectangle,
+  Circle,
 } from '@arekrado/canvas-engine';
 import { vector } from '@arekrado/vector-2d';
 import playerImg from './asset/player.png';
 
-// Calling the regl module with no arguments creates a full screen canvas and
-// WebGL context, and then uses this context to initialize a new REGL instance
 import reglCreator from 'regl';
 import { reglCamera } from './camera';
-import { createDrawLine, createDrawSprite, loadTexture } from './draw';
+// import { createDrawText } from './drawText';
+// import { createDrawCircle } from './drawCircle';
+import { createDrawLine } from './drawLine';
+import { createDrawSprite, loadTexture } from './drawSprite';
+import { createDrawRectangle } from './drawRectangle';
+import { createDrawCircle } from './drawCircle';
 import REGL from 'regl';
 
 const regl = reglCreator();
 
 const drawLine = createDrawLine(regl);
 const drawSprite = createDrawSprite(regl);
+const drawRectangle = createDrawRectangle(regl);
+const drawCircle = createDrawCircle(regl);
 
 const camera = reglCamera(regl, {
   center: [0, 2.5, 0],
@@ -39,16 +46,14 @@ const camera = reglCamera(regl, {
 
 let state = initialState;
 
-const lineEntity = generateEntity('line');
-const spriteEntity = generateEntity('sprite');
-
-state = setEntity({ state, entity: lineEntity });
-state = setEntity({ state, entity: spriteEntity });
+const someEntity = generateEntity('someEntity', { position: vector(0, 0) });
+state = setEntity({ state, entity: someEntity });
 
 state = setComponent<Line>(componentName.line, {
   state,
   data: defaultData.line({
-    entityId: lineEntity.id,
+    entityId: someEntity.id,
+    borderColor: [1, 0, 0, 1] as any,
     path: [
       vector(-0.3, 0.5),
       vector(0.5, -0.5),
@@ -61,98 +66,79 @@ state = setComponent<Line>(componentName.line, {
 state = setComponent<Sprite>(componentName.sprite, {
   state,
   data: defaultData.sprite({
-    entityId: spriteEntity.id,
+    entityId: someEntity.id,
     src: playerImg,
     anchor: vector(0.5, 0.5),
     scale: vector(3, 3),
   }),
 });
-// sprite.src
-// 0.5 + -0.3, 0.5 + -0.5
+
+state = setComponent<Rectangle>(componentName.rectangle, {
+  state,
+  data: defaultData.rectangle({
+    entityId: someEntity.id,
+    size: vector(0.8, 0.8),
+    fillColor: [1, 1, 0, 1] as any,
+    borderColor: [1, 0, 1, 1] as any,
+  }),
+});
+
+state = setComponent<Circle>(componentName.circle, {
+  state,
+  data: defaultData.circle({
+    entityId: someEntity.id,
+    radius: 0.5,
+    borderColor: [1, 0, 1, 1] as any,
+  }),
+});
 
 const line = getComponent<Line>(componentName.line, {
   state,
-  entityId: lineEntity.id,
+  entityId: someEntity.id,
 });
 
-// regl.texture(playerImg)
-
-// // Calling regl() creates a new partially evaluated draw command
-// const drawTriangle = regl({
-//   // Shaders in regl are just strings.  You can use glslify or whatever you want
-//   // to define them.  No need to manually create shader objects.
-//   frag: `
-//     precision mediump float;
-//     uniform vec4 color;
-//     void main() {
-//       gl_FragColor = color;
-//     }`,
-
-//   vert: `
-//     precision mediump float;
-//     attribute vec2 position;
-//     void main() {
-//       gl_Position = vec4(position, 0, 1);
-//     }`,
-
-//   // Here we define the vertex attributes for the above shader
-//   attributes: {
-//     // regl.buffer creates a new array buffer object
-//     position: regl.buffer([
-//       [-2, -2], // no need to flatten nested arrays, regl automatically
-//       [4, -2], // unrolls them into a typedarray (default Float32)
-//       [4, 4],
-//     ]),
-//     // regl automatically infers sane defaults for the vertex attribute pointers
-//   },
-
-//   uniforms: {
-//     // This defines the color of the triangle to be a dynamic variable
-//     color: (regl.prop as any)('color'),
-//   },
-
-//   // This tells regl the number of vertices to draw in this command
-//   count: 3,
-// });
-
-// regl.frame() wraps requestAnimationFrame and also handles viewport changes
 loadTexture(playerImg, regl).then((playerTexture) => {
   regl.frame((context: REGL.DefaultContext) => {
-    // clear contents of the drawing buffer
     regl.clear({
       color: [0.0, 0.0, 0.0, 1.0],
       depth: 1,
     });
 
     camera(() => {
-      // drawTriangle({
-      //   // draw a triangle using the command defined above
-      //   color: [
-      //     Math.cos(time * 0.001),
-      //     Math.sin(time * 0.0008),
-      //     Math.cos(time * 0.003),
-      //     1,
-      //   ],
-      // });
-
       Object.values(state.component.line).forEach((line) => {
         const entity = getEntity({ state, entityId: line.entityId });
         entity &&
           drawLine({
             entity,
             line,
-            context,
           });
       });
 
-      Object.values(state.component.sprite).forEach((sprite) => {
-        const entity = getEntity({ state, entityId: sprite.entityId });
+      // Object.values(state.component.sprite).forEach((sprite) => {
+      //   const entity = getEntity({ state, entityId: sprite.entityId });
+      //   entity &&
+      //     drawSprite({
+      //       entity,
+      //       sprite,
+      //       texture: playerTexture,
+      //     });
+      // });
+
+      // Object.values(state.component.rectangle).forEach((rectangle) => {
+      //   const entity = getEntity({ state, entityId: rectangle.entityId });
+      //   entity &&
+      //     drawRectangle({
+      //       entity,
+      //       rectangle,
+      //     });
+      // });
+
+      Object.values(state.component.circle).forEach((circle) => {
+        const entity = getEntity({ state, entityId: circle.entityId });
         entity &&
-          drawSprite({
+          drawCircle({
             entity,
-            sprite,
-            playerTexture,
-            context,
+            circle,
           });
       });
     });
