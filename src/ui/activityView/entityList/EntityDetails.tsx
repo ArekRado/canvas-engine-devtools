@@ -1,12 +1,12 @@
 import { Entity, getEntity } from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
 import { Layers, Trash } from 'react-feather';
-import { AppContext } from '../context/app';
-import { EditorContext } from '../context/editor';
-import { ModalContext } from '../context/modal';
-import { Button } from './common/Button';
-import { Input } from './common/Input';
-import { Vector } from './common/Vector';
+import { AppContext } from '../../../context/app';
+import { EditorContext } from '../../../context/editor';
+import { ModalContext } from '../../../context/modal';
+import { Button } from '../../common/Button';
+import { Input } from '../../common/Input';
+import { Vector } from '../../common/Vector';
 import { ComponentList } from './ComponentList';
 import { CreateComponent } from './CreateComponent';
 

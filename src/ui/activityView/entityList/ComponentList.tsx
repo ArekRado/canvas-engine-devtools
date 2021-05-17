@@ -8,9 +8,9 @@ import {
   Component,
 } from '@arekrado/canvas-engine';
 import React, { useContext, useEffect } from 'react';
-import { AppContext } from '../context/app';
-import { EditorContext } from '../context/editor';
-import { ComponentWrapper } from './component/ComponentWrapper';
+import { AppContext } from '../../../context/app';
+import { EditorContext } from '../../../context/editor';
+import { ComponentWrapper } from '../../entityComponent/ComponentWrapper';
 import tileCenter from '../../example/asset/tile-center.png'
 
 type EntityComponent = {
@@ -39,7 +39,7 @@ export const ComponentList: React.FC = () => {
   );
 
   useEffect(() => {
-    import('./component/Sprite').then((component) => {
+    import('../../entityComponent/Sprite').then((component) => {
       editorState.dispatch({
         type: 'RegisterComponent',
         payload: {
@@ -61,7 +61,7 @@ export const ComponentList: React.FC = () => {
       });
     });
 
-    import('./component/Animation').then((component) => {
+    import('../../entityComponent/Animation').then((component) => {
       editorState.dispatch({
         type: 'RegisterComponent',
         payload: {
@@ -82,7 +82,7 @@ export const ComponentList: React.FC = () => {
       });
     });
 
-    import('./component/MouseInteraction').then((component) => {
+    import('../../entityComponent/MouseInteraction').then((component) => {
       editorState.dispatch({
         type: 'RegisterComponent',
         payload: {
@@ -96,7 +96,7 @@ export const ComponentList: React.FC = () => {
       });
     });
 
-    import('./component/CollideBox').then((component) => {
+    import('../../entityComponent/CollideBox').then((component) => {
       editorState.dispatch({
         type: 'RegisterComponent',
         payload: {
@@ -113,7 +113,7 @@ export const ComponentList: React.FC = () => {
       });
     });
 
-    import('./component/CollideCircle').then((component) => {
+    import('../../entityComponent/CollideCircle').then((component) => {
       editorState.dispatch({
         type: 'RegisterComponent',
         payload: {
@@ -130,23 +130,23 @@ export const ComponentList: React.FC = () => {
       });
     });
 
-    import('./component/Camera').then((component) => {
-      editorState.dispatch({
-        type: 'RegisterComponent',
-        payload: {
-          name: componentName.camera,
-          render: component.Camera,
-          defaultData: defaultData.collideCircle({
-            entityId: generateEntity('').id,
-          }),
-          animatedProperties: [
-            { path: 'position', type: 'Vector2D' },
-            { path: 'zoom', type: 'number' },
-            { path: 'pivot', type: 'Vector2D' },
-          ],
-        },
-      });
-    });
+  //   import('./Camera').then((component) => {
+  //     editorState.dispatch({
+  //       type: 'RegisterComponent',
+  //       payload: {
+  //         name: componentName.camera,
+  //         render: component.Camera,
+  //         defaultData: defaultData.collideCircle({
+  //           entityId: generateEntity('').id,
+  //         }),
+  //         animatedProperties: [
+  //           { path: 'position', type: 'Vector2D' },
+  //           { path: 'zoom', type: 'number' },
+  //           { path: 'pivot', type: 'Vector2D' },
+  //         ],
+  //       },
+  //     });
+  //   });
   }, []);
 
   return (

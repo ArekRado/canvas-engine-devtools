@@ -10,6 +10,9 @@ import {
   defaultData,
   setEntity,
   generateEntity,
+  Line,
+  Rectangle,
+  Ellipse,
 } from '@arekrado/canvas-engine';
 import { vector, Vector2D } from '@arekrado/vector-2d';
 import { walkAnimation } from '../animation/walk';
@@ -44,15 +47,15 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
     parentId: entity.id,
   });
 
-  const v1 = setEntity({ state: params.state, entity });
+  let state = setEntity({ state: params.state, entity });
 
-  const v2 = setEntity({ state: v1, entity: leftCollideEntity });
-  const v3 = setEntity({ state: v2, entity: rightCollideEntity });
-  const v4 = setEntity({ state: v3, entity: topCollideEntity });
-  const v5 = setEntity({ state: v4, entity: bottomCollideEntity });
+  state = setEntity({ state, entity: leftCollideEntity });
+  state = setEntity({ state, entity: rightCollideEntity });
+  state = setEntity({ state, entity: topCollideEntity });
+  state = setEntity({ state, entity: bottomCollideEntity });
 
-  const v6 = setComponent<Sprite>(componentName.sprite, {
-    state: v5,
+  state = setComponent<Sprite>(componentName.sprite, {
+    state,
     data: defaultData.sprite({
       entityId: entity.id,
       src: playerImg,
@@ -60,8 +63,8 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
     }),
   });
 
-  const v7 = setComponent<Player>(gameComponentName.player, {
-    state: v6,
+  state = setComponent<Player>(gameComponentName.player, {
+    state,
     data: defaultPlayer({
       entityId: entity.id,
       leftCollideId: leftCollideEntity.id,
@@ -72,13 +75,13 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
     }),
   });
 
-  const v8 = setComponent<Animation>(componentName.animation, {
-    state: v7,
+  state = setComponent<Animation>(componentName.animation, {
+    state,
     data: walkAnimation(entity.id),
   });
 
-  const v9 = setComponent<CollideBox>(componentName.collideBox, {
-    state: v8,
+  state = setComponent<CollideBox>(componentName.collideBox, {
+    state,
     data: defaultData.collideBox({
       entityId: bottomCollideEntity.id,
       size: vector(26, 1),
@@ -86,8 +89,8 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
     }),
   });
 
-  const v10 = setComponent<CollideBox>(componentName.collideBox, {
-    state: v9,
+  state = setComponent<CollideBox>(componentName.collideBox, {
+    state,
     data: defaultData.collideBox({
       entityId: leftCollideEntity.id,
       size: vector(1, 50),
@@ -95,8 +98,8 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
     }),
   });
 
-  const v11 = setComponent<CollideBox>(componentName.collideBox, {
-    state: v10,
+  state = setComponent<CollideBox>(componentName.collideBox, {
+    state,
     data: defaultData.collideBox({
       entityId: rightCollideEntity.id,
       size: vector(1, 50),
@@ -104,8 +107,8 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
     }),
   });
 
-  const v12 = setComponent<CollideBox>(componentName.collideBox, {
-    state: v11,
+  state = setComponent<CollideBox>(componentName.collideBox, {
+    state,
     data: defaultData.collideBox({
       entityId: topCollideEntity.id,
       size: vector(40, 1),
@@ -113,5 +116,49 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
     }),
   });
 
-  return v12;
+  // experimental
+  state = setComponent<Line>(componentName.line, {
+    state,
+    data: defaultData.line({
+      entityId: entity.id,
+      borderColor: [1, 0, 0, 1] as any,
+      path: [
+        vector(-0.3, 0.5),
+        vector(0.5, -0.5),
+        vector(-0.7, -0.7),
+        vector(0.9, -0.2),
+      ],
+    }),
+  });
+
+  state = setComponent<Sprite>(componentName.sprite, {
+    state,
+    data: defaultData.sprite({
+      entityId: entity.id,
+      src: playerImg,
+      anchor: vector(0.5, 0.5),
+      scale: vector(3, 3),
+    }),
+  });
+
+  state = setComponent<Rectangle>(componentName.rectangle, {
+    state,
+    data: defaultData.rectangle({
+      entityId: entity.id,
+      size: vector(0.8, 0.8),
+      fillColor: [1, 1, 0, 1],
+      // borderColor: [1, 0, 1, 1] as any,
+    }),
+  });
+
+  state = setComponent<Ellipse>(componentName.ellipse, {
+    state,
+    data: defaultData.ellipse({
+      entityId: entity.id,
+      size: [0.5, 0.5],
+      fillColor: [1, 0, 1, 1],
+    }),
+  });
+
+  return state;
 };

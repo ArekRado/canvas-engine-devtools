@@ -1,9 +1,9 @@
 import { getEntity, Entity, State } from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
 import { ChevronDown, ChevronRight } from 'react-feather';
-import { AppContext } from '../context/app';
-import { EditorContext } from '../context/editor';
-import { Button } from './common/Button';
+import { AppContext } from '../../../context/app';
+import { EditorContext } from '../../../context/editor';
+import { Button } from '../../common/Button';
 
 type Branch = {
   entity: Entity;

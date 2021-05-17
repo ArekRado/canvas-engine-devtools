@@ -17,6 +17,12 @@ export type RegisterComponentPayload<Data> = {
   animatedProperties: { path: string; type: string }[];
 };
 
+export type RegisterActivityViewPayload = {
+  name: string;
+  tab: React.ElementType<{ isOpen: boolean }>;
+  content: React.ElementType<{ isOpen: boolean }>;
+};
+
 export type SetIsPlayingPayload = {
   isPlaying: boolean;
   state: State;
@@ -33,25 +39,32 @@ export namespace EditorAction {
     'RegisterComponent',
     RegisterComponentPayload<any>
   >;
+  export type RegisterActivityView = Action<
+    'RegisterActivityView',
+    RegisterActivityViewPayload
+  >;
 }
 
 type EditorActions =
   | EditorAction.SetEntityId
   | EditorAction.SetIsPlaying
   | EditorAction.SetHoveredEntityId
-  | EditorAction.RegisterComponent;
+  | EditorAction.RegisterComponent
+  | EditorAction.RegisterActivityView;
 
 type EditorState = {
   selectedEntityId?: Guid;
   hoveredEntityId?: Guid;
   isPlaying: boolean;
   components: Dictionary<RegisterComponentPayload<any>>;
+  activityView: Dictionary<RegisterActivityViewPayload>;
   dispatch: Dispatch<EditorActions>;
 };
 
 export const initialState: EditorState = {
   isPlaying: false,
   components: {},
+  activityView: {},
   dispatch: () => {},
 };
 
@@ -90,6 +103,20 @@ export const reducer: Reducer<EditorState, EditorActions> = (state, action) => {
           components: {
             ...state.components,
             [componentName]: action.payload,
+          },
+        };
+      }
+
+      return state;
+    case 'RegisterActivityView':
+      const viewName = action.payload.name;
+
+      if (!state.activityView[viewName]) {
+        return {
+          ...state,
+          activityView: {
+            ...state.activityView,
+            [viewName]: action.payload,
           },
         };
       }

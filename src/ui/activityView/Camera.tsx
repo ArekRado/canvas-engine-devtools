@@ -16,7 +16,7 @@ export const Camera: React.FC<CameraProps> = ({ component }) => {
 
   const setCameraData = (data: Partial<CameraType>): void =>
     appState.dispatch({
-      type: 'SetCameraComponent',
+      type: 'SetCamera',
       payload: {
         ...component,
         ...data,

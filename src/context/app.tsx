@@ -11,6 +11,7 @@ import {
   Camera,
   MouseInteraction,
   Guid,
+  setCamera,
 } from '@arekrado/canvas-engine';
 import { createContext, Dispatch, Reducer } from 'react';
 import { mutableState, registerDebugSystem } from '../debug';
@@ -46,10 +47,7 @@ export namespace AppAction {
     'SetMouseInteractionComponent',
     MouseInteraction
   >;
-  export type SetCameraComponent = Action<
-    'SetCameraComponent',
-    Camera
-  >;
+  export type SetCamera = Action<'SetCamera', Camera>;
 }
 
 type AppActions =
@@ -61,7 +59,7 @@ type AppActions =
   | AppAction.SetCollideBoxComponent
   | AppAction.SetAnimationComponent
   | AppAction.SetMouseInteractionComponent
-  | AppAction.SetCameraComponent;
+  | AppAction.SetCamera;
 
 type AppState = State & {
   dispatch: Dispatch<AppActions>;
@@ -85,6 +83,12 @@ export const reducer: Reducer<State, AppActions> = (state, action) => {
       break;
     case 'SetEntity':
       newState = setEntity({ state, entity: action.payload });
+      break;
+    case 'SetCamera':
+      newState = setCamera({
+        state,
+        camera: action.payload,
+      });
       break;
     case 'SetSpriteComponent':
       newState = setComponent('sprite', {
@@ -112,12 +116,6 @@ export const reducer: Reducer<State, AppActions> = (state, action) => {
       break;
     case 'SetMouseInteractionComponent':
       newState = setComponent('mouseInteraction', {
-        state,
-        data: action.payload,
-      });
-      break;
-    case 'SetCameraComponent':
-      newState = setComponent('camera', {
         state,
         data: action.payload,
       });

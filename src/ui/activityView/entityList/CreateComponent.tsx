@@ -1,8 +1,8 @@
 import { getEntity, State } from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
-import { AppContext } from '../context/app';
-import { EditorContext } from '../context/editor';
-import { Select, SelectOption } from './common/Select';
+import { AppContext } from '../../../context/app';
+import { EditorContext } from '../../../context/editor';
+import { Select, SelectOption } from '../../common/Select';
 
 export const CreateComponent: React.FC = () => {
   const editorState = useContext(EditorContext);

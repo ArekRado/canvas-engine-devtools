@@ -12,18 +12,18 @@ type GameConfigurationBlueprint = (params: { state: State }) => State;
 export const gameConfigurationBlueprint: GameConfigurationBlueprint = (
   params
 ) => {
-  const cameraEntity = generateEntity(componentName.camera);
+  // const cameraEntity = generateEntity(componentName.camera);
 
-  let state = setEntity({ state: params.state, entity: cameraEntity });
+  // let state = setEntity({ state: params.state, entity: cameraEntity });
 
-  state = setComponent<Camera>(componentName.camera, {
-    state,
-    data: defaultData.camera({
-      entityId: cameraEntity.id,
-      position: vector(400, 300),
-      zoom: 1,
-    }),
-  });
+  // state = setComponent<Camera>(componentName.camera, {
+  //   state,
+  //   data: defaultData.camera({
+  //     entityId: cameraEntity.id,
+  //     position: vector(400, 300),
+  //     zoom: 1,
+  //   }),
+  // });
 
-  return state;
+  return params.state;
 };

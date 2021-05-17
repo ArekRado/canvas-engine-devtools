@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Pause, Play } from 'react-feather';
-import { AppContext } from '../context/app';
-import { EditorContext } from '../context/editor';
-import { Button } from './common/Button';
+import { AppContext } from '../../context/app';
+import { EditorContext } from '../../context/editor';
+import { Button } from '../common/Button';
 
 export const StartStop: React.FC = () => {
   const appState = useContext(AppContext);

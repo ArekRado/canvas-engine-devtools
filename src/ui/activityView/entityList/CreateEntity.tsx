@@ -1,11 +1,11 @@
 import { generateEntity } from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
 import { Plus } from 'react-feather';
-import { AppContext } from '../context/app';
-import { EditorContext } from '../context/editor';
-import { Button } from './common/Button';
-import { Form } from './common/Form';
-import { Input } from './common/Input';
+import { AppContext } from '../../../context/app';
+import { EditorContext } from '../../../context/editor';
+import { Button } from '../../common/Button';
+import { Form } from '../../common/Form';
+import { Input } from '../../common/Input';
 
 export const CreateEntity: React.FC = () => {
   const editorState = useContext(EditorContext);
