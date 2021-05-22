@@ -21,6 +21,7 @@ export type RegisterActivityViewPayload = {
   name: string;
   tab: React.ElementType<{ isOpen: boolean }>;
   content: React.ElementType<{ isOpen: boolean }>;
+  index: number;
 };
 
 export type SetIsPlayingPayload = {

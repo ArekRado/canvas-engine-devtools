@@ -4,6 +4,8 @@ import { ChevronDown, ChevronRight } from 'react-feather';
 import { AppContext } from '../../../context/app';
 import { EditorContext } from '../../../context/editor';
 import { Button } from '../../common/Button';
+import { CreateEntity } from './CreateEntity';
+import { EntityDetails } from './EntityDetails';
 
 type Branch = {
   entity: Entity;
@@ -50,6 +52,9 @@ const EntityButton: React.FC<EntityButtonProps> = ({
   const editorState = useContext(EditorContext);
   const [isOpened, setIsOpened] = useState(false);
 
+  const isFocused = editorState?.selectedEntityId === entity.id;
+  const hasChildren = childrens.length > 0;
+
   return (
     <div
       draggable={true}
@@ -58,19 +63,24 @@ const EntityButton: React.FC<EntityButtonProps> = ({
       onDragStart={handleDragStart(entity)}
       className={`
         ${overEntity?.id === entity.id ? 'border border-blue-100' : ''}
-        ${childrens.length === 0 ? 'ml-3' : ''}
+        ${!hasChildren ? 'pl-3' : ''}
+        ${isFocused ? 'border-l-2 border-blue-100' : ''}
       `}
     >
       <div className="flex">
-        {childrens.length > 0 && (
-          <Button className="px-0" onClick={() => setIsOpened(!isOpened)}>
+        {hasChildren && (
+          <Button
+            focused={isFocused}
+            className="px-0"
+            onClick={() => setIsOpened(!isOpened)}
+          >
             {isOpened ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
           </Button>
         )}
 
         <Button
           title={entity.id}
-          focused={editorState?.selectedEntityId === entity.id}
+          focused={isFocused}
           onClick={() =>
             editorState.dispatch({
               type: 'SetEntityId',
@@ -78,7 +88,9 @@ const EntityButton: React.FC<EntityButtonProps> = ({
             })
           }
           className={`text-left flex-1 p-0 ${
-            editorState?.hoveredEntityId === entity.id ? 'border border-white' : ''
+            editorState?.hoveredEntityId === entity.id
+              ? 'border border-white'
+              : ''
           }`}
         >
           {/* firefox doesn't support button drag */}
@@ -103,6 +115,8 @@ const EntityButton: React.FC<EntityButtonProps> = ({
     </div>
   );
 };
+
+export const EntityListName = 'EntityList'
 
 export const EntityList: React.FC = () => {
   const appState = useContext(AppContext);
@@ -148,19 +162,29 @@ export const EntityList: React.FC = () => {
   const tree = generateTree(appState);
 
   return (
-    <>
-      <div className="text-white mb-3">Entity:</div>
-      {tree.map((branch) => (
-        <EntityButton
-          entity={branch.entity}
-          overEntity={overEntity}
-          handleDrop={handleDrop}
-          handleDragOver={handleDragOver}
-          handleDragStart={handleDragStart}
-          key={branch.entity.id}
-          childrens={branch.children}
-        />
-      ))}
-    </>
+    <div className="flex flex-1 max-h-full">
+      <div className="py-2 pl-2 pr-1 flex flex-col flex-1 overflow-y-hidden">
+        <CreateEntity />
+        <div className="flex flex-col flex-1 overflow-y-auto mt-2">
+          <div className="text-white mb-3">Entity:</div>
+          {tree.map((branch) => (
+            <EntityButton
+              entity={branch.entity}
+              overEntity={overEntity}
+              handleDrop={handleDrop}
+              handleDragOver={handleDragOver}
+              handleDragStart={handleDragStart}
+              key={branch.entity.id}
+              childrens={branch.children}
+            />
+          ))}
+        </div>
+
+        {/* <Fps /> */}
+      </div>
+      <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+        <EntityDetails />
+      </div>
+    </div>
   );
 };

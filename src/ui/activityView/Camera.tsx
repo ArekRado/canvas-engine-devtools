@@ -3,16 +3,12 @@ import React, { useContext } from 'react';
 import { AppContext } from '../../context/app';
 import { InlineInput } from '../common/InlineInput';
 import { InlineVector } from '../common/InlineVector';
-import { Input } from '../common/Input';
-import { Vector } from '../common/Vector';
-// position: Vector2D;
-// zoom: number;
-// pivot: Vector2D;
-type CameraProps = {
-  component: CameraType;
-};
-export const Camera: React.FC<CameraProps> = ({ component }) => {
+
+export const CameraName = 'Camera'
+
+export const Camera: React.FC = () => {
   const appState = useContext(AppContext);
+  const component = appState.camera;
 
   const setCameraData = (data: Partial<CameraType>): void =>
     appState.dispatch({
@@ -24,7 +20,7 @@ export const Camera: React.FC<CameraProps> = ({ component }) => {
     });
 
   return (
-    <div className="flex flex-col mt-3">
+    <div className="flex flex-1 flex-col m-2">
       <InlineVector
         label="position"
         name="position"

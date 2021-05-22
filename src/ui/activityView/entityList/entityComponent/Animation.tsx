@@ -1,9 +1,9 @@
 import { Animation as AnimationType } from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
-import { AppContext } from '../../context/app';
-import { ModalContext } from '../../context/modal';
-import { Button } from '../common/Button';
-import { Input } from '../common/Input';
+import { AppContext } from '../../../../context/app';
+import { ModalContext } from '../../../../context/modal';
+import { Button } from '../../../common/Button';
+import { Input } from '../../../common/Input';
 
 type AnimationProps = {
   component: AnimationType;

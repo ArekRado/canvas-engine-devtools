@@ -38,6 +38,7 @@ export const Button: React.FC<ButtonProps> = ({
     className={`
         ${getButtonSize(size)}
           hover:bg-gray-700 focus:outline-lightblue hover:text-white 
+        ${props.disabled ? 'cursor-not-allowed' : ''}
         ${focused ? 'text-white' : 'text-gray-500'}
         ${props.className || ''}
       `}

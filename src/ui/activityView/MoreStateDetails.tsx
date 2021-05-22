@@ -1,6 +1,5 @@
 import React, { FC, useContext } from 'react';
 import { Asset, Mouse, State, Time } from '@arekrado/canvas-engine';
-import { ModalWrapper } from './ModalWrapper';
 import { AppContext } from '../../context/app';
 import { InlineInput } from '../common/InlineInput';
 import { InlineVector } from '../common/InlineVector';
@@ -112,45 +111,45 @@ const SystemDetails: FC<{ system: State['system'] }> = ({ system }) => (
   <>
     <div className="text-white mb-3">Systems:</div>
     <div className="mb-3">
-      {system.map((system, index) => (
-        <div key={`${system.name}${index}`}>
-          {system.priority} - {system.name}
-        </div>
-      ))}
+      {[...system]
+        .sort((a, b) => (a.priority > b.priority ? 1 : -1))
+        .map((system, index) => (
+          <div key={`${system.name}${index}`}>
+            {system.priority} - {system.name}
+          </div>
+        ))}
     </div>
   </>
 );
 
-export const MoreStateDetailsModal: React.FC = () => {
+export const MoreStateDetailsName = 'MoreStateDetails'
+
+export const MoreStateDetails: React.FC = () => {
   const appState = useContext(AppContext);
 
   return (
-    <ModalWrapper name="moreStateDetails">
-      {() => (
-        <div className="flex flex-col">
-          <InlineCheckbox
-            label="isDebugInitialized"
-            name="isDebugInitialized"
-            id="appState.isDebugInitialized"
-            value={appState.isDebugInitialized}
-            disabled={true}
-            onChange={() => {}}
-          />
-          <InlineCheckbox
-            label="isDrawEnabled"
-            name="isDrawEnabled"
-            id="appState.isDrawEnabled"
-            value={appState.isDrawEnabled}
-            disabled={true}
-            onChange={() => {}}
-          />
+    <div className="flex flex-1 flex-col m-2 overflow-y-auto">
+      <InlineCheckbox
+        label="isDebugInitialized"
+        name="isDebugInitialized"
+        id="appState.isDebugInitialized"
+        value={appState.isDebugInitialized}
+        disabled={true}
+        onChange={() => {}}
+      />
+      <InlineCheckbox
+        label="isDrawEnabled"
+        name="isDrawEnabled"
+        id="appState.isDrawEnabled"
+        value={appState.isDrawEnabled}
+        disabled={true}
+        onChange={() => {}}
+      />
 
-          <TimeDetails time={appState.time} />
-          <MouseDetails mouse={appState.mouse} />
-          <AssetDetails asset={appState.asset} />
-          <SystemDetails system={appState.system} />
-        </div>
-      )}
-    </ModalWrapper>
+      <TimeDetails time={appState.time} />
+      <MouseDetails mouse={appState.mouse} />
+      <AssetDetails asset={appState.asset} />
+      <SystemDetails system={appState.system} />
+    </div>
   );
 };

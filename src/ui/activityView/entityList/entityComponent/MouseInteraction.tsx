@@ -1,6 +1,6 @@
 import { MouseInteraction as MouseInteractionType } from '@arekrado/canvas-engine';
 import React from 'react';
-import { Checkbox } from '../common/Checkbox';
+import { Checkbox } from '../../../common/Checkbox';
 
 type MouseInteractionProps = {
   component: MouseInteractionType;

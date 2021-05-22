@@ -1,9 +1,9 @@
 import { Sprite as SpriteType } from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
-import { AppContext } from '../../context/app';
-import { InlineInput } from '../common/InlineInput';
-import { InlineVector } from '../common/InlineVector';
-import { Select } from '../common/Select';
+import { AppContext } from '../../../../context/app';
+import { InlineInput } from '../../../common/InlineInput';
+import { InlineVector } from '../../../common/InlineVector';
+import { Select } from '../../../common/Select';
 
 type SpriteProps = {
   component: SpriteType;

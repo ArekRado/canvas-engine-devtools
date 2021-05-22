@@ -51,7 +51,11 @@ export const Input: React.FC<InputProps> = ({
       </label>
     )}
     <input
-      className={`h-full w-full focus:outline-lightblue text-white bg-gray-700 px-1 ${inputClassName}`}
+      className={`
+        h-full w-full focus:outline-lightblue text-white bg-gray-700 px-1
+        ${disabled ? 'cursor-not-allowed' : ''}
+        ${inputClassName}
+      `}
       type={type}
       value={value}
       onChange={onChange}

@@ -45,7 +45,7 @@ export const EntityDetails: React.FC = () => {
     : null;
 
   return (
-    <div className="w-full px-1 py-2">
+    <div className="px-1 py-2">
       <div className="flex justify-between mb-2">
         <Input
           name="name"

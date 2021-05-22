@@ -1,10 +1,10 @@
 import { Component } from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
-import { AppContext } from '../../context/app';
-import { EditorContext } from '../../context/editor';
-import { ModalContext } from '../../context/modal';
-import { Button } from '../common/Button';
-import { ConfirmModal } from '../modal/ConfirmModal';
+import { AppContext } from '../../../../context/app';
+import { EditorContext } from '../../../../context/editor';
+import { ModalContext } from '../../../../context/modal';
+import { Button } from '../../../common/Button';
+import { ConfirmModal } from '../../../modal/ConfirmModal';
 import { ChevronDown, ChevronRight, X } from 'react-feather';
 
 type ComponentWrapperProps = {

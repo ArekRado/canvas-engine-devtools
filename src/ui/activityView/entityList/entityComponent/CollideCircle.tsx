@@ -3,10 +3,10 @@ import {
   getEntity,
 } from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
-import { AppContext } from '../../context/app';
-import { EntityButton } from '../common/EntityButton';
-import { Input } from '../common/Input';
-import { Vector } from '../common/Vector';
+import { AppContext } from '../../../../context/app';
+import { EntityButton } from '../../../common/EntityButton';
+import { Input } from '../../../common/Input';
+import { Vector } from '../../../common/Vector';
 
 type CollideCircleProps = {
   component: CollideCircleType;

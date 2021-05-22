@@ -10,8 +10,7 @@ import {
 import React, { useContext, useEffect } from 'react';
 import { AppContext } from '../../../context/app';
 import { EditorContext } from '../../../context/editor';
-import { ComponentWrapper } from '../../entityComponent/ComponentWrapper';
-import tileCenter from '../../example/asset/tile-center.png'
+import { ComponentWrapper } from './entityComponent/ComponentWrapper';
 
 type EntityComponent = {
   name: string;
@@ -39,7 +38,7 @@ export const ComponentList: React.FC = () => {
   );
 
   useEffect(() => {
-    import('../../entityComponent/Sprite').then((component) => {
+    import('./entityComponent/Sprite').then((component) => {
       editorState.dispatch({
         type: 'RegisterComponent',
         payload: {
@@ -47,7 +46,7 @@ export const ComponentList: React.FC = () => {
           render: component.Sprite,
           defaultData: defaultData.sprite({
             entityId: generateEntity('').id,
-            src: tileCenter,
+            src: '',
           }),
           animatedProperties: [
             { path: 'rotation', type: 'number' },
@@ -61,7 +60,7 @@ export const ComponentList: React.FC = () => {
       });
     });
 
-    import('../../entityComponent/Animation').then((component) => {
+    import('./entityComponent/Animation').then((component) => {
       editorState.dispatch({
         type: 'RegisterComponent',
         payload: {
@@ -82,7 +81,7 @@ export const ComponentList: React.FC = () => {
       });
     });
 
-    import('../../entityComponent/MouseInteraction').then((component) => {
+    import('./entityComponent/MouseInteraction').then((component) => {
       editorState.dispatch({
         type: 'RegisterComponent',
         payload: {
@@ -96,7 +95,7 @@ export const ComponentList: React.FC = () => {
       });
     });
 
-    import('../../entityComponent/CollideBox').then((component) => {
+    import('./entityComponent/CollideBox').then((component) => {
       editorState.dispatch({
         type: 'RegisterComponent',
         payload: {
@@ -113,7 +112,7 @@ export const ComponentList: React.FC = () => {
       });
     });
 
-    import('../../entityComponent/CollideCircle').then((component) => {
+    import('./entityComponent/CollideCircle').then((component) => {
       editorState.dispatch({
         type: 'RegisterComponent',
         payload: {
