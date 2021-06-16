@@ -1,125 +1,3 @@
-// import {
-//   runOneFrame,
-//   initialState,
-//   initializeEngine,
-//   asset,
-//   Animation,
-//   CollideBox,
-//   componentName,
-//   Guid,
-//   Sprite,
-//   Entity,
-//   setComponent,
-//   State,
-//   Line,
-//   defaultData,
-//   setEntity,
-//   getComponent,
-//   generateEntity,
-//   getEntity,
-//   Rectangle,
-//   Circle,
-// } from '@arekrado/canvas-engine';
-// import { vector } from '@arekrado/vector-2d';
-// import playerImg from './asset/player.png';
-
-// import reglCreator from 'regl';
-// import { reglCamera } from './camera';
-// // import { createDrawText } from './drawText';
-// // import { createDrawCircle } from './drawCircle';
-// import { createDrawLine } from './drawLine';
-// import { createDrawSprite, loadTexture } from './drawSprite';
-// import { createDrawRectangle } from './drawRectangle';
-// import { createDrawCircle } from './drawCircle';
-// import REGL from 'regl';
-
-// const regl = reglCreator();
-
-// const drawLine = createDrawLine(regl);
-// const drawSprite = createDrawSprite(regl);
-// const drawRectangle = createDrawRectangle(regl);
-// const drawCircle = createDrawCircle(regl);
-
-// const camera = reglCamera(regl, {
-//   center: [0, 2.5, 0],
-// });
-
-// let state = initialState;
-
-// const someEntity = generateEntity('someEntity', { position: vector(0, 0) });
-// state = setEntity({ state, entity: someEntity });
-
-// state = setComponent<Line>(componentName.line, {
-//   state,
-//   data: defaultData.line({
-//     entityId: someEntity.id,
-//     borderColor: [1, 0, 0, 1] as any,
-//     path: [
-//       vector(-0.3, 0.5),
-//       vector(0.5, -0.5),
-//       vector(-0.7, -0.7),
-//       vector(0.9, -0.2),
-//     ],
-//   }),
-// });
-
-// state = setComponent<Sprite>(componentName.sprite, {
-//   state,
-//   data: defaultData.sprite({
-//     entityId: someEntity.id,
-//     src: playerImg,
-//     anchor: vector(0.5, 0.5),
-//     scale: vector(3, 3),
-//   }),
-// });
-
-// state = setComponent<Rectangle>(componentName.rectangle, {
-//   state,
-//   data: defaultData.rectangle({
-//     entityId: someEntity.id,
-//     size: vector(0.8, 0.8),
-//     fillColor: [1, 1, 0, 1],
-//     // borderColor: [1, 0, 1, 1] as any,
-//   }),
-// });
-
-// state = setComponent<Circle>(componentName.ellipse, {
-//   state,
-//   data: defaultData.ellipse({
-//     entityId: someEntity.id,
-//     size: [0.5, 0.5],
-//     fillColor: [1, 0, 1, 1],
-//   }),
-// });
-
-// loadTexture(playerImg, regl).then((playerTexture) => {
-//   regl.frame((context: REGL.DefaultContext) => {
-//     regl.clear({
-//       color: [0.0, 0.0, 0.0, 1.0],
-//       depth: 1,
-//     });
-
-//     camera(() => {
-//       Object.values(state.component.line).forEach((line) => {
-//         const entity = getEntity({ state, entityId: line.entityId });
-//         entity &&
-//           drawLine({
-//             entity,
-//             line,
-//           });
-//       });
-
-//       Object.values(state.component.ellipse).forEach((ellipse) => {
-//         const entity = getEntity({ state, entityId: ellipse.entityId });
-//         entity &&
-//           drawCircle({
-//             entity,
-//             ellipse,
-//           });
-//       });
-//     });
-//   });
-// });
 // // import 'regenerator-runtime/runtime'
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -132,6 +10,7 @@ import {
   initializeEngine,
   asset,
   generateEntity,
+  setCamera,
 } from '@arekrado/canvas-engine';
 import { vector } from '@arekrado/vector-2d';
 
@@ -156,14 +35,21 @@ import { gameConfigurationBlueprint } from './blueprint/gameConfiguration';
 import { carrotBlueprint } from './blueprint/carrot';
 import { uiBlueprint } from './blueprint/ui';
 
-const gameLogic = (state: State) => {
-  const newState = runOneFrame({ state });
-  // requestAnimationFrame(() => gameLogic(newState))
+const gameLogic = async (state: State) => {
+  const newState = await runOneFrame({ state });
 
   // setTimeout(() => {
-  requestAnimationFrame(() => gameLogic(newState));
-  // }, 500);
+  requestAnimationFrame(() => {
+    gameLogic(newState);
+    // state.regl?.frame(() => runOneFrame({ state }));
+  });
+  // },10000);
 };
+
+// const gameLogic = (state: State) => {
+//   // state.regl?.frame(() => runOneFrame({ state }));
+//   runOneFrame({ state });
+// };
 
 const initializeScene = (state: State): State => {
   const scoreCounterEntity = generateEntity('scoreCounter');
@@ -179,7 +65,7 @@ const initializeScene = (state: State): State => {
 
   newState = playerBlueprint({
     state: newState,
-    position: vector(300, 300),
+    position: vector(0, 1),
     scoreCounterId: scoreCounterEntity.id,
   });
 
@@ -197,7 +83,7 @@ const initializeScene = (state: State): State => {
   ].reduce(
     (acc1, row, i) =>
       row.reduce((rowAcc, type, j) => {
-        const position = vector(j * 48, -i * 48 + row.length * 48);
+        const position = vector(j * 1, -i * 1 + row.length * 1);
         switch (type) {
           case '1':
             return tileBlueprint({
@@ -250,8 +136,10 @@ let state = initializeEngine({ state: initialState });
 state = initializeScene(state);
 state = initializeAssets(state);
 
-state = playerSystem(state);
+// state = playerSystem(state);
 state = registerDebugSystem(state);
+
+state = setCamera({ state, camera: { position: [5, 5], size: 10 } });
 
 gameLogic(state);
 
@@ -259,3 +147,4 @@ ReactDOM.render(
   <CanvasEngineDevtools />,
   document.getElementById('canvas-engine-devtools')
 );
+// debugger;

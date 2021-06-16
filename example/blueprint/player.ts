@@ -117,19 +117,19 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
   });
 
   // experimental
-  state = setComponent<Line>(componentName.line, {
-    state,
-    data: defaultData.line({
-      entityId: entity.id,
-      borderColor: [1, 0, 0, 1] as any,
-      path: [
-        vector(-0.3, 0.5),
-        vector(0.5, -0.5),
-        vector(-0.7, -0.7),
-        vector(0.9, -0.2),
-      ],
-    }),
-  });
+  // state = setComponent<Line>(componentName.line, {
+  //   state,
+  //   data: defaultData.line({
+  //     entityId: entity.id,
+  //     borderColor: [1, 0, 0, 1] as any,
+  //     path: [
+  //       vector(-0.3, 0.5),
+  //       vector(0.5, -0.5),
+  //       vector(-0.7, -0.7),
+  //       vector(0.9, -0.2),
+  //     ],
+  //   }),
+  // });
 
   state = setComponent<Sprite>(componentName.sprite, {
     state,
@@ -141,24 +141,24 @@ export const playerBlueprint: PlayerBlueprint = (params) => {
     }),
   });
 
-  state = setComponent<Rectangle>(componentName.rectangle, {
-    state,
-    data: defaultData.rectangle({
-      entityId: entity.id,
-      size: vector(0.8, 0.8),
-      fillColor: [1, 1, 0, 1],
-      // borderColor: [1, 0, 1, 1] as any,
-    }),
-  });
+  // state = setComponent<Rectangle>(componentName.rectangle, {
+  //   state,
+  //   data: defaultData.rectangle({
+  //     entityId: entity.id,
+  //     size: vector(0.8, 0.8),
+  //     fillColor: [1, 1, 0, 1],
+  //     // borderColor: [1, 0, 1, 1] as any,
+  //   }),
+  // });
 
-  state = setComponent<Ellipse>(componentName.ellipse, {
-    state,
-    data: defaultData.ellipse({
-      entityId: entity.id,
-      size: [0.5, 0.5],
-      fillColor: [1, 0, 1, 1],
-    }),
-  });
+  // state = setComponent<Ellipse>(componentName.ellipse, {
+  //   state,
+  //   data: defaultData.ellipse({
+  //     entityId: entity.id,
+  //     size: [0.5, 0.5],
+  //     fillColor: [1, 0, 1, 1],
+  //   }),
+  // });
 
   return state;
 };

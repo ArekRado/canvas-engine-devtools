@@ -48,6 +48,20 @@ export const ActivityBar: React.FC = () => {
         },
       });
     });
+
+    // Blueprints
+
+    // import('./activityView/MoreStateDetails').then((component) => {
+    //   editorState.dispatch({
+    //     type: 'RegisterActivityView',
+    //     payload: {
+    //       name: component.MoreStateDetailsName,
+    //       index: 2,
+    //       tab: () => <MoreHorizontal />,
+    //       content: component.MoreStateDetails,
+    //     },
+    //   });
+    // });
   }, []);
 
   return (

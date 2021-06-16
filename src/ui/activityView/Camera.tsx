@@ -30,20 +30,12 @@ export const Camera: React.FC = () => {
       />
 
       <InlineInput
-        label="zoom"
-        name="zoom"
-        id="zoom"
+        label="size"
+        name="size"
+        id="size"
         type="number"
-        value={component.zoom}
-        onChange={(e) => setCameraData({ zoom: parseFloat(e.target.value) })}
-      />
-
-      <InlineVector
-        label="pivot"
-        name="pivot"
-        id="pivot"
-        value={component.pivot}
-        onChange={(e) => setCameraData({ pivot: e })}
+        value={component.size}
+        onChange={(e) => setCameraData({ size: parseFloat(e.target.value) })}
       />
     </div>
   );
