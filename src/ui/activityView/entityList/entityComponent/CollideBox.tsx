@@ -52,13 +52,13 @@ export const CollideBox: React.FC<CollideBoxProps> = ({ component }) => {
           <ul>
             {component.collisions.map((collisionType) => {
               const entity = getEntity({
-                entityId: collisionType.entityId,
+                entity: collisionType.entity,
                 state: appState,
               });
 
               if (entity) {
                 return (
-                  <li key={entity.id}>
+                  <li key={entity}>
                     <EntityButton entity={entity} />
                   </li>
                 );

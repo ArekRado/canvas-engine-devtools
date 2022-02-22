@@ -1,4 +1,6 @@
 import React, { ReactElement } from 'react';
+import { inputContainerStyle, inputStyle, InputVariants } from './input.css';
+import { text1 } from '../util.css';
 
 export type InputHTMLAttributes = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -9,9 +11,9 @@ export type InputProps<Value = string | number> = {
   label?: ReactElement | string;
   // max?: string;
   // min?: string;
-  containerClassName?: string;
-  labelClassName?: string;
-  inputClassName?: string;
+  // containerClassName?: string;
+  // labelClassName?: string;
+  // inputClassName?: string;
   value?: Value;
   id: InputHTMLAttributes['id'];
   type?: InputHTMLAttributes['type'];
@@ -24,13 +26,11 @@ export type InputProps<Value = string | number> = {
   name: InputHTMLAttributes['name'];
   checked?: InputHTMLAttributes['checked'];
   required?: InputHTMLAttributes['required'];
+  variants: InputVariants;
 };
 
 export const Input: React.FC<InputProps> = ({
   label,
-  containerClassName,
-  labelClassName,
-  inputClassName,
   id,
   type = 'text',
   value,
@@ -43,19 +43,16 @@ export const Input: React.FC<InputProps> = ({
   name,
   checked,
   required,
+  variants,
 }) => (
-  <div className={containerClassName}>
+  <div className={inputContainerStyle(variants)}>
     {label && (
-      <label htmlFor={id} className={labelClassName}>
+      <label htmlFor={id} className={text1}>
         {label}
       </label>
     )}
     <input
-      className={`
-        h-full w-full focus:outline-lightblue text-white bg-gray-700 px-1
-        ${disabled ? 'cursor-not-allowed' : ''}
-        ${inputClassName}
-      `}
+      className={inputStyle(variants)}
       type={type}
       value={value}
       onChange={onChange}

@@ -1,5 +1,7 @@
 import React, { FC, useContext } from 'react';
-import { Asset, Mouse, State, Time } from '@arekrado/canvas-engine';
+import { AnySystem, Mouse, Time } from '@arekrado/canvas-engine';
+import { getTime } from '@arekrado/canvas-engine/system/time';
+import { getMouse } from '@arekrado/canvas-engine/system/mouse';
 import { AppContext } from '../../context/app';
 import { InlineInput } from '../common/InlineInput';
 import { InlineVector } from '../common/InlineVector';
@@ -86,28 +88,7 @@ const MouseDetails: FC<{ mouse: Mouse }> = ({ mouse }) => (
   </>
 );
 
-const AssetDetails: FC<{ asset: Asset }> = ({ asset }) => (
-  <>
-    <div className="text-white mb-3">Assets:</div>
-    <div className="text-white mb-3">Assets Sprite:</div>
-    <div className="mb-3">
-      {asset.sprite.map((sprite) => (
-        <div key={sprite.src} className="col-span-12 grid grid-cols-12">
-          <div className="col-span-4">{sprite.name}</div>
-          <div className="col-span-8">{sprite.src}</div>
-        </div>
-      ))}
-    </div>
-    <div className="text-white mb-3">Assets Blueprint:</div>
-    <div className="mb-3">
-      {asset.blueprint.map((blueprint) => (
-        <div key={blueprint.name}>{blueprint.name}</div>
-      ))}
-    </div>
-  </>
-);
-
-const SystemDetails: FC<{ system: State['system'] }> = ({ system }) => (
+const SystemDetails: FC<{ system: AnySystem[] }> = ({ system }) => (
   <>
     <div className="text-white mb-3">Systems:</div>
     <div className="mb-3">
@@ -122,14 +103,16 @@ const SystemDetails: FC<{ system: State['system'] }> = ({ system }) => (
   </>
 );
 
-export const MoreStateDetailsName = 'MoreStateDetails'
+export const MoreStateDetailsName = 'MoreStateDetails';
 
 export const MoreStateDetails: React.FC = () => {
   const appState = useContext(AppContext);
+  const time = getTime({ state: appState });
+  const mouse = getMouse({ state: appState });
 
   return (
     <div className="flex flex-1 flex-col m-2 overflow-y-auto">
-      <InlineCheckbox
+      {/* <InlineCheckbox
         label="isDebugInitialized"
         name="isDebugInitialized"
         id="appState.isDebugInitialized"
@@ -144,11 +127,10 @@ export const MoreStateDetails: React.FC = () => {
         value={appState.isDrawEnabled}
         disabled={true}
         onChange={() => {}}
-      />
+      /> */}
 
-      <TimeDetails time={appState.time} />
-      <MouseDetails mouse={appState.mouse} />
-      <AssetDetails asset={appState.asset} />
+      {time && <TimeDetails time={time} />}
+      {mouse && <MouseDetails mouse={mouse} />}
       <SystemDetails system={appState.system} />
     </div>
   );

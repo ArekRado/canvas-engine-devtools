@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { saveStateInLocalStorage } from '../../debug';
+// import { saveStateInLocalStorage } from '../../debug';
 import { Button } from '../common/Button';
 import { AppContext } from '../../context/app';
 import { ModalWrapper } from './ModalWrapper';
@@ -13,7 +13,7 @@ export const SaveModal: React.FC = () => {
         <div>
           <Button
             onClick={() => {
-              saveStateInLocalStorage(appState);
+              // saveStateInLocalStorage(appState);
               close();
             }}
           >

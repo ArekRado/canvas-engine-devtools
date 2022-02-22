@@ -1,35 +1,30 @@
 import {
-  initialState as engineInitialState,
-  State,
   setEntity,
   Entity,
   setComponent,
   CollideBox,
   CollideCircle,
-  Sprite,
-  Animation,
   Camera,
   MouseInteraction,
   Guid,
-  setCamera,
+  InternalInitialState,
+  Animation,
 } from '@arekrado/canvas-engine';
+import { setCamera } from '@arekrado/canvas-engine/system/camera';
 import { createContext, Dispatch, Reducer } from 'react';
-import { mutableState, registerDebugSystem } from '../debug';
 import { Action } from '../type';
-import { eventBusDispatch } from '../util/eventBus';
 
 export namespace AppAction {
-  export type SetState = Action<'SetState', State>;
+  export type SetState = Action<'SetState', InternalInitialState>;
   export type SetEntity = Action<'SetEntity', Entity>;
   export type CreateComponent = Action<
     'CreateComponent',
     {
       component: string;
-      entityId: Guid;
+      entity: Guid;
       defaultData: any;
     }
   >;
-  export type SetSpriteComponent = Action<'SetSpriteComponent', Sprite>;
 
   export type SetCollideCircleComponent = Action<
     'SetCollideCircleComponent',
@@ -41,7 +36,7 @@ export namespace AppAction {
   >;
   export type SetAnimationComponent = Action<
     'SetAnimationComponent',
-    Animation
+    Animation.AnimationComponent
   >;
   export type SetMouseInteractionComponent = Action<
     'SetMouseInteractionComponent',
@@ -54,26 +49,32 @@ type AppActions =
   | AppAction.SetState
   | AppAction.SetEntity
   | AppAction.CreateComponent
-  | AppAction.SetSpriteComponent
   | AppAction.SetCollideCircleComponent
   | AppAction.SetCollideBoxComponent
   | AppAction.SetAnimationComponent
   | AppAction.SetMouseInteractionComponent
   | AppAction.SetCamera;
 
-type AppState = State & {
+type AppState = InternalInitialState & {
   dispatch: Dispatch<AppActions>;
 };
 
 export const initialState: AppState = {
-  ...registerDebugSystem(engineInitialState),
+  entity: {},
+  component: {} as InternalInitialState['component'],
+  system: [],
+  globalSystem: [],
+  babylonjs: {},
   dispatch: () => {},
 };
 
 export const AppContext = createContext<AppState>(initialState);
 
-export const reducer: Reducer<State, AppActions> = (state, action) => {
-  let newState: State | undefined;
+export const reducer: Reducer<InternalInitialState, AppActions> = (
+  state,
+  action
+) => {
+  let newState: InternalInitialState | undefined;
   switch (action.type) {
     case 'SetState':
       newState = {
@@ -87,45 +88,41 @@ export const reducer: Reducer<State, AppActions> = (state, action) => {
     case 'SetCamera':
       newState = setCamera({
         state,
-        camera: action.payload,
-      });
-      break;
-    case 'SetSpriteComponent':
-      newState = setComponent('sprite', {
-        state,
         data: action.payload,
       });
       break;
     case 'SetCollideCircleComponent':
-      newState = setComponent('collideCircle', {
+      newState = setComponent({
         state,
         data: action.payload,
       });
       break;
     case 'SetCollideBoxComponent':
-      newState = setComponent('collideBox', {
+      newState = setComponent({
         state,
         data: action.payload,
       });
       break;
     case 'SetAnimationComponent':
-      newState = setComponent('animation', {
+      newState = setComponent({
         state,
         data: action.payload,
       });
       break;
     case 'SetMouseInteractionComponent':
-      newState = setComponent('mouseInteraction', {
+      newState = setComponent({
         state,
         data: action.payload,
       });
       break;
+      break;
     case 'CreateComponent':
-      const v1 = setComponent(action.payload.component, {
+      const v1 = setComponent({
         state,
         data: {
           ...action.payload.defaultData,
-          entityId: action.payload.entityId,
+          name: action.payload.component,
+          entity: action.payload.entity,
         },
       });
 
@@ -135,10 +132,6 @@ export const reducer: Reducer<State, AppActions> = (state, action) => {
       newState = state;
       break;
   }
-
-  !mutableState.isPlaying &&
-    newState &&
-    eventBusDispatch('setGameState', newState);
 
   return newState || initialState;
 };

@@ -1,14 +1,19 @@
 import { Camera as CameraType } from '@arekrado/canvas-engine';
+import { getCamera } from '@arekrado/canvas-engine/system/camera';
 import React, { useContext } from 'react';
 import { AppContext } from '../../context/app';
 import { InlineInput } from '../common/InlineInput';
 import { InlineVector } from '../common/InlineVector';
 
-export const CameraName = 'Camera'
+export const CameraName = 'Camera';
 
 export const Camera: React.FC = () => {
   const appState = useContext(AppContext);
-  const component = appState.camera;
+  const component = getCamera({ state: appState });
+
+  if (!component) {
+    return null;
+  }
 
   const setCameraData = (data: Partial<CameraType>): void =>
     appState.dispatch({
@@ -30,12 +35,14 @@ export const Camera: React.FC = () => {
       />
 
       <InlineInput
-        label="size"
-        name="size"
-        id="size"
+        label="distance"
+        name="distance"
+        id="distance"
         type="number"
-        value={component.size}
-        onChange={(e) => setCameraData({ size: parseFloat(e.target.value) })}
+        value={component.distance}
+        onChange={(e) =>
+          setCameraData({ distance: parseFloat(e.target.value) })
+        }
       />
     </div>
   );

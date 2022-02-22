@@ -1,14 +1,16 @@
 import {
   Dictionary,
   Guid,
-  initialState as canvasEngineInitialState,
-  State,
+  getState,
+  Time,
+  componentName,
+  InternalInitialState,
+  emitEvent,
+  Component,
 } from '@arekrado/canvas-engine';
-import { Component } from '@arekrado/canvas-engine';
 import { createContext, Dispatch, Reducer } from 'react';
-import { mutableState } from '../debug';
+import { DebugEvent } from '../debugSystem';
 import { Action } from '../type';
-import { eventBusDispatch } from '../util/eventBus';
 
 export type RegisterComponentPayload<Data> = {
   name: string;
@@ -26,16 +28,13 @@ export type RegisterActivityViewPayload = {
 
 export type SetIsPlayingPayload = {
   isPlaying: boolean;
-  state: State;
+  state: InternalInitialState;
 };
 
 export namespace EditorAction {
-  export type SetEntityId = Action<'SetEntityId', Guid | undefined>;
+  export type SetSelectedEntity = Action<'SetSelectedEntity', Guid | undefined>;
   export type SetIsPlaying = Action<'SetIsPlaying', SetIsPlayingPayload>;
-  export type SetHoveredEntityId = Action<
-    'SetHoveredEntityId',
-    Guid | undefined
-  >;
+  export type SetHoveredEntity = Action<'SetHoveredEntity', Guid | undefined>;
   export type RegisterComponent = Action<
     'RegisterComponent',
     RegisterComponentPayload<any>
@@ -47,19 +46,28 @@ export namespace EditorAction {
 }
 
 type EditorActions =
-  | EditorAction.SetEntityId
+  | EditorAction.SetSelectedEntity
   | EditorAction.SetIsPlaying
-  | EditorAction.SetHoveredEntityId
+  | EditorAction.SetHoveredEntity
   | EditorAction.RegisterComponent
   | EditorAction.RegisterActivityView;
 
 type EditorState = {
-  selectedEntityId?: Guid;
-  hoveredEntityId?: Guid;
+  selectedEntity?: Guid;
+  hoveredEntity?: Guid;
   isPlaying: boolean;
   components: Dictionary<RegisterComponentPayload<any>>;
   activityView: Dictionary<RegisterActivityViewPayload>;
   dispatch: Dispatch<EditorActions>;
+};
+
+const timeInitial: Component<Time> = {
+  entity: '',
+  name: componentName.time,
+  delta: 0,
+  timeNow: 0,
+  previousTimeNow: 0,
+  dataOverwrite: undefined,
 };
 
 export const initialState: EditorState = {
@@ -73,23 +81,29 @@ export const EditorContext = createContext<EditorState>(initialState);
 
 export const reducer: Reducer<EditorState, EditorActions> = (state, action) => {
   switch (action.type) {
-    case 'SetEntityId':
+    case 'SetSelectedEntity':
       return {
         ...state,
-        selectedEntityId: action.payload,
+        selectedEntity: action.payload,
       };
-    case 'SetHoveredEntityId':
+    case 'SetHoveredEntity':
       return {
         ...state,
-        hoveredEntityId: action.payload,
+        hoveredEntity: action.payload,
       };
     case 'SetIsPlaying':
-      eventBusDispatch<State>('setGameState', {
-        ...action.payload.state,
-        time: canvasEngineInitialState.time,
-      });
+      // eventBusDispatch<InternalInitialState>('setGameState', {
+      //   ...action.payload.state,
+      //   time: timeInitial,
+      // });
 
-      mutableState.isPlaying = action.payload.isPlaying;
+      const playEvent: DebugEvent.PlayEvent = {
+        type: DebugEvent.Type.play,
+        payload: undefined,
+      };
+
+      emitEvent(playEvent);
+      // mutableState.isPlaying = action.payload.isPlaying;
 
       return {
         ...state,

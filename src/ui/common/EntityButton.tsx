@@ -18,17 +18,17 @@ export const EntityButton: React.FC<EntityInputProps> = ({
     <Button
       {...props}
       onClick={() =>
-        editorState.dispatch({ type: 'SetEntityId', payload: entity.id })
+        editorState.dispatch({ type: 'SetSelectedEntity', payload: entity })
       }
       onMouseEnter={() =>
-        editorState.dispatch({ type: 'SetHoveredEntityId', payload: entity.id })
+        editorState.dispatch({ type: 'SetHoveredEntity', payload: entity })
       }
       onMouseLeave={() =>
-        editorState.dispatch({ type: 'SetHoveredEntityId', payload: undefined })
+        editorState.dispatch({ type: 'SetHoveredEntity', payload: undefined })
       }
       className={`text-left ${props.className}`}
     >
-      {entity.name}
+      {entity}
     </Button>
   );
 };

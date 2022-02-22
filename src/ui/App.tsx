@@ -14,22 +14,24 @@ import {
   initialState as modalInitialState,
   reducer as modalReducer,
 } from '../context/modal';
-// import { StartStop } from './activityBar/StartStop';
-// import { EntityList } from './activityBar/entityList/EntityList';
-// import { CreateEntity } from './activityBar/entityList/CreateEntity';
 import { SaveModal } from './modal/SaveModal';
 import { modalContainerId } from './modal/ModalWrapper';
-import { useOutline } from '../util/useOutline';
-// import { EntityDetails } from './activityBar/entityList/EntityDetails';
+import { useOutline } from './hooks/useOutline';
 import { ConfirmModal } from './modal/ConfirmModal';
 import { AnimationModal } from './modal/AnimationModal';
 import { eventBusDispatch, eventBusOn, eventBusRemove } from '../util/eventBus';
-import { State } from '@arekrado/canvas-engine';
-// import { MoreStateDetailsModal } from './activityView/MoreStateDetails';
+import { InternalInitialState } from '@arekrado/canvas-engine';
 import { ActivityBar } from './ActivityBar';
+import './app.css';
+import { appStyle } from './app.css';
+import { useAppState } from './hooks/useAppState';
+import { Button } from './common/Button';
+import { Fps } from './Fps';
+import { EntityList } from './activityView/entityList/EntityList';
+import { CreateEntity } from './activityView/entityList/CreateEntity';
 
 export const App: React.FC = () => {
-  const [appState, appDispatch] = useReducer(appReducer, appInitialState);
+  const appState = useAppState();
 
   const [editorState, editorDispatch] = useReducer(
     editorReducer,
@@ -43,23 +45,6 @@ export const App: React.FC = () => {
 
   const isPlayingRef = useRef(false);
   isPlayingRef.current = editorState.isPlaying;
-
-  useEffect(() => {
-    eventBusDispatch('setIsUIInitialized', true);
-
-    const callback = (state?: State) => {
-      state &&
-        appDispatch({
-          type: 'SetState',
-          payload: state,
-        });
-    };
-    eventBusOn('setEditorState', callback);
-
-    return () => {
-      eventBusRemove('setEditorState', callback);
-    };
-  }, []);
 
   useOutline();
 
@@ -86,39 +71,37 @@ export const App: React.FC = () => {
       <EditorContext.Provider
         value={{ ...editorState, dispatch: editorDispatch }}
       >
-        <AppContext.Provider value={{ ...appState, dispatch: appDispatch }}>
-          <div className="text-gray-500 bg-gray-900 w-full h-full flex">
-            <ActivityBar/>
+        <div className={appStyle}>
+          <ActivityBar />
 
-            {/* <div className="flex flex-col flex-1">
-              <div className="py-2 pl-2 pr-1 flex flex-col flex-1 overflow-y-hidden">
-                <CreateEntity />
-                <div className="flex flex-col flex-1 overflow-y-auto mt-2">
-                  <EntityList />
-                </div>
-
-                <Button onClick={showMoreState} title="Other state properties">
-                  Show more state
-                </Button>
-                <Fps />
+          {/* <div className="flex flex-col flex-1">
+            <div className="py-2 pl-2 pr-1 flex flex-col flex-1 overflow-y-hidden">
+              <CreateEntity />
+              <div className="flex flex-col flex-1 overflow-y-auto mt-2">
+                <EntityList />
               </div>
-            </div>
-            <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-              <EntityDetails />
-            </div> */}
 
-                {/* <Button onClick={showMoreState} title="Other state properties">
+              <Button onClick={showMoreState} title="Other state properties">
+                Show more state
+              </Button>
+              <Fps />
+            </div>
+          </div>
+          <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+            <EntityDetails />
+          </div> */}
+
+          {/* <Button onClick={showMoreState} title="Other state properties">
                   Show more state
                 </Button>
                 <Fps /> */}
 
-            <div id={modalContainerId} />
-          </div>
+          <div id={modalContainerId} />
+        </div>
 
-          <ConfirmModal />
-          <SaveModal />
-          <AnimationModal />
-        </AppContext.Provider>
+        <ConfirmModal />
+        <SaveModal />
+        {/* <AnimationModal /> */}
       </EditorContext.Provider>
     </ModalContext.Provider>
   );

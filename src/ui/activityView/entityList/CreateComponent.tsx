@@ -1,4 +1,3 @@
-import { getEntity, State } from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
 import { AppContext } from '../../../context/app';
 import { EditorContext } from '../../../context/editor';
@@ -15,7 +14,7 @@ export const CreateComponent: React.FC = () => {
     })
   );
 
-  if (!editorState.selectedEntityId) {
+  if (!editorState.selectedEntity) {
     return null;
   } else {
     return (
@@ -24,12 +23,12 @@ export const CreateComponent: React.FC = () => {
         options={options}
         value=""
         onChange={(value) => {
-          if (editorState.selectedEntityId) {
+          if (editorState.selectedEntity) {
             appState.dispatch({
               type: 'CreateComponent',
               payload: {
                 component: value.target.value,
-                entityId: editorState.selectedEntityId,
+                entity: editorState.selectedEntity,
                 defaultData:
                   editorState.components[value.target.value]?.defaultData,
               },

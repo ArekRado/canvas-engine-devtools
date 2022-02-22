@@ -1,26 +1,33 @@
-import { getEntity, Entity, State } from '@arekrado/canvas-engine';
+import {
+  getEntity,
+  Entity,
+  InternalInitialState,
+} from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
 import { ChevronDown, ChevronRight } from 'react-feather';
 import { AppContext } from '../../../context/app';
 import { EditorContext } from '../../../context/editor';
 import { Button } from '../../common/Button';
+import { sprinkles, text1 } from '../../util.css';
+import { useAppState } from '../../hooks/useAppState';
 import { CreateEntity } from './CreateEntity';
 import { EntityDetails } from './EntityDetails';
+import { container, listContainer } from './entityList.css';
 
 type Branch = {
   entity: Entity;
   children: Branch[];
 };
 
-type GenerateTree = (state: State, entity?: Entity) => Branch[];
+type GenerateTree = (state: InternalInitialState, entity?: Entity) => Branch[];
 export const generateTree: GenerateTree = (state, entity) =>
-  Object.values(state.entity)
-    .filter((t) => t.parentId === entity?.id)
+  Object.values(state.component.transform)
+    .filter((t) => t.parentId === entity)
     .map((t) => {
-      const tEntity = getEntity({ state, entityId: t.id });
+      const tEntity = getEntity({ state, entity: t.entity });
 
       if (!tEntity) {
-        throw new Error(`Entity ${t.id} doesn't exist`);
+        throw new Error(`Entity ${t} doesn't exist`);
       }
 
       return {
@@ -52,7 +59,7 @@ const EntityButton: React.FC<EntityButtonProps> = ({
   const editorState = useContext(EditorContext);
   const [isOpened, setIsOpened] = useState(false);
 
-  const isFocused = editorState?.selectedEntityId === entity.id;
+  const isFocused = editorState?.selectedEntity === entity;
   const hasChildren = childrens.length > 0;
 
   return (
@@ -62,12 +69,12 @@ const EntityButton: React.FC<EntityButtonProps> = ({
       onDragOver={handleDragOver(entity)}
       onDragStart={handleDragStart(entity)}
       className={`
-        ${overEntity?.id === entity.id ? 'border border-blue-100' : ''}
+        ${overEntity === entity ? 'border border-blue-100' : ''}
         ${!hasChildren ? 'pl-3' : ''}
         ${isFocused ? 'border-l-2 border-blue-100' : ''}
       `}
     >
-      <div className="flex">
+      <div className={sprinkles({ display: 'flex' })}>
         {hasChildren && (
           <Button
             focused={isFocused}
@@ -79,30 +86,34 @@ const EntityButton: React.FC<EntityButtonProps> = ({
         )}
 
         <Button
-          title={entity.id}
+          title={entity}
           focused={isFocused}
           onClick={() =>
             editorState.dispatch({
-              type: 'SetEntityId',
-              payload: entity.id,
+              type: 'SetSelectedEntity',
+              payload: entity,
             })
           }
           className={`text-left flex-1 p-0 ${
-            editorState?.hoveredEntityId === entity.id
-              ? 'border border-white'
-              : ''
+            editorState?.hoveredEntity === entity ? 'border border-white' : ''
           }`}
         >
           {/* firefox doesn't support button drag */}
-          <div className="w-full h-full">{entity.name}</div>
+          <div className="w-full h-full">{entity}</div>
         </Button>
       </div>
 
-      <div className="ml-2 flex flex-col">
+      {/* <div className="ml-2 flex flex-col"> */}
+      <div
+        className={sprinkles({
+          display: 'flex',
+          flexDirection: 'column',
+        })}
+      >
         {isOpened &&
           childrens.map((branch) => (
             <EntityButton
-              key={branch.entity.id}
+              key={branch.entity}
               entity={branch.entity}
               overEntity={overEntity}
               handleDrop={handleDrop}
@@ -116,10 +127,10 @@ const EntityButton: React.FC<EntityButtonProps> = ({
   );
 };
 
-export const EntityListName = 'EntityList'
+export const EntityListName = 'EntityList';
 
 export const EntityList: React.FC = () => {
-  const appState = useContext(AppContext);
+  const appState = useAppState();
 
   const [dragedEntity, setDragedEntity] = useState<Entity | null>(null);
   const [overEntity, setOverEntity] = useState<Entity | null>(null);
@@ -140,15 +151,15 @@ export const EntityList: React.FC = () => {
 
     setOverEntity(null);
 
-    if (dragedEntity && dragedEntity.id !== entity.id) {
-      appState.dispatch({
-        type: 'SetEntity',
-        payload: {
-          ...dragedEntity,
-          parentId: entity.id,
-        },
-      });
-    }
+    // if (dragedEntity && dragedEntity !== entity) {
+    //   appState.dispatch({
+    //     type: 'SetTransform',
+    //     payload: {
+    //       ...dragedEntity,
+    //       parent: entity,
+    //     },
+    //   });
+    // }
   };
 
   const handleDragStart = (entity: Entity) => (
@@ -159,26 +170,26 @@ export const EntityList: React.FC = () => {
     setDragedEntity(entity);
   };
 
-  const tree = generateTree(appState);
+  const tree = appState ? generateTree(appState) : [];
 
   return (
-    <div className="flex flex-1 max-h-full">
-      <div className="py-2 pl-2 pr-1 flex flex-col flex-1 overflow-y-hidden">
-        <CreateEntity />
-        <div className="flex flex-col flex-1 overflow-y-auto mt-2">
-          <div className="text-white mb-3">Entity:</div>
-          {tree.map((branch) => (
-            <EntityButton
-              entity={branch.entity}
-              overEntity={overEntity}
-              handleDrop={handleDrop}
-              handleDragOver={handleDragOver}
-              handleDragStart={handleDragStart}
-              key={branch.entity.id}
-              childrens={branch.children}
-            />
-          ))}
-        </div>
+    <div className={container}>
+      <CreateEntity />
+      <div className={text1}>Entity:</div>
+      <div className={listContainer}>
+        {/* <div className="flex flex-col flex-1 overflow-y-auto mt-2"> */}
+        {tree.map((branch) => (
+          <EntityButton
+            entity={branch.entity}
+            overEntity={overEntity}
+            handleDrop={handleDrop}
+            handleDragOver={handleDragOver}
+            handleDragStart={handleDragStart}
+            key={branch.entity}
+            childrens={branch.children}
+          />
+        ))}
+        {/* </div> */}
 
         {/* <Fps /> */}
       </div>

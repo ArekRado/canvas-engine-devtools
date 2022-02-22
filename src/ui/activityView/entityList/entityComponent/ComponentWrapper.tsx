@@ -5,7 +5,6 @@ import { EditorContext } from '../../../../context/editor';
 import { ModalContext } from '../../../../context/modal';
 import { Button } from '../../../common/Button';
 import { ConfirmModal } from '../../../modal/ConfirmModal';
-import { ChevronDown, ChevronRight, X } from 'react-feather';
 
 type ComponentWrapperProps = {
   component: Component<any>;
@@ -22,7 +21,7 @@ export const ComponentWrapper: React.FC<ComponentWrapperProps> = ({
     <div className="my-3">
       <div className="flex justify-between mt-1">
         <Button onClick={() => setIsCollapsed(!isCollapsed)}>
-          {isCollapsed ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
+          {isCollapsed ? '<ChevronDown size={12} />' : '<ChevronRight size={12} />'}
         </Button>
         <div className="text-white flex-1">{componentName}</div>
         <Button
@@ -40,7 +39,7 @@ export const ComponentWrapper: React.FC<ComponentWrapperProps> = ({
             });
           }}
         >
-          <X size={12} />
+          X size={12} 
         </Button>
       </div>
 

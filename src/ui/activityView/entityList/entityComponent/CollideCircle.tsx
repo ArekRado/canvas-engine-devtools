@@ -55,13 +55,13 @@ export const CollideCircle: React.FC<CollideCircleProps> = ({ component }) => {
           <ul>
             {component.collisions.map((collisionType) => {
               const entity = getEntity({
-                entityId: collisionType.entityId,
+                entity: collisionType.entity,
                 state: appState,
               });
 
               if (entity) {
                 return (
-                  <li key={entity.id}>
+                  <li key={entity}>
                     <EntityButton entity={entity} />
                   </li>
                 );

@@ -18,24 +18,25 @@ export const CreateEntity: React.FC = () => {
       className="flex justify-between"
       onSubmit={() => {
         setEntityName('');
-        const newEntity = generateEntity(entityName);
+        const newEntity = generateEntity({ name: entityName });
 
         appState.dispatch({
           type: 'SetEntity',
           payload: newEntity,
         });
         editorState.dispatch({
-          type: 'SetEntityId',
-          payload: newEntity.id,
+          type: 'SetSelectedEntity',
+          payload: newEntity,
         });
       }}
     >
       <Input
-        labelClassName="mr-3"
+        variants={{ type: 'inline' }}
+        // labelClassName="mr-3"
         label="Create"
         id="createEntity"
         name="createEntity"
-        containerClassName="flex flex-1"
+        // containerClassName="flex flex-1"
         value={entityName}
         onChange={(event) => setEntityName(event.target.value)}
         required={true}

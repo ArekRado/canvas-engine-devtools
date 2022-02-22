@@ -1,6 +1,6 @@
 {
-  "version": "0.1.0",
-  "license": "MIT",
+  "version": "0.0.1",
+  "license": "GNU",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -8,10 +8,11 @@
     "src"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=16",
+    "npm": ">=8.3.0"
   },
   "scripts": {
-    "start": "webpack serve",
+    "start": "cd demo & npm start",
     "build": "webpack --mode production",
     "test": "jest"
   },
@@ -27,49 +28,41 @@
   "name": "arek",
   "author": "Arek Rado",
   "module": "dist/arek.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/arek.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/arek.esm.js",
-      "limit": "10 KB"
-    }
-  ],
   "dependencies": {
-    "@arekrado/canvas-engine": "file:.yalc/@arekrado/canvas-engine",
-    "@arekrado/vector-2d": "0.0.2",
-    "gl-mat4": "^1.2.0",
-    "mouse-change": "^1.4.0",
-    "mouse-wheel": "^1.2.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-feather": "^2.0.8",
-    "regl": "^2.1.0",
-    "tailwindcss": "^2.0.3"
+    "@arekrado/canvas-engine": "0.0.95",
+    "@arekrado/vector-2d": "0.0.5",
+    "@vanilla-extract/babel-plugin": "^1.1.4",
+    "@vanilla-extract/css": "^1.6.8",
+    "@vanilla-extract/recipes": "^0.2.3",
+    "@vanilla-extract/sprinkles": "^1.3.3",
+    "@vanilla-extract/webpack-plugin": "^2.1.5",
+    "mouse-change": "1.4.0",
+    "mouse-wheel": "1.2.0",
+    "react": ">=16",
+    "react-dom": "17.0.1",
+    "react-feather": "^2.0.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/preset-env": "^7.12.16",
-    "@types/react": "^17.0.1",
-    "@types/react-dom": "^17.0.1",
-    "autoprefixer": "^9.8.6",
-    "babel-jest": "^26.6.3",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^5.0.2",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.1.0",
-    "jest": "^26.6.3",
-    "postcss": "^8.2.6",
-    "postcss-loader": "^5.0.0",
-    "prettier": "^2.2.1",
-    "style-loader": "^2.0.0",
-    "ts-loader": "^8.0.17",
-    "typescript": "^4.1.5",
-    "url-loader": "^4.1.1",
-    "webpack": "^5.22.0",
-    "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2"
+    "@babel/core": "7.12.16",
+    "@babel/preset-env": "7.12.16",
+    "@types/react": "17.0.1",
+    "@types/react-dom": "17.0.1",
+    "autoprefixer": "9.8.6",
+    "babel-jest": "26.6.3",
+    "babel-loader": "8.2.2",
+    "css-loader": "5.0.2",
+    "file-loader": "6.2.0",
+    "html-webpack-plugin": "5.1.0",
+    "jest": "26.6.3",
+    "postcss": "8.2.6",
+    "postcss-loader": "5.0.0",
+    "prettier": "2.2.1",
+    "style-loader": "2.0.0",
+    "ts-loader": "8.0.17",
+    "typescript": "4.1.5",
+    "url-loader": "4.1.1",
+    "webpack": "5.22.0",
+    "webpack-cli": "4.5.0",
+    "webpack-dev-server": "3.11.2"
   }
 }

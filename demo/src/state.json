@@ -1,0 +1,4565 @@
+{
+  "entity": {
+    "2": "2",
+    "3": "3",
+    "4": "4",
+    "5": "5",
+    "6": "6",
+    "7": "7",
+    "8": "8",
+    "cameraEntity": "cameraEntity",
+    "humanPlayer": "humanPlayer",
+    "game": "game",
+    "17818552155683748": "17818552155683748",
+    "8523773494048061": "8523773494048061",
+    "49844246746090080": "49844246746090080",
+    "84191026282498290": "84191026282498290",
+    "80948793534432670": "80948793534432670",
+    "41722013684679110": "41722013684679110",
+    "64288466059059800": "64288466059059800",
+    "1712917421491278": "1712917421491278",
+    "3742973377791525": "3742973377791525",
+    "16689833860387194": "16689833860387194",
+    "57913382751040100": "57913382751040100",
+    "64507165524479930": "64507165524479930",
+    "73477814740820430": "73477814740820430",
+    "33063675096697332": "33063675096697332",
+    "49108420896485304": "49108420896485304",
+    "6963662037828644": "6963662037828644",
+    "50188600791183130": "50188600791183130",
+    "12167025751848970": "12167025751848970",
+    "60012353811825460": "60012353811825460",
+    "58325175183604930": "58325175183604930",
+    "9460362457991566": "9460362457991566",
+    "70131560554311340": "70131560554311340",
+    "1320209297953578": "1320209297953578",
+    "61692779339176296": "61692779339176296",
+    "67981004850247880": "67981004850247880",
+    "25357324892902300": "25357324892902300",
+    "52546561546716090": "52546561546716090",
+    "62775511887713130": "62775511887713130",
+    "78433025439694510": "78433025439694510",
+    "98019805954412850": "98019805954412850",
+    "18725722411369548": "18725722411369548",
+    "41284842834815096": "41284842834815096",
+    "63364530038209300": "63364530038209300",
+    "60101688356171200": "60101688356171200",
+    "93117510436686640": "93117510436686640",
+    "29565526467349480": "29565526467349480",
+    "4125553719566943": "4125553719566943",
+    "63675284516512710": "63675284516512710",
+    "6704216579312960": "6704216579312960",
+    "41746445194841400": "41746445194841400",
+    "81059774730282770": "81059774730282770",
+    "99242288921454900": "99242288921454900",
+    "43034117696144800": "43034117696144800",
+    "1440584837555569": "1440584837555569",
+    "16143180341030538": "16143180341030538",
+    "81734078587191710": "81734078587191710",
+    "4439585465953299": "4439585465953299",
+    "94429514641284640": "94429514641284640",
+    "35351506803973796": "35351506803973796",
+    "21745133776820590": "21745133776820590",
+    "17370717941924596": "17370717941924596",
+    "5537326162601142": "5537326162601142",
+    "56878382381663050": "56878382381663050",
+    "41446789360897810": "41446789360897810",
+    "20827228698336332": "20827228698336332",
+    "19827494041719908": "19827494041719908",
+    "77565044527184930": "77565044527184930",
+    "89082054320847060": "89082054320847060",
+    "43135637771921440": "43135637771921440",
+    "38727190763160300": "38727190763160300",
+    "73444570452740000": "73444570452740000",
+    "23498243584779444": "23498243584779444",
+    "13118300737617628": "13118300737617628",
+    "2271585019771727": "2271585019771727",
+    "39081765583826140": "39081765583826140",
+    "69338933235323176": "69338933235323176",
+    "59835890819710700": "59835890819710700",
+    "63334449672310970": "63334449672310970",
+    "77602759578557730": "77602759578557730",
+    "57889254719133890": "57889254719133890",
+    "61771396163090210": "61771396163090210",
+    "95549900240150420": "95549900240150420",
+    "67716493744836540": "67716493744836540",
+    "13598905426734664": "13598905426734664",
+    "7113643232944500": "7113643232944500",
+    "50995204530297250": "50995204530297250",
+    "79512685867792380": "79512685867792380",
+    "11087093054170416": "11087093054170416",
+    "94683355227336460": "94683355227336460",
+    "47733718341883624": "47733718341883624",
+    "6733521684621968": "6733521684621968",
+    "87504590215362430": "87504590215362430",
+    "13957546498530892": "13957546498530892",
+    "81342686942712530": "81342686942712530",
+    "77799919224027090": "77799919224027090",
+    "44272205380337860": "44272205380337860",
+    "83479632524258200": "83479632524258200",
+    "53908056788424410": "53908056788424410",
+    "52470871624508660": "52470871624508660",
+    "14132246895356082": "14132246895356082",
+    "20650302269865840": "20650302269865840",
+    "29854670546823068": "29854670546823068",
+    "42321548619886330": "42321548619886330",
+    "54502960071628590": "54502960071628590",
+    "33135109114477690": "33135109114477690",
+    "9170093508325006": "9170093508325006",
+    "9747934093206346": "9747934093206346",
+    "20317033725742330": "20317033725742330",
+    "49946676238616680": "49946676238616680",
+    "6635764012186363": "6635764012186363",
+    "76294570047919180": "76294570047919180",
+    "11360519364985966": "11360519364985966",
+    "99429964848380000": "99429964848380000",
+    "58260008090481200": "58260008090481200",
+    "43185466313700970": "43185466313700970",
+    "52726975976568800": "52726975976568800",
+    "42160874735241050": "42160874735241050",
+    "20216510703010070": "20216510703010070",
+    "9850170030217686": "9850170030217686",
+    "7876352988517721": "7876352988517721",
+    "84720267036018600": "84720267036018600",
+    "94980732782614380": "94980732782614380",
+    "27041416853609836": "27041416853609836",
+    "68398806479250670": "68398806479250670",
+    "3710189080934067": "3710189080934067",
+    "7904048142353404": "7904048142353404",
+    "45368859617780590": "45368859617780590",
+    "38127445920450264": "38127445920450264"
+  },
+  "component": {
+    "animation": {
+      "4125553719566943": {
+        "name": "animation",
+        "entity": "4125553719566943",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "4125553719566943",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "4125553719566943",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [1, 1, 1],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "14132246895356082": {
+        "name": "animation",
+        "entity": "14132246895356082",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "14132246895356082",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "14132246895356082",
+                    "texture": "http://localhost:1234/48c6631e7335af8fe553f470b80d8976.png",
+                    "color": [0.99, 0.42, 0.45],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "87504590215362430": {
+        "name": "animation",
+        "entity": "87504590215362430",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "87504590215362430",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "87504590215362430",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.99, 0.42, 0.45],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "53908056788424410": {
+        "name": "animation",
+        "entity": "53908056788424410",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "53908056788424410",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, 1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "53908056788424410",
+                    "texture": "http://localhost:1234/917ac946784d62fdf0c021cb3612fdb2.png",
+                    "color": [1, 0.73, 0.29],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "6733521684621968": {
+        "name": "animation",
+        "entity": "6733521684621968",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "6733521684621968",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "6733521684621968",
+                    "texture": "http://localhost:1234/7e640f0339b663753965c7d2b518a274.png",
+                    "color": [0.6, 0.6, 0.6],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "13598905426734664": {
+        "name": "animation",
+        "entity": "13598905426734664",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "13598905426734664",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "13598905426734664",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.99, 0.97, 0.32],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20317033725742330": {
+        "name": "animation",
+        "entity": "20317033725742330",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "20317033725742330",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "20317033725742330",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.67, 0.23, 0.94],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "67716493744836540": {
+        "name": "animation",
+        "entity": "67716493744836540",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "67716493744836540",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "67716493744836540",
+                    "texture": "http://localhost:1234/917ac946784d62fdf0c021cb3612fdb2.png",
+                    "color": [0.6, 0.6, 0.6],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "47733718341883624": {
+        "name": "animation",
+        "entity": "47733718341883624",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "47733718341883624",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, 1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "47733718341883624",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.6, 0.6, 0.6],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "13957546498530892": {
+        "name": "animation",
+        "entity": "13957546498530892",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "13957546498530892",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, 1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "13957546498530892",
+                    "texture": "http://localhost:1234/917ac946784d62fdf0c021cb3612fdb2.png",
+                    "color": [0.09, 0.84, 1],
+                    "nextTurn": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "9170093508325006": {
+        "name": "animation",
+        "entity": "9170093508325006",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "9170093508325006",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "9170093508325006",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [1, 0.73, 0.29],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "9747934093206346": {
+        "name": "animation",
+        "entity": "9747934093206346",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "9747934093206346",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "9747934093206346",
+                    "texture": "http://localhost:1234/48c6631e7335af8fe553f470b80d8976.png",
+                    "color": [0.99, 0.47, 0.94],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "69338933235323176": {
+        "name": "animation",
+        "entity": "69338933235323176",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "69338933235323176",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "69338933235323176",
+                    "texture": "http://localhost:1234/fece679ff0a36907324c646caf55dd8c.png",
+                    "color": [0.99, 0.42, 0.45],
+                    "nextTurn": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "94683355227336460": {
+        "name": "animation",
+        "entity": "94683355227336460",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "94683355227336460",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "94683355227336460",
+                    "texture": "http://localhost:1234/48c6631e7335af8fe553f470b80d8976.png",
+                    "color": [0.99, 0.47, 0.94],
+                    "nextTurn": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "49946676238616680": {
+        "name": "animation",
+        "entity": "49946676238616680",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "49946676238616680",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "49946676238616680",
+                    "texture": "http://localhost:1234/48c6631e7335af8fe553f470b80d8976.png",
+                    "color": [0.11, 0.79, 0.29],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "33135109114477690": {
+        "name": "animation",
+        "entity": "33135109114477690",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "33135109114477690",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "33135109114477690",
+                    "texture": "http://localhost:1234/48c6631e7335af8fe553f470b80d8976.png",
+                    "color": [0.11, 0.79, 0.29],
+                    "nextTurn": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "52726975976568800": {
+        "name": "animation",
+        "entity": "52726975976568800",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "52726975976568800",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "52726975976568800",
+                    "texture": "http://localhost:1234/48c6631e7335af8fe553f470b80d8976.png",
+                    "color": [0.67, 0.23, 0.94],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "42160874735241050": {
+        "name": "animation",
+        "entity": "42160874735241050",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "42160874735241050",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "42160874735241050",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.67, 0.23, 0.94],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "95549900240150420": {
+        "name": "animation",
+        "entity": "95549900240150420",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "95549900240150420",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "95549900240150420",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.6, 0.6, 0.6],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "81342686942712530": {
+        "name": "animation",
+        "entity": "81342686942712530",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "81342686942712530",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, -1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "81342686942712530",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.11, 0.79, 0.29],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "83479632524258200": {
+        "name": "animation",
+        "entity": "83479632524258200",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "83479632524258200",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, 1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "83479632524258200",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.11, 0.79, 0.29],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "7113643232944500": {
+        "name": "animation",
+        "entity": "7113643232944500",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "7113643232944500",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, -1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "7113643232944500",
+                    "texture": "http://localhost:1234/5030d234d3163eca2b8f7a7b4ae5de38.png",
+                    "color": [0.99, 0.97, 0.32],
+                    "nextTurn": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "50995204530297250": {
+        "name": "animation",
+        "entity": "50995204530297250",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "50995204530297250",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, -1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "50995204530297250",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.11, 0.79, 0.29],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "29854670546823068": {
+        "name": "animation",
+        "entity": "29854670546823068",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "29854670546823068",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, 1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "29854670546823068",
+                    "texture": "http://localhost:1234/917ac946784d62fdf0c021cb3612fdb2.png",
+                    "color": [0.99, 0.47, 0.94],
+                    "nextTurn": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "44272205380337860": {
+        "name": "animation",
+        "entity": "44272205380337860",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "44272205380337860",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "44272205380337860",
+                    "texture": "http://localhost:1234/917ac946784d62fdf0c021cb3612fdb2.png",
+                    "color": [1, 0.73, 0.29],
+                    "nextTurn": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20216510703010070": {
+        "name": "animation",
+        "entity": "20216510703010070",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "20216510703010070",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, 1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "20216510703010070",
+                    "texture": "http://localhost:1234/fece679ff0a36907324c646caf55dd8c.png",
+                    "color": [0.6, 0.6, 0.6],
+                    "nextTurn": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "11087093054170416": {
+        "name": "animation",
+        "entity": "11087093054170416",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "11087093054170416",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, 1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "11087093054170416",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [1, 0.73, 0.29],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "39081765583826140": {
+        "name": "animation",
+        "entity": "39081765583826140",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "39081765583826140",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "39081765583826140",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.99, 0.42, 0.45],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "27041416853609836": {
+        "name": "animation",
+        "entity": "27041416853609836",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "27041416853609836",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, -1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "27041416853609836",
+                    "texture": "http://localhost:1234/fece679ff0a36907324c646caf55dd8c.png",
+                    "color": [0.67, 0.23, 0.94],
+                    "nextTurn": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "89082054320847060": {
+        "name": "animation",
+        "entity": "89082054320847060",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "89082054320847060",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "89082054320847060",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.99, 0.97, 0.32],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "6635764012186363": {
+        "name": "animation",
+        "entity": "6635764012186363",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "6635764012186363",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, -1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "6635764012186363",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.99, 0.47, 0.94],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "43185466313700970": {
+        "name": "animation",
+        "entity": "43185466313700970",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "43185466313700970",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "43185466313700970",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.67, 0.23, 0.94],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "68398806479250670": {
+        "name": "animation",
+        "entity": "68398806479250670",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "68398806479250670",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "68398806479250670",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.67, 0.23, 0.94],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "94980732782614380": {
+        "name": "animation",
+        "entity": "94980732782614380",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "94980732782614380",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "94980732782614380",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [1, 0.73, 0.29],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "59835890819710700": {
+        "name": "animation",
+        "entity": "59835890819710700",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "59835890819710700",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "59835890819710700",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.99, 0.97, 0.32],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "19827494041719908": {
+        "name": "animation",
+        "entity": "19827494041719908",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "19827494041719908",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "19827494041719908",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.09, 0.84, 1],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "99429964848380000": {
+        "name": "animation",
+        "entity": "99429964848380000",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "99429964848380000",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "99429964848380000",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.99, 0.42, 0.45],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "61771396163090210": {
+        "name": "animation",
+        "entity": "61771396163090210",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "61771396163090210",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, 1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "61771396163090210",
+                    "texture": "http://localhost:1234/7e640f0339b663753965c7d2b518a274.png",
+                    "color": [0.99, 0.47, 0.94],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "2271585019771727": {
+        "name": "animation",
+        "entity": "2271585019771727",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "2271585019771727",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "2271585019771727",
+                    "texture": "http://localhost:1234/917ac946784d62fdf0c021cb3612fdb2.png",
+                    "color": [0.09, 0.84, 1],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "20827228698336332": {
+        "name": "animation",
+        "entity": "20827228698336332",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "20827228698336332",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, -1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "20827228698336332",
+                    "texture": "http://localhost:1234/917ac946784d62fdf0c021cb3612fdb2.png",
+                    "color": [0.09, 0.84, 1],
+                    "nextTurn": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "58260008090481200": {
+        "name": "animation",
+        "entity": "58260008090481200",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "58260008090481200",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "58260008090481200",
+                    "texture": "http://localhost:1234/917ac946784d62fdf0c021cb3612fdb2.png",
+                    "color": [1, 0.73, 0.29],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "13118300737617628": {
+        "name": "animation",
+        "entity": "13118300737617628",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "13118300737617628",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "13118300737617628",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.09, 0.84, 1],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "11360519364985966": {
+        "name": "animation",
+        "entity": "11360519364985966",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "11360519364985966",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "11360519364985966",
+                    "texture": "http://localhost:1234/7e640f0339b663753965c7d2b518a274.png",
+                    "color": [0.99, 0.42, 0.45],
+                    "nextTurn": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "41446789360897810": {
+        "name": "animation",
+        "entity": "41446789360897810",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "41446789360897810",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "41446789360897810",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.09, 0.84, 1],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "73444570452740000": {
+        "name": "animation",
+        "entity": "73444570452740000",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "73444570452740000",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, 1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "73444570452740000",
+                    "texture": "http://localhost:1234/fece679ff0a36907324c646caf55dd8c.png",
+                    "color": [0.11, 0.79, 0.29],
+                    "nextTurn": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "23498243584779444": {
+        "name": "animation",
+        "entity": "23498243584779444",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "23498243584779444",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, 1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "23498243584779444",
+                    "texture": "http://localhost:1234/7e640f0339b663753965c7d2b518a274.png",
+                    "color": [0.09, 0.84, 1],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "54502960071628590": {
+        "name": "animation",
+        "entity": "54502960071628590",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "54502960071628590",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, 1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "54502960071628590",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.99, 0.42, 0.45],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "79512685867792380": {
+        "name": "animation",
+        "entity": "79512685867792380",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "79512685867792380",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, 1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "79512685867792380",
+                    "texture": "http://localhost:1234/fece679ff0a36907324c646caf55dd8c.png",
+                    "color": [0.6, 0.6, 0.6],
+                    "nextTurn": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "43135637771921440": {
+        "name": "animation",
+        "entity": "43135637771921440",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "43135637771921440",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "43135637771921440",
+                    "texture": "http://localhost:1234/48c6631e7335af8fe553f470b80d8976.png",
+                    "color": [0.99, 0.97, 0.32],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "76294570047919180": {
+        "name": "animation",
+        "entity": "76294570047919180",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "76294570047919180",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, -1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "76294570047919180",
+                    "texture": "http://localhost:1234/7e640f0339b663753965c7d2b518a274.png",
+                    "color": [0.99, 0.47, 0.94],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "77799919224027090": {
+        "name": "animation",
+        "entity": "77799919224027090",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "77799919224027090",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, -1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "77799919224027090",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.11, 0.79, 0.29],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "3710189080934067": {
+        "name": "animation",
+        "entity": "3710189080934067",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "3710189080934067",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, 1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "3710189080934067",
+                    "texture": "http://localhost:1234/fece679ff0a36907324c646caf55dd8c.png",
+                    "color": [0.67, 0.23, 0.94],
+                    "nextTurn": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "63334449672310970": {
+        "name": "animation",
+        "entity": "63334449672310970",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "63334449672310970",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, 1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "63334449672310970",
+                    "texture": "http://localhost:1234/fece679ff0a36907324c646caf55dd8c.png",
+                    "color": [1, 0.73, 0.29],
+                    "nextTurn": true
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "77565044527184930": {
+        "name": "animation",
+        "entity": "77565044527184930",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "77565044527184930",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "77565044527184930",
+                    "texture": "http://localhost:1234/48c6631e7335af8fe553f470b80d8976.png",
+                    "color": [0.09, 0.84, 1],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "42321548619886330": {
+        "name": "animation",
+        "entity": "42321548619886330",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "42321548619886330",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, -1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "42321548619886330",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.99, 0.47, 0.94],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "57889254719133890": {
+        "name": "animation",
+        "entity": "57889254719133890",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "57889254719133890",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, 1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "57889254719133890",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.11, 0.79, 0.29],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "45368859617780590": {
+        "name": "animation",
+        "entity": "45368859617780590",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "45368859617780590",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "45368859617780590",
+                    "texture": "http://localhost:1234/48c6631e7335af8fe553f470b80d8976.png",
+                    "color": [0.99, 0.97, 0.32],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "77602759578557730": {
+        "name": "animation",
+        "entity": "77602759578557730",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "77602759578557730",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, -1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "77602759578557730",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.6, 0.6, 0.6],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "7876352988517721": {
+        "name": "animation",
+        "entity": "7876352988517721",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "7876352988517721",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "7876352988517721",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.99, 0.42, 0.45],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "38727190763160300": {
+        "name": "animation",
+        "entity": "38727190763160300",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "38727190763160300",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [-1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "38727190763160300",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [1, 0.73, 0.29],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "7904048142353404": {
+        "name": "animation",
+        "entity": "7904048142353404",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "7904048142353404",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "7904048142353404",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.99, 0.97, 0.32],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "84720267036018600": {
+        "name": "animation",
+        "entity": "84720267036018600",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "84720267036018600",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [1.5707963267948966, 0, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "84720267036018600",
+                    "texture": "http://localhost:1234/7e640f0339b663753965c7d2b518a274.png",
+                    "color": [0.99, 0.42, 0.45],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "9850170030217686": {
+        "name": "animation",
+        "entity": "9850170030217686",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "rotation",
+            "component": "transform",
+            "entity": "9850170030217686",
+            "keyframes": [
+              {
+                "duration": 500,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [0, 0, 0],
+                  [0, -1.5707963267948966, 0]
+                ],
+                "endFrameEvent": {
+                  "type": "BoxEvent-rotationEnd",
+                  "payload": {
+                    "boxEntity": "9850170030217686",
+                    "texture": "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                    "color": [0.99, 0.47, 0.94],
+                    "nextTurn": false
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "38127445920450264": {
+        "name": "animation",
+        "entity": "38127445920450264",
+        "isPlaying": false,
+        "isFinished": true,
+        "currentTime": 0,
+        "wrapMode": "once",
+        "timingMode": "smooth",
+        "properties": [
+          {
+            "path": "scale",
+            "component": "transform",
+            "entity": "38127445920450264",
+            "keyframes": [
+              {
+                "duration": 400,
+                "timingFunction": "Linear",
+                "valueRange": [
+                  [2, 2, 1],
+                  [0.9, 0.9, 1]
+                ],
+                "endFrameEvent": {
+                  "type": "MarkerEvent-appearAnimationEnd",
+                  "payload": {}
+                }
+              }
+            ]
+          },
+          {
+            "path": "alpha",
+            "component": "material",
+            "entity": "38127445920450264",
+            "keyframes": [
+              {
+                "duration": 400,
+                "timingFunction": "Linear",
+                "valueRange": [0, 1]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "collideBox": {},
+    "collideCircle": {},
+    "mouseInteraction": {},
+    "time": {
+      "timeEntity": {
+        "entity": "timeEntity",
+        "name": "time",
+        "delta": 17,
+        "timeNow": 17987,
+        "previousTimeNow": 17970
+      }
+    },
+    "camera": {
+      "cameraEntity": {
+        "entity": "cameraEntity",
+        "name": "camera",
+        "position": [4.2, 4.2],
+        "distance": 5,
+        "left": -5,
+        "right": 5,
+        "bottom": -5.125545680765021,
+        "top": 5.125545680765021
+      }
+    },
+    "transform": {
+      "49844246746090080": {
+        "name": "transform",
+        "entity": "49844246746090080",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [-0.29999999999999893, 8.300436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "84191026282498290": {
+        "name": "transform",
+        "entity": "84191026282498290",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [0.8250000000000008, 8.300436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "80948793534432670": {
+        "name": "transform",
+        "entity": "80948793534432670",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [1.9500000000000006, 8.300436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "41722013684679110": {
+        "name": "transform",
+        "entity": "41722013684679110",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [2.3250000000000006, 8.300436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "64288466059059800": {
+        "name": "transform",
+        "entity": "64288466059059800",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [3.825, 8.300436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "1712917421491278": {
+        "name": "transform",
+        "entity": "1712917421491278",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [4.2, 8.300436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "3742973377791525": {
+        "name": "transform",
+        "entity": "3742973377791525",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [4.95, 8.300436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "16689833860387194": {
+        "name": "transform",
+        "entity": "16689833860387194",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [5.325, 8.300436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "57913382751040100": {
+        "name": "transform",
+        "entity": "57913382751040100",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [5.7, 8.300436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "64507165524479930": {
+        "name": "transform",
+        "entity": "64507165524479930",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [6.45, 8.300436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "73477814740820430": {
+        "name": "transform",
+        "entity": "73477814740820430",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [7.575, 8.300436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "33063675096697332": {
+        "name": "transform",
+        "entity": "33063675096697332",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [8.325, 8.300436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "49108420896485304": {
+        "name": "transform",
+        "entity": "49108420896485304",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [-0.29999999999999893, 7.925436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "6963662037828644": {
+        "name": "transform",
+        "entity": "6963662037828644",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [0.45000000000000095, 7.925436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "50188600791183130": {
+        "name": "transform",
+        "entity": "50188600791183130",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [1.5750000000000008, 7.925436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "12167025751848970": {
+        "name": "transform",
+        "entity": "12167025751848970",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [2.7000000000000006, 7.925436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "60012353811825460": {
+        "name": "transform",
+        "entity": "60012353811825460",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [3.4500000000000006, 7.925436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "58325175183604930": {
+        "name": "transform",
+        "entity": "58325175183604930",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [5.325, 7.925436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "9460362457991566": {
+        "name": "transform",
+        "entity": "9460362457991566",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [6.45, 7.925436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "70131560554311340": {
+        "name": "transform",
+        "entity": "70131560554311340",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [7.2, 7.925436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "1320209297953578": {
+        "name": "transform",
+        "entity": "1320209297953578",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [8.325, 7.925436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "61692779339176296": {
+        "name": "transform",
+        "entity": "61692779339176296",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [-0.29999999999999893, 7.550436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "67981004850247880": {
+        "name": "transform",
+        "entity": "67981004850247880",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [0.07500000000000101, 7.550436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "25357324892902300": {
+        "name": "transform",
+        "entity": "25357324892902300",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [1.5750000000000008, 7.550436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "52546561546716090": {
+        "name": "transform",
+        "entity": "52546561546716090",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [2.7000000000000006, 7.550436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "62775511887713130": {
+        "name": "transform",
+        "entity": "62775511887713130",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [3.4500000000000006, 7.550436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "78433025439694510": {
+        "name": "transform",
+        "entity": "78433025439694510",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [3.825, 7.550436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "98019805954412850": {
+        "name": "transform",
+        "entity": "98019805954412850",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [4.2, 7.550436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "18725722411369548": {
+        "name": "transform",
+        "entity": "18725722411369548",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [5.325, 7.550436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "41284842834815096": {
+        "name": "transform",
+        "entity": "41284842834815096",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [6.45, 7.550436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "63364530038209300": {
+        "name": "transform",
+        "entity": "63364530038209300",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [6.825, 7.550436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "60101688356171200": {
+        "name": "transform",
+        "entity": "60101688356171200",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [8.325, 7.550436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "93117510436686640": {
+        "name": "transform",
+        "entity": "93117510436686640",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [-0.29999999999999893, 7.175436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "29565526467349480": {
+        "name": "transform",
+        "entity": "29565526467349480",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [0.45000000000000095, 7.175436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "4125553719566943": {
+        "name": "transform",
+        "entity": "4125553719566943",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [1.5750000000000008, 7.175436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "63675284516512710": {
+        "name": "transform",
+        "entity": "63675284516512710",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [2.7000000000000006, 7.175436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "6704216579312960": {
+        "name": "transform",
+        "entity": "6704216579312960",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [4.2, 7.175436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "41746445194841400": {
+        "name": "transform",
+        "entity": "41746445194841400",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [5.325, 7.175436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "81059774730282770": {
+        "name": "transform",
+        "entity": "81059774730282770",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [6.45, 7.175436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "99242288921454900": {
+        "name": "transform",
+        "entity": "99242288921454900",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [7.2, 7.175436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "43034117696144800": {
+        "name": "transform",
+        "entity": "43034117696144800",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [8.325, 7.175436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "1440584837555569": {
+        "name": "transform",
+        "entity": "1440584837555569",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [-0.29999999999999893, 6.800436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "16143180341030538": {
+        "name": "transform",
+        "entity": "16143180341030538",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [0.8250000000000008, 6.800436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "81734078587191710": {
+        "name": "transform",
+        "entity": "81734078587191710",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [1.9500000000000006, 6.800436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "4439585465953299": {
+        "name": "transform",
+        "entity": "4439585465953299",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [2.3250000000000006, 6.800436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "94429514641284640": {
+        "name": "transform",
+        "entity": "94429514641284640",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [3.4500000000000006, 6.800436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "35351506803973796": {
+        "name": "transform",
+        "entity": "35351506803973796",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [3.825, 6.800436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "21745133776820590": {
+        "name": "transform",
+        "entity": "21745133776820590",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [5.325, 6.800436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "17370717941924596": {
+        "name": "transform",
+        "entity": "17370717941924596",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [6.45, 6.800436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "5537326162601142": {
+        "name": "transform",
+        "entity": "5537326162601142",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [7.575, 6.800436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "56878382381663050": {
+        "name": "transform",
+        "entity": "56878382381663050",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [0.3125, 0.3125, 0.3125],
+        "fromParentScale": [1, 1, 1],
+        "position": [8.325, 6.800436544612017],
+        "fromParentPosition": [0, 0]
+      },
+      "41446789360897810": {
+        "name": "transform",
+        "entity": "41446789360897810",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [0, 0],
+        "fromParentPosition": [0, 0]
+      },
+      "20827228698336332": {
+        "name": "transform",
+        "entity": "20827228698336332",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [1.2, 0],
+        "fromParentPosition": [0, 0]
+      },
+      "19827494041719908": {
+        "name": "transform",
+        "entity": "19827494041719908",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [2.4, 0],
+        "fromParentPosition": [0, 0]
+      },
+      "77565044527184930": {
+        "name": "transform",
+        "entity": "77565044527184930",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [3.5999999999999996, 0],
+        "fromParentPosition": [0, 0]
+      },
+      "89082054320847060": {
+        "name": "transform",
+        "entity": "89082054320847060",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [4.8, 0],
+        "fromParentPosition": [0, 0]
+      },
+      "43135637771921440": {
+        "name": "transform",
+        "entity": "43135637771921440",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [6, 0],
+        "fromParentPosition": [0, 0]
+      },
+      "38727190763160300": {
+        "name": "transform",
+        "entity": "38727190763160300",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [7.199999999999999, 0],
+        "fromParentPosition": [0, 0]
+      },
+      "73444570452740000": {
+        "name": "transform",
+        "entity": "73444570452740000",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [8.4, 0],
+        "fromParentPosition": [0, 0]
+      },
+      "23498243584779444": {
+        "name": "transform",
+        "entity": "23498243584779444",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [0, 1.2],
+        "fromParentPosition": [0, 0]
+      },
+      "13118300737617628": {
+        "name": "transform",
+        "entity": "13118300737617628",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [1.2, 1.2],
+        "fromParentPosition": [0, 0]
+      },
+      "2271585019771727": {
+        "name": "transform",
+        "entity": "2271585019771727",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [2.4, 1.2],
+        "fromParentPosition": [0, 0]
+      },
+      "39081765583826140": {
+        "name": "transform",
+        "entity": "39081765583826140",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [3.5999999999999996, 1.2],
+        "fromParentPosition": [0, 0]
+      },
+      "69338933235323176": {
+        "name": "transform",
+        "entity": "69338933235323176",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [4.8, 1.2],
+        "fromParentPosition": [0, 0]
+      },
+      "59835890819710700": {
+        "name": "transform",
+        "entity": "59835890819710700",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [6, 1.2],
+        "fromParentPosition": [0, 0]
+      },
+      "63334449672310970": {
+        "name": "transform",
+        "entity": "63334449672310970",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [7.199999999999999, 1.2],
+        "fromParentPosition": [0, 0]
+      },
+      "77602759578557730": {
+        "name": "transform",
+        "entity": "77602759578557730",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [8.4, 1.2],
+        "fromParentPosition": [0, 0]
+      },
+      "57889254719133890": {
+        "name": "transform",
+        "entity": "57889254719133890",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [0, 2.4],
+        "fromParentPosition": [0, 0]
+      },
+      "61771396163090210": {
+        "name": "transform",
+        "entity": "61771396163090210",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [1.2, 2.4],
+        "fromParentPosition": [0, 0]
+      },
+      "95549900240150420": {
+        "name": "transform",
+        "entity": "95549900240150420",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [2.4, 2.4],
+        "fromParentPosition": [0, 0]
+      },
+      "67716493744836540": {
+        "name": "transform",
+        "entity": "67716493744836540",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [3.5999999999999996, 2.4],
+        "fromParentPosition": [0, 0]
+      },
+      "13598905426734664": {
+        "name": "transform",
+        "entity": "13598905426734664",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [4.8, 2.4],
+        "fromParentPosition": [0, 0]
+      },
+      "7113643232944500": {
+        "name": "transform",
+        "entity": "7113643232944500",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [6, 2.4],
+        "fromParentPosition": [0, 0]
+      },
+      "50995204530297250": {
+        "name": "transform",
+        "entity": "50995204530297250",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [7.199999999999999, 2.4],
+        "fromParentPosition": [0, 0]
+      },
+      "79512685867792380": {
+        "name": "transform",
+        "entity": "79512685867792380",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [8.4, 2.4],
+        "fromParentPosition": [0, 0]
+      },
+      "11087093054170416": {
+        "name": "transform",
+        "entity": "11087093054170416",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [0, 3.5999999999999996],
+        "fromParentPosition": [0, 0]
+      },
+      "94683355227336460": {
+        "name": "transform",
+        "entity": "94683355227336460",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [1.2, 3.5999999999999996],
+        "fromParentPosition": [0, 0]
+      },
+      "47733718341883624": {
+        "name": "transform",
+        "entity": "47733718341883624",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [2.4, 3.5999999999999996],
+        "fromParentPosition": [0, 0]
+      },
+      "6733521684621968": {
+        "name": "transform",
+        "entity": "6733521684621968",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [3.5999999999999996, 3.5999999999999996],
+        "fromParentPosition": [0, 0]
+      },
+      "87504590215362430": {
+        "name": "transform",
+        "entity": "87504590215362430",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [4.8, 3.5999999999999996],
+        "fromParentPosition": [0, 0]
+      },
+      "13957546498530892": {
+        "name": "transform",
+        "entity": "13957546498530892",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [6, 3.5999999999999996],
+        "fromParentPosition": [0, 0]
+      },
+      "81342686942712530": {
+        "name": "transform",
+        "entity": "81342686942712530",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [7.199999999999999, 3.5999999999999996],
+        "fromParentPosition": [0, 0]
+      },
+      "77799919224027090": {
+        "name": "transform",
+        "entity": "77799919224027090",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [8.4, 3.5999999999999996],
+        "fromParentPosition": [0, 0]
+      },
+      "44272205380337860": {
+        "name": "transform",
+        "entity": "44272205380337860",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [0, 4.8],
+        "fromParentPosition": [0, 0]
+      },
+      "83479632524258200": {
+        "name": "transform",
+        "entity": "83479632524258200",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [1.2, 4.8],
+        "fromParentPosition": [0, 0]
+      },
+      "53908056788424410": {
+        "name": "transform",
+        "entity": "53908056788424410",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [2.4, 4.8],
+        "fromParentPosition": [0, 0]
+      },
+      "52470871624508660": {
+        "name": "transform",
+        "entity": "52470871624508660",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [3.5999999999999996, 4.8],
+        "fromParentPosition": [0, 0]
+      },
+      "14132246895356082": {
+        "name": "transform",
+        "entity": "14132246895356082",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [4.8, 4.8],
+        "fromParentPosition": [0, 0]
+      },
+      "20650302269865840": {
+        "name": "transform",
+        "entity": "20650302269865840",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [6, 4.8],
+        "fromParentPosition": [0, 0]
+      },
+      "29854670546823068": {
+        "name": "transform",
+        "entity": "29854670546823068",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [7.199999999999999, 4.8],
+        "fromParentPosition": [0, 0]
+      },
+      "42321548619886330": {
+        "name": "transform",
+        "entity": "42321548619886330",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [8.4, 4.8],
+        "fromParentPosition": [0, 0]
+      },
+      "54502960071628590": {
+        "name": "transform",
+        "entity": "54502960071628590",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [0, 6],
+        "fromParentPosition": [0, 0]
+      },
+      "33135109114477690": {
+        "name": "transform",
+        "entity": "33135109114477690",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [1.2, 6],
+        "fromParentPosition": [0, 0]
+      },
+      "9170093508325006": {
+        "name": "transform",
+        "entity": "9170093508325006",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [2.4, 6],
+        "fromParentPosition": [0, 0]
+      },
+      "9747934093206346": {
+        "name": "transform",
+        "entity": "9747934093206346",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [3.5999999999999996, 6],
+        "fromParentPosition": [0, 0]
+      },
+      "20317033725742330": {
+        "name": "transform",
+        "entity": "20317033725742330",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [4.8, 6],
+        "fromParentPosition": [0, 0]
+      },
+      "49946676238616680": {
+        "name": "transform",
+        "entity": "49946676238616680",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [6, 6],
+        "fromParentPosition": [0, 0]
+      },
+      "6635764012186363": {
+        "name": "transform",
+        "entity": "6635764012186363",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [7.199999999999999, 6],
+        "fromParentPosition": [0, 0]
+      },
+      "76294570047919180": {
+        "name": "transform",
+        "entity": "76294570047919180",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [8.4, 6],
+        "fromParentPosition": [0, 0]
+      },
+      "11360519364985966": {
+        "name": "transform",
+        "entity": "11360519364985966",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [0, 7.199999999999999],
+        "fromParentPosition": [0, 0]
+      },
+      "99429964848380000": {
+        "name": "transform",
+        "entity": "99429964848380000",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [1.2, 7.199999999999999],
+        "fromParentPosition": [0, 0]
+      },
+      "58260008090481200": {
+        "name": "transform",
+        "entity": "58260008090481200",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [2.4, 7.199999999999999],
+        "fromParentPosition": [0, 0]
+      },
+      "43185466313700970": {
+        "name": "transform",
+        "entity": "43185466313700970",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [3.5999999999999996, 7.199999999999999],
+        "fromParentPosition": [0, 0]
+      },
+      "52726975976568800": {
+        "name": "transform",
+        "entity": "52726975976568800",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [4.8, 7.199999999999999],
+        "fromParentPosition": [0, 0]
+      },
+      "42160874735241050": {
+        "name": "transform",
+        "entity": "42160874735241050",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [6, 7.199999999999999],
+        "fromParentPosition": [0, 0]
+      },
+      "20216510703010070": {
+        "name": "transform",
+        "entity": "20216510703010070",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [7.199999999999999, 7.199999999999999],
+        "fromParentPosition": [0, 0]
+      },
+      "9850170030217686": {
+        "name": "transform",
+        "entity": "9850170030217686",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [8.4, 7.199999999999999],
+        "fromParentPosition": [0, 0]
+      },
+      "7876352988517721": {
+        "name": "transform",
+        "entity": "7876352988517721",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [0, 8.4],
+        "fromParentPosition": [0, 0]
+      },
+      "84720267036018600": {
+        "name": "transform",
+        "entity": "84720267036018600",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [1.2, 8.4],
+        "fromParentPosition": [0, 0]
+      },
+      "94980732782614380": {
+        "name": "transform",
+        "entity": "94980732782614380",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [2.4, 8.4],
+        "fromParentPosition": [0, 0]
+      },
+      "27041416853609836": {
+        "name": "transform",
+        "entity": "27041416853609836",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [3.5999999999999996, 8.4],
+        "fromParentPosition": [0, 0]
+      },
+      "68398806479250670": {
+        "name": "transform",
+        "entity": "68398806479250670",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [4.8, 8.4],
+        "fromParentPosition": [0, 0]
+      },
+      "3710189080934067": {
+        "name": "transform",
+        "entity": "3710189080934067",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [6, 8.4],
+        "fromParentPosition": [0, 0]
+      },
+      "7904048142353404": {
+        "name": "transform",
+        "entity": "7904048142353404",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [7.199999999999999, 8.4],
+        "fromParentPosition": [0, 0]
+      },
+      "45368859617780590": {
+        "name": "transform",
+        "entity": "45368859617780590",
+        "rotation": [0, 0, 0],
+        "fromParentRotation": [0, 0, 0],
+        "scale": [1, 1, 1],
+        "fromParentScale": [1, 1, 1],
+        "position": [8.4, 8.4],
+        "fromParentPosition": [0, 0]
+      },
+      "38127445920450264": {
+        "entity": "38127445920450264",
+        "name": "transform",
+        "rotation": [0, 0],
+        "fromParentRotation": [0, 0],
+        "scale": [0.94675, 0.94675, 1],
+        "fromParentScale": [1, 1],
+        "position": [9999, 9999, 1],
+        "fromParentPosition": [0, 0]
+      }
+    },
+    "mouse": {},
+    "keyboard": {},
+    "mesh": {
+      "38127445920450264": {
+        "entity": "38127445920450264",
+        "name": "mesh",
+        "type": "plane",
+        "uniqueId": 2007145201312832,
+        "width": 1.4,
+        "height": 1.4,
+        "updatable": false,
+        "sideOrientation": 0,
+        "materialEntity": ["38127445920450264"]
+      }
+    },
+    "material": {
+      "38127445920450264": {
+        "entity": "38127445920450264",
+        "name": "material",
+        "uniqueId": 2007145201312832,
+        "diffuseTexture": "http://localhost:1234/a9e5de2dd68bd2d03d16525655ad7a8b.png",
+        "diffuseColor": [0.67, 0.23, 0.94, 0],
+        "alpha": 0.9575
+      }
+    },
+    "ai": {
+      "2": {
+        "entity": "2",
+        "name": "ai",
+        "human": false,
+        "level": "hard",
+        "color": [0.99, 0.42, 0.45],
+        "textureSet": [
+          "http://localhost:1234/d0b02301cf22a066ce5efc6a4d353c4a.png",
+          "http://localhost:1234/bf30000e751062d61a14f789ff98d211.png",
+          "http://localhost:1234/1e41fdc607aa7739e496651e94c33873.png",
+          "http://localhost:1234/d949a0fcb5a3df6b7e925bb282a9864c.png",
+          "http://localhost:1234/6ee0c3c39c0311cef85b1cfc79fd2d85.png",
+          "http://localhost:1234/f7a6779ba4f1319b9642eb3b4ef74086.png",
+          "http://localhost:1234/705ac6c5ae5713f9343dc873dd267da9.png"
+        ],
+        "active": true
+      },
+      "3": {
+        "entity": "3",
+        "name": "ai",
+        "human": false,
+        "level": "hard",
+        "color": [0.11, 0.79, 0.29],
+        "textureSet": [
+          "http://localhost:1234/d0b02301cf22a066ce5efc6a4d353c4a.png",
+          "http://localhost:1234/e593bf10d8560f93d523ab53dd42ce63.png",
+          "http://localhost:1234/933225f4b538f8888ed03abca7494cf3.png",
+          "http://localhost:1234/e79851835ce027cb15e2c56ff7feae3e.png",
+          "http://localhost:1234/9c92ec43dc64c4c4dd46e523b1abe290.png",
+          "http://localhost:1234/0da7dc8ec0665e566165da248be0cad8.png",
+          "http://localhost:1234/beaa728dd1d3231bd65c9c6bf7dfc03b.png"
+        ],
+        "active": true
+      },
+      "4": {
+        "entity": "4",
+        "name": "ai",
+        "human": false,
+        "level": "hard",
+        "color": [0.99, 0.97, 0.32],
+        "textureSet": [
+          "http://localhost:1234/d0b02301cf22a066ce5efc6a4d353c4a.png",
+          "http://localhost:1234/988c7a2a62df78a626970c546a259442.png",
+          "http://localhost:1234/a472a634acf5ccf35d372c70a802939c.png",
+          "http://localhost:1234/caa6a8fe383b064d572ef15125f29b4b.png",
+          "http://localhost:1234/708b5f6366bfce9801d51e2e2bc4ac5f.png",
+          "http://localhost:1234/73eefd68fbb861657a80d7d35c158cca.png",
+          "http://localhost:1234/f2d6950b7e5068555193493083288ae3.png"
+        ],
+        "active": true
+      },
+      "5": {
+        "entity": "5",
+        "name": "ai",
+        "human": false,
+        "level": "hard",
+        "color": [1, 0.73, 0.29],
+        "textureSet": [
+          "http://localhost:1234/d0b02301cf22a066ce5efc6a4d353c4a.png",
+          "http://localhost:1234/4e7ff01b4581466a224a94674cb6d991.png",
+          "http://localhost:1234/194a0763a310ec3ade0763015d5ebdd7.png",
+          "http://localhost:1234/73ca9bf11fff3828b4a3521e26c7744e.png",
+          "http://localhost:1234/ae73f01b7f1999b0e78aa42cf82ead3b.png",
+          "http://localhost:1234/15c4c20ee20757841813d78c82986e9d.png",
+          "http://localhost:1234/fdcc5902d83a55bbedb7eca2983cbd82.png"
+        ],
+        "active": true
+      },
+      "6": {
+        "entity": "6",
+        "name": "ai",
+        "human": false,
+        "level": "hard",
+        "color": [0.99, 0.47, 0.94],
+        "textureSet": [
+          "http://localhost:1234/d0b02301cf22a066ce5efc6a4d353c4a.png",
+          "http://localhost:1234/3e1fd807f95651a6d3c88e1d8520a35a.png",
+          "http://localhost:1234/0301bf4c80c59b9c9ee82bbfdaa51437.png",
+          "http://localhost:1234/0b83c99f83d916e909544806796ad0dc.png",
+          "http://localhost:1234/91e8f960d9648d8b8ceef7cb4378b7c7.png",
+          "http://localhost:1234/13c077ad3452cbd2e1e290e51ebcc4e9.png",
+          "http://localhost:1234/bca44b576aa4bee86d2be532c3a51c1b.png"
+        ],
+        "active": true
+      },
+      "7": {
+        "entity": "7",
+        "name": "ai",
+        "human": false,
+        "level": "hard",
+        "color": [0.6, 0.6, 0.6],
+        "textureSet": [
+          "http://localhost:1234/d0b02301cf22a066ce5efc6a4d353c4a.png",
+          "http://localhost:1234/08c2fe94f2c53d838910c6392f202d57.png",
+          "http://localhost:1234/742dc1ac64405bc3be1a8e12d24f886b.png",
+          "http://localhost:1234/ff2c63f3a50c47bae033e36af5b05b2b.png",
+          "http://localhost:1234/2f56694be17df8c457c7fc70d930cf17.png",
+          "http://localhost:1234/e48bdf38df8efd30bf9926b3c59d3579.png",
+          "http://localhost:1234/a85f2f30cc66206608521873879ea780.png"
+        ],
+        "active": true
+      },
+      "8": {
+        "entity": "8",
+        "name": "ai",
+        "human": false,
+        "level": "hard",
+        "color": [0.67, 0.23, 0.94],
+        "textureSet": [
+          "http://localhost:1234/d0b02301cf22a066ce5efc6a4d353c4a.png",
+          "http://localhost:1234/7aaeea3f7d4d1165af88ec38f1b57f4c.png",
+          "http://localhost:1234/229688c1f876adcfd817087efcc2332b.png",
+          "http://localhost:1234/56db8b550dd47587d591f3a663e9aa97.png",
+          "http://localhost:1234/84a7d3ad3fae05b1f8f8c2a25580396b.png",
+          "http://localhost:1234/8393bc8e18c29781118859e303a09012.png",
+          "http://localhost:1234/40340f15cafd8836d764f0f6fdc272e8.png"
+        ],
+        "active": true
+      },
+      "humanPlayer": {
+        "entity": "humanPlayer",
+        "name": "ai",
+        "human": true,
+        "level": "hard",
+        "color": [0.09, 0.84, 1],
+        "textureSet": [
+          "http://localhost:1234/d0b02301cf22a066ce5efc6a4d353c4a.png",
+          "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+          "http://localhost:1234/7e640f0339b663753965c7d2b518a274.png",
+          "http://localhost:1234/917ac946784d62fdf0c021cb3612fdb2.png",
+          "http://localhost:1234/48c6631e7335af8fe553f470b80d8976.png",
+          "http://localhost:1234/fece679ff0a36907324c646caf55dd8c.png",
+          "http://localhost:1234/5030d234d3163eca2b8f7a7b4ae5de38.png"
+        ],
+        "active": true
+      }
+    },
+    "game": {
+      "game": {
+        "entity": "game",
+        "name": "game",
+        "version": "0.0.12",
+        "page": "customLevel",
+        "newVersionAvailable": false,
+        "moves": 16,
+        "grid": [
+          "41446789360897810",
+          "20827228698336332",
+          "19827494041719908",
+          "77565044527184930",
+          "89082054320847060",
+          "43135637771921440",
+          "38727190763160300",
+          "73444570452740000",
+          "23498243584779444",
+          "13118300737617628",
+          "2271585019771727",
+          "39081765583826140",
+          "69338933235323176",
+          "59835890819710700",
+          "63334449672310970",
+          "77602759578557730",
+          "57889254719133890",
+          "61771396163090210",
+          "95549900240150420",
+          "67716493744836540",
+          "13598905426734664",
+          "7113643232944500",
+          "50995204530297250",
+          "79512685867792380",
+          "11087093054170416",
+          "94683355227336460",
+          "47733718341883624",
+          "6733521684621968",
+          "87504590215362430",
+          "13957546498530892",
+          "81342686942712530",
+          "77799919224027090",
+          "44272205380337860",
+          "83479632524258200",
+          "53908056788424410",
+          "52470871624508660",
+          "14132246895356082",
+          "20650302269865840",
+          "29854670546823068",
+          "42321548619886330",
+          "54502960071628590",
+          "33135109114477690",
+          "9170093508325006",
+          "9747934093206346",
+          "20317033725742330",
+          "49946676238616680",
+          "6635764012186363",
+          "76294570047919180",
+          "11360519364985966",
+          "99429964848380000",
+          "58260008090481200",
+          "43185466313700970",
+          "52726975976568800",
+          "42160874735241050",
+          "20216510703010070",
+          "9850170030217686",
+          "7876352988517721",
+          "84720267036018600",
+          "94980732782614380",
+          "27041416853609836",
+          "68398806479250670",
+          "3710189080934067",
+          "7904048142353404",
+          "45368859617780590"
+        ],
+        "round": 0,
+        "currentPlayer": "humanPlayer",
+        "gameStarted": true,
+        "playersQueue": ["humanPlayer", "2", "3", "4", "5", "6", "7", "8"],
+        "boxRotationQueue": [],
+        "colorBlindMode": false,
+        "customLevelSettings": {
+          "players": [
+            {
+              "entity": "humanPlayer",
+              "name": "ai",
+              "human": true,
+              "level": "easy",
+              "color": [0.09, 0.84, 1],
+              "textureSet": [
+                "http://localhost:1234/d0b02301cf22a066ce5efc6a4d353c4a.png",
+                "http://localhost:1234/1199d81f91233c5b428d48edeb5efbde.png",
+                "http://localhost:1234/7e640f0339b663753965c7d2b518a274.png",
+                "http://localhost:1234/917ac946784d62fdf0c021cb3612fdb2.png",
+                "http://localhost:1234/48c6631e7335af8fe553f470b80d8976.png",
+                "http://localhost:1234/fece679ff0a36907324c646caf55dd8c.png",
+                "http://localhost:1234/5030d234d3163eca2b8f7a7b4ae5de38.png"
+              ],
+              "active": true
+            },
+            {
+              "entity": "2",
+              "name": "ai",
+              "human": false,
+              "level": "easy",
+              "color": [0.99, 0.42, 0.45],
+              "textureSet": [
+                "http://localhost:1234/d0b02301cf22a066ce5efc6a4d353c4a.png",
+                "http://localhost:1234/bf30000e751062d61a14f789ff98d211.png",
+                "http://localhost:1234/1e41fdc607aa7739e496651e94c33873.png",
+                "http://localhost:1234/d949a0fcb5a3df6b7e925bb282a9864c.png",
+                "http://localhost:1234/6ee0c3c39c0311cef85b1cfc79fd2d85.png",
+                "http://localhost:1234/f7a6779ba4f1319b9642eb3b4ef74086.png",
+                "http://localhost:1234/705ac6c5ae5713f9343dc873dd267da9.png"
+              ],
+              "active": true
+            },
+            {
+              "entity": "3",
+              "name": "ai",
+              "human": false,
+              "level": "easy",
+              "color": [0.11, 0.79, 0.29],
+              "textureSet": [
+                "http://localhost:1234/d0b02301cf22a066ce5efc6a4d353c4a.png",
+                "http://localhost:1234/e593bf10d8560f93d523ab53dd42ce63.png",
+                "http://localhost:1234/933225f4b538f8888ed03abca7494cf3.png",
+                "http://localhost:1234/e79851835ce027cb15e2c56ff7feae3e.png",
+                "http://localhost:1234/9c92ec43dc64c4c4dd46e523b1abe290.png",
+                "http://localhost:1234/0da7dc8ec0665e566165da248be0cad8.png",
+                "http://localhost:1234/beaa728dd1d3231bd65c9c6bf7dfc03b.png"
+              ],
+              "active": true
+            },
+            {
+              "entity": "4",
+              "name": "ai",
+              "human": false,
+              "level": "easy",
+              "color": [0.99, 0.97, 0.32],
+              "textureSet": [
+                "http://localhost:1234/d0b02301cf22a066ce5efc6a4d353c4a.png",
+                "http://localhost:1234/988c7a2a62df78a626970c546a259442.png",
+                "http://localhost:1234/a472a634acf5ccf35d372c70a802939c.png",
+                "http://localhost:1234/caa6a8fe383b064d572ef15125f29b4b.png",
+                "http://localhost:1234/708b5f6366bfce9801d51e2e2bc4ac5f.png",
+                "http://localhost:1234/73eefd68fbb861657a80d7d35c158cca.png",
+                "http://localhost:1234/f2d6950b7e5068555193493083288ae3.png"
+              ],
+              "active": true
+            },
+            {
+              "entity": "5",
+              "name": "ai",
+              "human": false,
+              "level": "easy",
+              "color": [1, 0.73, 0.29],
+              "textureSet": [
+                "http://localhost:1234/d0b02301cf22a066ce5efc6a4d353c4a.png",
+                "http://localhost:1234/4e7ff01b4581466a224a94674cb6d991.png",
+                "http://localhost:1234/194a0763a310ec3ade0763015d5ebdd7.png",
+                "http://localhost:1234/73ca9bf11fff3828b4a3521e26c7744e.png",
+                "http://localhost:1234/ae73f01b7f1999b0e78aa42cf82ead3b.png",
+                "http://localhost:1234/15c4c20ee20757841813d78c82986e9d.png",
+                "http://localhost:1234/fdcc5902d83a55bbedb7eca2983cbd82.png"
+              ],
+              "active": true
+            },
+            {
+              "entity": "6",
+              "name": "ai",
+              "human": false,
+              "level": "easy",
+              "color": [0.99, 0.47, 0.94],
+              "textureSet": [
+                "http://localhost:1234/d0b02301cf22a066ce5efc6a4d353c4a.png",
+                "http://localhost:1234/3e1fd807f95651a6d3c88e1d8520a35a.png",
+                "http://localhost:1234/0301bf4c80c59b9c9ee82bbfdaa51437.png",
+                "http://localhost:1234/0b83c99f83d916e909544806796ad0dc.png",
+                "http://localhost:1234/91e8f960d9648d8b8ceef7cb4378b7c7.png",
+                "http://localhost:1234/13c077ad3452cbd2e1e290e51ebcc4e9.png",
+                "http://localhost:1234/bca44b576aa4bee86d2be532c3a51c1b.png"
+              ],
+              "active": true
+            },
+            {
+              "entity": "7",
+              "name": "ai",
+              "human": false,
+              "level": "easy",
+              "color": [0.6, 0.6, 0.6],
+              "textureSet": [
+                "http://localhost:1234/d0b02301cf22a066ce5efc6a4d353c4a.png",
+                "http://localhost:1234/08c2fe94f2c53d838910c6392f202d57.png",
+                "http://localhost:1234/742dc1ac64405bc3be1a8e12d24f886b.png",
+                "http://localhost:1234/ff2c63f3a50c47bae033e36af5b05b2b.png",
+                "http://localhost:1234/2f56694be17df8c457c7fc70d930cf17.png",
+                "http://localhost:1234/e48bdf38df8efd30bf9926b3c59d3579.png",
+                "http://localhost:1234/a85f2f30cc66206608521873879ea780.png"
+              ],
+              "active": true
+            },
+            {
+              "entity": "8",
+              "name": "ai",
+              "human": false,
+              "level": "easy",
+              "color": [0.67, 0.23, 0.94],
+              "textureSet": [
+                "http://localhost:1234/d0b02301cf22a066ce5efc6a4d353c4a.png",
+                "http://localhost:1234/7aaeea3f7d4d1165af88ec38f1b57f4c.png",
+                "http://localhost:1234/229688c1f876adcfd817087efcc2332b.png",
+                "http://localhost:1234/56db8b550dd47587d591f3a663e9aa97.png",
+                "http://localhost:1234/84a7d3ad3fae05b1f8f8c2a25580396b.png",
+                "http://localhost:1234/8393bc8e18c29781118859e303a09012.png",
+                "http://localhost:1234/40340f15cafd8836d764f0f6fdc272e8.png"
+              ],
+              "active": true
+            }
+          ],
+          "difficulty": "hard",
+          "quickStart": true,
+          "mapType": ""
+        }
+      }
+    },
+    "background": {},
+    "logo": {},
+    "box": {
+      "41446789360897810": {
+        "name": "box",
+        "entity": "41446789360897810",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [0, 0],
+        "player": "humanPlayer",
+        "points": 38
+      },
+      "20827228698336332": {
+        "name": "box",
+        "entity": "20827228698336332",
+        "isAnimating": false,
+        "dots": 3,
+        "gridPosition": [1, 0],
+        "player": "humanPlayer",
+        "points": -10
+      },
+      "19827494041719908": {
+        "name": "box",
+        "entity": "19827494041719908",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [2, 0],
+        "player": "humanPlayer",
+        "points": 45
+      },
+      "77565044527184930": {
+        "name": "box",
+        "entity": "77565044527184930",
+        "isAnimating": false,
+        "dots": 4,
+        "gridPosition": [3, 0],
+        "player": "humanPlayer",
+        "points": -6
+      },
+      "89082054320847060": {
+        "name": "box",
+        "entity": "89082054320847060",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [4, 0],
+        "player": "4",
+        "points": 49
+      },
+      "43135637771921440": {
+        "name": "box",
+        "entity": "43135637771921440",
+        "isAnimating": false,
+        "dots": 4,
+        "gridPosition": [5, 0],
+        "player": "4",
+        "points": -3
+      },
+      "38727190763160300": {
+        "name": "box",
+        "entity": "38727190763160300",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [6, 0],
+        "player": "5",
+        "points": 28
+      },
+      "73444570452740000": {
+        "name": "box",
+        "entity": "73444570452740000",
+        "isAnimating": false,
+        "dots": 5,
+        "gridPosition": [7, 0],
+        "player": "3",
+        "points": -4
+      },
+      "23498243584779444": {
+        "name": "box",
+        "entity": "23498243584779444",
+        "isAnimating": false,
+        "dots": 2,
+        "gridPosition": [0, 1],
+        "player": "humanPlayer",
+        "points": 5
+      },
+      "13118300737617628": {
+        "name": "box",
+        "entity": "13118300737617628",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [1, 1],
+        "player": "humanPlayer",
+        "points": 48
+      },
+      "2271585019771727": {
+        "name": "box",
+        "entity": "2271585019771727",
+        "isAnimating": false,
+        "dots": 3,
+        "gridPosition": [2, 1],
+        "player": "humanPlayer",
+        "points": -11
+      },
+      "39081765583826140": {
+        "name": "box",
+        "entity": "39081765583826140",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [3, 1],
+        "player": "2",
+        "points": 51
+      },
+      "69338933235323176": {
+        "name": "box",
+        "entity": "69338933235323176",
+        "isAnimating": false,
+        "dots": 5,
+        "gridPosition": [4, 1],
+        "player": "2",
+        "points": -2
+      },
+      "59835890819710700": {
+        "name": "box",
+        "entity": "59835890819710700",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [5, 1],
+        "player": "4",
+        "points": 46
+      },
+      "63334449672310970": {
+        "name": "box",
+        "entity": "63334449672310970",
+        "isAnimating": false,
+        "dots": 5,
+        "gridPosition": [6, 1],
+        "player": "5",
+        "points": 16
+      },
+      "77602759578557730": {
+        "name": "box",
+        "entity": "77602759578557730",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [7, 1],
+        "player": "7",
+        "points": 28
+      },
+      "57889254719133890": {
+        "name": "box",
+        "entity": "57889254719133890",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [0, 2],
+        "player": "3",
+        "points": 41
+      },
+      "61771396163090210": {
+        "name": "box",
+        "entity": "61771396163090210",
+        "isAnimating": false,
+        "dots": 2,
+        "gridPosition": [1, 2],
+        "player": "6",
+        "points": 39
+      },
+      "95549900240150420": {
+        "name": "box",
+        "entity": "95549900240150420",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [2, 2],
+        "player": "7",
+        "points": 40
+      },
+      "67716493744836540": {
+        "name": "box",
+        "entity": "67716493744836540",
+        "isAnimating": false,
+        "dots": 3,
+        "gridPosition": [3, 2],
+        "player": "7",
+        "points": -1
+      },
+      "13598905426734664": {
+        "name": "box",
+        "entity": "13598905426734664",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [4, 2],
+        "player": "4",
+        "points": 59
+      },
+      "7113643232944500": {
+        "name": "box",
+        "entity": "7113643232944500",
+        "isAnimating": false,
+        "dots": 6,
+        "gridPosition": [5, 2],
+        "player": "4",
+        "points": 6.5
+      },
+      "50995204530297250": {
+        "name": "box",
+        "entity": "50995204530297250",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [6, 2],
+        "player": "3",
+        "points": 33
+      },
+      "79512685867792380": {
+        "name": "box",
+        "entity": "79512685867792380",
+        "isAnimating": false,
+        "dots": 5,
+        "gridPosition": [7, 2],
+        "player": "7",
+        "points": -3.333333333333333
+      },
+      "11087093054170416": {
+        "name": "box",
+        "entity": "11087093054170416",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [0, 3],
+        "player": "5",
+        "points": 28
+      },
+      "94683355227336460": {
+        "name": "box",
+        "entity": "94683355227336460",
+        "isAnimating": false,
+        "dots": 4,
+        "gridPosition": [1, 3],
+        "player": "6",
+        "points": -5
+      },
+      "47733718341883624": {
+        "name": "box",
+        "entity": "47733718341883624",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [2, 3],
+        "player": "7",
+        "points": 31
+      },
+      "6733521684621968": {
+        "name": "box",
+        "entity": "6733521684621968",
+        "isAnimating": false,
+        "dots": 2,
+        "gridPosition": [3, 3],
+        "player": "7",
+        "points": -2
+      },
+      "87504590215362430": {
+        "name": "box",
+        "entity": "87504590215362430",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [4, 3],
+        "player": "2",
+        "points": 11
+      },
+      "13957546498530892": {
+        "name": "box",
+        "entity": "13957546498530892",
+        "isAnimating": false,
+        "dots": 3,
+        "gridPosition": [5, 3],
+        "player": "humanPlayer",
+        "points": -2
+      },
+      "81342686942712530": {
+        "name": "box",
+        "entity": "81342686942712530",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [6, 3],
+        "player": "3",
+        "points": 40
+      },
+      "77799919224027090": {
+        "name": "box",
+        "entity": "77799919224027090",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [7, 3],
+        "player": "3",
+        "points": 28
+      },
+      "44272205380337860": {
+        "name": "box",
+        "entity": "44272205380337860",
+        "isAnimating": false,
+        "dots": 3,
+        "gridPosition": [0, 4],
+        "player": "5",
+        "points": 7
+      },
+      "83479632524258200": {
+        "name": "box",
+        "entity": "83479632524258200",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [1, 4],
+        "player": "3",
+        "points": 33
+      },
+      "53908056788424410": {
+        "name": "box",
+        "entity": "53908056788424410",
+        "isAnimating": false,
+        "dots": 3,
+        "gridPosition": [2, 4],
+        "player": "5",
+        "points": 11
+      },
+      "52470871624508660": {
+        "name": "box",
+        "entity": "52470871624508660",
+        "isAnimating": false,
+        "dots": 0,
+        "gridPosition": [3, 4]
+      },
+      "14132246895356082": {
+        "name": "box",
+        "entity": "14132246895356082",
+        "isAnimating": false,
+        "dots": 4,
+        "gridPosition": [4, 4],
+        "player": "2",
+        "points": -1
+      },
+      "20650302269865840": {
+        "name": "box",
+        "entity": "20650302269865840",
+        "isAnimating": false,
+        "dots": 0,
+        "gridPosition": [5, 4]
+      },
+      "29854670546823068": {
+        "name": "box",
+        "entity": "29854670546823068",
+        "isAnimating": false,
+        "dots": 3,
+        "gridPosition": [6, 4],
+        "player": "6",
+        "points": -5
+      },
+      "42321548619886330": {
+        "name": "box",
+        "entity": "42321548619886330",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [7, 4],
+        "player": "6",
+        "points": 49
+      },
+      "54502960071628590": {
+        "name": "box",
+        "entity": "54502960071628590",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [0, 5],
+        "player": "2",
+        "points": 13
+      },
+      "33135109114477690": {
+        "name": "box",
+        "entity": "33135109114477690",
+        "isAnimating": false,
+        "dots": 4,
+        "gridPosition": [1, 5],
+        "player": "3",
+        "points": -4
+      },
+      "9170093508325006": {
+        "name": "box",
+        "entity": "9170093508325006",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [2, 5],
+        "player": "5",
+        "points": 24
+      },
+      "9747934093206346": {
+        "name": "box",
+        "entity": "9747934093206346",
+        "isAnimating": false,
+        "dots": 4,
+        "gridPosition": [3, 5],
+        "player": "6",
+        "points": -3
+      },
+      "20317033725742330": {
+        "name": "box",
+        "entity": "20317033725742330",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [4, 5],
+        "player": "8",
+        "points": 11
+      },
+      "49946676238616680": {
+        "name": "box",
+        "entity": "49946676238616680",
+        "isAnimating": false,
+        "dots": 4,
+        "gridPosition": [5, 5],
+        "player": "3",
+        "points": 1
+      },
+      "6635764012186363": {
+        "name": "box",
+        "entity": "6635764012186363",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [6, 5],
+        "player": "6",
+        "points": 31
+      },
+      "76294570047919180": {
+        "name": "box",
+        "entity": "76294570047919180",
+        "isAnimating": false,
+        "dots": 2,
+        "gridPosition": [7, 5],
+        "player": "6",
+        "points": -4
+      },
+      "11360519364985966": {
+        "name": "box",
+        "entity": "11360519364985966",
+        "isAnimating": false,
+        "dots": 2,
+        "gridPosition": [0, 6],
+        "player": "2",
+        "points": -4
+      },
+      "99429964848380000": {
+        "name": "box",
+        "entity": "99429964848380000",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [1, 6],
+        "player": "2",
+        "points": 46
+      },
+      "58260008090481200": {
+        "name": "box",
+        "entity": "58260008090481200",
+        "isAnimating": false,
+        "dots": 3,
+        "gridPosition": [2, 6],
+        "player": "5",
+        "points": 1
+      },
+      "43185466313700970": {
+        "name": "box",
+        "entity": "43185466313700970",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [3, 6],
+        "player": "8",
+        "points": 31
+      },
+      "52726975976568800": {
+        "name": "box",
+        "entity": "52726975976568800",
+        "isAnimating": false,
+        "dots": 4,
+        "gridPosition": [4, 6],
+        "player": "8",
+        "points": -9
+      },
+      "42160874735241050": {
+        "name": "box",
+        "entity": "42160874735241050",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [5, 6],
+        "player": "8",
+        "points": 35
+      },
+      "20216510703010070": {
+        "name": "box",
+        "entity": "20216510703010070",
+        "isAnimating": false,
+        "dots": 5,
+        "gridPosition": [6, 6],
+        "player": "7",
+        "points": 0
+      },
+      "9850170030217686": {
+        "name": "box",
+        "entity": "9850170030217686",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [7, 6],
+        "player": "6",
+        "points": 24
+      },
+      "7876352988517721": {
+        "name": "box",
+        "entity": "7876352988517721",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [0, 7],
+        "player": "2",
+        "points": 38
+      },
+      "84720267036018600": {
+        "name": "box",
+        "entity": "84720267036018600",
+        "isAnimating": false,
+        "dots": 2,
+        "gridPosition": [1, 7],
+        "player": "2",
+        "points": 5
+      },
+      "94980732782614380": {
+        "name": "box",
+        "entity": "94980732782614380",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [2, 7],
+        "player": "5",
+        "points": 39
+      },
+      "27041416853609836": {
+        "name": "box",
+        "entity": "27041416853609836",
+        "isAnimating": false,
+        "dots": 5,
+        "gridPosition": [3, 7],
+        "player": "8",
+        "points": -16
+      },
+      "68398806479250670": {
+        "name": "box",
+        "entity": "68398806479250670",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [4, 7],
+        "player": "8",
+        "points": 49
+      },
+      "3710189080934067": {
+        "name": "box",
+        "entity": "3710189080934067",
+        "isAnimating": false,
+        "dots": 5,
+        "gridPosition": [5, 7],
+        "player": "8",
+        "points": -15
+      },
+      "7904048142353404": {
+        "name": "box",
+        "entity": "7904048142353404",
+        "isAnimating": false,
+        "dots": 1,
+        "gridPosition": [6, 7],
+        "player": "4",
+        "points": 28
+      },
+      "45368859617780590": {
+        "name": "box",
+        "entity": "45368859617780590",
+        "isAnimating": false,
+        "dots": 4,
+        "gridPosition": [7, 7],
+        "player": "4",
+        "points": 0
+      }
+    },
+    "marker": {
+      "38127445920450264": {
+        "entity": "38127445920450264",
+        "name": "marker",
+        "color": [0.67, 0.23, 0.94],
+        "position": [3.5999999999999996, 8.4]
+      }
+    }
+  },
+  "system": [
+    { "name": "time", "componentName": "time", "priority": 2 },
+    { "name": "camera", "componentName": "camera", "priority": 4 },
+    { "name": "collideBox", "componentName": "collideBox", "priority": 4 },
+    { "name": "animation", "componentName": "animation", "priority": 3 },
+    {
+      "name": "mouseInteraction",
+      "componentName": "mouseInteraction",
+      "priority": 4
+    },
+    { "name": "material", "componentName": "material", "priority": 4 },
+    { "name": "mesh", "componentName": "mesh", "priority": 4 },
+    { "name": "box", "componentName": "box", "priority": 4 },
+    { "name": "ai", "componentName": "ai", "priority": 4 },
+    { "name": "game", "componentName": "game", "priority": 4 },
+    { "name": "marker", "componentName": "marker", "priority": 4 },
+    { "name": "background", "componentName": "background", "priority": 4 },
+    { "name": "logo", "componentName": "logo", "priority": 4 }
+  ],
+  "globalSystem": [
+    { "name": "event", "priority": 0 },
+    { "name": "transform", "priority": 1 }
+  ],
+  "babylonjs": {}
+}

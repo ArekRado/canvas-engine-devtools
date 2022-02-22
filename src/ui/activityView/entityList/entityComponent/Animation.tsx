@@ -6,13 +6,13 @@ import { Button } from '../../../common/Button';
 import { Input } from '../../../common/Input';
 
 type AnimationProps = {
-  component: AnimationType;
+  component: AnimationType.AnimationComponent;
 };
 export const Animation: React.FC<AnimationProps> = ({ component }) => {
   const appState = useContext(AppContext);
   const modalState = useContext(ModalContext);
 
-  const setAnimationData = (data: Partial<AnimationType>): void =>
+  const setAnimationData = (data: Partial<AnimationType.AnimationComponent>): void =>
     appState.dispatch({
       type: 'SetAnimationComponent',
       payload: {
@@ -48,10 +48,10 @@ export const Animation: React.FC<AnimationProps> = ({ component }) => {
         }
       />
 
-      <div className="grid grid-cols-12 my-1">
+      {/* <div className="grid grid-cols-12 my-1">
         <div className="col-span-4"> component </div>
         <div className="col-span-8">{component.property.component}</div>
-      </div>
+      </div> */}
 
       <div className="grid grid-cols-12 my-1">
         <div className="col-span-4"> wrapMode </div>
@@ -65,7 +65,7 @@ export const Animation: React.FC<AnimationProps> = ({ component }) => {
             payload: {
               name: 'animation',
               isOpen: true,
-              data: component.entityId,
+              data: component.entity,
             },
           })
         }
