@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { vars } from '../../vars.css';
 
 export const container = style({
   display: 'flex',
@@ -6,10 +7,39 @@ export const container = style({
   maxWidth: '100%',
 });
 
+export const entitiesContainer = style({
+  display: 'flex',
+  flexDirection: 'column',
+  width: '150px',
+});
+
 export const listContainer = style({
-  // py-2 pl-2 pr-1 flex flex-col flex-1 overflow-y-hidden
   padding: '2px 1px 2px 2px',
   display: 'flex',
   flexDirection: 'column',
   overflowY: 'auto',
+});
+
+export const entityDetailsContainer = style({
+  display: 'flex',
+  flexDirection: 'column',
+  flex: '1',
+  overflowY: 'auto',
+  overflowX: 'hidden',
+});
+
+export const overEntityStyle = style({
+  borderStyle: 'solid',
+  borderWidth: '1px',
+  borderColor: vars.color.blue100,
+});
+
+export const entityHasChildrenStyle = style({
+  paddingLeft: '4px',
+});
+
+export const entityIsFocusedStyle = style({
+  borderStyle: 'solid',
+  borderWidth: '2px',
+  borderColor: vars.color.blue100,
 });

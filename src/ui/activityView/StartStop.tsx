@@ -4,7 +4,7 @@ import { EditorContext } from '../../context/editor';
 import { Button } from '../common/Button';
 
 export const StartStop: React.FC = () => {
-  const appState = useContext(AppContext);
+  const appState = useAppState();
   const editorState = useContext(EditorContext);
 
   return (

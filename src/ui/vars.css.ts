@@ -2,10 +2,11 @@ import { createGlobalTheme } from '@vanilla-extract/css';
 
 export const vars = createGlobalTheme(':root', {
   space: {
-    xsmall: '1px',
-    small: '2px',
-    medium: '4px',
-    large: '8px',
+    '1x': '1px',
+    '2x': '2px',
+    '4x': '4px',
+    '8x': '8px',
+    '16x': '16px',
   },
   color: {
     white: '#fff',
@@ -50,16 +51,14 @@ export const vars = createGlobalTheme(':root', {
     full: '99999px',
   },
   fontFamily: {
-    body:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    body: 'Arial, Helvetica, sans-serif',
   },
   fontSize: {
-    '0x': '0px',
-    '1x': '10px',
-    '2x': '20px',
-    '3x': '30px',
-    '4x': '40px',
-    '5x': '50px',
+    '0.5x': '6px',
+    '0.75x': '9px',
+    '1x': '12px',
+    '1.5x': '16px',
+    '2x': '24px',
   },
   lineHeight: {
     '0x': '10px',

@@ -6,7 +6,7 @@ import {
   EmptyState,
   getState as getCanvaasEngineState,
   setEntity,
-} from '@arekrado/canvas-engine';
+} from '../../node_modules/@arekrado/canvas-engine';
 import { Scene } from '@babylonjs/core/scene';
 import { UniversalCamera } from '@babylonjs/core/Cameras/universalCamera';
 import { StandardMaterial } from '@babylonjs/core/Materials/standardMaterial';
@@ -34,7 +34,6 @@ export const getState = ({
     MeshBuilder,
     Texture,
     Color3,
-    // emitEvent,
   }) as State;
 
   const exampleData: EmptyState<Dictionary<Component<any>>, []> = jsonState as any;

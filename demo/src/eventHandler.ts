@@ -1,4 +1,4 @@
-import { ECSEvent } from '@arekrado/canvas-engine';
+import { ECSEvent } from '../../node_modules/@arekrado/canvas-engine';
 import { State } from './type';
 
 type AllEvents = ECSEvent<any, any>;

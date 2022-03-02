@@ -5,7 +5,9 @@ import { eventBusOn, eventBusRemove } from '../../util/eventBus';
 let stateCache: InternalInitialState | undefined = undefined;
 
 export const useAppState = () => {
-  const [gameState, setGameState] = useState<InternalInitialState | undefined>(undefined);
+  const [gameState, setGameState] = useState<InternalInitialState | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     const callback = (state?: InternalInitialState) => {
@@ -19,7 +21,7 @@ export const useAppState = () => {
     return () => {
       eventBusRemove('setEditorState', callback);
     };
-  }, []);
+  }, [setGameState]);
 
   return gameState || stateCache;
 };

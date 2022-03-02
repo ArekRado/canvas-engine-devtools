@@ -17,7 +17,7 @@ export type InputProps<Value = string | number> = {
   value?: Value;
   id: InputHTMLAttributes['id'];
   type?: InputHTMLAttributes['type'];
-  onChange: InputHTMLAttributes['onChange'];
+  onChange?: InputHTMLAttributes['onChange'];
   disabled?: InputHTMLAttributes['disabled'];
   max?: InputHTMLAttributes['max'];
   min?: InputHTMLAttributes['min'];
@@ -26,7 +26,10 @@ export type InputProps<Value = string | number> = {
   name: InputHTMLAttributes['name'];
   checked?: InputHTMLAttributes['checked'];
   required?: InputHTMLAttributes['required'];
-  variants: InputVariants;
+  variants?: InputVariants;
+  containerClassName?: string;
+  labelClassName?: string;
+  inputClassName?: string;
 };
 
 export const Input: React.FC<InputProps> = ({
@@ -44,15 +47,18 @@ export const Input: React.FC<InputProps> = ({
   checked,
   required,
   variants,
+  containerClassName,
+  labelClassName,
+  inputClassName,
 }) => (
-  <div className={inputContainerStyle(variants)}>
+  <div className={`${inputContainerStyle(variants)} ${containerClassName}`}>
     {label && (
-      <label htmlFor={id} className={text1}>
+      <label htmlFor={id} className={`${text1} ${labelClassName}`}>
         {label}
       </label>
     )}
     <input
-      className={inputStyle(variants)}
+      className={`${inputStyle(variants)} ${inputClassName}`}
       type={type}
       value={value}
       onChange={onChange}

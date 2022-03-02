@@ -4,9 +4,12 @@ import {
   AnyState,
   ECSEvent,
   createGetSetForUniqComponent,
-  setComponent,
   createComponent,
   setEntity,
+  emitEvent,
+  addEventHandler,
+  EventHandler,
+  InternalInitialState,
 } from '@arekrado/canvas-engine';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -20,46 +23,36 @@ export const debugName = 'debug';
 export namespace DebugEvent {
   export enum Type {
     play = 'DebugEvent-play',
+    periodicallySetEditorState = 'DebugEvent-periodicallySetEditorState',
   }
-  export type All = PlayEvent;
-  //   | PlayerClickEvent
-  //   | CleanSceneEvent
-  //   | ChangePlayersEvent
-  //   | ChangeDifficultyEvent
-  //   | ChangeQuickStartEvent
-  //   | ChangeColorBlindModeEvent
-  //   | ChangeMapTypeEvent
-  //   | ShowNewVersionEvent
-  //   | ReloadEvent
-  //   | PlayAgainCustomLevelEvent
-  //   | ShakeAiBoxesEvent;
+  export type All = PlayEvent | PeriodicallySetEditorState;
 
   export type PlayEvent = ECSEvent<Type.play, undefined>;
-
-  // export type PlayAgainCustomLevelEvent = ECSEvent<
-  //   Type.playAgainCustomLevel,
-  //   {}
-  // >;
-  // export type ShakeAiBoxesEvent = ECSEvent<
-  //   Type.shakeAiBoxes,
-  //   { ai: AI; moves: number }
-  // >;
-  // export type PlayerClickEvent = ECSEvent<
-  //   Type.playerClick,
-  //   { boxEntity: Entity }
-  // >;
-  // export type CleanSceneEvent = ECSEvent<Type.cleanScene, { newPage: Page }>;
-  // export type ChangePlayersEvent = ECSEvent<Type.changePlayers, {}>;
-  // export type ChangeDifficultyEvent = ECSEvent<Type.changeDifficulty, {}>;
-  // export type ChangeQuickStartEvent = ECSEvent<Type.changeQuickStart, {}>;
-  // export type ChangeColorBlindModeEvent = ECSEvent<
-  //   Type.changeColorBlindMode,
-  //   {}
-  // >;
-  // export type ChangeMapTypeEvent = ECSEvent<Type.changeMapType, {}>;
-  // export type ShowNewVersionEvent = ECSEvent<Type.showNewVersion, {}>;
-  // export type ReloadEvent = ECSEvent<Type.reload, {}>;
+  export type PeriodicallySetEditorState = ECSEvent<
+    Type.periodicallySetEditorState,
+    undefined
+  >;
 }
+
+const syncStateEvent: DebugEvent.PeriodicallySetEditorState = {
+  type: DebugEvent.Type.periodicallySetEditorState,
+  payload: undefined,
+};
+
+const debugEventHandler: EventHandler<DebugEvent.All, InternalInitialState> = ({
+  state,
+  event,
+}) => {
+  switch (event.type) {
+    case DebugEvent.Type.periodicallySetEditorState:
+      eventBusDispatch('setEditorState', state);
+      setTimeout(() => emitEvent(syncStateEvent), 500);
+
+      return state;
+  }
+
+  return state;
+};
 
 const debugGetSet = createGetSetForUniqComponent<Debug, AnyState>({
   entity: debugEntity,
@@ -70,6 +63,8 @@ export const getDebug = debugGetSet.getComponent;
 export const setDebug = debugGetSet.setComponent;
 
 export const debugSystem = (state: AnyState, containerId: string): AnyState => {
+  addEventHandler(debugEventHandler);
+
   state = createSystem<Debug>({
     name: debugName,
     componentName: debugName,
@@ -79,7 +74,7 @@ export const debugSystem = (state: AnyState, containerId: string): AnyState => {
       ReactDOM.render(
         React.createElement(App, {}, null),
         document.getElementById(containerId),
-        () => setTimeout(() => eventBusDispatch('setEditorState', state), 100)
+        () => setTimeout(() => emitEvent(syncStateEvent), 100)
       );
 
       return state;
@@ -137,3 +132,4 @@ export const debugSystem = (state: AnyState, containerId: string): AnyState => {
     },
   });
 };
+

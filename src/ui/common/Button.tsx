@@ -13,9 +13,14 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   variants,
   focused,
+  className,
   ...props
 }) => (
-  <button type="button" {...props} className={buttonStyle(variants)}>
+  <button
+    type="button"
+    {...props}
+    className={`${buttonStyle(variants)} ${className}`}
+  >
     {children}
   </button>
 );

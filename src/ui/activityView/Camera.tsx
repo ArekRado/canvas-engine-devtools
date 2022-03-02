@@ -1,32 +1,32 @@
 import { Camera as CameraType } from '@arekrado/canvas-engine';
 import { getCamera } from '@arekrado/canvas-engine/system/camera';
-import React, { useContext } from 'react';
-import { AppContext } from '../../context/app';
-import { InlineInput } from '../common/InlineInput';
-import { InlineVector } from '../common/InlineVector';
+import React from 'react';
+import { Input } from '../common/Input';
+import { Vector } from '../common/Vector';
+import { useAppState } from '../hooks/useAppState';
 
 export const CameraName = 'Camera';
 
 export const Camera: React.FC = () => {
-  const appState = useContext(AppContext);
-  const component = getCamera({ state: appState });
+  const appState = useAppState();
+  const component = appState ? getCamera({ state: appState }) : undefined;
 
   if (!component) {
     return null;
   }
 
-  const setCameraData = (data: Partial<CameraType>): void =>
-    appState.dispatch({
-      type: 'SetCamera',
-      payload: {
-        ...component,
-        ...data,
-      },
-    });
+  const setCameraData = (data: Partial<CameraType>): void => {};
+  // appState.dispatch({
+  //   type: 'SetCamera',
+  //   payload: {
+  //     ...component,
+  //     ...data,
+  //   },
+  // });
 
   return (
     <div className="flex flex-1 flex-col m-2">
-      <InlineVector
+      <Vector
         label="position"
         name="position"
         id="position"
@@ -34,7 +34,7 @@ export const Camera: React.FC = () => {
         onChange={(e) => setCameraData({ position: e })}
       />
 
-      <InlineInput
+      <Input
         label="distance"
         name="distance"
         id="distance"

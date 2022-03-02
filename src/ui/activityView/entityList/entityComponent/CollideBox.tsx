@@ -3,69 +3,60 @@ import {
   getEntity,
 } from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
-import { AppContext } from '../../../../context/app';
+import { doNothing } from '../../../../util/doNothing';
 import { EntityButton } from '../../../common/EntityButton';
 import { Vector } from '../../../common/Vector';
+import { useAppState } from '../../../hooks/useAppState';
+import { sprinkles } from '../../../util.css';
 
 type CollideBoxProps = {
   component: CollideBoxType;
 };
 export const CollideBox: React.FC<CollideBoxProps> = ({ component }) => {
-  const appState = useContext(AppContext);
+  const appState = useAppState();
 
-  const setCollideBoxData = (data: Partial<CollideBoxType>): void =>
-    appState.dispatch({
-      type: 'SetCollideBoxComponent',
-      payload: {
-        ...component,
-        ...data,
-      },
-    });
+  // const setCollideBoxData = (data: Partial<CollideBoxType>): void =>
+  //   appState.dispatch({
+  //     type: 'SetCollideBoxComponent',
+  //     payload: {
+  //       ...component,
+  //       ...data,
+  //     },
+  //   });
 
   return (
-    <div className="flex flex-col mt-3">
+    <div className={sprinkles({ display: 'flex', flexDirection: 'column' })}>
       <Vector
         label="size"
         name="size"
-        containerClassName="grid grid-cols-12 my-1"
-        labelClassName="col-span-4"
-        inputClassName="col-span-4"
+        containerClassName={sprinkles({ display: 'flex' })}
+        labelClassName={sprinkles({ flex: '1' })}
+        inputClassName={sprinkles({ flex: '1' })}
         id="size"
         value={component.size}
-        onChange={(e) => setCollideBoxData({ size: e })}
+        onChange={doNothing}
       />
 
       <Vector
         label="position"
         name="position"
-        containerClassName="grid grid-cols-12 my-1"
-        labelClassName="col-span-4"
-        inputClassName="col-span-4"
+        containerClassName={sprinkles({ display: 'flex' })}
+        labelClassName={sprinkles({ flex: '1' })}
+        inputClassName={sprinkles({ flex: '1' })}
         id="position"
         value={component.position}
-        onChange={(e) => setCollideBoxData({ position: e })}
+        onChange={doNothing}
       />
 
       {component.collisions.length > 0 ? (
         <>
           <div> Collisions </div>
           <ul>
-            {component.collisions.map((collisionType) => {
-              const entity = getEntity({
-                entity: collisionType.entity,
-                state: appState,
-              });
-
-              if (entity) {
-                return (
-                  <li key={entity}>
-                    <EntityButton entity={entity} />
-                  </li>
-                );
-              }
-
-              return null;
-            })}
+            {component.collisions.map((collisionType) => (
+              <li key={collisionType.entity}>
+                <EntityButton entity={collisionType.entity} />
+              </li>
+            ))}
           </ul>
         </>
       ) : null}

@@ -11,12 +11,12 @@ import {
 import { createContext, Dispatch, Reducer } from 'react';
 import { DebugEvent } from '../debugSystem';
 import { Action } from '../type';
+import { EntityListName } from '../ui/activityView/entityList/EntityList';
 
 export type RegisterComponentPayload<Data> = {
   name: string;
   render: React.ElementType<{ component: Component<Data> }>;
   defaultData: Data;
-  animatedProperties: { path: string; type: string }[];
 };
 
 export type RegisterActivityViewPayload = {
@@ -43,6 +43,7 @@ export namespace EditorAction {
     'RegisterActivityView',
     RegisterActivityViewPayload
   >;
+  export type OpenActivityView = Action<'OpenActivityView', string>;
 }
 
 type EditorActions =
@@ -50,7 +51,8 @@ type EditorActions =
   | EditorAction.SetIsPlaying
   | EditorAction.SetHoveredEntity
   | EditorAction.RegisterComponent
-  | EditorAction.RegisterActivityView;
+  | EditorAction.RegisterActivityView
+  | EditorAction.OpenActivityView;
 
 type EditorState = {
   selectedEntity?: Guid;
@@ -58,6 +60,7 @@ type EditorState = {
   isPlaying: boolean;
   components: Dictionary<RegisterComponentPayload<any>>;
   activityView: Dictionary<RegisterActivityViewPayload>;
+  openedActivityView: string | null;
   dispatch: Dispatch<EditorActions>;
 };
 
@@ -75,6 +78,7 @@ export const initialState: EditorState = {
   components: {},
   activityView: {},
   dispatch: () => {},
+  openedActivityView: EntityListName,
 };
 
 export const EditorContext = createContext<EditorState>(initialState);
@@ -84,7 +88,8 @@ export const reducer: Reducer<EditorState, EditorActions> = (state, action) => {
     case 'SetSelectedEntity':
       return {
         ...state,
-        selectedEntity: action.payload,
+        selectedEntity:
+          state.selectedEntity === action.payload ? undefined : action.payload,
       };
     case 'SetHoveredEntity':
       return {
@@ -137,7 +142,14 @@ export const reducer: Reducer<EditorState, EditorActions> = (state, action) => {
       }
 
       return state;
-    default:
-      return state;
+
+    case 'OpenActivityView':
+      return {
+        ...state,
+        openedActivityView:
+          action.payload === state.openedActivityView ? null : action.payload,
+      };
   }
+
+  return state;
 };

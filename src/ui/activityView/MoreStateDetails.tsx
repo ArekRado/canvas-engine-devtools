@@ -2,15 +2,15 @@ import React, { FC, useContext } from 'react';
 import { AnySystem, Mouse, Time } from '@arekrado/canvas-engine';
 import { getTime } from '@arekrado/canvas-engine/system/time';
 import { getMouse } from '@arekrado/canvas-engine/system/mouse';
-import { AppContext } from '../../context/app';
-import { InlineInput } from '../common/InlineInput';
-import { InlineVector } from '../common/InlineVector';
-import { InlineCheckbox } from '../common/InlineCheckbox';
+import { Input } from '../common/Input';
+import { Vector } from '../common/Vector';
+import { Checkbox } from '../common/Checkbox';
+import { useAppState } from '../hooks/useAppState';
 
 const TimeDetails: FC<{ time: Time }> = ({ time }) => (
   <>
     <div className="text-white mb-3">Time:</div>
-    <InlineInput
+    <Input
       label="delta"
       name="delta"
       id="time.delta"
@@ -19,7 +19,7 @@ const TimeDetails: FC<{ time: Time }> = ({ time }) => (
       disabled={true}
       onChange={() => {}}
     />
-    <InlineInput
+    <Input
       label="timeNow"
       name="timeNow"
       id="time.timeNow"
@@ -28,7 +28,7 @@ const TimeDetails: FC<{ time: Time }> = ({ time }) => (
       disabled={true}
       onChange={() => {}}
     />
-    <InlineInput
+    <Input
       label="previousTimeNow"
       name="previousTimeNow"
       id="time.previousTimeNow"
@@ -43,7 +43,7 @@ const TimeDetails: FC<{ time: Time }> = ({ time }) => (
 const MouseDetails: FC<{ mouse: Mouse }> = ({ mouse }) => (
   <>
     <div className="text-white mb-3">Mouse:</div>
-    <InlineInput
+    <Input
       label="buttons"
       name="buttons"
       id="mouse.buttons"
@@ -52,7 +52,7 @@ const MouseDetails: FC<{ mouse: Mouse }> = ({ mouse }) => (
       disabled={true}
       onChange={() => {}}
     />
-    <InlineVector
+    <Vector
       label="position"
       name="position"
       id="mouse.position"
@@ -60,7 +60,7 @@ const MouseDetails: FC<{ mouse: Mouse }> = ({ mouse }) => (
       disabled={true}
       onChange={() => {}}
     />
-    <InlineCheckbox
+    <Checkbox
       label="isMoving"
       name="isMoving"
       id="mouse.isMoving"
@@ -68,7 +68,7 @@ const MouseDetails: FC<{ mouse: Mouse }> = ({ mouse }) => (
       disabled={true}
       onChange={() => {}}
     />
-    <InlineCheckbox
+    <Checkbox
       label="isButtonUp"
       name="isButtonUp"
       id="mouse.isButtonUp"
@@ -76,7 +76,7 @@ const MouseDetails: FC<{ mouse: Mouse }> = ({ mouse }) => (
       disabled={true}
       onChange={() => {}}
     />
-    <InlineCheckbox
+    <Checkbox
       label="isButtonDown"
       name="isButtonDown"
       id="mouse.isButtonDown"
@@ -106,13 +106,13 @@ const SystemDetails: FC<{ system: AnySystem[] }> = ({ system }) => (
 export const MoreStateDetailsName = 'MoreStateDetails';
 
 export const MoreStateDetails: React.FC = () => {
-  const appState = useContext(AppContext);
-  const time = getTime({ state: appState });
-  const mouse = getMouse({ state: appState });
+  const appState = useAppState();
+  const time = appState ? getTime({ state: appState }) : undefined;
+  const mouse = appState ? getMouse({ state: appState }) : undefined;
 
   return (
     <div className="flex flex-1 flex-col m-2 overflow-y-auto">
-      {/* <InlineCheckbox
+      {/* <Checkbox
         label="isDebugInitialized"
         name="isDebugInitialized"
         id="appState.isDebugInitialized"
@@ -120,7 +120,7 @@ export const MoreStateDetails: React.FC = () => {
         disabled={true}
         onChange={() => {}}
       />
-      <InlineCheckbox
+      <Checkbox
         label="isDrawEnabled"
         name="isDrawEnabled"
         id="appState.isDrawEnabled"
@@ -131,7 +131,7 @@ export const MoreStateDetails: React.FC = () => {
 
       {time && <TimeDetails time={time} />}
       {mouse && <MouseDetails mouse={mouse} />}
-      <SystemDetails system={appState.system} />
+      <SystemDetails system={appState?.system ?? []} />
     </div>
   );
 };

@@ -1,38 +1,23 @@
 const webpack = require('webpack');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VanillaExtractPlugin } = require('@vanilla-extract/webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   mode: 'development',
   devServer: {
     port: 1234,
   },
-  entry: './src/index.tsx',
+  resolve: {
+    extensions: ['.js', '.json', '.ts', '.tsx'],
+  },
+  entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
   },
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        use: 'babel-loader',
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
-          'postcss-loader',
-        ],
-      },
       {
         test: /\.png$/,
         use: [
@@ -45,13 +30,47 @@ const config = {
           },
         ],
       },
+      // {
+      //   test: /\.ts(x)?$/,
+      //   loader: 'ts-loader',
+      //   exclude: /node_modules/,
+      // },
       {
-        test: /\.ts(x)?$/,
-        loader: 'ts-loader',
-        exclude: /node_modules/,
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.(js|ts|tsx)$/,
+        exclude: [/node_modules/],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              babelrc: false,
+              presets: [
+                '@babel/preset-typescript',
+                ['@babel/preset-react', { runtime: 'automatic' }],
+                [
+                  '@babel/preset-env',
+                  {
+                    targets: {
+                      browsers: ['>2%'],
+                    },
+                    modules: false,
+                  },
+                ],
+              ],
+              plugins: ['@vanilla-extract/babel-plugin'],
+            },
+          },
+        ],
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new VanillaExtractPlugin(),
+  ],
   optimization: {
     runtimeChunk: 'single',
     splitChunks: {
@@ -64,16 +83,6 @@ const config = {
       },
     },
   },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-    alias: {
-      react: 'preact/compat',
-      'react-dom/test-utils': 'preact/test-utils',
-      'react-dom': 'preact/compat', // Must be below test-utils
-      'react/jsx-runtime': 'preact/jsx-runtime',
-    },
-  },
-  plugins: [new VanillaExtractPlugin()],
 };
 
 module.exports = config;

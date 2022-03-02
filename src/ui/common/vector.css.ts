@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css';
 import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
 import { vars } from '../vars.css';
 
-export const inputContainerStyle = recipe({
+export const vectorContainerStyle = recipe({
   base: {
     display: 'flex',
   },
@@ -14,20 +14,14 @@ export const inputContainerStyle = recipe({
   },
 });
 
-export const inputStyle = recipe({
+export const vectorStyle = recipe({
   base: {
     width: '100%',
+    height: '100%',
     color: vars.color.gray50,
     backgroundColor: vars.color.gray700,
     border: 'none',
-    fontSize: vars.fontSize['1x'],
-  },
-  variants: {
-    inline: {
-      true: { flexDirection: 'row' },
-      false: { flexDirection: 'column' },
-    },
   },
 });
 
-export type InputVariants = RecipeVariants<typeof inputStyle>;
+export type VectorVariants = RecipeVariants<typeof vectorContainerStyle>;

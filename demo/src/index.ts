@@ -1,6 +1,4 @@
 import { getState } from './getState';
-// import { emitEvent } from './eventSystem';
-
 import { Engine } from '@babylonjs/core/Engines/engine';
 import { Scene } from '@babylonjs/core/scene';
 import { UniversalCamera } from '@babylonjs/core/Cameras/universalCamera';
@@ -8,7 +6,7 @@ import { Vector3 } from '@babylonjs/core/Maths/math.vector';
 import { Camera } from '@babylonjs/core/Cameras/camera';
 import { HemisphericLight } from '@babylonjs/core/Lights/hemisphericLight';
 import { Color3 } from '@babylonjs/core/Maths/math.color';
-import { runOneFrame } from '@arekrado/canvas-engine';
+import { runOneFrame } from '../../node_modules/@arekrado/canvas-engine';
 
 const canvas = document.getElementById('game') as HTMLCanvasElement;
 export const humanPlayerEntity = 'humanPlayer';

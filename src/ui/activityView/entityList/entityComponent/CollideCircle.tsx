@@ -3,25 +3,25 @@ import {
   getEntity,
 } from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
-import { AppContext } from '../../../../context/app';
 import { EntityButton } from '../../../common/EntityButton';
 import { Input } from '../../../common/Input';
 import { Vector } from '../../../common/Vector';
+import { useAppState } from '../../../hooks/useAppState';
 
 type CollideCircleProps = {
   component: CollideCircleType;
 };
 export const CollideCircle: React.FC<CollideCircleProps> = ({ component }) => {
-  const appState = useContext(AppContext);
+  const appState = useAppState();
 
-  const setCollideCircleData = (data: Partial<CollideCircleType>): void =>
-    appState.dispatch({
-      type: 'SetCollideCircleComponent',
-      payload: {
-        ...component,
-        ...data,
-      },
-    });
+  // const setCollideCircleData = (data: Partial<CollideCircleType>): void =>
+  //   appState.dispatch({
+  //     type: 'SetCollideCircleComponent',
+  //     payload: {
+  //       ...component,
+  //       ...data,
+  //     },
+  //   });
 
   return (
     <div className="flex flex-col mt-3">
@@ -33,9 +33,9 @@ export const CollideCircle: React.FC<CollideCircleProps> = ({ component }) => {
         inputClassName="col-span-8"
         id="radius"
         value={component.radius}
-        onChange={(e) =>
-          setCollideCircleData({ radius: parseFloat(e.target.value) })
-        }
+        // onChange={(e) =>
+        // setCollideCircleData({ radius: parseFloat(e.target.value) })
+        // }
         type="number"
       />
       <Vector
@@ -46,10 +46,10 @@ export const CollideCircle: React.FC<CollideCircleProps> = ({ component }) => {
         inputClassName="col-span-4"
         id="position"
         value={component.position}
-        onChange={(e) => setCollideCircleData({ position: e })}
+        // onChange={(e) => setCollideCircleData({ position: e })}
       />
 
-      {component.collisions.length > 0 ? (
+      {appState && component.collisions.length > 0 ? (
         <>
           <div> Collisions </div>
           <ul>

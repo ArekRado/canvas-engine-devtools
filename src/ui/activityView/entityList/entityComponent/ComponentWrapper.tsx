@@ -1,10 +1,9 @@
 import { Component } from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
-import { AppContext } from '../../../../context/app';
-import { EditorContext } from '../../../../context/editor';
+import { ChevronDown, ChevronRight, X } from 'react-feather';
 import { ModalContext } from '../../../../context/modal';
 import { Button } from '../../../common/Button';
-import { ConfirmModal } from '../../../modal/ConfirmModal';
+import { sprinkles } from '../../../util.css';
 
 type ComponentWrapperProps = {
   component: Component<any>;
@@ -18,13 +17,30 @@ export const ComponentWrapper: React.FC<ComponentWrapperProps> = ({
   const modalState = useContext(ModalContext);
 
   return (
-    <div className="my-3">
-      <div className="flex justify-between mt-1">
-        <Button onClick={() => setIsCollapsed(!isCollapsed)}>
-          {isCollapsed ? '<ChevronDown size={12} />' : '<ChevronRight size={12} />'}
-        </Button>
-        <div className="text-white flex-1">{componentName}</div>
+    <div className={sprinkles({ paddingY: '8x' })}>
+      <div
+        className={sprinkles({
+          display: 'flex',
+          justifyContent: 'space-between',
+          marginTop: '1x',
+        })}
+      >
         <Button
+          onClick={() => setIsCollapsed(!isCollapsed)}
+          variants={{ type: 'transparent' }}
+        >
+          {isCollapsed ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
+        </Button>
+        <div
+          className={sprinkles({
+            flex: '1',
+            color: 'white',
+          })}
+        >
+          {componentName}
+        </div>
+        {/* <Button
+          variants={{ type: 'transparent' }}
           onClick={() => {
             modalState.dispatch({
               type: 'SetModal',
@@ -39,8 +55,8 @@ export const ComponentWrapper: React.FC<ComponentWrapperProps> = ({
             });
           }}
         >
-          X size={12} 
-        </Button>
+          <X size={12} />
+        </Button> */}
       </div>
 
       {!isCollapsed && children}

@@ -5,14 +5,22 @@ import {
 } from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
 import { ChevronDown, ChevronRight } from 'react-feather';
-import { AppContext } from '../../../context/app';
 import { EditorContext } from '../../../context/editor';
 import { Button } from '../../common/Button';
 import { sprinkles, text1 } from '../../util.css';
 import { useAppState } from '../../hooks/useAppState';
 import { CreateEntity } from './CreateEntity';
 import { EntityDetails } from './EntityDetails';
-import { container, listContainer } from './entityList.css';
+import {
+  container,
+  entitiesContainer,
+  entityDetailsContainer,
+  entityHasChildrenStyle,
+  entityIsFocusedStyle,
+  listContainer,
+  overEntityStyle,
+} from './entityList.css';
+import { registerEntityListComponents } from '../../hooks/registerEntityListComponents';
 
 type Branch = {
   entity: Entity;
@@ -69,17 +77,23 @@ const EntityButton: React.FC<EntityButtonProps> = ({
       onDragOver={handleDragOver(entity)}
       onDragStart={handleDragStart(entity)}
       className={`
-        ${overEntity === entity ? 'border border-blue-100' : ''}
-        ${!hasChildren ? 'pl-3' : ''}
-        ${isFocused ? 'border-l-2 border-blue-100' : ''}
+        ${
+          overEntity === entity || editorState?.hoveredEntity === entity
+            ? overEntityStyle
+            : ''
+        } 
+        ${!hasChildren ? entityHasChildrenStyle : ''} 
+        ${isFocused ? entityIsFocusedStyle : ''}
       `}
     >
       <div className={sprinkles({ display: 'flex' })}>
         {hasChildren && (
           <Button
             focused={isFocused}
-            className="px-0"
             onClick={() => setIsOpened(!isOpened)}
+            variants={{
+              type: 'transparent',
+            }}
           >
             {isOpened ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
           </Button>
@@ -94,20 +108,26 @@ const EntityButton: React.FC<EntityButtonProps> = ({
               payload: entity,
             })
           }
-          className={`text-left flex-1 p-0 ${
-            editorState?.hoveredEntity === entity ? 'border border-white' : ''
-          }`}
+          className={sprinkles({
+            textAlign: 'left',
+            flex: '1',
+          })}
+          variants={{
+            type: 'transparent',
+          }}
         >
           {/* firefox doesn't support button drag */}
-          <div className="w-full h-full">{entity}</div>
+          <div className={sprinkles({ width: '100%', height: '100%' })}>
+            {entity}
+          </div>
         </Button>
       </div>
 
-      {/* <div className="ml-2 flex flex-col"> */}
       <div
         className={sprinkles({
           display: 'flex',
           flexDirection: 'column',
+          marginLeft: '8x',
         })}
       >
         {isOpened &&
@@ -131,69 +151,73 @@ export const EntityListName = 'EntityList';
 
 export const EntityList: React.FC = () => {
   const appState = useAppState();
+  registerEntityListComponents();
 
   const [dragedEntity, setDragedEntity] = useState<Entity | null>(null);
   const [overEntity, setOverEntity] = useState<Entity | null>(null);
 
-  const handleDragOver = (entity: Entity) => (
-    e: React.DragEvent<HTMLDivElement>
-  ) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setOverEntity(entity);
-  };
+  const handleDragOver =
+    (entity: Entity) => (e: React.DragEvent<HTMLDivElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setOverEntity(entity);
+    };
 
-  const handleDrop = (entity: Entity) => (
-    e: React.DragEvent<HTMLDivElement>
-  ) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleDrop =
+    (entity: Entity) => (e: React.DragEvent<HTMLDivElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-    setOverEntity(null);
+      setOverEntity(null);
 
-    // if (dragedEntity && dragedEntity !== entity) {
-    //   appState.dispatch({
-    //     type: 'SetTransform',
-    //     payload: {
-    //       ...dragedEntity,
-    //       parent: entity,
-    //     },
-    //   });
-    // }
-  };
+      // if (dragedEntity && dragedEntity !== entity) {
+      //   appState.dispatch({
+      //     type: 'SetTransform',
+      //     payload: {
+      //       ...dragedEntity,
+      //       parent: entity,
+      //     },
+      //   });
+      // }
+    };
 
-  const handleDragStart = (entity: Entity) => (
-    e: React.DragEvent<HTMLDivElement>
-  ) => {
-    e.stopPropagation();
+  const handleDragStart =
+    (entity: Entity) => (e: React.DragEvent<HTMLDivElement>) => {
+      e.stopPropagation();
 
-    setDragedEntity(entity);
-  };
+      setDragedEntity(entity);
+    };
 
   const tree = appState ? generateTree(appState) : [];
 
   return (
     <div className={container}>
-      <CreateEntity />
-      <div className={text1}>Entity:</div>
-      <div className={listContainer}>
-        {/* <div className="flex flex-col flex-1 overflow-y-auto mt-2"> */}
-        {tree.map((branch) => (
-          <EntityButton
-            entity={branch.entity}
-            overEntity={overEntity}
-            handleDrop={handleDrop}
-            handleDragOver={handleDragOver}
-            handleDragStart={handleDragStart}
-            key={branch.entity}
-            childrens={branch.children}
-          />
-        ))}
-        {/* </div> */}
-
-        {/* <Fps /> */}
+      <div className={entitiesContainer}>
+        {/* <CreateEntity /> */}
+        <div
+          className={sprinkles({
+            marginBottom: '8x',
+            color: 'white',
+          })}
+        >
+          Entities
+        </div>
+        <div className={listContainer}>
+          {tree.map((branch) => (
+            <EntityButton
+              entity={branch.entity}
+              overEntity={overEntity}
+              handleDrop={handleDrop}
+              handleDragOver={handleDragOver}
+              handleDragStart={handleDragStart}
+              key={branch.entity}
+              childrens={branch.children}
+            />
+          ))}
+        </div>
       </div>
-      <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+
+      <div className={entityDetailsContainer}>
         <EntityDetails />
       </div>
     </div>

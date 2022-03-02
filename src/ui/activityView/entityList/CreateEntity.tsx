@@ -1,7 +1,6 @@
 import { generateEntity } from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
 import { Plus } from 'react-feather';
-import { AppContext } from '../../../context/app';
 import { EditorContext } from '../../../context/editor';
 import { Button } from '../../common/Button';
 import { Form } from '../../common/Form';
@@ -9,8 +8,6 @@ import { Input } from '../../common/Input';
 
 export const CreateEntity: React.FC = () => {
   const editorState = useContext(EditorContext);
-  const appState = useContext(AppContext);
-
   const [entityName, setEntityName] = useState('');
 
   return (
@@ -20,10 +17,6 @@ export const CreateEntity: React.FC = () => {
         setEntityName('');
         const newEntity = generateEntity({ name: entityName });
 
-        appState.dispatch({
-          type: 'SetEntity',
-          payload: newEntity,
-        });
         editorState.dispatch({
           type: 'SetSelectedEntity',
           payload: newEntity,
@@ -31,7 +24,6 @@ export const CreateEntity: React.FC = () => {
       }}
     >
       <Input
-        variants={{ type: 'inline' }}
         // labelClassName="mr-3"
         label="Create"
         id="createEntity"

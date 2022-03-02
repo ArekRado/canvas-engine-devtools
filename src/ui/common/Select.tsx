@@ -1,4 +1,6 @@
 import React, { ReactElement } from 'react';
+import { text1 } from '../util.css';
+import { selectContainerStyle, selectStyle, SelectVariants } from './select.css';
 
 export type SelectOption = {
   value: string;
@@ -12,6 +14,7 @@ export type SelectProps = {
   containerClassName?: string;
   labelClassName?: string;
   inputClassName?: string;
+  variants?: SelectVariants;
 } & React.DetailedHTMLProps<
   React.SelectHTMLAttributes<HTMLSelectElement>,
   HTMLSelectElement
@@ -24,16 +27,17 @@ export const Select: React.FC<SelectProps> = ({
   id,
   value,
   onChange,
+  variants,
   options = [],
 }) => (
-  <div className={containerClassName}>
+  <div className={`${selectContainerStyle(variants)} ${containerClassName}`}>
     {label && (
-      <label htmlFor={id} className={labelClassName}>
+      <label htmlFor={id} className={`${labelClassName} ${text1}`}>
         {label}
       </label>
     )}
     <select
-      className={`w-full focus:outline-lightblue text-white bg-gray-700 px-1 ${inputClassName}`}
+      className={`${selectStyle} ${inputClassName}`}
       onChange={onChange}
       value={value}
       id={id}
