@@ -1,44 +1,34 @@
-const webpack = require('webpack');
 const path = require('path');
 const { VanillaExtractPlugin } = require('@vanilla-extract/webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const config = {
-  mode: 'development',
+module.exports = {
+  mode: 'production',
   devServer: {
     port: 1234,
   },
   resolve: {
     extensions: ['.js', '.json', '.ts', '.tsx'],
   },
-  entry: './src/index.ts',
+  entry: path.join(__dirname, './src/debugSystem.ts'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
   },
   module: {
     rules: [
-      {
-        test: /\.png$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              mimetype: 'image/png',
-              limit: false,
-            },
-          },
-        ],
-      },
       // {
-      //   test: /\.ts(x)?$/,
-      //   loader: 'ts-loader',
-      //   exclude: /node_modules/,
+      //   test: /\.png$/,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         mimetype: 'image/png',
+      //         limit: false,
+      //       },
+      //     },
+      //   ],
       // },
-      {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      },
       {
         test: /\.(js|ts|tsx)$/,
         exclude: [/node_modules/],
@@ -52,12 +42,7 @@ const config = {
                 ['@babel/preset-react', { runtime: 'automatic' }],
                 [
                   '@babel/preset-env',
-                  {
-                    targets: {
-                      browsers: ['>2%'],
-                    },
-                    modules: false,
-                  },
+                  { targets: { node: 16 }, modules: false },
                 ],
               ],
               plugins: ['@vanilla-extract/babel-plugin'],
@@ -65,12 +50,21 @@ const config = {
           },
         ],
       },
+      {
+        test: /\.css$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              url: false, // Required as image imports should be handled via JS/TS import statements
+            },
+          },
+        ],
+      },
     ],
   },
-  plugins: [
-    new MiniCssExtractPlugin(),
-    new VanillaExtractPlugin(),
-  ],
+  plugins: [new MiniCssExtractPlugin(), new VanillaExtractPlugin()],
   optimization: {
     runtimeChunk: 'single',
     splitChunks: {
@@ -84,5 +78,3 @@ const config = {
     },
   },
 };
-
-module.exports = config;

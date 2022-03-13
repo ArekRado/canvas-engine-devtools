@@ -1,1 +1,2 @@
-export { debugSystem } from './debugSystem';
+// export { debugSystem } from './debugSystem';
+export * from './debugSystem';

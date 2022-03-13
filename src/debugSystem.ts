@@ -14,7 +14,7 @@ import {
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Debug } from './type';
-import { App } from './ui/App';
+// import { App } from './ui/App';
 import { eventBusDispatch } from './util/eventBus';
 
 export const debugEntity = 'debug';
@@ -71,11 +71,13 @@ export const debugSystem = (state: AnyState, containerId: string): AnyState => {
     priority: systemPriority.time + 1,
     state,
     create: ({ state }) => {
-      ReactDOM.render(
-        React.createElement(App, {}, null),
-        document.getElementById(containerId),
-        () => setTimeout(() => emitEvent(syncStateEvent), 100)
-      );
+      import('./ui/App').then(({ App }) => {
+        ReactDOM.render(
+          React.createElement(App, {}, null),
+          document.getElementById(containerId),
+          () => setTimeout(() => emitEvent(syncStateEvent), 100)
+        );
+      });
 
       return state;
     },
@@ -132,4 +134,3 @@ export const debugSystem = (state: AnyState, containerId: string): AnyState => {
     },
   });
 };
-

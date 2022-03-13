@@ -1,15 +1,15 @@
 {
   "version": "0.0.96",
-  "name": "@arekrado/canvas-engine",
-  "umd:main": "dist/canvas-engine.umd.production.js",
+  "name": "@arekrado/canvas-engine-devtools",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "module": "dist/canvas-engine.esm.js",
-  "npmName": "@arekrado/canvas-engine",
+  "npmName": "@arekrado/canvas-engine-devtools",
+  "types": "./dist/index.d.ts",
   "sideEffects": false,
   "keywords": [
     "canvas",
-    "engine"
+    "engine",
+    "devtools"
   ],
   "author": "Arek Rado",
   "files": [
