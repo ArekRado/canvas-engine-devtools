@@ -1,20 +1,24 @@
 import {
+  componentName,
+  createComponent,
+  defaultTransform,
   generateEntity,
-  initialState,
+  getState,
   setEntity,
+  Transform,
 } from '@arekrado/canvas-engine';
-import { generateTree } from '../src/ui/EntityList';
+import { generateTree } from '../src/ui/activityView/entityList/EntityList';
 
 describe('generateTree', () => {
   it('should return empty array when list is empty', () => {
-    expect(generateTree(initialState)).toEqual([]);
+    expect(generateTree(getState({}))).toEqual([]);
   });
 
   it('should return flat array when transforms dont have any parent', () => {
-    const e1 = generateEntity('e1');
-    const e2 = generateEntity('e2');
+    const e1 = generateEntity({ name: 'e1' });
+    const e2 = generateEntity({ name: 'e2' });
 
-    const v1 = setEntity({ state: initialState, entity: e1 });
+    const v1 = setEntity({ state: getState({}), entity: e1 });
     const v2 = setEntity({ state: v1, entity: e2 });
 
     expect(generateTree(v2)).toEqual([
@@ -30,13 +34,19 @@ describe('generateTree', () => {
   });
 
   it('should return tree when transforms have parent', () => {
-    const e2 = generateEntity('e2');
-    const e1 = generateEntity('e1', { parentId: e2.id });
+    const e2 = generateEntity({ name: 'e2' });
+    const e1 = generateEntity({ name: 'e1' });
 
-    const v1 = setEntity({ state: initialState, entity: e1 });
-    const v2 = setEntity({ state: v1, entity: e2 });
+    // const e1 = generateEntity({ parentId: e2.id });
 
-    expect(generateTree(v2)).toEqual([
+    let state = setEntity({ state: getState({}), entity: e1 });
+    state = setEntity({ state, entity: e2 });
+    state = createComponent<Transform, any>({
+      state,
+      data: defaultTransform({ entity: e1, parentId: e2 }),
+    });
+
+    expect(generateTree(state)).toEqual([
       {
         children: [
           {
@@ -50,25 +60,54 @@ describe('generateTree', () => {
   });
 
   it('should return tree when transforms have parent - deep example', () => {
-    const e4 = generateEntity('e4');
-    const e3 = generateEntity('e3', { parentId: e4.id });
-    const e2 = generateEntity('e2', { parentId: e3.id });
-    const e1 = generateEntity('e1', { parentId: e2.id });
-    const e5 = generateEntity('e5', { parentId: e1.id });
-    const e6 = generateEntity('e6', { parentId: e1.id });
-    const e7 = generateEntity('e7', { parentId: e3.id });
-    const e9 = generateEntity('e9');
-    const e8 = generateEntity('e8', { parentId: e9.id });
+    const e4 = generateEntity({ name: 'e4' });
+    const e3 = generateEntity({ name: 'e3' });
+    const e2 = generateEntity({ name: 'e2' });
+    const e1 = generateEntity({ name: 'e1' });
+    const e5 = generateEntity({ name: 'e5' });
+    const e6 = generateEntity({ name: 'e6' });
+    const e7 = generateEntity({ name: 'e7' });
+    const e9 = generateEntity({ name: 'e9' });
+    const e8 = generateEntity({ name: 'e8' });
 
-    const v1 = setEntity({ state: initialState, entity: e1 });
-    const v2 = setEntity({ state: v1, entity: e2 });
-    const v3 = setEntity({ state: v2, entity: e3 });
-    const v4 = setEntity({ state: v3, entity: e4 });
-    const v5 = setEntity({ state: v4, entity: e5 });
-    const v6 = setEntity({ state: v5, entity: e6 });
-    const v7 = setEntity({ state: v6, entity: e7 });
-    const v8 = setEntity({ state: v7, entity: e8 });
-    const v9 = setEntity({ state: v8, entity: e9 });
+    let state = setEntity({ state: getState({}), entity: e1 });
+    state = setEntity({ state, entity: e2 });
+    state = setEntity({ state, entity: e3 });
+    state = setEntity({ state, entity: e4 });
+    state = setEntity({ state, entity: e5 });
+    state = setEntity({ state, entity: e6 });
+    state = setEntity({ state, entity: e7 });
+    state = setEntity({ state, entity: e8 });
+    state = setEntity({ state, entity: e9 });
+
+    state = createComponent<Transform, any>({
+      state,
+      data: defaultTransform({ entity: e3, parentId: e4 }),
+    });
+    state = createComponent<Transform, any>({
+      state,
+      data: defaultTransform({ entity: e2, parentId: e3 }),
+    });
+    state = createComponent<Transform, any>({
+      state,
+      data: defaultTransform({ entity: e1, parentId: e2 }),
+    });
+    state = createComponent<Transform, any>({
+      state,
+      data: defaultTransform({ entity: e5, parentId: e1 }),
+    });
+    state = createComponent<Transform, any>({
+      state,
+      data: defaultTransform({ entity: e6, parentId: e1 }),
+    });
+    state = createComponent<Transform, any>({
+      state,
+      data: defaultTransform({ entity: e7, parentId: e3 }),
+    });
+    state = createComponent<Transform, any>({
+      state,
+      data: defaultTransform({ entity: e8, parentId: e9 }),
+    });
 
     const data = [
       {
@@ -109,7 +148,7 @@ describe('generateTree', () => {
       },
     ];
 
-    expect(generateTree(v9)).toEqual([
+    expect(generateTree(state)).toEqual([
       {
         children: [
           {

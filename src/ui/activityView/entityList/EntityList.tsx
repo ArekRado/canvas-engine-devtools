@@ -1,5 +1,4 @@
 import {
-  getEntity,
   Entity,
   InternalInitialState,
   getComponent,
@@ -10,9 +9,8 @@ import React, { useContext, useState } from 'react';
 import { ChevronDown, ChevronRight } from 'react-feather';
 import { EditorContext } from '../../../context/editor';
 import { Button } from '../../common/Button';
-import { sprinkles, text1 } from '../../util.css';
+import { sprinkles } from '../../util.css';
 import { useAppState } from '../../hooks/useAppState';
-import { CreateEntity } from './CreateEntity';
 import { EntityDetails } from './EntityDetails';
 import {
   container,
@@ -29,31 +27,37 @@ type Branch = {
   entity: Entity;
   children: Branch[];
 };
+const sortBranches = (a: Branch, b: Branch): number =>
+  a.entity > b.entity ? 1 : -1;
 
+// TODO support "opened entites" to reduce amount of calculations
 type GenerateTree = (state: InternalInitialState, entity?: Entity) => Branch[];
 export const generateTree: GenerateTree = (state, entity) => {
-  const transform = entity
-    ? getComponent<Transform>({
-        state,
-        entity,
-        name: componentName.transform,
-      })
-    : undefined;
-
+  const isTopParent = entity === undefined;
   return Object.values(state.entity)
-    .filter((e) => (transform ? transform.parentId === entity : !entity))
-    .map((e) => {
-      const tEntity = getEntity({ state, entity: e });
+    .filter((e) => {
+      const transform = getComponent<Transform>({
+        state,
+        entity: e,
+        name: componentName.transform,
+      });
 
-      if (!tEntity) {
-        throw new Error(`Entity ${e} doesn't exist`);
+      if (isTopParent) {
+        // If entity has parent then do not show it
+        if (transform?.parentId !== undefined) {
+          return false;
+        }
+
+        return true;
       }
 
-      return {
-        entity: tEntity,
-        children: generateTree(state, tEntity),
-      };
-    });
+      // entity has parent, check if it's correct
+      return entity === transform?.parentId;
+    })
+    .map((e) => ({
+      entity: e,
+      children: generateTree(state, e),
+    }));
 };
 
 type EntityButtonProps = {
@@ -143,17 +147,19 @@ const EntityButton: React.FC<EntityButtonProps> = ({
         })}
       >
         {isOpened &&
-          childrens.map((branch) => (
-            <EntityButton
-              key={branch.entity}
-              entity={branch.entity}
-              overEntity={overEntity}
-              handleDrop={handleDrop}
-              handleDragOver={handleDragOver}
-              handleDragStart={handleDragStart}
-              childrens={branch.children}
-            />
-          ))}
+          childrens
+            .sort(sortBranches)
+            .map((branch) => (
+              <EntityButton
+                key={branch.entity}
+                entity={branch.entity}
+                overEntity={overEntity}
+                handleDrop={handleDrop}
+                handleDragOver={handleDragOver}
+                handleDragStart={handleDragStart}
+                childrens={branch.children}
+              />
+            ))}
       </div>
     </div>
   );
@@ -215,17 +221,19 @@ export const EntityList: React.FC = () => {
           Entities
         </div>
         <div className={listContainer}>
-          {tree.map((branch) => (
-            <EntityButton
-              entity={branch.entity}
-              overEntity={overEntity}
-              handleDrop={handleDrop}
-              handleDragOver={handleDragOver}
-              handleDragStart={handleDragStart}
-              key={branch.entity}
-              childrens={branch.children}
-            />
-          ))}
+          {tree
+            .sort(sortBranches)
+            .map((branch) => (
+              <EntityButton
+                entity={branch.entity}
+                overEntity={overEntity}
+                handleDrop={handleDrop}
+                handleDragOver={handleDragOver}
+                handleDragStart={handleDragStart}
+                key={branch.entity}
+                childrens={branch.children}
+              />
+            ))}
         </div>
       </div>
 
