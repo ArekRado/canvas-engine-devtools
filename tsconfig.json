@@ -1,18 +1,22 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
-    "sourceMap": true,
+    "sourceMap": false,
+    "lib": [
+      "DOM"
+    ],
     "jsx": "react",
     "strict": true,
     "noImplicitReturns": true,
     "noImplicitAny": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "target": "es5",
+    "target": "esnext",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "emitDeclarationOnly": true
+    // "noResolve": true
+    "isolatedModules": true
   },
   "include": [
     "./src/**/*",

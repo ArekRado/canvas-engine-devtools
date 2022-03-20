@@ -9,22 +9,22 @@ export const text1 = style({
 const responsiveProperties = defineProperties({
   conditions: {
     mobile: {},
-    tablet: { '@media': 'screen and (min-width: 768px)' },
+    // tablet: { '@media': 'screen and (min-width: 768px)' },
     desktop: { '@media': 'screen and (min-width: 1024px)' },
   },
   defaultCondition: 'mobile',
   properties: {
     display: ['none', 'flex'],
     flexDirection: ['row', 'column'],
-    alignItems: ['stretch', 'flex-start', 'center', 'flex-end'],
+    alignItems: ['flex-start', 'center', 'flex-end'],
     justifyContent: [
-      'stretch',
+      // 'stretch',
       'flex-start',
       'center',
       'flex-end',
       'space-between',
-      'space-around',
-      'space-evenly',
+      // 'space-around',
+      // 'space-evenly',
     ],
     flex: ['1', '2'],
     // gap: vars.space,
@@ -41,25 +41,25 @@ const responsiveProperties = defineProperties({
     // borderRadius: vars.borderRadius,
     // fontFamily: vars.fontFamily,
     fontSize: vars.fontSize,
-    lineHeight: vars.lineHeight,
+    // lineHeight: vars.lineHeight,
     textAlign: ['left', 'center'],
   },
   shorthands: {
     padding: ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight'],
-    paddingX: ['paddingLeft', 'paddingRight'],
+    // paddingX: ['paddingLeft', 'paddingRight'],
     paddingY: ['paddingTop', 'paddingBottom'],
     margin: ['marginTop', 'marginBottom', 'marginLeft', 'marginRight'],
-    marginX: ['marginLeft', 'marginRight'],
+    // marginX: ['marginLeft', 'marginRight'],
     marginY: ['marginTop', 'marginBottom'],
-    placeItems: ['alignItems', 'justifyContent'],
-    typeSize: ['fontSize', 'lineHeight'],
+    // placeItems: ['alignItems', 'justifyContent'],
+    // typeSize: ['fontSize', 'lineHeight'],
   },
 });
 
 const colorModeProperties = defineProperties({
   conditions: {
     lightMode: {},
-    darkMode: { '@media': '(prefers-color-scheme: dark)' },
+    // darkMode: { '@media': '(prefers-color-scheme: dark)' },
   },
   defaultCondition: 'lightMode',
   properties: {

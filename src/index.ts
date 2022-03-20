@@ -1,2 +1,7 @@
-// export { debugSystem } from './debugSystem';
-export * from './debugSystem';
+export {
+  debugEntity,
+  debugName,
+  getDebug,
+  setDebug,
+  debugSystem,
+} from './debugSystem';

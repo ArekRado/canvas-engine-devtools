@@ -22,8 +22,6 @@ export const App: React.FC = () => {
     editorInitialState
   );
 
-  console.log('should shoyld')
-
   const [modalState, modalDispatch] = useReducer(
     modalReducer,
     modalInitialState

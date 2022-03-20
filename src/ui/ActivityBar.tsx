@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { EditorContext } from '../context/editor';
-import { EntityListName } from './activityView/entityList/EntityList';
+import { EntityList, EntityListName } from './activityView/entityList/EntityList';
 import { Button } from './common/Button';
 import { Video, List, MoreHorizontal, AlertTriangle } from 'react-feather';
 import { container } from './activityBar.css';
@@ -22,17 +22,19 @@ export const ActivityBar: React.FC = () => {
       //     },
       //   });
       // });
-      import('./activityView/entityList/EntityList').then((component) => {
+      // import(
+      //   /* webpackChunkName: "EntityList" */ './activityView/entityList/EntityList'
+      // ).then((component) => {
         editorState.dispatch({
           type: 'RegisterActivityView',
           payload: {
-            name: component.EntityListName,
+            name: EntityListName,
             index: 0,
             tab: () => <List />,
-            content: component.EntityList,
+            content: EntityList,
           },
         });
-      });
+      // });
 
       // import('./activityView/Camera').then((component) => {
       //   editorState.dispatch({

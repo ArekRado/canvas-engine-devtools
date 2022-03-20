@@ -2,6 +2,9 @@ import {
   getEntity,
   Entity,
   InternalInitialState,
+  getComponent,
+  Transform,
+  componentName,
 } from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
 import { ChevronDown, ChevronRight } from 'react-feather';
@@ -28,14 +31,22 @@ type Branch = {
 };
 
 type GenerateTree = (state: InternalInitialState, entity?: Entity) => Branch[];
-export const generateTree: GenerateTree = (state, entity) =>
-  Object.values(state.component.transform)
-    .filter((t) => t.parentId === entity)
-    .map((t) => {
-      const tEntity = getEntity({ state, entity: t.entity });
+export const generateTree: GenerateTree = (state, entity) => {
+  const transform = entity
+    ? getComponent<Transform>({
+        state,
+        entity,
+        name: componentName.transform,
+      })
+    : undefined;
+
+  return Object.values(state.entity)
+    .filter((e) => (transform ? transform.parentId === entity : !entity))
+    .map((e) => {
+      const tEntity = getEntity({ state, entity: e });
 
       if (!tEntity) {
-        throw new Error(`Entity ${t} doesn't exist`);
+        throw new Error(`Entity ${e} doesn't exist`);
       }
 
       return {
@@ -43,6 +54,7 @@ export const generateTree: GenerateTree = (state, entity) =>
         children: generateTree(state, tEntity),
       };
     });
+};
 
 type EntityButtonProps = {
   entity: Entity;

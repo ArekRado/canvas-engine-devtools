@@ -78,7 +78,7 @@ export const initialState: EditorState = {
   components: {},
   activityView: {},
   dispatch: () => {},
-  openedActivityView: EntityListName,
+  openedActivityView: null, // EntityListName,
 };
 
 export const EditorContext = createContext<EditorState>(initialState);
