@@ -3,13 +3,12 @@ import {
   createSystem,
   AnyState,
   ECSEvent,
-  createGetSetForUniqComponent,
   createComponent,
-  setEntity,
   emitEvent,
   addEventHandler,
   EventHandler,
   InternalInitialState,
+  createEntity,
 } from '@arekrado/canvas-engine';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -59,14 +58,6 @@ const debugEventHandler: EventHandler<DebugEvent.All, InternalInitialState> = ({
 
   return state;
 };
-
-const debugGetSet = createGetSetForUniqComponent<Debug, AnyState>({
-  entity: debugEntity,
-  name: debugName,
-});
-
-export const getDebug = debugGetSet.getComponent;
-export const setDebug = debugGetSet.setComponent;
 
 export const debugSystem = (state: AnyState, containerId: string): AnyState => {
   addEventHandler(debugEventHandler);
@@ -130,12 +121,12 @@ export const debugSystem = (state: AnyState, containerId: string): AnyState => {
     },
   });
 
-  state = setEntity({ state, entity: debugEntity });
+  state = createEntity({ state, entity: debugEntity });
   return createComponent<Debug>({
     state,
+    entity: debugEntity,
+    name: debugName,
     data: {
-      entity: debugEntity,
-      name: debugName,
       isPlaying: false,
     },
   });

@@ -21,4 +21,4 @@ import { InitialState } from '@arekrado/canvas-engine';
 //   | System<Background, AnyStateForSystem>
 //   | System<Logo, AnyStateForSystem>;
 
-export type State = InitialState<any, AnalyserNode>;
+export type State = InitialState<any, any>;

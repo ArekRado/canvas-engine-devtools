@@ -1,11 +1,11 @@
 import { getState } from './getState';
-import { Engine } from '@babylonjs/core/Engines/engine';
-import { Scene } from '@babylonjs/core/scene';
-import { UniversalCamera } from '@babylonjs/core/Cameras/universalCamera';
-import { Vector3 } from '@babylonjs/core/Maths/math.vector';
-import { Camera } from '@babylonjs/core/Cameras/camera';
-import { HemisphericLight } from '@babylonjs/core/Lights/hemisphericLight';
-import { Color3 } from '@babylonjs/core/Maths/math.color';
+import { Engine } from '../../node_modules/@babylonjs/core/Engines/engine';
+import { Scene } from '../../node_modules/@babylonjs/core/scene';
+import { UniversalCamera } from '../../node_modules/@babylonjs/core/Cameras/universalCamera';
+import { Vector3 } from '../../node_modules/@babylonjs/core/Maths/math.vector';
+import { Camera } from '../../node_modules/@babylonjs/core/Cameras/camera';
+import { HemisphericLight } from '../../node_modules/@babylonjs/core/Lights/hemisphericLight';
+import { Color3 } from '../../node_modules/@babylonjs/core/Maths/math.color';
 import { runOneFrame } from '../../node_modules/@arekrado/canvas-engine';
 
 const canvas = document.getElementById('game') as HTMLCanvasElement;
@@ -30,7 +30,7 @@ engine.runRenderLoop(() => {
 // Camera
 const camera = new UniversalCamera(
   'UniversalCamera',
-  new Vector3(0, 0, -1),
+  new Vector3(0, 0, -10),
   scene
 );
 camera.mode = Camera.ORTHOGRAPHIC_CAMERA;

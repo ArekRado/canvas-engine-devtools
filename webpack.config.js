@@ -70,7 +70,11 @@ module.exports = {
                 '@babel/preset-react',
                 [
                   '@babel/preset-env',
-                  { targets: { node: 16 }, modules: false },
+                  {
+                    targets: {
+                      browsers: ['> 1%'],
+                    },
+                  },
                 ],
               ],
               plugins: ['@vanilla-extract/babel-plugin'],

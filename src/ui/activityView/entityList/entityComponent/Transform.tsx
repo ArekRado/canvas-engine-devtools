@@ -47,14 +47,14 @@ export const Transform: React.FC<TransformProps> = ({ component }) => {
         // }
       />
 
-      <Vector
+      <Input
         label={component.parentId ? 'fromParentRotation' : 'rotation'}
         name={component.parentId ? 'fromParentRotation' : 'rotation'}
         containerClassName={sprinkles({ display: 'flex', marginY: '2x' })}
         labelClassName={sprinkles({ flex: '1' })}
         inputClassName={sprinkles({ flex: '1' })}
         id="rotation"
-        value={[rotation[0], rotation[1]]}
+        value={rotation}
         onChange={doNothing}
         // onChange={(e) =>
         //   component.parentId

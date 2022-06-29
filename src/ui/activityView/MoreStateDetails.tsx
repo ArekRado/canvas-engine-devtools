@@ -1,7 +1,9 @@
 import React, { FC, useContext } from 'react';
 import { AnySystem, Mouse, Time } from '@arekrado/canvas-engine';
-import { getTime } from '@arekrado/canvas-engine/system/time';
-import { getMouse } from '@arekrado/canvas-engine/system/mouse';
+import { getTime } from '@arekrado/canvas-engine/system/time/timeCrud';
+import { timeEntity } from '@arekrado/canvas-engine/system/time/time';
+import { getMouse } from '@arekrado/canvas-engine/system/mouse/mouseCrud';
+import { mouseEntity } from '@arekrado/canvas-engine/system/mouse/mouse';
 import { Input } from '../common/Input';
 import { Vector } from '../common/Vector';
 import { Checkbox } from '../common/Checkbox';
@@ -107,8 +109,12 @@ export const MoreStateDetailsName = 'MoreStateDetails';
 
 export const MoreStateDetails: React.FC = () => {
   const appState = useAppState();
-  const time = appState ? getTime({ state: appState }) : undefined;
-  const mouse = appState ? getMouse({ state: appState }) : undefined;
+  const time = appState
+    ? getTime({ state: appState, entity: timeEntity })
+    : undefined;
+  const mouse = appState
+    ? getMouse({ state: appState, entity: mouseEntity })
+    : undefined;
 
   return (
     <div className="flex flex-1 flex-col m-2 overflow-y-auto">

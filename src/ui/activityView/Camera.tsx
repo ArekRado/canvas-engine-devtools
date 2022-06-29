@@ -1,5 +1,5 @@
 import { Camera as CameraType } from '@arekrado/canvas-engine';
-import { getCamera } from '@arekrado/canvas-engine/system/camera';
+import { getCamera } from '@arekrado/canvas-engine/system/camera/camera';
 import React from 'react';
 import { Input } from '../common/Input';
 import { Vector } from '../common/Vector';

@@ -6,7 +6,7 @@ import {
   componentName,
   InternalInitialState,
   emitEvent,
-  Component,
+  timeEntity,
 } from '@arekrado/canvas-engine';
 import { createContext, Dispatch, Reducer } from 'react';
 import { DebugEvent } from '../debugSystem';
@@ -15,7 +15,7 @@ import { EntityListName } from '../ui/activityView/entityList/EntityList';
 
 export type RegisterComponentPayload<Data> = {
   name: string;
-  render: React.ElementType<{ component: Component<Data> }>;
+  render: React.ElementType<{ component: Data }>;
   defaultData: Data;
 };
 
@@ -64,9 +64,9 @@ type EditorState = {
   dispatch: Dispatch<EditorActions>;
 };
 
-const timeInitial: Component<Time> = {
-  entity: '',
-  name: componentName.time,
+const timeInitial: Time = {
+  // entity: timeEntity,
+  // name: componentName.time,
   delta: 0,
   timeNow: 0,
   previousTimeNow: 0,
@@ -78,7 +78,7 @@ export const initialState: EditorState = {
   components: {},
   activityView: {},
   dispatch: () => {},
-  openedActivityView: null, // EntityListName,
+  openedActivityView: 'EntityListName',
 };
 
 export const EditorContext = createContext<EditorState>(initialState);

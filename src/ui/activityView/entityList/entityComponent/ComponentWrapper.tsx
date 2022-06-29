@@ -1,4 +1,3 @@
-import { Component } from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
 import { ChevronDown, ChevronRight, X } from 'react-feather';
 import { ModalContext } from '../../../../context/modal';
@@ -6,7 +5,6 @@ import { Button } from '../../../common/Button';
 import { sprinkles } from '../../../util.css';
 
 type ComponentWrapperProps = {
-  component: Component<any>;
   componentName: string;
 };
 export const ComponentWrapper: React.FC<ComponentWrapperProps> = ({

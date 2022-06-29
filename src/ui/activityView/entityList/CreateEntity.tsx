@@ -15,7 +15,7 @@ export const CreateEntity: React.FC = () => {
       className="flex justify-between"
       onSubmit={() => {
         setEntityName('');
-        const newEntity = generateEntity({ name: entityName });
+        const newEntity = generateEntity();
 
         editorState.dispatch({
           type: 'SetSelectedEntity',
