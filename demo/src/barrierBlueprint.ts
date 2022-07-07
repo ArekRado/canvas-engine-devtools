@@ -30,7 +30,10 @@ export const barrierBlueprint = ({
     state,
     entity,
     data: defaultCollider({
-      layers: ['knight','barrier'],
+      layer: {
+        belongs: ['barrier'],
+        interacts: [],
+      },
       data: [{ type: 'line', position: [0, 0], position2: [0, 10] }],
     }),
   });

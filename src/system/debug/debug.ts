@@ -7,20 +7,21 @@ import {
   emitEvent,
   addEventHandler,
   EventHandler,
-  InternalInitialState,
   createEntity,
 } from '@arekrado/canvas-engine';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Debug } from './type';
-import { App } from './ui/App';
-import { eventBusDispatch } from './util/eventBus';
+import { Debug } from '../../type';
+import { App } from '../../ui/App';
+import { eventBusDispatch } from '../../util/eventBus';
+import {
+  colliderContourSystem,
+  syncColliderContoursWithColliders,
+} from '../colliderContour/colliderContour';
+import { rigidBodyContourSystem, syncRigidBodyContoursWithRigidBodies } from '../rigidBodyContour/rigidBodyContour';
 
 // TODO
 // - events view
-
-// build css, react with webpack
-// build rest with tsc
 
 export const debugEntity = 'debug';
 export const debugName = 'debug';
@@ -44,14 +45,17 @@ const syncStateEvent: DebugEvent.PeriodicallySetEditorState = {
   payload: undefined,
 };
 
-const debugEventHandler: EventHandler<DebugEvent.All, InternalInitialState> = ({
+const debugEventHandler: EventHandler<DebugEvent.All, AnyState> = ({
   state,
   event,
 }) => {
   switch (event.type) {
     case DebugEvent.Type.periodicallySetEditorState:
+      state = syncColliderContoursWithColliders({ state });
+      state = syncRigidBodyContoursWithRigidBodies({ state });
+
       eventBusDispatch('setEditorState', state);
-      setTimeout(() => emitEvent(syncStateEvent), 500);
+      setTimeout(() => emitEvent(syncStateEvent), 100);
 
       return state;
   }
@@ -61,6 +65,9 @@ const debugEventHandler: EventHandler<DebugEvent.All, InternalInitialState> = ({
 
 export const debugSystem = (state: AnyState, containerId: string): AnyState => {
   addEventHandler(debugEventHandler);
+
+  state = colliderContourSystem(state);
+  state = rigidBodyContourSystem(state);
 
   state = createSystem<Debug>({
     name: debugName,
@@ -81,42 +88,7 @@ export const debugSystem = (state: AnyState, containerId: string): AnyState => {
     tick: ({ state, component }) => {
       if (component.isPlaying) {
       }
-      //   if (mutableState.isUIInitialized) {
-      //     if (!component.isInitialized && mutableState.isUIInitialized) {
-      //       eventBusDispatch('setEditorState', state);
-      //       state = setDebug({
-      //         state,
-      //         data: {
-      //           isInitialized: true,
-      //         },
-      //       });
 
-      //       return setTime({
-      //         ...initialState.time,
-      //         timeNow: performance.now(),
-      //         previousTimeNow: performance.now(),
-      //       });
-      //     } else {
-      //       if (mutableState.isPlaying) {
-      //         eventBusDispatch('setEditorState', state);
-      //         return state;
-      //       } else {
-      //         return {
-      //           ...mutableState.state,
-      //           component: {
-      //             ...mutableState.state.component,
-      //             sprite: mutableState.state.component.sprite,
-      //           },
-      //           isInitialized: true,
-      //           time: {
-      //             ...initialState.time,
-      //             timeNow: performance.now(),
-      //             previousTimeNow: performance.now(),
-      //           },
-      //         };
-      //       }
-      //     }
-      //   }
       return state;
     },
   });

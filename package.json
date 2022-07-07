@@ -46,7 +46,7 @@
     "trailingComma": "es5"
   },
   "dependencies": {
-    "@arekrado/canvas-engine": "^0.0.104",
+    "@arekrado/canvas-engine": "^0.0.107",
     "@arekrado/vector-2d": "0.0.5",
     "@vanilla-extract/css": "^1.6.8",
     "@vanilla-extract/recipes": "^0.2.3",

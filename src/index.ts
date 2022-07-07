@@ -2,10 +2,10 @@ export {
   debugEntity,
   debugName,
   debugSystem,
-} from './debugSystem';
+} from './system/debug/debug';
 
 // TODO
-// - where time entity?
+// - editable JSON? :D
 // - editable camera component :3
 // - entity list should be navigated by keyboard, https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets
 // - display events

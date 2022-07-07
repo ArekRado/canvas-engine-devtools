@@ -1,6 +1,6 @@
 import {
   Dictionary,
-  Guid,
+  Entity,
   getState,
   Time,
   componentName,
@@ -9,7 +9,7 @@ import {
   timeEntity,
 } from '@arekrado/canvas-engine';
 import { createContext, Dispatch, Reducer } from 'react';
-import { DebugEvent } from '../debugSystem';
+import { DebugEvent } from '../system/debug/debug';
 import { Action } from '../type';
 import { EntityListName } from '../ui/activityView/entityList/EntityList';
 
@@ -32,9 +32,12 @@ export type SetIsPlayingPayload = {
 };
 
 export namespace EditorAction {
-  export type SetSelectedEntity = Action<'SetSelectedEntity', Guid | undefined>;
+  export type SetSelectedEntity = Action<
+    'SetSelectedEntity',
+    Entity | undefined
+  >;
   export type SetIsPlaying = Action<'SetIsPlaying', SetIsPlayingPayload>;
-  export type SetHoveredEntity = Action<'SetHoveredEntity', Guid | undefined>;
+  export type SetHoveredEntity = Action<'SetHoveredEntity', Entity | undefined>;
   export type RegisterComponent = Action<
     'RegisterComponent',
     RegisterComponentPayload<any>
@@ -55,8 +58,8 @@ type EditorActions =
   | EditorAction.OpenActivityView;
 
 type EditorState = {
-  selectedEntity?: Guid;
-  hoveredEntity?: Guid;
+  selectedEntity?: Entity;
+  hoveredEntity?: Entity;
   isPlaying: boolean;
   components: Dictionary<RegisterComponentPayload<any>>;
   activityView: Dictionary<RegisterActivityViewPayload>;
