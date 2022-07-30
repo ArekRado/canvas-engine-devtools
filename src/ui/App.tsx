@@ -1,4 +1,4 @@
-import React, { useReducer, useRef } from 'react';
+import React, { useReducer } from 'react';
 import {
   EditorContext,
   initialState as editorInitialState,
@@ -14,7 +14,8 @@ import { modalContainerId } from './modal/ModalWrapper';
 import { useOutline } from './hooks/useOutline';
 import { ConfirmModal } from './modal/ConfirmModal';
 import { ActivityBar } from './ActivityBar';
-import { appStyle } from './app.css';
+import { appStyle, startStopStyle } from './app.css';
+import { StartStop } from './StartStop';
 
 export const App: React.FC = () => {
   const [editorState, editorDispatch] = useReducer(
@@ -27,8 +28,8 @@ export const App: React.FC = () => {
     modalInitialState
   );
 
-  const isPlayingRef = useRef(false);
-  isPlayingRef.current = editorState.isPlaying;
+  // const isPlayingRef = useRef(false);
+  // isPlayingRef.current = editorState.isPlaying;
 
   useOutline();
 
@@ -56,6 +57,9 @@ export const App: React.FC = () => {
         value={{ ...editorState, dispatch: editorDispatch }}
       >
         <div className={appStyle} id="canvas-engine-devtools">
+          <div className={startStopStyle}>
+            <StartStop />
+          </div>
           <ActivityBar />
           <div id={modalContainerId} />
         </div>

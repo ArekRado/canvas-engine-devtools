@@ -5,5 +5,6 @@ export const container = style({
   display: 'flex',
   flexDirection: 'column',
   minWidth: '30px',
-  backgroundColor:vars.color.gray800,
+  backgroundColor: vars.color.gray800,
+  zIndex: vars.zIndex.activityBar,
 });

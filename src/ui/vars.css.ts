@@ -7,6 +7,7 @@ export const vars = createGlobalTheme(':root', {
     '4x': '4px',
     '8x': '8px',
     '16x': '16px',
+    '32x': '32px',
   },
   color: {
     white: '#fff',
@@ -67,5 +68,10 @@ export const vars = createGlobalTheme(':root', {
     '3x': '13px',
     '4x': '14px',
     '5x': '15px',
+  },
+  zIndex: {
+    activityBar: '4',
+    playButton: '3',
+    mainContainer: '2',
   },
 });

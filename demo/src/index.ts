@@ -6,10 +6,9 @@ import { Vector3 } from '../../node_modules/@babylonjs/core/Maths/math.vector';
 import { Camera } from '../../node_modules/@babylonjs/core/Cameras/camera';
 import { HemisphericLight } from '../../node_modules/@babylonjs/core/Lights/hemisphericLight';
 import { Color3 } from '../../node_modules/@babylonjs/core/Maths/math.color';
-import { runOneFrame } from '../../node_modules/@arekrado/canvas-engine';
+import { runRenderLoop } from '../../node_modules/@arekrado/canvas-engine';
 
 const canvas = document.getElementById('game') as HTMLCanvasElement;
-export const humanPlayerEntity = 'humanPlayer';
 
 // Engine
 const engine = new Engine(canvas, true, {
@@ -48,13 +47,19 @@ let state = getState({
   camera,
 });
 
-if (state.babylonjs.sceneRef) {
-  const beforeRenderCallback = () => {
-    state = runOneFrame({ state });
-  };
+// let timeout: number = -1;
 
-  state.babylonjs.sceneRef.registerBeforeRender(beforeRenderCallback);
-}
+// const beforeRenderCallback = () => {
+//   state = runOneFrame({ state });
+//   (state as any).animationFrame =
+//     window.requestAnimationFrame(beforeRenderCallback);
+// };
+
+// timeout = window.requestAnimationFrame(() => {
+//   beforeRenderCallback();
+// });
+
+runRenderLoop({ state });
 
 // Resize
 // window.addEventListener('resize', () => {

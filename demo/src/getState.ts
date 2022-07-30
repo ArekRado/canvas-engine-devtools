@@ -65,7 +65,7 @@ export const getState = ({
   // state = backgroundSystem(state);
   // state = logoSystem(state);
 
-  state = debugSystem(state, 'devtools') as State;
+  state = debugSystem({ state, containerId: 'devtools' }) as State;
 
   [
     { entity: generateEntity() },

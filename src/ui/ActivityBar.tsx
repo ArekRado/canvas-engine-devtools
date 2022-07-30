@@ -1,8 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { EditorContext } from '../context/editor';
-import { EntityList, EntityListName } from './activityView/entityList/EntityList';
+import {
+  EntityList,
+  EntityListName,
+} from './activityView/entityList/EntityList';
 import { Button } from './common/Button';
-import { Video, List, MoreHorizontal, AlertTriangle } from 'react-feather';
+import {
+  Video,
+  List,
+  MoreHorizontal,
+  AlertTriangle,
+  Pause,
+  Play,
+} from 'react-feather';
 import { container } from './activityBar.css';
 import { sprinkles } from './util.css';
 
@@ -11,56 +21,16 @@ export const ActivityBar: React.FC = () => {
 
   useEffect(() => {
     window.requestIdleCallback(() => {
-      // import('./activityView/entityList/Events').then((component) => {
-      //   editorState.dispatch({
-      //     type: 'RegisterActivityView',
-      //     payload: {
-      //       name: component.EntityListName,
-      //       index: 0,
-      //       tab: () => <List />,
-      //       content: component.EntityList,
-      //     },
-      //   });
-      // });
-      // import(
-      //   /* webpackChunkName: "EntityList" */ './activityView/entityList/EntityList'
-      // ).then((component) => {
-        editorState.dispatch({
-          type: 'RegisterActivityView',
-          payload: {
-            name: EntityListName,
-            index: 0,
-            tab: () => <List />,
-            content: EntityList,
-          },
-        });
-      // });
-
-      // import('./activityView/Camera').then((component) => {
-      //   editorState.dispatch({
-      //     type: 'RegisterActivityView',
-      //     payload: {
-      //       name: component.CameraName,
-      //       index: 1,
-      //       tab: () => <Video />,
-      //       content: component.Camera,
-      //     },
-      //   });
-      // });
-
-      // import('./activityView/MoreStateDetails').then((component) => {
-      //   editorState.dispatch({
-      //     type: 'RegisterActivityView',
-      //     payload: {
-      //       name: component.MoreStateDetailsName,
-      //       index: 2,
-      //       tab: () => <MoreHorizontal />,
-      //       content: component.MoreStateDetails,
-      //     },
-      //   });
-      // });
+      editorState.dispatch({
+        type: 'RegisterActivityView',
+        payload: {
+          name: EntityListName,
+          index: 0,
+          tab: () => <List />,
+          content: EntityList,
+        },
+      });
     });
-
   }, []);
 
   return (

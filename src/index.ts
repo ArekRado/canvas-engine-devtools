@@ -1,10 +1,11 @@
 export {
   debugEntity,
-  debugName,
   debugSystem,
 } from './system/debug/debug';
 
 // TODO
+// - remove component/entity buttons
+// - events view
 // - editable JSON? :D
 // - editable camera component :3
 // - entity list should be navigated by keyboard, https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets

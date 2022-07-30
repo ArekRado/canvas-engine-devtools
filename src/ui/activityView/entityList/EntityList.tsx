@@ -21,7 +21,6 @@ import {
   listContainer,
   overEntityStyle,
 } from './entityList.css';
-import { registerEntityListComponents } from '../../hooks/registerEntityListComponents';
 
 type Branch = {
   entity: Entity;
@@ -169,7 +168,6 @@ export const EntityListName = 'EntityList';
 
 export const EntityList: React.FC = () => {
   const appState = useAppState();
-  registerEntityListComponents();
 
   const [dragedEntity, setDragedEntity] = useState<Entity | null>(null);
   const [overEntity, setOverEntity] = useState<Entity | null>(null);

@@ -9,7 +9,7 @@ import {
   defaultRigidBody,
   defaultTransform,
   Entity,
-} from '@arekrado/canvas-engine';
+} from '../../node_modules/@arekrado/canvas-engine';
 import { State } from './type';
 
 // import circleTexture from './assets/circle.png';

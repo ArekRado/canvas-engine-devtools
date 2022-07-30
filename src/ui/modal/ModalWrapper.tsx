@@ -5,6 +5,7 @@ import {
   Modal as ModalType,
   ModalName,
 } from '../../context/modal';
+import { modalStyle } from './ModalWrapper.css';
 
 export const modalContainerId = 'canvas-engine-devtools-modal-container';
 
@@ -27,15 +28,9 @@ export const ModalWrapper: React.FC<ModalProps> = ({ name, children }) => {
 
   return modal?.isOpen && modalContainer
     ? createPortal(
-        <>
-          <div
-            className="z-1 absolute inset-0 bg-blue-500 bg-opacity-25 z-modal-backdrop"
-            onClick={close}
-          />
-          <div className="z-1 absolute m-auto modal-wrapper top-1/2 transform -translate-y-1/2 -translate-x-1/2 z-modal bg-gray-800 p-4 overflow-auto max-h-full max-w-full">
-            {children({ close, modal, name })}
-          </div>
-        </>,
+        <dialog className={modalStyle} open>
+          {children({ close, modal, name })}
+        </dialog>,
         modalContainer
       )
     : null;

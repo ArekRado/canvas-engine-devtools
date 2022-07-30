@@ -1,4 +1,4 @@
-import { InitialState } from '@arekrado/canvas-engine';
+import { InitialState } from '../../node_modules/@arekrado/canvas-engine';
 
 // Utils
 

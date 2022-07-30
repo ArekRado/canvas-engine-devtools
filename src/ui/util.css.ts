@@ -23,7 +23,7 @@ const responsiveProperties = defineProperties({
       'center',
       'flex-end',
       'space-between',
-      // 'space-around',
+      'space-around',
       // 'space-evenly',
     ],
     flex: ['1', '2'],

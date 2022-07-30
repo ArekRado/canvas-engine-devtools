@@ -12,7 +12,17 @@ export const appStyle = style({
   position: 'fixed',
   top: '0',
   left: '0',
-  zIndex: '2',
+  zIndex: vars.zIndex.mainContainer,
+});
+
+export const startStopStyle = style({
+  position: 'fixed',
+  top: '0',
+  left: '0',
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  zIndex: vars.zIndex.playButton,
 });
 
 globalStyle('#canvas-engine-devtools *', {

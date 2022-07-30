@@ -8,9 +8,14 @@ import {
   addEventHandler,
   EventHandler,
   createEntity,
+  updateComponent,
+  CanvasEngineEvent,
+  getComponent,
+  AllEvents,
 } from '@arekrado/canvas-engine';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { debugComponentName } from '../../debugComponentName';
 import { Debug } from '../../type';
 import { App } from '../../ui/App';
 import { eventBusDispatch } from '../../util/eventBus';
@@ -18,13 +23,12 @@ import {
   colliderContourSystem,
   syncColliderContoursWithColliders,
 } from '../colliderContour/colliderContour';
-import { rigidBodyContourSystem, syncRigidBodyContoursWithRigidBodies } from '../rigidBodyContour/rigidBodyContour';
-
-// TODO
-// - events view
+import {
+  rigidBodyContourSystem,
+  syncRigidBodyContoursWithRigidBodies,
+} from '../rigidBodyContour/rigidBodyContour';
 
 export const debugEntity = 'debug';
-export const debugName = 'debug';
 
 export namespace DebugEvent {
   export enum Type {
@@ -33,7 +37,7 @@ export namespace DebugEvent {
   }
   export type All = PlayEvent | PeriodicallySetEditorState;
 
-  export type PlayEvent = ECSEvent<Type.play, undefined>;
+  export type PlayEvent = ECSEvent<Type.play, boolean>;
   export type PeriodicallySetEditorState = ECSEvent<
     Type.periodicallySetEditorState,
     undefined
@@ -45,17 +49,60 @@ const syncStateEvent: DebugEvent.PeriodicallySetEditorState = {
   payload: undefined,
 };
 
-const debugEventHandler: EventHandler<DebugEvent.All, AnyState> = ({
+let enablePeriodicallySetEditorStateTimeout = false;
+let stateCopy: AnyState | null = null;
+
+const debugEventHandler: EventHandler<DebugEvent.All | AllEvents, AnyState> = ({
   state,
   event,
 }) => {
+  const debug = getComponent<Debug>({
+    state,
+    entity: debugEntity,
+    name: debugComponentName.debug,
+  });
+
   switch (event.type) {
+    case CanvasEngineEvent.renderLoopStart:
+      if (debug?.isPlaying === false) {
+        window.cancelAnimationFrame(state.animationFrame);
+      }
+
+      return state;
+
     case DebugEvent.Type.periodicallySetEditorState:
       state = syncColliderContoursWithColliders({ state });
       state = syncRigidBodyContoursWithRigidBodies({ state });
 
       eventBusDispatch('setEditorState', state);
-      setTimeout(() => emitEvent(syncStateEvent), 100);
+      setTimeout(() => {
+        if (debug?.isPlaying === true) {
+          emitEvent(syncStateEvent);
+        }
+      }, 100);
+
+      return state;
+
+    case DebugEvent.Type.play:
+      const isPlaying = event.payload;
+      enablePeriodicallySetEditorStateTimeout = isPlaying;
+
+      state = updateComponent<Debug>({
+        state,
+        entity: debugEntity,
+        name: debugComponentName.debug,
+        update: () => ({
+          isPlaying,
+        }),
+      });
+
+      if (isPlaying) {
+        emitEvent(syncStateEvent);
+      } else {
+        stateCopy = { ...state };
+      }
+
+      eventBusDispatch('setEditorState', state);
 
       return state;
   }
@@ -63,15 +110,21 @@ const debugEventHandler: EventHandler<DebugEvent.All, AnyState> = ({
   return state;
 };
 
-export const debugSystem = (state: AnyState, containerId: string): AnyState => {
+export const debugSystem = ({
+  state,
+  containerId,
+}: {
+  state: AnyState;
+  containerId: string;
+}): AnyState => {
   addEventHandler(debugEventHandler);
 
   state = colliderContourSystem(state);
   state = rigidBodyContourSystem(state);
 
   state = createSystem<Debug>({
-    name: debugName,
-    componentName: debugName,
+    name: debugComponentName.debug,
+    componentName: debugComponentName.debug,
     priority: systemPriority.time + 1,
     state,
     create: ({ state }) => {
@@ -85,8 +138,15 @@ export const debugSystem = (state: AnyState, containerId: string): AnyState => {
 
       return state;
     },
-    tick: ({ state, component }) => {
-      if (component.isPlaying) {
+    fixedTick: ({ state }) => {
+      const debug = getComponent<Debug>({
+        state,
+        entity: debugEntity,
+        name: debugComponentName.debug,
+      });
+
+      if (stateCopy !== null && debug?.isPlaying === false) {
+        return stateCopy;
       }
 
       return state;
@@ -97,9 +157,9 @@ export const debugSystem = (state: AnyState, containerId: string): AnyState => {
   return createComponent<Debug>({
     state,
     entity: debugEntity,
-    name: debugName,
+    name: debugComponentName.debug,
     data: {
-      isPlaying: false,
+      isPlaying: true,
     },
   });
 };

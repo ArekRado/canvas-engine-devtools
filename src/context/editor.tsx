@@ -1,17 +1,10 @@
 import {
   Dictionary,
   Entity,
-  getState,
-  Time,
-  componentName,
   InternalInitialState,
-  emitEvent,
-  timeEntity,
 } from '@arekrado/canvas-engine';
 import { createContext, Dispatch, Reducer } from 'react';
-import { DebugEvent } from '../system/debug/debug';
 import { Action } from '../type';
-import { EntityListName } from '../ui/activityView/entityList/EntityList';
 
 export type RegisterComponentPayload<Data> = {
   name: string;
@@ -36,7 +29,6 @@ export namespace EditorAction {
     'SetSelectedEntity',
     Entity | undefined
   >;
-  export type SetIsPlaying = Action<'SetIsPlaying', SetIsPlayingPayload>;
   export type SetHoveredEntity = Action<'SetHoveredEntity', Entity | undefined>;
   export type RegisterComponent = Action<
     'RegisterComponent',
@@ -51,7 +43,6 @@ export namespace EditorAction {
 
 type EditorActions =
   | EditorAction.SetSelectedEntity
-  | EditorAction.SetIsPlaying
   | EditorAction.SetHoveredEntity
   | EditorAction.RegisterComponent
   | EditorAction.RegisterActivityView
@@ -60,24 +51,13 @@ type EditorActions =
 type EditorState = {
   selectedEntity?: Entity;
   hoveredEntity?: Entity;
-  isPlaying: boolean;
   components: Dictionary<RegisterComponentPayload<any>>;
   activityView: Dictionary<RegisterActivityViewPayload>;
   openedActivityView: string | null;
   dispatch: Dispatch<EditorActions>;
 };
 
-const timeInitial: Time = {
-  // entity: timeEntity,
-  // name: componentName.time,
-  delta: 0,
-  timeNow: 0,
-  previousTimeNow: 0,
-  dataOverwrite: undefined,
-};
-
 export const initialState: EditorState = {
-  isPlaying: false,
   components: {},
   activityView: {},
   dispatch: () => {},
@@ -98,24 +78,6 @@ export const reducer: Reducer<EditorState, EditorActions> = (state, action) => {
       return {
         ...state,
         hoveredEntity: action.payload,
-      };
-    case 'SetIsPlaying':
-      // eventBusDispatch<InternalInitialState>('setGameState', {
-      //   ...action.payload.state,
-      //   time: timeInitial,
-      // });
-
-      const playEvent: DebugEvent.PlayEvent = {
-        type: DebugEvent.Type.play,
-        payload: undefined,
-      };
-
-      emitEvent(playEvent);
-      // mutableState.isPlaying = action.payload.isPlaying;
-
-      return {
-        ...state,
-        isPlaying: action.payload.isPlaying,
       };
     case 'RegisterComponent':
       const componentName = action.payload.name;
