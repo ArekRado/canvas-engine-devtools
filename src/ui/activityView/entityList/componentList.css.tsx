@@ -7,3 +7,11 @@ export const preStyle = style({
   maxWidth: '100%',
   color: vars.color.gray200,
 });
+
+export const textareaStyle = style({
+  maxHeight: '800px',
+  maxWidth: '100%',
+
+  backgroundColor: 'transparent',
+  color: vars.color.gray200,
+});

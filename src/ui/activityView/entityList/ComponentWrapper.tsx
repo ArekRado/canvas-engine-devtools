@@ -6,12 +6,12 @@ import {
 } from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
 import { ChevronDown, ChevronRight, Trash } from 'react-feather';
-import { EditorContext } from '../../../../context/editor';
-import { ModalContext } from '../../../../context/modal';
-import { DebugEvent } from '../../../../system/debug/debug';
-import { Button } from '../../../common/Button';
-import { useAppState } from '../../../hooks/useAppState';
-import { sprinkles } from '../../../util.css';
+import { EditorContext } from '../../../context/editor';
+import { ModalContext } from '../../../context/modal';
+import { DebugEvent } from '../../../system/debug/debug';
+import { Button } from '../../common/Button';
+import { useAppState } from '../../hooks/useAppState';
+import { sprinkles } from '../../util.css';
 
 const removeSelectedComponent = ({
   state,

@@ -31,10 +31,10 @@ export namespace EditorAction {
     Entity | undefined
   >;
   export type SetHoveredEntity = Action<'SetHoveredEntity', Entity | undefined>;
-  export type RegisterComponent = Action<
-    'RegisterComponent',
-    RegisterComponentPayload<any>
-  >;
+  // export type RegisterComponent = Action<
+  //   'RegisterComponent',
+  //   RegisterComponentPayload<any>
+  // >;
   export type RegisterActivityView = Action<
     'RegisterActivityView',
     RegisterActivityViewPayload
@@ -45,21 +45,21 @@ export namespace EditorAction {
 type EditorActions =
   | EditorAction.SetSelectedEntity
   | EditorAction.SetHoveredEntity
-  | EditorAction.RegisterComponent
+  // | EditorAction.RegisterComponent
   | EditorAction.RegisterActivityView
   | EditorAction.OpenActivityView;
 
 type EditorState = {
   selectedEntity?: Entity;
   hoveredEntity?: Entity;
-  components: Dictionary<RegisterComponentPayload<any>>;
+  // components: Dictionary<RegisterComponentPayload<any>>;
   activityView: Dictionary<RegisterActivityViewPayload>;
   openedActivityView: string | null;
   dispatch: Dispatch<EditorActions>;
 };
 
 export const initialState: EditorState = {
-  components: {},
+  // components: {},
   activityView: {},
   dispatch: () => {},
   openedActivityView: 'EntityListName',
@@ -80,20 +80,20 @@ export const reducer: Reducer<EditorState, EditorActions> = (state, action) => {
         ...state,
         hoveredEntity: action.payload,
       };
-    case 'RegisterComponent':
-      const componentName = action.payload.name;
+    // case 'RegisterComponent':
+    //   const componentName = action.payload.name;
 
-      if (!state.components[componentName]) {
-        return {
-          ...state,
-          components: {
-            ...state.components,
-            [componentName]: action.payload,
-          },
-        };
-      }
+    //   if (!state.components[componentName]) {
+    //     return {
+    //       ...state,
+    //       components: {
+    //         ...state.components,
+    //         [componentName]: action.payload,
+    //       },
+    //     };
+    //   }
 
-      return state;
+    //   return state;
     case 'RegisterActivityView':
       const viewName = action.payload.name;
 

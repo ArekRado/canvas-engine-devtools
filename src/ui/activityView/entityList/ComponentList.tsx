@@ -2,16 +2,45 @@ import {
   InternalInitialState,
   componentName,
   Entity,
+  AnyState,
+  updateComponent,
+  emitEvent,
 } from '@arekrado/canvas-engine';
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { EditorContext } from '../../../context/editor';
+import { debugEntity, DebugEvent } from '../../../system/debug/debug';
+import { getDebug } from '../../../system/debug/debugCrud';
 import { useAppState } from '../../hooks/useAppState';
-import { preStyle } from './componentList.css';
-import { ComponentWrapper } from './entityComponent/ComponentWrapper';
+import { preStyle, textareaStyle } from './componentList.css';
+import { ComponentWrapper } from './ComponentWrapper';
 
 type EntityComponent = {
   name: string;
   component: Object | null;
+};
+
+const syncComponentWithState = ({
+  name,
+  component,
+  entity,
+  state,
+}: {
+  name: string;
+  component: any;
+  entity: Entity;
+  state: AnyState;
+}) => {
+  state = updateComponent({
+    state,
+    name,
+    entity,
+    update: () => component,
+  });
+
+  emitEvent({
+    type: DebugEvent.Type.setStateFromEditor,
+    payload: state,
+  });
 };
 
 const getEntityComponents = (
@@ -28,6 +57,15 @@ export const ComponentList: React.FC = () => {
   const appState = useAppState();
   const selectedEntity = editorState?.selectedEntity || '';
 
+  if (!appState) {
+    return null;
+  }
+
+  const debug = getDebug({
+    state: appState,
+    entity: debugEntity,
+  });
+
   const entityComponents = appState
     ? getEntityComponents(appState, editorState?.selectedEntity)
     : undefined;
@@ -39,26 +77,35 @@ export const ComponentList: React.FC = () => {
           a.name === componentName.transform ? -1 : a.name > b.name ? -1 : 1
         )
         ?.map(({ name, component }) => {
-          const RegisteredComponent = editorState.components[name];
-
           if (!component) {
             return null;
           }
+
+          const text = JSON.stringify(component, null, 2);
 
           return (
             <ComponentWrapper
               componentName={name}
               key={`${selectedEntity}-${name}`}
             >
-              {RegisteredComponent ? (
-                <RegisteredComponent.render component={component} />
+              {debug?.isPlaying ? (
+                <pre className={preStyle}>
+                  <code>{text}</code>
+                </pre>
               ) : (
-                <div>
-                  <div>Component {name} is not registered in a devtools</div>
-                  <pre className={preStyle}>
-                    <code>{JSON.stringify(component, null, 2)}</code>
-                  </pre>
-                </div>
+                <textarea
+                  className={textareaStyle}
+                  rows={text.split(/\r?\n/).length}
+                  defaultValue={text}
+                  onBlur={(e) =>
+                    syncComponentWithState({
+                      component: JSON.parse(e.target.value),
+                      name,
+                      entity: selectedEntity,
+                      state: appState,
+                    })
+                  }
+                />
               )}
             </ComponentWrapper>
           );
