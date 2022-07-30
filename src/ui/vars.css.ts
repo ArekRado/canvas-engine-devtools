@@ -70,8 +70,9 @@ export const vars = createGlobalTheme(':root', {
     '5x': '15px',
   },
   zIndex: {
+    modal: '5',
     activityBar: '4',
-    playButton: '3',
-    mainContainer: '2',
+    mainContainer: '3',
+    playButton: '2',
   },
 });

@@ -69,17 +69,17 @@ export const getState = ({
 
   [
     { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
+    // { entity: generateEntity() },
+    // { entity: generateEntity() },
+    // { entity: generateEntity() },
+    // { entity: generateEntity() },
+    // { entity: generateEntity() },
+    // { entity: generateEntity() },
+    // { entity: generateEntity() },
+    // { entity: generateEntity() },
+    // { entity: generateEntity() },
+    // { entity: generateEntity() },
+    // { entity: generateEntity() },
   ].forEach(({ entity }) => {
     state = circleBlueprint({ state, entity });
 

@@ -4,7 +4,6 @@ export {
 } from './system/debug/debug';
 
 // TODO
-// - remove component/entity buttons
 // - events view
 // - editable JSON? :D
 // - editable camera component :3

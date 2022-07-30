@@ -5,6 +5,8 @@ export const container = style({
   display: 'flex',
   flex: '1',
   maxWidth: '100%',
+  zIndex: vars.zIndex.mainContainer,
+  backgroundColor: vars.color.gray900
 });
 
 export const entitiesContainer = style({

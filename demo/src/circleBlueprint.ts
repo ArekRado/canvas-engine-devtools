@@ -3,16 +3,12 @@ import {
   createEntity,
   createCollider,
   createRigidBody,
-  createMesh,
-  createMaterial,
   defaultCollider,
   defaultRigidBody,
   defaultTransform,
   Entity,
 } from '../../node_modules/@arekrado/canvas-engine';
 import { State } from './type';
-
-// import circleTexture from './assets/circle.png';
 
 export const circleBlueprint = ({
   state,
@@ -31,7 +27,7 @@ export const circleBlueprint = ({
     }),
   });
 
-  const radius = Math.random() * 0.3 + 0.1;
+  const radius = Math.random() * 0.6 + 0.1;
 
   state = createCollider({
     state,
@@ -41,9 +37,7 @@ export const circleBlueprint = ({
         belongs: ['knight'],
         interacts: ['knight', 'barrier'],
       },
-      data: [
-        { type: 'circle', radius: Math.random() * 0.2 + 0.2, position: [0, 0] },
-      ],
+      data: [{ type: 'circle', radius, position: [0, 0] }],
     }),
   });
   state = createRigidBody({

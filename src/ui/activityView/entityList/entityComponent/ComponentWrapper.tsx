@@ -1,8 +1,38 @@
+import {
+  AnyState,
+  emitEvent,
+  Entity,
+  removeComponent,
+} from '@arekrado/canvas-engine';
 import React, { useContext, useState } from 'react';
-import { ChevronDown, ChevronRight, X } from 'react-feather';
+import { ChevronDown, ChevronRight, Trash } from 'react-feather';
+import { EditorContext } from '../../../../context/editor';
 import { ModalContext } from '../../../../context/modal';
+import { DebugEvent } from '../../../../system/debug/debug';
 import { Button } from '../../../common/Button';
+import { useAppState } from '../../../hooks/useAppState';
 import { sprinkles } from '../../../util.css';
+
+const removeSelectedComponent = ({
+  state,
+  entity,
+  name,
+}: {
+  state: AnyState;
+  entity: Entity;
+  name: string;
+}) => {
+  state = removeComponent({
+    state,
+    entity,
+    name,
+  });
+
+  emitEvent({
+    type: DebugEvent.Type.setStateFromEditor,
+    payload: state,
+  });
+};
 
 type ComponentWrapperProps = {
   componentName: string;
@@ -13,6 +43,12 @@ export const ComponentWrapper: React.FC<ComponentWrapperProps> = ({
 }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const modalState = useContext(ModalContext);
+  const { selectedEntity } = useContext(EditorContext);
+  const appState = useAppState();
+
+  if (!appState || !selectedEntity) {
+    return null;
+  }
 
   return (
     <div className={sprinkles({ paddingY: '8x' })}>
@@ -37,8 +73,8 @@ export const ComponentWrapper: React.FC<ComponentWrapperProps> = ({
         >
           {componentName}
         </div>
-        {/* <Button
-          variants={{ type: 'transparent' }}
+        <Button
+          title="Remove entity"
           onClick={() => {
             modalState.dispatch({
               type: 'SetModal',
@@ -47,14 +83,24 @@ export const ComponentWrapper: React.FC<ComponentWrapperProps> = ({
                 isOpen: true,
                 data: {
                   title: `Are you sure you want to remove ${componentName}?`,
-                  onAccept: () => {},
+                  onAccept: () => {
+                    removeSelectedComponent({
+                      state: appState,
+                      entity: selectedEntity,
+                      name: componentName,
+                    });
+                    modalState.dispatch({
+                      type: 'SetModal',
+                      payload: { isOpen: false, name: 'confirm' },
+                    });
+                  },
                 },
               },
             });
           }}
         >
-          <X size={12} />
-        </Button> */}
+          <Trash size={12} />
+        </Button>
       </div>
 
       {!isCollapsed && children}

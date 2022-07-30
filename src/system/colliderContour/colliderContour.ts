@@ -20,6 +20,7 @@ import {
   createAnimation,
   defaultAnimation,
   removeAnimation,
+  CollisionEvent,
 } from '@arekrado/canvas-engine';
 import { Vector2D } from '@arekrado/vector-2d';
 import { debugComponentName } from '../../debugComponentName';
@@ -110,15 +111,19 @@ const mapColliderToLines = ({
       points = data.verticles;
       break;
     case 'circle':
-      points = Array.from({ length: 30 }).reduce<Vector2D[]>((acc, _, i) => {
-        const step = (Math.PI * 2) / 29;
-        const point: Vector2D = [
-          Math.sin(step * i) * data.radius,
-          Math.cos(step * i) * data.radius,
-        ];
+      const pointsLength = 15;
+      points = Array.from({ length: pointsLength }).reduce<Vector2D[]>(
+        (acc, _, i) => {
+          const step = (Math.PI * 2) / (pointsLength - 1);
+          const point: Vector2D = [
+            Math.sin(step * i) * data.radius,
+            Math.cos(step * i) * data.radius,
+          ];
 
-        return [...acc, point];
-      }, [] as Vector2D[]);
+          return [...acc, point];
+        },
+        [] as Vector2D[]
+      );
       break;
   }
 
@@ -134,6 +139,8 @@ const mapColliderToLines = ({
 export const colliderContourSystem = (state: AnyState): AnyState => {
   addEventHandler((data: { state: AnyState; event: AllEvents }) => {
     if (data.event.type === CanvasEngineEvent.colliderCollision) {
+      const collisionEvent = data.event as CollisionEvent;
+
       Object.entries(
         data.state.component[debugComponentName.colliderContour] ?? {}
       ).forEach(
@@ -143,9 +150,9 @@ export const colliderContourSystem = (state: AnyState): AnyState => {
         ]) => {
           if (
             colliderContour.colliderEntity ===
-              data.event.payload?.collider1.entity ||
+              collisionEvent.payload?.collider1.entity ||
             colliderContour.colliderEntity ===
-              data.event.payload?.collider2.entity
+              collisionEvent.payload?.collider2.entity
           ) {
             data.state = removeAnimation({
               entity: colliderContourEntity,

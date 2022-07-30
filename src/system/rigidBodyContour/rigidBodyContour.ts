@@ -12,6 +12,7 @@ import {
   Collider,
   getRigidBody,
   updateMesh,
+  removeEntity,
 } from '@arekrado/canvas-engine';
 import { scale } from '@arekrado/vector-2d';
 import { debugComponentName } from '../../debugComponentName';
@@ -67,7 +68,7 @@ export const syncRigidBodyContoursWithRigidBodies = ({
     );
 
     if (hasCollider === undefined) {
-      state = removeRigidBodyContour({
+      state = removeEntity({
         state,
         entity: rigidBodyContourEntity,
       });

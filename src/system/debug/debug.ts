@@ -34,14 +34,16 @@ export namespace DebugEvent {
   export enum Type {
     play = 'DebugEvent-play',
     periodicallySetEditorState = 'DebugEvent-periodicallySetEditorState',
+    setStateFromEditor = 'DebugEvent-setStateFromEditor',
   }
-  export type All = PlayEvent | PeriodicallySetEditorState;
+  export type All = PlayEvent | PeriodicallySetEditorState | SetStateFromEditor;
 
   export type PlayEvent = ECSEvent<Type.play, boolean>;
   export type PeriodicallySetEditorState = ECSEvent<
     Type.periodicallySetEditorState,
     undefined
   >;
+  export type SetStateFromEditor = ECSEvent<Type.setStateFromEditor, AnyState>;
 }
 
 const syncStateEvent: DebugEvent.PeriodicallySetEditorState = {
@@ -97,6 +99,7 @@ const debugEventHandler: EventHandler<DebugEvent.All | AllEvents, AnyState> = ({
       });
 
       if (isPlaying) {
+        stateCopy = null;
         emitEvent(syncStateEvent);
       } else {
         stateCopy = { ...state };
@@ -105,6 +108,10 @@ const debugEventHandler: EventHandler<DebugEvent.All | AllEvents, AnyState> = ({
       eventBusDispatch('setEditorState', state);
 
       return state;
+
+    case DebugEvent.Type.setStateFromEditor:
+      stateCopy = { ...event.payload };
+      return stateCopy;
   }
 
   return state;
