@@ -14,6 +14,7 @@ export type RegisterComponentPayload<Data> = {
 
 export type RegisterActivityViewPayload = {
   name: string;
+  title: string;
   tab: React.ElementType<{ isOpen: boolean }>;
   content: React.ElementType<{ isOpen: boolean }>;
   index: number;

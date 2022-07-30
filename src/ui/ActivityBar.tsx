@@ -1,20 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { EditorContext } from '../context/editor';
 import {
   EntityList,
   EntityListName,
 } from './activityView/entityList/EntityList';
 import { Button } from './common/Button';
-import {
-  Video,
-  List,
-  MoreHorizontal,
-  AlertTriangle,
-  Pause,
-  Play,
-} from 'react-feather';
+import { List, AlertTriangle, Calendar } from 'react-feather';
 import { container } from './activityBar.css';
-import { sprinkles } from './util.css';
+import { EventList, EventListName } from './activityView/eventList/EventList';
 
 export const ActivityBar: React.FC = () => {
   const editorState = useContext(EditorContext);
@@ -25,9 +18,21 @@ export const ActivityBar: React.FC = () => {
         type: 'RegisterActivityView',
         payload: {
           name: EntityListName,
+          title: 'Entity list',
           index: 0,
           tab: () => <List />,
           content: EntityList,
+        },
+      });
+
+      editorState.dispatch({
+        type: 'RegisterActivityView',
+        payload: {
+          name: EventListName,
+          title: 'Event list',
+          index: 0,
+          tab: () => <Calendar />,
+          content: EventList,
         },
       });
     });
@@ -48,6 +53,7 @@ export const ActivityBar: React.FC = () => {
                   payload: key,
                 })
               }
+              title={value.title}
             >
               {value ? <value.tab isOpen={false} /> : <AlertTriangle />}
             </Button>

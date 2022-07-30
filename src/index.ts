@@ -4,9 +4,7 @@ export {
 } from './system/debug/debug';
 
 // TODO
-// - events view
 // - editable JSON? :D
-// - editable camera component :3
 // - entity list should be navigated by keyboard, https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets
 // - display events
 // - entity list should display systems which names are similar to components assigned to entity

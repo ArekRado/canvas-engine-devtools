@@ -1,9 +1,7 @@
 import { Transform as TransformComponent } from '@arekrado/canvas-engine';
 import React, { useContext } from 'react';
-import { Trash } from 'react-feather';
-import { ModalContext } from '../../../../context/modal';
+
 import { doNothing } from '../../../../util/doNothing';
-import { Button } from '../../../common/Button';
 import { Input } from '../../../common/Input';
 import { Vector } from '../../../common/Vector';
 import { sprinkles, text1 } from '../../../util.css';
