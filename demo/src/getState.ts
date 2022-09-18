@@ -124,7 +124,7 @@ export const getState = ({
     state,
     entity: entity1,
     update: () => ({
-      position: [2, 2],
+      position: [2, 2, 0],
     }),
   });
   state = updateRigidBody({
@@ -141,7 +141,7 @@ export const getState = ({
     state,
     entity: entity2,
     update: () => ({
-      position: [4, 2],
+      position: [4, 2, 0],
     }),
   });
   state = updateRigidBody({

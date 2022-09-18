@@ -25,7 +25,7 @@ export const circleBlueprint = ({
     state,
     entity,
     data: defaultTransform({
-      position: [0, 1],
+      position: [0, 1, 0],
       scale: [1, 1],
     }),
   });

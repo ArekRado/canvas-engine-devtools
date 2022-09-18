@@ -22,7 +22,7 @@ export const barrierBlueprint = ({
     state,
     entity,
     data: defaultTransform({
-      position: [0, 0],
+      position: [0, 0, 0],
       scale: [1, 1],
     }),
   });
