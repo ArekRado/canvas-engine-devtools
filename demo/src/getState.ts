@@ -67,39 +67,89 @@ export const getState = ({
 
   state = debugSystem({ state, containerId: 'devtools' }) as State;
 
-  [
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-    { entity: generateEntity() },
-  ].forEach(({ entity }) => {
-    state = circleBlueprint({ state, entity });
+  // [
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
 
-    state = updateTransform({
-      state,
-      entity,
-      update: () => ({
-        position: [Math.random() * 8 + 1, Math.random() * 8 + 1],
-      }),
-    });
-    state = updateRigidBody({
-      state,
-      entity,
-      update: () => ({
-        force: [
-          Math.random() > 0.5 ? 0.001 : -0.001,
-          Math.random() > 0.5 ? 0.001 : -0.001,
-        ],
-      }),
-    });
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  //   { entity: generateEntity() },
+  // ].forEach(({ entity }) => {
+  //   state = circleBlueprint({ state, entity });
+
+  //   state = updateTransform({
+  //     state,
+  //     entity,
+  //     update: () => ({
+  //       position: [Math.random() * 8 + 1, Math.random() * 8 + 1],
+  //     }),
+  //   });
+  //   state = updateRigidBody({
+  //     state,
+  //     entity,
+  //     update: () => ({
+  //       force: [
+  //         Math.random() > 0.5 ? 0.001 : -0.001,
+  //         Math.random() > 0.5 ? 0.001 : -0.001,
+  //       ],
+  //     }),
+  //   });
+  // });
+
+  const entity1 = generateEntity();
+  const entity2 = generateEntity();
+
+  state = circleBlueprint({ state, entity: entity1 });
+
+  state = updateTransform({
+    state,
+    entity: entity1,
+    update: () => ({
+      position: [2, 2],
+    }),
+  });
+  state = updateRigidBody({
+    state,
+    entity: entity1,
+    update: () => ({
+      force: [0.001, 0],
+    }),
+  });
+
+  state = circleBlueprint({ state, entity: entity2 });
+
+  state = updateTransform({
+    state,
+    entity: entity2,
+    update: () => ({
+      position: [4, 2],
+    }),
+  });
+  state = updateRigidBody({
+    state,
+    entity: entity2,
+    update: () => ({
+      force: [-0.001, 0],
+    }),
   });
 
   const barrier1 = generateEntity();
@@ -121,7 +171,7 @@ export const getState = ({
     state = updateCollider({
       state,
       entity,
-      update: () => ({ data: [{ type: 'line', position, position2 }] }),
+      update: () => ({ data: { type: 'line', position, position2 } }),
     });
   });
 

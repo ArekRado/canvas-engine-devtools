@@ -1,5 +1,5 @@
 {
-  "version": "0.0.11",
+  "version": "0.0.12",
   "name": "@arekrado/canvas-engine-devtools",
   "main": "dist/index.js",
   "npmName": "@arekrado/canvas-engine-devtools",
@@ -34,7 +34,8 @@
     "test": "jest ./src/test --config=jest.config.js --env=jsdom --watch=false --coverage",
     "test:watch": "jest ./src/test --config=jest.config.js --env=jsdom --watch --coverage=false",
     "webpack:build": "webpack",
-    "build": "sh build.sh"
+    "build": "sh build.sh",
+    "install:local": "sh ./installLocal.sh"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -46,11 +47,12 @@
     "trailingComma": "es5"
   },
   "dependencies": {
-    "@arekrado/canvas-engine": "^0.0.109",
+    "@arekrado/canvas-engine": "0.0.113",
     "@arekrado/vector-2d": "0.0.5",
     "@vanilla-extract/css": "^1.6.8",
     "@vanilla-extract/recipes": "^0.2.3",
     "@vanilla-extract/sprinkles": "^1.4.0",
+    "file-loader": "^6.2.0",
     "react": ">=16",
     "react-dom": "17.0.2",
     "react-feather": "^2.0.9"

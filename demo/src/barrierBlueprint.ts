@@ -22,7 +22,7 @@ export const barrierBlueprint = ({
     state,
     entity,
     data: defaultTransform({
-      position: [0, 1],
+      position: [0, 0],
       scale: [1, 1],
     }),
   });
@@ -34,7 +34,7 @@ export const barrierBlueprint = ({
         belongs: ['barrier'],
         interacts: [],
       },
-      data: [{ type: 'line', position: [0, 0], position2: [0, 10] }],
+      data: { type: 'line', position: [0, 0], position2: [0, 10] },
     }),
   });
   state = createRigidBody({

@@ -93,7 +93,7 @@ const mapColliderToLines = ({
   colliderContour: ColliderContour;
 }) => {
   let points: Vector2D[] = [];
-  const data = collider.data[0];
+  const data = collider.data;
 
   switch (data.type) {
     case 'line':
@@ -150,9 +150,9 @@ export const colliderContourSystem = (state: AnyState): AnyState => {
         ]) => {
           if (
             colliderContour.colliderEntity ===
-              collisionEvent.payload?.collider1.entity ||
+              collisionEvent.payload?.colliderEntity1 ||
             colliderContour.colliderEntity ===
-              collisionEvent.payload?.collider2.entity
+              collisionEvent.payload?.colliderEntity2
           ) {
             data.state = removeAnimation({
               entity: colliderContourEntity,

@@ -7,8 +7,11 @@ import {
   defaultRigidBody,
   defaultTransform,
   Entity,
+  createMaterial,
+  createMesh,
 } from '../../node_modules/@arekrado/canvas-engine';
 import { State } from './type';
+import circleTexture from './assets/circle.png';
 
 export const circleBlueprint = ({
   state,
@@ -28,6 +31,7 @@ export const circleBlueprint = ({
   });
 
   const radius = Math.random() * 0.6 + 0.1;
+  // const radius = 1;
 
   state = createCollider({
     state,
@@ -37,38 +41,39 @@ export const circleBlueprint = ({
         belongs: ['knight'],
         interacts: ['knight', 'barrier'],
       },
-      data: [{ type: 'circle', radius, position: [0, 0] }],
+      data: { type: 'circle', radius, position: [0, 0] },
     }),
   });
   state = createRigidBody({
     state,
     entity,
-    data: defaultRigidBody({ mass: radius, force: [0, 0.001] }),
+    data: defaultRigidBody({ mass: radius }),
   });
-  // state = createMaterial({
-  //   state,
-  //   entity,
-  //   data: {
-  //     uniqueId: parseInt(entity),
-  //     diffuseTexture: circleTexture,
-  //     diffuseColor: [1, 1, 1, 1],
-  //   },
-  // });
-  // state = createMesh({
-  //   state,
-  //   entity,
-  //   data: {
-  //     uniqueId: parseInt(entity),
-  //     materialEntity: [entity],
-  //     data: {
-  //       type: 'plane',
-  //       width: 1,
-  //       height: 1,
-  //       updatable: false,
-  //       sideOrientation: 0,
-  //     },
-  //   },
-  // });
+
+  state = createMaterial({
+    state,
+    entity,
+    data: {
+      uniqueId: parseInt(entity),
+      diffuseTexture: circleTexture,
+      diffuseColor: [1, 1, 1, 1],
+    },
+  });
+  state = createMesh({
+    state,
+    entity,
+    data: {
+      // uniqueId: parseInt(entity),
+      materialEntity: [entity],
+      updatable: false,
+      data: {
+        type: 'plane',
+        width: 1,
+        height: 1,
+        sideOrientation: 0,
+      },
+    },
+  });
 
   return state;
 };

@@ -1,5 +1,5 @@
-import { Camera as CameraType } from '@arekrado/canvas-engine';
-import { getCamera } from '@arekrado/canvas-engine/system/camera/camera';
+import { Camera as CameraType, cameraEntity } from '@arekrado/canvas-engine';
+import { getCamera } from '@arekrado/canvas-engine/system/camera/cameraCrud';
 import React from 'react';
 import { Input } from '../common/Input';
 import { Vector } from '../common/Vector';
@@ -9,7 +9,9 @@ export const CameraName = 'Camera';
 
 export const Camera: React.FC = () => {
   const appState = useAppState();
-  const component = appState ? getCamera({ state: appState }) : undefined;
+  const component = appState
+    ? getCamera({ state: appState, entity: cameraEntity })
+    : undefined;
 
   if (!component) {
     return null;
