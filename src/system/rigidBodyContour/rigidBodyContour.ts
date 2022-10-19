@@ -96,7 +96,7 @@ export const rigidBodyContourSystem = (state: AnyState): AnyState =>
         state,
         entity,
         data: defaultMesh({
-          materialEntity: [],
+          // materialEntity: [],
           updatable: true,
           data: {
             type: 'lines',

@@ -54,9 +54,10 @@ export const circleBlueprint = ({
     state,
     entity,
     data: {
-      uniqueId: parseInt(entity),
-      diffuseTexture: circleTexture,
-      diffuseColor: [1, 1, 1, 1],
+      // uniqueId: parseInt(entity),
+      // diffuseTexture: circleTexture,
+      textureUrl: 'https://threejs.org/manual/examples/resources/images/flower-1.jpg',
+      // color: 'red',
     },
   });
   state = createMesh({
@@ -64,7 +65,7 @@ export const circleBlueprint = ({
     entity,
     data: {
       // uniqueId: parseInt(entity),
-      materialEntity: [entity],
+      // materialEntity: [entity],
       updatable: false,
       data: {
         type: 'plane',

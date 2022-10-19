@@ -1,6 +1,5 @@
 import {
   createTransform,
-  createEntity,
   createCollider,
   createRigidBody,
   defaultCollider,
@@ -17,7 +16,6 @@ export const barrierBlueprint = ({
   state: State;
   entity: Entity;
 }): State => {
-  state = createEntity({ state, entity });
   state = createTransform({
     state,
     entity,

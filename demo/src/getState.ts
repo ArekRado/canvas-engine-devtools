@@ -6,39 +6,27 @@ import {
   updateRigidBody,
   updateTransform,
   updateCollider,
+  createEntity,
 } from '../../node_modules/@arekrado/canvas-engine';
-import { Scene } from '../../node_modules/@babylonjs/core/scene';
-import { UniversalCamera } from '../../node_modules/@babylonjs/core/Cameras/universalCamera';
-import { StandardMaterial } from '../../node_modules/@babylonjs/core/Materials/standardMaterial';
-import { MeshBuilder } from '../../node_modules/@babylonjs/core/Meshes/meshBuilder';
-import { Texture } from '../../node_modules/@babylonjs/core/Materials/Textures/texture';
-import { Color3 } from '../../node_modules/@babylonjs/core/Maths/math.color';
-import { Color4 } from '../../node_modules/@babylonjs/core/Maths/math.color';
-import { Vector3 } from '../../node_modules/@babylonjs/core/Maths/math.vector';
 import { State } from './type';
 import { debugSystem } from '../../src/index';
 
 import { circleBlueprint } from './circleBlueprint';
 import { barrierBlueprint } from './barrierBlueprint';
 import { vector } from '@arekrado/vector-2d';
+import { Scene, WebGLRenderer } from '../../node_modules/Three';
 
 export const getState = ({
   scene,
-  camera,
+  renderer,
 }: {
   scene?: Scene;
-  camera?: UniversalCamera;
+  renderer: WebGLRenderer;
 }): State => {
   let state = getCanvaasEngineState<State>({
     containerId: 'game',
     scene,
-    camera,
-    Vector3,
-    StandardMaterial,
-    MeshBuilder,
-    Texture,
-    Color3,
-    Color4,
+    renderer,
   }) as State;
 
   // const exampleData: EmptyState<
@@ -167,6 +155,8 @@ export const getState = ({
     { entity: barrier5, position: vector(5, 15), position2: vector(0, 10) },
     { entity: barrier6, position: vector(0, 10), position2: vector(0, 0) },
   ].forEach(({ entity, position, position2 }) => {
+    state = createEntity({ state, entity });
+
     state = barrierBlueprint({ state, entity });
     state = updateCollider({
       state,
@@ -179,12 +169,12 @@ export const getState = ({
     state,
     entity: cameraEntity,
     update: () => ({
-      position: [5, 5],
-      distance: 10,
-      left: -5,
-      right: 15,
-      bottom: -5,
-      top: 15,
+      position: [5, 5, 0],
+      // distance: 10,
+      // left: -5,
+      // right: 15,
+      // bottom: -5,
+      // top: 15,
     }),
   });
 

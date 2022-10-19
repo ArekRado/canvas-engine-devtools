@@ -167,7 +167,7 @@ export const colliderContourSystem = (state: AnyState): AnyState => {
                 deleteWhenFinished: true,
                 properties: [
                   {
-                    path: 'color',
+                    path: ['color'],
                     component: debugComponentName.colliderContour,
                     entity: colliderContourEntity,
                     keyframes: [
@@ -221,7 +221,7 @@ export const colliderContourSystem = (state: AnyState): AnyState => {
         entity,
         data: defaultMesh({
           updatable: true,
-          materialEntity: [],
+          // materialEntity: [],
           data: {
             type: 'lines',
             points,
