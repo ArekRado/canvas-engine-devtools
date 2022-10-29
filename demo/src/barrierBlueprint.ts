@@ -6,7 +6,7 @@ import {
   defaultRigidBody,
   defaultTransform,
   Entity,
-} from '../../node_modules/@arekrado/canvas-engine';
+} from '@arekrado/canvas-engine';
 import { State } from './type';
 
 export const barrierBlueprint = ({

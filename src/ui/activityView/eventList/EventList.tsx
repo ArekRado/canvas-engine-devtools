@@ -6,7 +6,6 @@ import {
 } from '@arekrado/canvas-engine';
 import React, { useEffect, useState } from 'react';
 import { Input } from '../../common/Input';
-import { useAppState } from '../../hooks/useAppState';
 import {
   container,
   list,
@@ -20,7 +19,6 @@ export const EventListName = 'EventList';
 let eventListBuffer: ECSEvent<string, any>[] = [];
 
 export const EventList: React.FC = () => {
-  const appState = useAppState();
   const [_, setEventListBuffer] = useState(null);
   const [search, setSearch] = useState('');
 

@@ -6,7 +6,7 @@ import {
   updateComponent,
   emitEvent,
 } from '@arekrado/canvas-engine';
-import React, { useCallback, useContext } from 'react';
+import React, { useContext } from 'react';
 import { EditorContext } from '../../../context/editor';
 import { debugEntity, DebugEvent } from '../../../system/debug/debug';
 import { getDebug } from '../../../system/debug/debugCrud';

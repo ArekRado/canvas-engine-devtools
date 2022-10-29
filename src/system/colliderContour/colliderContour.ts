@@ -40,9 +40,9 @@ export const syncColliderContoursWithColliders = ({
     state.component[debugComponentName.colliderContour] || {}
   );
 
-  colliders.forEach(([colliderEntity, collider]) => {
+  colliders.forEach(([colliderEntity, _]) => {
     const connectedContour = colliderContours.find(
-      ([colliderContourEntity, colliderContour]) =>
+      ([_, colliderContour]) =>
         colliderContour.colliderEntity === colliderEntity
     );
 
@@ -70,8 +70,7 @@ export const syncColliderContoursWithColliders = ({
 
   colliderContours.forEach(([colliderContourEntity, colliderContour]) => {
     const hasCollider = colliders.find(
-      ([colliderEntity, collider]) =>
-        colliderEntity === colliderContour.colliderEntity
+      ([colliderEntity, _]) => colliderEntity === colliderContour.colliderEntity
     );
 
     if (hasCollider === undefined) {

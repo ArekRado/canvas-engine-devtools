@@ -20,7 +20,6 @@ import { RigidBodyContour } from '../../type';
 import { colorRed } from '../../util/color';
 import {
   createRigidBodyContour,
-  removeRigidBodyContour,
   updateRigidBodyContour,
 } from './rigidBodyContourCrud';
 
@@ -36,9 +35,9 @@ export const syncRigidBodyContoursWithRigidBodies = ({
     state.component[debugComponentName.rigidBodyContour] || {}
   );
 
-  rigidBodies.forEach(([rigidBodyEntity, rigidBody]) => {
+  rigidBodies.forEach(([rigidBodyEntity, _]) => {
     const connectedContour = rigidBodyContours.find(
-      ([rigidBodyContourEntity, rigidBodyContour]) =>
+      ([_, rigidBodyContour]) =>
         rigidBodyContour.rigidBodyEntity === rigidBodyEntity
     );
 
@@ -63,7 +62,7 @@ export const syncRigidBodyContoursWithRigidBodies = ({
 
   rigidBodyContours.forEach(([rigidBodyContourEntity, rigidBodyContour]) => {
     const hasCollider = rigidBodies.find(
-      ([rigidBodyEntity, rigidBody]) =>
+      ([rigidBodyEntity, _]) =>
         rigidBodyEntity === rigidBodyContour.rigidBodyEntity
     );
 

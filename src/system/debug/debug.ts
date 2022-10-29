@@ -51,7 +51,7 @@ const syncStateEvent: DebugEvent.PeriodicallySetEditorState = {
   payload: undefined,
 };
 
-let enablePeriodicallySetEditorStateTimeout = false;
+// let enablePeriodicallySetEditorStateTimeout = false;
 let stateCopy: AnyState | null = null;
 
 const debugEventHandler: EventHandler<DebugEvent.All | AllEvents, AnyState> = ({
@@ -87,7 +87,7 @@ const debugEventHandler: EventHandler<DebugEvent.All | AllEvents, AnyState> = ({
 
     case DebugEvent.Type.play:
       const isPlaying = event.payload;
-      enablePeriodicallySetEditorStateTimeout = isPlaying;
+      // enablePeriodicallySetEditorStateTimeout = isPlaying;
 
       state = updateComponent<Debug>({
         state,

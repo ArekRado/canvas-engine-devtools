@@ -169,7 +169,7 @@ export const EntityListName = 'EntityList';
 export const EntityList: React.FC = () => {
   const appState = useAppState();
 
-  const [dragedEntity, setDragedEntity] = useState<Entity | null>(null);
+  const [_, setDragedEntity] = useState<Entity | null>(null);
   const [overEntity, setOverEntity] = useState<Entity | null>(null);
 
   const handleDragOver =
@@ -180,7 +180,7 @@ export const EntityList: React.FC = () => {
     };
 
   const handleDrop =
-    (entity: Entity) => (e: React.DragEvent<HTMLDivElement>) => {
+    () => (e: React.DragEvent<HTMLDivElement>) => {
       e.preventDefault();
       e.stopPropagation();
 

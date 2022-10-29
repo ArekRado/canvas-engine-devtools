@@ -1,7 +1,6 @@
 import { emitEvent, getComponent } from '@arekrado/canvas-engine';
-import React, { useContext } from 'react';
+import React from 'react';
 import { Pause, Play } from 'react-feather';
-import { EditorContext } from '../context/editor';
 import { debugComponentName } from '../debugComponentName';
 import { debugEntity, DebugEvent } from '../system/debug/debug';
 import { Debug } from '../type';
@@ -10,7 +9,7 @@ import { useAppState } from './hooks/useAppState';
 
 export const StartStop: React.FC = () => {
   const appState = useAppState();
-  const editorState = useContext(EditorContext);
+  // const editorState = useContext(EditorContext);
 
   if (!appState) {
     return null;

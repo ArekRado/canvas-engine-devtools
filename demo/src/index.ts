@@ -13,74 +13,69 @@ import {
   defaultRigidBody,
   createMaterial,
   createMesh,
-} from '../../node_modules/@arekrado/canvas-engine';
+} from '@arekrado/canvas-engine';
 import { State } from './type';
 import { debugSystem } from '../../src/index';
-import { DoubleSide } from '../../node_modules/Three';
+import { DoubleSide } from 'Three';
 import circleUrl from './assets/circle.png';
 
-  let state = getState<State>({
-    containerId: 'game',
-    window,
-    document,
-  }) as State;
+let state = getState<State>({
+  containerId: 'game',
+}) as State;
 
-  state = debugSystem({ state, containerId: 'devtools' }) as State;
+state = debugSystem({ state, containerId: 'devtools' }) as State;
 
-  const entity = generateEntity();
+const entity = generateEntity();
 
-  state = createEntity({ state, entity });
-  state = createTransform({
-    state,
-    entity,
-    data: defaultTransform({}),
-  });
+state = createEntity({ state, entity });
+state = createTransform({
+  state,
+  entity,
+  data: defaultTransform({}),
+});
 
-  const radius = Math.random() * 0.6 + 0.1;
+const radius = Math.random() * 0.6 + 0.1;
 
-  state = createCollider({
-    state,
-    entity,
-    data: defaultCollider({
-      layer: {
-        belongs: ['knight'],
-        interacts: ['knight', 'barrier'],
-      },
-      data: { type: 'circle', radius, position: [0, 0] },
-    }),
-  });
-
-  state = createRigidBody({
-    state,
-    entity,
-    data: defaultRigidBody({ mass: radius, force: [0.001, 0] }),
-  });
-
-  state = createMaterial({
-    state,
-    entity,
-    data: {
-      textureUrl:
-      circleUrl,
-      side: DoubleSide,
+state = createCollider({
+  state,
+  entity,
+  data: defaultCollider({
+    layer: {
+      belongs: ['knight'],
+      interacts: ['knight', 'barrier'],
     },
-  });
+    data: { type: 'circle', radius, position: [0, 0] },
+  }),
+});
 
-  state = createMesh({
-    state,
-    entity,
+state = createRigidBody({
+  state,
+  entity,
+  data: defaultRigidBody({ mass: radius, force: [0.001, 0] }),
+});
+
+state = createMaterial({
+  state,
+  entity,
+  data: {
+    textureUrl: circleUrl,
+    side: DoubleSide,
+  },
+});
+
+state = createMesh({
+  state,
+  entity,
+  data: {
+    updatable: false,
     data: {
-      updatable: false,
-      data: {
-        type: 'plane',
-        width: 1,
-        height: 1,
-        sideOrientation: 0,
-      },
+      type: 'plane',
+      width: 1,
+      height: 1,
+      sideOrientation: 0,
     },
-  });
-
-
+  },
+});
 
 state = updateCamera({
   state,

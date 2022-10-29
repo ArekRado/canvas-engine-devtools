@@ -1,23 +1,27 @@
 {
   "version": "0.0.1",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "name": "@arekrado/canvas-engine-devtools-demo",
+  "sideEffects": false,
+  "keywords": [
+    "canvas",
+    "engine",
+    "devtools"
+  ],
+  "author": "Arek Rado",
+  "license": "GNU",
+  "private": false,
+  "description": "",
   "files": [
-    "dist",
-    "src"
+    "*"
   ],
   "engines": {
     "node": ">=16",
     "npm": ">=8.3.0"
   },
   "scripts": {
-    "start": "webpack serve",
-    "build": "webpack --mode production",
-    "test": "jest"
-  },
-  "peerDependencies": {
-    "react": ">=16"
+    "start": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "prettier": {
     "printWidth": 80,
@@ -25,47 +29,17 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "canvas-engine-devtools-demo",
-  "author": "Arek Rado",
-  "module": "dist/arek.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/arek.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/arek.esm.js",
-      "limit": "10 KB"
-    }
-  ],
   "dependencies": {
-    "@arekrado/canvas-engine": "^0.0.110",
-    "@arekrado/vector-2d": "0.0.5",
-    "@vanilla-extract/css": "^1.6.8",
-    "@vanilla-extract/recipes": "^0.2.3",
-    "@vanilla-extract/sprinkles": "^1.4.0",
     "react": ">=16",
     "react-dom": "17.0.2",
     "react-feather": "^2.0.9"
   },
   "devDependencies": {
-    "@babel/core": "7.17.5",
-    "@babel/preset-env": "7.16.11",
-    "@babel/preset-react": "^7.16.7",
-    "@babel/preset-typescript": "^7.16.7",
     "@types/react": "17.0.40",
     "@types/react-dom": "17.0.13",
-    "@vanilla-extract/babel-plugin": "^1.1.5",
-    "@vanilla-extract/webpack-plugin": "^2.1.6",
-    "autoprefixer": "9.8.6",
-    "babel-loader": "8.2.2",
-    "css-loader": "^6.7.1",
-    "html-webpack-plugin": "5.1.0",
-    "mini-css-extract-plugin": "^2.6.0",
-    "typescript": "4.7.4",
-    "url-loader": "4.1.1",
-    "webpack": "5.70.0",
-    "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "4.7.4"
+    "@vanilla-extract/vite-plugin": "^3.6.1",
+    "@vitejs/plugin-react": "^2.1.0",
+    "typescript": "^4.7.4",
+    "vite": "^3.1.0"
   }
 }

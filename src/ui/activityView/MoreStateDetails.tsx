@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import { AnySystem, Mouse, Time } from '@arekrado/canvas-engine';
 import { getTime } from '@arekrado/canvas-engine/system/time/timeCrud';
 import { timeEntity } from '@arekrado/canvas-engine/system/time/time';

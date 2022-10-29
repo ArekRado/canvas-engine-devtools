@@ -1,24 +1,77 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "sourceMap": false,
-    "lib": [
-      "DOM"
-    ],
-    "jsx": "react",
-    "strict": true,
-    "noImplicitReturns": true,
-    "noImplicitAny": true,
+    "outDir": "dist",
     "module": "esnext",
-    "moduleResolution": "node",
     "target": "esnext",
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "es6",
+      "dom",
+      "es2015",
+      "es2017.object",
+      "ES2019"
+    ],
+    "sourceMap": false,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "baseUrl": "src",
     "declaration": true,
-    // "noResolve": true
-    "isolatedModules": true
+    // "declarationDir": "./dist/typings.d.ts",
+    "importHelpers": true,
+    "alwaysStrict": true,
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedParameters": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
   },
   "include": [
-    "./src/**/*", "test",
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "/demo/*",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ],
+  "filesGlob": [
+    "typings/index.d.ts",
+    "src/**/*"
   ]
 }
+// {
+//   "compilerOptions": {
+//     "outDir": "./dist/",
+//     "sourceMap": false,
+//     "lib": [
+//       "es6",
+//       "dom",
+//       "es2015",
+//       "es2017.object",
+//       "ES2019"
+//     ],
+//     "jsx": "react",
+//     "strict": true,
+//     "noImplicitReturns": true,
+//     "noImplicitAny": true,
+//     "module": "esnext",
+//     "moduleResolution": "node",
+//     "target": "esnext",
+//     "allowJs": true,
+//     "allowSyntheticDefaultImports": true,
+//     "declaration": true,
+//     // "noResolve": true
+//     "isolatedModules": true
+//   },
+//   "include": [
+//     "./src/**/*",
+//     "test",
+//   ]
+// }
