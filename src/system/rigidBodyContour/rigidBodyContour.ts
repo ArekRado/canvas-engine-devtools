@@ -5,7 +5,6 @@ import {
   defaultTransform,
   Entity,
   createMesh,
-  defaultMesh,
   componentName,
   generateEntity,
   createEntity,
@@ -48,7 +47,7 @@ export const syncRigidBodyContoursWithRigidBodies = ({
         update: () => ({}),
       });
     } else {
-      const entity = generateEntity();
+      const entity = `rigidBodyContour-${generateEntity()}`;
       state = createEntity({ state, entity });
       state = createRigidBodyContour({
         state,
@@ -94,18 +93,14 @@ export const rigidBodyContourSystem = (state: AnyState): AnyState =>
       state = createMesh({
         state,
         entity,
-        data: defaultMesh({
-          // materialEntity: [],
-          updatable: true,
-          data: {
-            type: 'lines',
-            points: [
-              [0, 0],
-              [0, 2],
-            ],
-            colors: [colorRed, colorRed],
-          },
-        }),
+        data: {
+          type: 'lines',
+          points: [
+            [0, 0],
+            [0, 2],
+          ],
+          colors: [colorRed, colorRed],
+        },
       });
 
       return state;
@@ -120,12 +115,10 @@ export const rigidBodyContourSystem = (state: AnyState): AnyState =>
         state,
         entity,
         update: (mesh) =>
-          mesh.data.type === 'lines'
+          mesh.type === 'lines'
             ? {
-                data: {
-                  ...mesh.data,
-                  points: [[0, 0], scale(1000, rigidBody?.force ?? [0, 0])],
-                },
+                ...mesh,
+                points: [[0, 0], scale(1000, rigidBody?.force ?? [0, 0])],
               }
             : {},
       });

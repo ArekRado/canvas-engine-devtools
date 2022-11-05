@@ -6,7 +6,6 @@ import {
   Entity,
   getCollider,
   createMesh,
-  defaultMesh,
   Color,
   componentName,
   generateEntity,
@@ -55,7 +54,7 @@ export const syncColliderContoursWithColliders = ({
       //   },
       // });
     } else {
-      const entity = generateEntity();
+      const entity = `colliderContour-${generateEntity()}`;
       state = createEntity({ state, entity });
       state = createColliderContour({
         state,
@@ -218,15 +217,11 @@ export const colliderContourSystem = (state: AnyState): AnyState => {
       state = createMesh({
         state,
         entity,
-        data: defaultMesh({
-          updatable: true,
-          // materialEntity: [],
-          data: {
-            type: 'lines',
-            points,
-            colors,
-          },
-        }),
+        data: {
+          type: 'lines',
+          points,
+          colors,
+        },
       });
 
       return state;
@@ -236,15 +231,13 @@ export const colliderContourSystem = (state: AnyState): AnyState => {
         state,
         entity,
         update: (mesh) =>
-          mesh.data.type === 'lines'
+          mesh.type === 'lines'
             ? {
-                data: {
-                  ...mesh.data,
-                  colors: mesh.data.points.reduce(
-                    (acc) => [...acc, component.color],
-                    [] as Color[]
-                  ),
-                },
+                ...mesh,
+                colors: mesh.points.reduce(
+                  (acc) => [...acc, component.color],
+                  [] as Color[]
+                ),
               }
             : {},
       });
