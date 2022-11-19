@@ -19,14 +19,14 @@ import { debugComponentName } from '../../debugComponentName';
 import { Debug } from '../../type';
 import { App } from '../../ui/App';
 import { eventBusDispatch } from '../../util/eventBus';
-import {
-  colliderContourSystem,
-  syncColliderContoursWithColliders,
-} from '../colliderContour/colliderContour';
-import {
-  rigidBodyContourSystem,
-  syncRigidBodyContoursWithRigidBodies,
-} from '../rigidBodyContour/rigidBodyContour';
+// import {
+//   colliderContourSystem,
+//   syncColliderContoursWithColliders,
+// } from '../colliderContour/colliderContour';
+// import {
+//   rigidBodyContourSystem,
+//   syncRigidBodyContoursWithRigidBodies,
+// } from '../rigidBodyContour/rigidBodyContour';
 
 export const debugEntity = 'debug';
 
@@ -73,8 +73,8 @@ const debugEventHandler: EventHandler<DebugEvent.All | AllEvents, AnyState> = ({
       return state;
 
     case DebugEvent.Type.periodicallySetEditorState:
-      state = syncColliderContoursWithColliders({ state });
-      state = syncRigidBodyContoursWithRigidBodies({ state });
+      // state = syncColliderContoursWithColliders({ state });
+      // state = syncRigidBodyContoursWithRigidBodies({ state });
 
       eventBusDispatch('setEditorState', state);
       setTimeout(() => {
@@ -126,8 +126,8 @@ export const debugSystem = ({
 }): AnyState => {
   addEventHandler(debugEventHandler);
 
-  state = colliderContourSystem(state);
-  state = rigidBodyContourSystem(state);
+  // state = colliderContourSystem(state);
+  // state = rigidBodyContourSystem(state);
 
   state = createSystem<Debug>({
     name: debugComponentName.debug,
