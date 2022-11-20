@@ -19,14 +19,6 @@ import { debugComponentName } from '../../debugComponentName';
 import { Debug } from '../../type';
 import { App } from '../../ui/App';
 import { eventBusDispatch } from '../../util/eventBus';
-// import {
-//   colliderContourSystem,
-//   syncColliderContoursWithColliders,
-// } from '../colliderContour/colliderContour';
-// import {
-//   rigidBodyContourSystem,
-//   syncRigidBodyContoursWithRigidBodies,
-// } from '../rigidBodyContour/rigidBodyContour';
 
 export const debugEntity = 'debug';
 
@@ -73,9 +65,6 @@ const debugEventHandler: EventHandler<DebugEvent.All | AllEvents, AnyState> = ({
       return state;
 
     case DebugEvent.Type.periodicallySetEditorState:
-      // state = syncColliderContoursWithColliders({ state });
-      // state = syncRigidBodyContoursWithRigidBodies({ state });
-
       eventBusDispatch('setEditorState', state);
       setTimeout(() => {
         if (debug?.isPlaying === true) {
