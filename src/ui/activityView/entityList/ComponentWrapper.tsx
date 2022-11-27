@@ -4,7 +4,7 @@ import {
   Entity,
   removeComponent,
 } from '@arekrado/canvas-engine';
-import React, { useContext, useState } from 'react';
+import React, { ReactNode, useContext, useState } from 'react';
 import { ChevronDown, ChevronRight, Trash } from 'react-feather';
 import { EditorContext } from '../../../context/editor';
 import { ModalContext } from '../../../context/modal';
@@ -36,11 +36,12 @@ const removeSelectedComponent = ({
 
 type ComponentWrapperProps = {
   componentName: string;
+  children: ReactNode;
 };
-export const ComponentWrapper: React.FC<ComponentWrapperProps> = ({
+export const ComponentWrapper = ({
   componentName,
   children,
-}) => {
+}: ComponentWrapperProps) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const modalState = useContext(ModalContext);
   const { selectedEntity } = useContext(EditorContext);

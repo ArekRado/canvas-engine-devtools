@@ -14,7 +14,7 @@ import {
   AllEvents,
 } from '@arekrado/canvas-engine';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { debugComponentName } from '../../debugComponentName';
 import { Debug } from '../../type';
 import { App } from '../../ui/App';
@@ -125,11 +125,18 @@ export const debugSystem = ({
     state,
     create: ({ state }) => {
       // import('./ui/App').then(({ App }) => {
-      ReactDOM.render(
-        React.createElement(App, {}, null),
-        document.getElementById(containerId),
-        () => setTimeout(() => emitEvent(syncStateEvent), 100)
-      );
+      const container = document.getElementById(containerId);
+      if (container) {
+        const root = createRoot(container);
+        root.render(
+          <React.StrictMode>
+            <App />
+          </React.StrictMode>
+        );
+      }
+
+      setTimeout(() => emitEvent(syncStateEvent), 100)
+
       // });
 
       return state;

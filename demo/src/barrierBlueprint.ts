@@ -1,9 +1,5 @@
 import {
   createTransform,
-  createCollider,
-  createRigidBody,
-  defaultCollider,
-  defaultRigidBody,
   defaultTransform,
   Entity,
 } from '@arekrado/canvas-engine';
@@ -23,22 +19,6 @@ export const barrierBlueprint = ({
       position: [0, 0, 0],
       scale: [1, 1],
     }),
-  });
-  state = createCollider({
-    state,
-    entity,
-    data: defaultCollider({
-      layer: {
-        belongs: ['barrier'],
-        interacts: [],
-      },
-      data: { type: 'line', position: [0, 0], position2: [0, 10] },
-    }),
-  });
-  state = createRigidBody({
-    state,
-    entity,
-    data: defaultRigidBody({ mass: 1, force: [0, 0], isStatic: true }),
   });
 
   return state;

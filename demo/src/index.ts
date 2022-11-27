@@ -7,10 +7,6 @@ import {
   createEntity,
   createTransform,
   defaultTransform,
-  createCollider,
-  defaultCollider,
-  createRigidBody,
-  defaultRigidBody,
   createMaterial,
   createMesh,
 } from '@arekrado/canvas-engine';
@@ -36,28 +32,11 @@ state = createTransform({
 
 const radius = Math.random() * 0.6 + 0.1;
 
-state = createCollider({
-  state,
-  entity,
-  data: defaultCollider({
-    layer: {
-      belongs: ['knight'],
-      interacts: ['knight', 'barrier'],
-    },
-    data: { type: 'circle', radius, position: [0, 0] },
-  }),
-});
-
-state = createRigidBody({
-  state,
-  entity,
-  data: defaultRigidBody({ mass: radius, force: [0.001, 0] }),
-});
-
 state = createMaterial({
   state,
   entity,
   data: {
+    type: 'MeshStandardMaterial',
     textureUrl: circleUrl,
     side: DoubleSide,
   },
@@ -67,13 +46,10 @@ state = createMesh({
   state,
   entity,
   data: {
-    updatable: false,
-    data: {
-      type: 'plane',
-      width: 1,
-      height: 1,
-      sideOrientation: 0,
-    },
+    type: 'plane',
+    width: 1,
+    height: 1,
+    sideOrientation: 0,
   },
 });
 
